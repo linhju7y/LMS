@@ -1,5 +1,8 @@
 import { Table, Tag, Space, Card, Button, Select, Input } from "antd";
-import TitlePage from "~/components/TitlePage";
+import TitlePage from "~/components/Elements/TitlePage";
+import SearchBox from "~/components/Elements/SearchBox";
+
+import { PlusOutlined } from "@ant-design/icons";
 
 const Dashboard = () => {
   // Search //
@@ -88,17 +91,14 @@ const Dashboard = () => {
           <TitlePage title={"Trang chủ"} />
           <div className="wrap-table">
             <Card
-              className="cardRadius"
-              title={<Button type="primary">Thêm item</Button>}
-              extra={
-                <Search
-                  placeholder="input search text"
-                  onSearch={onSearch}
-                  style={{ width: 250 }}
-                  className="btn-search"
-                  size="large"
-                />
+              className="card-radius"
+              title={
+                <Button type="primary" className="btn-add">
+                  <PlusOutlined />
+                  Thêm item
+                </Button>
               }
+              extra={<SearchBox />}
             >
               <Table columns={columns} dataSource={data} />
             </Card>
