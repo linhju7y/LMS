@@ -28,6 +28,8 @@ const data = {
   ],
 };
 
-const LineChart = (Line: any) => {
+const LineChart = () => {
   return <Line data={data} width={400} height={400} />;
 };
+
+export default LineChart;

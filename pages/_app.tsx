@@ -10,7 +10,7 @@ import Dashboard from "~/pages/dashboard";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Layout home>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </Layout>
   );
 }
