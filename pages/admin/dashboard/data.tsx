@@ -27,3 +27,12 @@ export const data = [
   { name: "Page F", uv: 2390, price: 3800, amt: 2500 },
   { name: "Page G", uv: 3490, price: 4300, amt: 2100 },
 ];
+
+export const dataPie = [
+  { name: "Group A", value: 400 },
+  { name: "Group B", value: 300 },
+  { name: "Group C", value: 300 },
+  { name: "Group D", value: 200 },
+  { name: "Group E", value: 278 },
+  { name: "Group F", value: 189 },
+];

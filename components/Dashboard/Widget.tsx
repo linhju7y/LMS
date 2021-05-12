@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const Widget = ({ title, children, styleName, cover, extra, actions }) => {
   return (
     <Card
-      style={{ borderRadius: 20 }}
+      style={{ borderRadius: 20, height: 160 }}
       title={title}
       actions={actions}
       cover={cover}

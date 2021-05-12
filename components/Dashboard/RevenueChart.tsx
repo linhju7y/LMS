@@ -40,7 +40,7 @@ const RevenueChart = () => {
           </Radio.Group>
         }
       >
-        <ResponsiveContainer width="100%" height={500}>
+        <ResponsiveContainer width="100%" height={280}>
           {typeView ? (
             <LineChart
               data={data}
@@ -68,8 +68,8 @@ const RevenueChart = () => {
               <Tooltip />
               <Legend />
               <CartesianGrid stroke="#f5f5f5" />
-              <Bar dataKey="uv" barSize={20} fill="#003366" />
-              <Line type="monotone" dataKey="uv" stroke="#59AA2B" />
+              <Bar dataKey="uv" barSize={20} fill="#0080FF" />
+              <Line type="monotone" dataKey="uv" stroke="#003366" />
             </ComposedChart>
           )}
         </ResponsiveContainer>
