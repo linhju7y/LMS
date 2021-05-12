@@ -7,10 +7,17 @@ import {
   LineChart,
   ResponsiveContainer,
   Tooltip,
+  Bar,
+  CartesianGrid,
+  ComposedChart,
+  Legend,
+  XAxis,
+  YAxis,
 } from "recharts";
 import { Card } from "antd";
-import { increamentData, lineData } from "./data";
+import { increamentData, lineData, data } from "./data";
 import TitlePage from "~/components/TitlePage";
+import RevenueChart from "~/components/Dashboard/RevenueChart";
 
 const Dashboard = () => {
   return (
@@ -417,6 +424,10 @@ const Dashboard = () => {
             title="Tỷ lệ lấp đầy phòng trống"
           />
         </div>
+      </div>
+      <div className="row pt-5">
+        <col className="12" />
+        <RevenueChart />
       </div>
     </div>
   );
