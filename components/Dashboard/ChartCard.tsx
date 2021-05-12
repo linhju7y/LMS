@@ -7,7 +7,7 @@ const ChartCard = ({ prize, title, children, styleName, percent }) => {
     <Widget styleName="gx-card-full">
       <div className="row">
         <div className="col-12">
-          <h5>{title}</h5>
+          <h6>{title}</h6>
         </div>
       </div>
       <div className="row ">
