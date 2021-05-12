@@ -2,24 +2,27 @@ import React from "react";
 
 import Widget from "./Widget";
 
-const ChartCard = ({ prize, title, children, styleName, desc, icon }) => {
+const ChartCard = ({ prize, title, children, styleName, percent }) => {
   return (
     <Widget styleName="gx-card-full">
-      <div className="gx-actchart gx-px-3 gx-pt-3">
-        <div className="ant-row-flex">
-          <h2 className="gx-mb-0 gx-fs-xxl gx-font-weight-medium">
-            {prize}
+      <div className="row">
+        <div className="col-12">
+          <h5>{title}</h5>
+        </div>
+      </div>
+      <div className="row d-flex align justify-content-center align-items-center ">
+        <div className="col-6">
+          <h4>{prize}</h4>
+        </div>
+        <div className="col-6 d-flex ">
+          <b>
             <span
               className={`gx-mb-0 gx-ml-2 gx-pt-xl-2 gx-fs-lg gx-chart-${styleName}`}
             >
-              {title}% <i className="icon icon-menu-up gx-fs-sm" />
+              {percent}% <i className={`fas fa-angle-${styleName}`}></i>
             </span>
-          </h2>
-          <i
-            className={`icon icon-${icon} gx-fs-xl gx-ml-auto gx-text-primary gx-fs-xxxl`}
-          />
+          </b>
         </div>
-        <p className="gx-mb-0 gx-fs-sm gx-text-grey">{desc}</p>
       </div>
       {children}
     </Widget>
