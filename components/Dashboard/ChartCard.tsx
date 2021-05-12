@@ -10,11 +10,11 @@ const ChartCard = ({ prize, title, children, styleName, percent }) => {
           <h5>{title}</h5>
         </div>
       </div>
-      <div className="row d-flex align justify-content-center align-items-center ">
+      <div className="row ">
         <div className="col-6">
           <h4>{prize}</h4>
         </div>
-        <div className="col-6 d-flex ">
+        <div className="col-6 d-flex align justify-content-start align-items-center">
           <b>
             <span
               className={`gx-mb-0 gx-ml-2 gx-pt-xl-2 gx-fs-lg gx-chart-${styleName}`}
