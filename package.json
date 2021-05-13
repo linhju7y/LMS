@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start"
   },
@@ -17,6 +17,7 @@
     "@fullcalendar/daygrid": "^5.7.0",
     "@fullcalendar/react": "^5.7.0",
     "antd": "^4.15.4",
+    "antd-img-crop": "^3.14.1",
     "bootstrap": "^5.0.0",
     "bootstrap-icons": "^1.5.0",
     "chart.js": "^3.2.1",
