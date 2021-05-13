@@ -29,10 +29,9 @@ export const data = [
 ];
 
 export const dataPie = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-  { name: "Group E", value: 278 },
-  { name: "Group F", value: 189 },
+  { name: "Group B", value: 60 },
+  { name: "Group C", value: 20 },
+  { name: "Group D", value: 10 },
+  { name: "Group E", value: 5 },
+  { name: "Group F", value: 5 },
 ];

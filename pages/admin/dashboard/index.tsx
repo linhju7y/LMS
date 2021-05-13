@@ -6,6 +6,8 @@ import RevenueChart from "~/components/Dashboard/RevenueChart";
 import AcademicChart from "~/components/Dashboard/AcademicChart";
 import RateChart from "~/components/Dashboard/RateChart";
 import AreaCard from "./../../../components/Dashboard/ChartCard/AreaCard";
+import ModelCard from "../../../components/Dashboard/ChartCard/ModelCard";
+import RippleCard from "../../../components/Dashboard/ChartCard/RippleCard";
 import LineCard from "components/Dashboard/ChartCard/LineCard";
 
 const Dashboard = () => {
@@ -20,9 +22,7 @@ const Dashboard = () => {
             percent="100"
             styleName="down"
             title="Khóa học đang mở"
-            children={
-              <AreaCard dataCard={increamentData} stopColor="#0080FF" />
-            }
+            children={<LineCard dataCard={increamentData} />}
           />
         </div>
         <div className="col-2">
@@ -30,9 +30,7 @@ const Dashboard = () => {
             title="Học viên đang học"
             prize="20"
             percent="88"
-            children={
-              <AreaCard dataCard={increamentData} stopColor="#FE9E15" />
-            }
+            children={<ModelCard dataCard={increamentData} />}
             styleName="up"
           />
         </div>
@@ -40,9 +38,7 @@ const Dashboard = () => {
           <ChartCard
             prize="3"
             percent="8"
-            children={
-              <AreaCard dataCard={increamentData} stopColor="#FE9E15" />
-            }
+            children={<RippleCard dataCard={increamentData} />}
             styleName="down"
             title="Học viên mới đăng kí"
           />
@@ -51,9 +47,7 @@ const Dashboard = () => {
           <ChartCard
             prize="3"
             percent="10"
-            children={
-              <AreaCard dataCard={increamentData} stopColor="#FE9E15" />
-            }
+            children={<AreaCard dataCard={increamentData} />}
             styleName="down"
             title="Học viên hẹn đăng kí"
           />
@@ -65,9 +59,7 @@ const Dashboard = () => {
             percent="23"
             styleName="up"
             title="Học viên hẹn test"
-            children={
-              <AreaCard dataCard={increamentData} stopColor="#FE9E15" />
-            }
+            children={<ModelCard dataCard={increamentData} />}
           />
         </div>
         <div className="col-2">
@@ -75,9 +67,7 @@ const Dashboard = () => {
             title="Học viên đến test"
             prize="19"
             percent="45"
-            children={
-              <AreaCard dataCard={increamentData} stopColor="#FE9E15" />
-            }
+            children={<RippleCard dataCard={increamentData} />}
             styleName="up"
           />
         </div>
@@ -87,9 +77,7 @@ const Dashboard = () => {
           <ChartCard
             prize="3"
             percent="8"
-            children={
-              <AreaCard dataCard={increamentData} stopColor="#FE9E15" />
-            }
+            children={<AreaCard dataCard={increamentData} />}
             styleName="up"
             title="Học viên đăng kí"
           />
@@ -109,9 +97,7 @@ const Dashboard = () => {
             percent="23"
             styleName="up"
             title="Bài tập đã nộp"
-            children={
-              <AreaCard dataCard={increamentData} stopColor="#FE9E15" />
-            }
+            children={<ModelCard dataCard={increamentData} />}
           />
         </div>
         <div className="col-2">
@@ -119,9 +105,7 @@ const Dashboard = () => {
             title="Bài đã chấm"
             prize="4"
             percent="90"
-            children={
-              <AreaCard dataCard={increamentData} stopColor="#FE9E15" />
-            }
+            children={<RippleCard dataCard={increamentData} />}
             styleName="down"
           />
         </div>
@@ -129,9 +113,7 @@ const Dashboard = () => {
           <ChartCard
             prize="100"
             percent="100"
-            children={
-              <AreaCard dataCard={increamentData} stopColor="#FE9E15" />
-            }
+            children={<AreaCard dataCard={increamentData} />}
             styleName="up"
             title="Bài không đạt"
           />
