@@ -1,104 +1,84 @@
-import React, { Component, useState } from "react";
-import { Pie, PieChart, ResponsiveContainer, Sector } from "recharts";
+import { Card } from "antd";
+import React from "react";
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
-import { dataPie } from "./data";
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#FF00FF"];
 
-const renderActiveShape = (props) => {
-  const RADIAN = Math.PI / 180;
-  const {
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    startAngle,
-    endAngle,
-    fill,
-    payload,
-    percent,
-    value,
-  } = props;
-  const sin = Math.sin(-RADIAN * midAngle);
-  const cos = Math.cos(-RADIAN * midAngle);
-  const sx = cx + (outerRadius + 10) * cos;
-  const sy = cy + (outerRadius + 10) * sin;
-  const mx = cx + (outerRadius + 30) * cos;
-  const my = cy + (outerRadius + 30) * sin;
-  const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-  const ey = my;
-  const textAnchor = cos >= 0 ? "start" : "end";
-
+const RateChart = ({ dataPie }) => {
   return (
-    <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-        {payload.name}
-      </text>
-      <Sector
-        cx={cx}
-        cy={cy}
-        innerRadius={innerRadius}
-        outerRadius={outerRadius}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        fill={fill}
-      />
-      <Sector
-        cx={cx}
-        cy={cy}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        innerRadius={outerRadius + 6}
-        outerRadius={outerRadius + 10}
-        fill={fill}
-      />
-      <path
-        d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
-        stroke={fill}
-        fill="none"
-      />
-      <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-      <text
-        x={ex + (cos >= 0 ? 1 : -1) * 12}
-        y={ey}
-        textAnchor={textAnchor}
-        fill="#333"
-      >{`PV ${value}`}</text>
-      <text
-        x={ex + (cos >= 0 ? 1 : -1) * 12}
-        y={ey}
-        dy={18}
-        textAnchor={textAnchor}
-        fill="#999"
+    <div>
+      <Card
+        title={
+          <>
+            <div>
+              <h4>ĐÁNH GIÁ</h4>
+            </div>
+            <div>Biểu đồ thống kê lượt đánh giá của học viên</div>
+          </>
+        }
+        style={{
+          borderRadius: 20,
+        }}
       >
-        {`(Rate ${(percent * 100).toFixed(2)}%)`}
-      </text>
-    </g>
-  );
-};
-
-const RateChart = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const onPieEnter = (data, index) => {
-    setActiveIndex(index);
-  };
-
-  return (
-    <>
-      <ResponsiveContainer width="100%" height={300}>
-        <PieChart>
-          <Pie
-            dataKey="value"
-            activeIndex={activeIndex}
-            activeShape={renderActiveShape}
-            onMouseEnter={onPieEnter}
-            data={dataPie}
-            innerRadius={60}
-            outerRadius={80}
-            fill="#003366"
-          />
-        </PieChart>
-      </ResponsiveContainer>
-    </>
+        <div className="row">
+          <div className="col-4">
+            <div className="detail-pieChart" style={{ paddingTop: 80 }}>
+              <div>
+                <i class="fas fa-circle" style={{ color: "#0088FE" }} />
+                <span style={{ paddingLeft: 15, color: "#585858" }}>
+                  5 <i class="fas fa-star" style={{ color: "#D7DF01" }} /> 80%
+                </span>
+              </div>
+              <div className="pt-2">
+                <i class="fas fa-circle" style={{ color: "#00C49F" }} />
+                <span style={{ paddingLeft: 15, color: "#585858" }}>
+                  4 <i class="fas fa-star" style={{ color: "#D7DF01" }} /> 20%
+                </span>
+              </div>
+              <div className="pt-2">
+                <i class="fas fa-circle" style={{ color: "#FFBB28" }} />
+                <span style={{ paddingLeft: 15, color: "#585858" }}>
+                  3 <i class="fas fa-star" style={{ color: "#D7DF01" }} /> 10%
+                </span>
+              </div>
+              <div className="pt-2">
+                <i class="fas fa-circle" style={{ color: "#FF8042" }} />
+                <span style={{ paddingLeft: 15, color: "#585858" }}>
+                  2 <i class="fas fa-star" style={{ color: "#D7DF01" }} /> 5%
+                </span>
+              </div>
+              <div className="pt-2">
+                <i class="fas fa-circle" style={{ color: "#FF00FF" }} />
+                <span style={{ paddingLeft: 15, color: "#585858" }}>
+                  1 <i class="fas fa-star" style={{ color: "#D7DF01" }} />
+                  5%
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="col-8">
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  dataKey="value"
+                  data={dataPie}
+                  cx="35%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={80}
+                  fill="#003366"
+                  paddingAngle={5}
+                >
+                  {dataPie.map((entry, index) => (
+                    <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </Card>
+    </div>
   );
 };
 

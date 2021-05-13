@@ -14,7 +14,7 @@ import {
   YAxis,
 } from "recharts";
 
-const AreaCard = ({ dataCard} ) => {
+const RippleCard = ({ dataCard }) => {
   return (
     <>
       <ResponsiveContainer width="100%" height={75}>
@@ -24,17 +24,17 @@ const AreaCard = ({ dataCard} ) => {
         >
           <Tooltip />
           <defs>
-            <linearGradient id="color3" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="5%" stopColor="#163469" stopOpacity={0.9} />
-              <stop offset="95%" stopColor="#FE9E15" stopOpacity={0.9} />
+            <linearGradient id="color5" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#e81a24" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#FEEADA" stopOpacity={0.8} />
             </linearGradient>
           </defs>
           <Area
             dataKey="price"
             strokeWidth={0}
             stackId="2"
-            stroke="#AEB404"
-            fill="url(#color3)"
+            stroke="#FEEADA"
+            fill="url(#color5)"
             fillOpacity={1}
           />
         </AreaChart>
@@ -42,4 +42,4 @@ const AreaCard = ({ dataCard} ) => {
     </>
   );
 };
-export default AreaCard;
+export default RippleCard;
