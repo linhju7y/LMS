@@ -10,6 +10,7 @@ import {
   UserOutlined,
   MailOutlined,
   LogoutOutlined,
+  SearchOutlined,
 } from "@ant-design/icons";
 
 export default function Header({
@@ -68,18 +69,23 @@ export default function Header({
 
   return (
     <header className={`app-header ${!toggle ? "close" : ""}`}>
-      <div className="app-header-logo">
+      {/* <div className="app-header-logo">
         <p>Mona Media</p>
         <p style={{ display: !toggle ? "block" : "none" }}>M</p>
-      </div>
+      </div> */}
       <div className="app-header-inner">
-        <div className="col-search" onClick={() => toggleMenu()}>
-          <div className="box-menu">
-            {/* <span className="icon-action">
-              <i className="fal fa-bars" />
-            </span> */}
-            <div className="icon-action">
-              {!toggle ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        <div className="right">
+          <div className="col-button" onClick={() => toggleMenu()}>
+            <div className="box-menu">
+              <div className="icon-action">
+                {!toggle ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              </div>
+            </div>
+          </div>
+          <div className="col-search">
+            <div className="box-input">
+              <SearchOutlined className="icon-search" />
+              <input type="text" placeholder="Search in app..." />
             </div>
           </div>
         </div>
@@ -101,7 +107,7 @@ export default function Header({
               >
                 <div className="user-wrap">
                   <div className="user-img">
-                    <img src="images/user.jpg" alt="" />
+                    <img src="/images/user.jpg" alt="" />
                   </div>
                   <div className="user-info">
                     <p className="user-name">An Nguyen</p>

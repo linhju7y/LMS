@@ -3,7 +3,7 @@
   justify-content: flex-end;
 }
 .app-content {
-  width: calc(100% - 250px);
+  width: calc(100% - 330px);
   // padding-left: 230px;
   height: 100vh;
   margin-top: 65px;
@@ -54,9 +54,6 @@
   }
 }
 
-.ant-card.cardRadius {
-  border-radius: 6px !important;
-}
 .btn-search {
   .ant-btn-icon-only {
     display: flex;
@@ -106,4 +103,25 @@
       }
     }
   }
+}
+
+.space-between {
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+.list-button {
+  button {
+    display: inline-block;
+    margin-right: 12px;
+    margin-bottom: 12px;
+  }
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.ant-card {
+  border-radius: 0.575rem;
 }
