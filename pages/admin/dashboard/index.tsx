@@ -1,6 +1,5 @@
 import React from "react";
 import ChartCard from "~/components/Dashboard/ChartCard";
-
 import { increamentData, lineData, dataPie } from "./data";
 import TitlePage from "~/components/TitlePage";
 import RevenueChart from "~/components/Dashboard/RevenueChart";
