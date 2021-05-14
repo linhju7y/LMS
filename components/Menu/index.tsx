@@ -36,6 +36,7 @@ import {
   Archive,
   MapPin,
   UserCheck,
+  CheckSquare,
 } from "react-feather";
 import Link from "next/link";
 
@@ -227,7 +228,7 @@ const MenuDefault = ({
             inlineCollapsed={state.collapsed}
             style={{ display: tab === "tab-course" ? "block" : "none" }}
           >
-            <Menu.ItemGroup key="course" title="Admin">
+            <Menu.ItemGroup key="course" title="Khóa học">
               <SubMenu
                 key="sub1"
                 icon={
@@ -237,72 +238,37 @@ const MenuDefault = ({
                 }
                 title="Quản lí khóa học"
               >
-                <Menu.Item key="5">Tạo khóa học</Menu.Item>
-                <Menu.Item key="6">Danh sách khóa học</Menu.Item>
+                <Menu.Item key="taokhoahoc">Tạo khóa học</Menu.Item>
+                <Menu.Item key="taokhoatuhoc">Tạo khóa tự học</Menu.Item>
+                <Menu.Item key="listkhoahoc">Danh sách khóa học</Menu.Item>
+                <Menu.Item key="listkhoatuhoc">Danh sách khóa tự học</Menu.Item>
               </SubMenu>
 
               <SubMenu
                 key="sub2"
                 icon={
                   <span className="anticon">
-                    <Calendar />
+                    <CheckSquare />
                   </span>
                 }
-                title="Quản lí ca học"
+                title="Kiểm tra"
               >
-                <Menu.Item key="7">Kiểm tra một ca học</Menu.Item>
-                <Menu.Item key="8">Kiểm tra nhiều ca</Menu.Item>
+                <Menu.Item key="kt1">Lịch trống giáo viên</Menu.Item>
+                <Menu.Item key="kt2">Kiểm tra lịch nhiều giáo viên</Menu.Item>
+                <Menu.Item key="kt3">Kiểm tra nhiều ca</Menu.Item>
+                <Menu.Item key="kt4">Kiểm tra một ca</Menu.Item>
+                <Menu.Item key="kt5">Kiểm tra phòng</Menu.Item>
               </SubMenu>
 
               <Menu.Item
-                key="setting"
+                key="dsbc"
                 icon={
                   <span className="anticon">
-                    <Settings />
+                    <List />
                   </span>
                 }
               >
-                <Link href="/">Cấu hình</Link>
-              </Menu.Item>
-              <Menu.Item
-                key="customer"
-                icon={
-                  <span className="anticon">
-                    <Users />
-                  </span>
-                }
-              >
-                <Link href="/">Khách hàng</Link>
-              </Menu.Item>
-              <Menu.Item
-                key="staff"
-                icon={
-                  <span className="anticon">
-                    <User />
-                  </span>
-                }
-              >
-                <Link href="/">Nhân viên</Link>
-              </Menu.Item>
-              <Menu.Item
-                key="thongke"
-                icon={
-                  <span className="anticon">
-                    <BarChart2 />
-                  </span>
-                }
-              >
-                <Link href="/">Thống kê</Link>
-              </Menu.Item>
-              <Menu.Item
-                key="manage"
-                icon={
-                  <span className="anticon">
-                    <Package />
-                  </span>
-                }
-              >
-                <Link href="/">Quản lý</Link>
+                <Link href="/">Danh sách khóa báo cáo</Link>
               </Menu.Item>
             </Menu.ItemGroup>
           </Menu>
@@ -349,135 +315,46 @@ const MenuDefault = ({
             inlineCollapsed={state.collapsed}
             style={{ display: tab === "tab-student" ? "block" : "none" }}
           >
-            <Menu.ItemGroup key="course" title="Học viên">
+            <Menu.ItemGroup key="course" title="Khách hàng">
               <SubMenu
-                key="sub-list-course"
+                key="sub-list-course-child"
                 icon={
                   <span className="anticon">
-                    <List />
+                    <User />
                   </span>
                 }
-                title="Danh sách khóa học"
+                title="Học viên"
               >
-                <SubMenu
-                  key="sub-list-course-child"
-                  icon={
-                    <span className="anticon">
-                      <Award />
-                    </span>
-                  }
-                  title="Khóa học"
-                >
-                  <Menu.Item key="info-course">
-                    <Link href="/">Thông tin khóa học</Link>
-                  </Menu.Item>
+                <Menu.Item key="hv1">
+                  <Link href="/">Dữ liệu học viên</Link>
+                </Menu.Item>
 
-                  <Menu.Item key="calendar-course">
-                    <Link href="/">Lịch học của khóa</Link>
-                  </Menu.Item>
+                <Menu.Item key="hv2">
+                  <Link href="/">Học viên chuyển giao</Link>
+                </Menu.Item>
 
-                  <Menu.Item key="document-course">
-                    <Link href="/">Tài liệu</Link>
-                  </Menu.Item>
+                <Menu.Item key="hv3">
+                  <Link href="/">HV trong khóa</Link>
+                </Menu.Item>
 
-                  <Menu.Item key="homework-course">
-                    <Link href="/">Bài tập</Link>
-                  </Menu.Item>
+                <Menu.Item key="hv4">
+                  <Link href="/">HV chuyển khóa</Link>
+                </Menu.Item>
 
-                  <Menu.Item key="notification-course">
-                    <Link href="/">Thông báo</Link>
-                  </Menu.Item>
-                </SubMenu>
-
-                <SubMenu
-                  key="sub-list-course-child-2"
-                  icon={
-                    <span className="anticon">
-                      <Cast />
-                    </span>
-                  }
-                  title="Khóa học online"
-                >
-                  <Menu.Item key="info-course-2">
-                    <Link href="/">Thông tin khóa học</Link>
-                  </Menu.Item>
-
-                  <Menu.Item key="calendar-course-2">
-                    <Link href="/">Lịch học của khóa</Link>
-                  </Menu.Item>
-
-                  <Menu.Item key="document-course-2">
-                    <Link href="/">Tài liệu</Link>
-                  </Menu.Item>
-
-                  <Menu.Item key="homework-course-2">
-                    <Link href="/">Bài tập</Link>
-                  </Menu.Item>
-
-                  <Menu.Item key="notification-course-2">
-                    <Link href="/">Thông báo</Link>
-                  </Menu.Item>
-                </SubMenu>
+                <Menu.Item key="5">
+                  <Link href="/">HV hẹn đăng ký</Link>
+                </Menu.Item>
+                <Menu.Item key="6">
+                  <Link href="/">HV bảo lưu</Link>
+                </Menu.Item>
+                <Menu.Item key="7">
+                  <Link href="/">HV cần tư vấn</Link>
+                </Menu.Item>
               </SubMenu>
-
-              <Menu.Item
-                key="hv-calendar"
-                icon={
-                  <span className="anticon">
-                    <Calendar />
-                  </span>
-                }
-              >
-                <Link href="/">Lịch học</Link>
-              </Menu.Item>
-
-              <Menu.Item
-                key="hv-homework"
-                icon={
-                  <span className="anticon">
-                    <Book />
-                  </span>
-                }
-              >
-                <Link href="/">Bài tập</Link>
-              </Menu.Item>
-
-              <Menu.Item
-                key="hv-homework-package"
-                icon={
-                  <span className="anticon">
-                    <Archive />
-                  </span>
-                }
-              >
-                <Link href="/">Gói bài tập</Link>
-              </Menu.Item>
-
-              <Menu.Item
-                key="hv-store"
-                icon={
-                  <span className="anticon">
-                    <MapPin />
-                  </span>
-                }
-              >
-                <Link href="/">Cửa hàng</Link>
-              </Menu.Item>
-
-              <Menu.Item
-                key="hv-thongke"
-                icon={
-                  <span className="anticon">
-                    <BarChart2 />
-                  </span>
-                }
-              >
-                <Link href="/">Thống kê</Link>
-              </Menu.Item>
             </Menu.ItemGroup>
           </Menu>
 
-          <Menu
+          {/* <Menu
             defaultSelectedKeys={["5"]}
             defaultOpenKeys={["sub-teacher"]}
             mode="inline"
@@ -584,7 +461,7 @@ const MenuDefault = ({
                 </Menu.Item>
               </SubMenu>
             </Menu.ItemGroup>
-          </Menu>
+          </Menu> */}
           <div className="menu-child-info white">
             <div className="box-title">
               <h6 className="title">Học viên mới</h6>

@@ -12,7 +12,7 @@
   transition: 0.3s width;
   display: flex;
   align-items: center;
-  z-index: 9999;
+  z-index: 100;
 
   &.close {
     width: calc(100% - 80px);

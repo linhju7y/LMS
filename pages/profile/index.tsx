@@ -95,12 +95,16 @@ const ProFileStaff = () => {
               <div className="row">
                 <div className="col-4">
                   <Form.Item label="Họ và tên">
-                    <Input />
+                    <Input className="style-input" size="large" />
                   </Form.Item>
                 </div>
                 <div className="col-4">
                   <Form.Item label="Giới tính">
-                    <Select defaultValue="Không xác định">
+                    <Select
+                      className="style-input"
+                      size="large"
+                      defaultValue="Không xác định"
+                    >
                       <option value="Nam">Nam</option>
                       <option value="Nữ">Nữ</option>
                       <option value="Không xác định">Không xác định</option>
@@ -109,7 +113,7 @@ const ProFileStaff = () => {
                 </div>
                 <div className="col-4">
                   <Form.Item label="Ngày sinh">
-                    <DatePicker className="w-100" />
+                    <DatePicker size="large" className="w-100 style-input" />
                   </Form.Item>
                 </div>
               </div>
@@ -117,31 +121,35 @@ const ProFileStaff = () => {
               <div className="row">
                 <div className="col-6">
                   <Form.Item label="Địa chỉ email">
-                    <Input />
+                    <Input className="style-input" size="large" />
                   </Form.Item>
                 </div>
                 <div className="col-6">
                   <Form.Item label="Số điện thoại">
-                    <Input />
+                    <Input className="style-input" size="large" />
                   </Form.Item>
                 </div>
               </div>
               <div className="row">
                 <div className="col-12">
                   <Form.Item label="Địa chỉ">
-                    <Input />
+                    <Input className="style-input" size="large" />
                   </Form.Item>
                 </div>
               </div>
               <div className="row">
                 <div className="col-6">
                   <Form.Item label="Tên tài khoản">
-                    <Input />
+                    <Input className="style-input" size="large" />
                   </Form.Item>
                 </div>
                 <div className="col-6">
                   <Form.Item label="Mật khẩu mới">
-                    <Input type="password" />
+                    <Input
+                      className="style-input"
+                      size="large"
+                      type="password"
+                    />
                   </Form.Item>
                 </div>
               </div>
@@ -164,7 +172,9 @@ const ProFileStaff = () => {
               </div>
               <div className="row">
                 <div className="col-12 d-flex flex-row-reverse">
-                  <Button type="primary">Cập nhật thông tin</Button>
+                  <button className="btn btn-primary">
+                    Cập nhật thông tin
+                  </button>
                 </div>
               </div>
             </Form>
