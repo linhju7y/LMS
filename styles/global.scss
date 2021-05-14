@@ -149,7 +149,9 @@ a {
 // -------------------------- PAGES ------------------------------//
 @import "./pages/dashboard";
 
+@import "./pages/course-map-detail";
+
+@import "./pages/create-course";
+
 // -------------------------- ELEMENTS ------------------------------//
 @import "./components/elements";
-
-@import "./pages/course-map-detail";

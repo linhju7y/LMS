@@ -21,6 +21,7 @@ const localizer = momentLocalizer(moment);
 // to the correct localizer.
 const { Option } = Select;
 
+//  ----------- POPUP FORM ------------
 const FormCreateCourse = ({ isModalVisible, handleOk, handleCancel }) => {
   function onSearch(val) {
     console.log("search:", val);
@@ -185,7 +186,24 @@ const FormCreateCourse = ({ isModalVisible, handleOk, handleCancel }) => {
   );
 };
 
+// ------------ DRAWER INFO CORUSE --------------
 const InfoCourse = ({ onClose, visible }) => {
+  // Collapse
+  const { Panel } = Collapse;
+  function callback(key) {
+    console.log(key);
+  }
+
+  const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+  function onSearch(val) {
+    console.log("search:", val);
+  }
+
   return (
     <Drawer
       title="Thông tin khóa học"
@@ -195,11 +213,99 @@ const InfoCourse = ({ onClose, visible }) => {
       visible={visible}
       width={500}
     >
-      <div className="info-course"></div>
+      <div className="info-course">
+        <Collapse defaultActiveKey={["1"]} onChange={callback}>
+          <Panel
+            header={
+              <div className="info-course-item">
+                <p className="title">
+                  Ngày học <span>1</span>
+                </p>
+                <ul className="info-course-list">
+                  <li>Tiết 7: Môn học test</li>
+                  <li>Tiết 8: Môn học test</li>
+                </ul>
+              </div>
+            }
+            key="1"
+          >
+            <div className="info-course-select">
+              <div className="row">
+                <div className="col-6">
+                  <Select
+                    size="large"
+                    showSearch
+                    style={{ width: "100%" }}
+                    placeholder="Chọn phòng"
+                    optionFilterProp="children"
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                      option.children
+                        .toLowerCase()
+                        .indexOf(input.toLowerCase()) >= 0
+                    }
+                  >
+                    <Option value="jack">Lớp A</Option>
+                    <Option value="lucy">Lớp B</Option>
+                    <Option value="tom">Lớp C</Option>
+                  </Select>
+                </div>
+
+                <div className="col-6">
+                  <Select
+                    size="large"
+                    showSearch
+                    style={{ width: "100%" }}
+                    placeholder="Chọn ca"
+                    optionFilterProp="children"
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                      option.children
+                        .toLowerCase()
+                        .indexOf(input.toLowerCase()) >= 0
+                    }
+                  >
+                    <Option value="jack">Ca 1</Option>
+                    <Option value="lucy">Ca 2</Option>
+                    <Option value="tom">Ca 3</Option>
+                  </Select>
+                </div>
+                <div className="col-12 mt-2">
+                  <Select
+                    size="large"
+                    showSearch
+                    style={{ width: "100%" }}
+                    placeholder="Chọn giáo viên"
+                    optionFilterProp="children"
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                      option.children
+                        .toLowerCase()
+                        .indexOf(input.toLowerCase()) >= 0
+                    }
+                  >
+                    <Option value="jack">Nguyễn An</Option>
+                    <Option value="lucy">Nguyễn Phi Hùng</Option>
+                    <Option value="tom">Trương Thức</Option>
+                  </Select>
+                </div>
+              </div>
+            </div>
+          </Panel>
+          <Panel header="This is panel header 2" key="2">
+            <p>{text}</p>
+          </Panel>
+          <Panel header="This is panel header 3" key="3">
+            <p>{text}</p>
+          </Panel>
+        </Collapse>
+        ,
+      </div>
     </Drawer>
   );
 };
 
+// ------------ MAIN COMPONENT ------------------
 const CreateCourse = (props: { props: any }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -218,7 +324,6 @@ const CreateCourse = (props: { props: any }) => {
   };
 
   // Show drawer info calendar
-
   const showDrawer = () => {
     setVisible(true);
   };
@@ -245,7 +350,7 @@ const CreateCourse = (props: { props: any }) => {
               className="btn btn-primary"
               onClick={showModal}
             >
-              Thông tin lịch học
+              Thông tin khóa học
             </button>
 
             <button
@@ -253,7 +358,7 @@ const CreateCourse = (props: { props: any }) => {
               className="btn btn-success"
               onClick={showDrawer}
             >
-              Xem lịch học
+              Xem khóa học
             </button>
           </div>
         }
