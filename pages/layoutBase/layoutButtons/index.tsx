@@ -32,7 +32,7 @@ export default function Tables() {
 
         <div className="col-12">
           <Card title="Button light style" className="cardRadius list-button">
-            <Button variant="primary" className="light">
+            <Button variant="primary" >
               Primary
             </Button>{" "}
             <Button variant="secondary" className="light">
