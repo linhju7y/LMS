@@ -215,7 +215,7 @@ const MenuDefault = ({
                   </span>
                 }
               >
-                <Link href="/dashboard">Trang chủ</Link>
+                <Link href="/admin/dashboard">Trang chủ</Link>
               </Menu.Item>
             </Menu.ItemGroup>
           </Menu>
@@ -326,13 +326,16 @@ const MenuDefault = ({
                 title="Layout"
               >
                 <Menu.Item key="9">
-                  <Link href="/layoutTables">Tables</Link>
+                  <Link href="/layoutBase/layoutTables">Tables</Link>
                 </Menu.Item>
                 <Menu.Item key="10">
-                  <Link href="/layoutButton">Button</Link>
+                  <Link href="/layoutBase/layoutButtons">Button</Link>
                 </Menu.Item>
                 <Menu.Item key="11">
-                  <Link href="/layoutForms">Form</Link>
+                  <Link href="/layoutBase/layoutForms">Form</Link>
+                </Menu.Item>
+                <Menu.Item key="12">
+                  <Link href="/layoutBase/layoutCharts">Charts</Link>
                 </Menu.Item>
               </SubMenu>
             </Menu.ItemGroup>

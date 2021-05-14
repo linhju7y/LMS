@@ -14,14 +14,19 @@
     "@ckeditor/ckeditor5-build-classic": "^27.1.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "@fullcalendar/daygrid": "^5.7.0",
+    "@fullcalendar/react": "^5.7.0",
     "antd": "^4.15.4",
     "bootstrap": "^5.0.0",
     "bootstrap-icons": "^1.5.0",
     "chart.js": "^3.2.1",
     "date-fns": "^2.11.1",
+    "fullcalendar": "^5.7.0",
     "gray-matter": "^4.0.2",
+    "moment": "^2.29.1",
     "next": "^10.0.0",
     "react": "17.0.1",
+    "react-big-calendar": "^0.33.2",
     "react-bootstrap": "^1.5.2",
     "react-chartjs-2": "^3.0.3",
     "react-dom": "17.0.1",
@@ -32,8 +37,10 @@
     "sass": "^1.32.12"
   },
   "devDependencies": {
+    "@types/date-arithmetic": "^4.1.1",
     "@types/node": "^15.0.2",
     "@types/react": "^17.0.5",
+    "@types/react-big-calendar": "^0.31.0",
     "prettier": "^2.2.1",
     "typescript": "^4.2.4"
   }
