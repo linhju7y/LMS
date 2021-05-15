@@ -202,7 +202,7 @@ const InfoCourse = ({ onClose, visible }) => {
 };
 
 // ------------ MAIN COMPONENT ------------------
-const CreateCourse = (props: { props: any }) => {
+const CreateCourseSelf = (props: { props: any }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [visible, setVisible] = useState(false);
   // Collapse
@@ -724,4 +724,4 @@ const CreateCourse = (props: { props: any }) => {
     </div>
   );
 };
-export default CreateCourse;
+export default CreateCourseSelf;
