@@ -127,7 +127,7 @@ const StudentContactBook = () => {
                 bordered
                 columns={columns}
                 dataSource={data}
-                scroll={{ x: 2000}}
+                scroll={{ x: 2000 }}
                 sticky
               />
             </Card>

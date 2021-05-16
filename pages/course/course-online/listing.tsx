@@ -80,11 +80,13 @@ const CourseListing = () => {
       render: () => {
         return (
           <>
-          <Button type="primary" icon={<FormOutlined />}>
-            Update
-          </Button>
-          <Button  style={{marginLeft: 10}} icon={<EyeOutlined />}>Detail</Button>
-        </>
+            <Button type="primary" icon={<FormOutlined />}>
+              Update
+            </Button>
+            <Button style={{ marginLeft: 10 }} icon={<EyeOutlined />}>
+              Detail
+            </Button>
+          </>
         );
       },
     },
