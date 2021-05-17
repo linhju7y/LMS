@@ -380,6 +380,11 @@ textarea.form-control {
 }
 
 .style-input {
+  .ant-select-selection-item-remove {
+    user-select: none;
+    line-height: 14px;
+  }
+
   .ant-select-selector,
   &.ant-input,
   .ant-picker-input input,
@@ -395,6 +400,12 @@ textarea.form-control {
     }
     input {
       height: 100% !important;
+    }
+  }
+
+  &.ant-select-multiple {
+    .ant-select-selection-item {
+      line-height: 22px !important;
     }
   }
 }

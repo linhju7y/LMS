@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import CourseListContent from "~/components/Global/CourseList/CourseListContent";
 
-const CourseList = () => {
+const CourseListReport = () => {
   const [showFilter, showFilterSet] = useState(false);
 
   const funcShowFilter = () => {
@@ -61,4 +61,4 @@ const CourseList = () => {
   );
 };
 
-export default CourseList;
+export default CourseListReport;
