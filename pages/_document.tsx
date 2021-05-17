@@ -31,6 +31,7 @@ export default class MyDocument extends Document {
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
+
           <meta name="robots" content="noindex" />
           <link
             rel="stylesheet"

@@ -8,6 +8,7 @@ const SortBox = () => {
   return (
     <>
       <Select
+        className="style-input"
         defaultValue="sort-title"
         style={{ width: 120 }}
         onChange={handleChange}
