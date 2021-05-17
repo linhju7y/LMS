@@ -1,8 +1,30 @@
 import React from "react";
-import { Table } from "antd";
+import { Table, Card } from "antd";
+import TitlePage from "~/components/TitlePage";
 
-const PowerTable = ({ columns, dataSource }) => {
-  return <Table columns={columns} dataSource={dataSource} />;
+const PowerTable = (props) => {
+  return (
+    <>
+      <div className="row">
+        <div className="col-12">
+          <TitlePage title={props.Title} />
+          <div className="wrap-table">
+            <Card
+              className="cardRadius"
+              title={props.TitleCard}
+              extra={props.Extra}
+            >
+              <Table
+                scroll={{ x: 1200 }}
+                columns={props.columns}
+                dataSource={props.dataSource}
+              />
+            </Card>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default PowerTable;

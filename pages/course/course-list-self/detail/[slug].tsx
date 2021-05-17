@@ -1,7 +1,7 @@
 import TitlePage from "~/components/Elements/TitlePage";
 import { Card, Tag, Space, Table } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-import SortBox from "~/components/SortBox";
+import SortBox from "~/components/Elements/SortBox";
 import { table } from "console";
 import { useRouter } from "next/router";
 import Link from "next/link";

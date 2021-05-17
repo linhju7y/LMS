@@ -2,7 +2,7 @@ import { Card, Table } from "antd";
 import ActionTable from "~/components/ActionTable";
 import SearchBox from "~/components/Elements/SearchBox";
 import TitlePage from "~/components/Elements/TitlePage";
-import SortBox from "~/components/SortBox";
+import SortBox from "~/components/Elements/SortBox";
 import { Filter } from "react-feather";
 import Link from "next/link";
 

@@ -442,7 +442,7 @@ textarea.form-control {
 
 .btn-filter {
   margin-left: 10px;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
 
   &:focus {
     box-shadow: none;
@@ -499,4 +499,179 @@ textarea.form-control {
 
 .wrap-filter {
   display: none;
+}
+
+.extra-table {
+  display: flex;
+  align-items: center;
+}
+
+.app-main {
+  display: flex;
+  justify-content: flex-end;
+}
+.app-content {
+  width: calc(100% - 330px);
+  // padding-left: 230px;
+
+  margin-top: 65px;
+  padding: 20px 10px;
+  transition: 0.3s width;
+
+  &.open {
+    width: calc(100% - 80px);
+  }
+
+  .app-content-box {
+    background: white;
+    border-radius: 10px;
+    height: auto;
+    width: 100%;
+    border: $border-primary;
+    padding: 25px;
+
+    .wrap-content {
+      padding: 25px 5px;
+    }
+
+    .nav-tabs {
+      border-bottom: $border-primary;
+
+      li {
+        button {
+          font-size: 15px;
+          &.active {
+            border: $border-primary;
+            font-weight: 600;
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.title-page {
+  margin-bottom: 25px;
+  .text {
+    color: #636363;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    font-size: 15px;
+  }
+}
+
+.btn-search {
+  .ant-btn-icon-only {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .ant-input-search-button {
+    border-radius: 0 0.375rem 0.375rem 0 !important;
+  }
+  .ant-input {
+    border-radius: 0.375rem;
+  }
+  &.ant-input-group-wrapper {
+    height: 36px;
+    margin-left: 10px;
+    input {
+      height: 100%;
+    }
+  }
+
+  .ant-input-group-addon {
+    button {
+      height: 36px;
+    }
+  }
+}
+
+.ant-btn-primary {
+  background: $primary-color !important;
+
+  &:hover {
+    background: #087cb6 !important;
+    border-color: #087cb6 !important;
+  }
+}
+
+.ant-btn {
+  border-radius: 4px !important;
+}
+
+.wrap-table {
+  .ant-table-wrapper {
+    tr.ant-table-expanded-row > td,
+    tr.ant-table-expanded-row:hover > td {
+      background: #fff9ef;
+    }
+  }
+
+  .ant-pagination {
+    .ant-pagination-item-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    li {
+      border-radius: 4px !important;
+
+      &.ant-pagination-item-active a {
+        color: $primary-color;
+      }
+
+      a,
+      button {
+        border-radius: 4px !important;
+      }
+    }
+  }
+}
+
+.space-between {
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+.list-button {
+  button {
+    display: inline-block;
+    margin-right: 12px;
+    margin-bottom: 12px;
+  }
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.ant-card {
+  border-radius: 0.575rem;
+}
+
+.btn-icon {
+  background: transparent;
+  width: 45px;
+  height: 45px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  line-height: 3;
+  padding: 0;
+  transition: 0.3s;
+
+  &:hover {
+    background: #efefef;
+    transition: 0.3s;
+  }
+
+  svg {
+    color: $primary-color;
+    width: 23px;
+  }
 }

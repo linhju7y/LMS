@@ -7,7 +7,7 @@ export default function SearchBox() {
     <Search
       placeholder="input search text"
       onSearch={onSearch}
-      className="btn-search"
+      className="btn-search style-input"
       size="large"
     />
   );
