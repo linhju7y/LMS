@@ -216,7 +216,9 @@ const MenuDefault = ({
                   </span>
                 }
               >
-                <Link href="/admin/dashboard">Trang chủ</Link>
+                <Link href="/admin/dashboard">
+                  <a>Trang chủ</a>
+                </Link>
               </Menu.Item>
             </Menu.ItemGroup>
           </Menu>
@@ -238,10 +240,28 @@ const MenuDefault = ({
                 }
                 title="Quản lí khóa học"
               >
-                <Menu.Item key="taokhoahoc">Tạo khóa học</Menu.Item>
-                <Menu.Item key="taokhoatuhoc">Tạo khóa tự học</Menu.Item>
-                <Menu.Item key="listkhoahoc">Danh sách khóa học</Menu.Item>
-                <Menu.Item key="listkhoatuhoc">Danh sách khóa tự học</Menu.Item>
+                <Menu.Item key="taokhoahoc">
+                  <Link href="/course/create-course">
+                    <a>Tạo khóa học</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="taokhoatuhoc">
+                  {" "}
+                  <Link href="/course/create-course-self">
+                    <a>Tạo khóa tự học</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="listkhoahoc">
+                  {" "}
+                  <Link href="/course/course-list">
+                    <a>Danh sách khóa học</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="listkhoatuhoc">
+                  <Link href="/course/course-list-self">
+                    <a>Danh sách khóa tự học</a>
+                  </Link>
+                </Menu.Item>
               </SubMenu>
 
               <SubMenu
@@ -253,11 +273,31 @@ const MenuDefault = ({
                 }
                 title="Kiểm tra"
               >
-                <Menu.Item key="kt1">Lịch trống giáo viên</Menu.Item>
-                <Menu.Item key="kt2">Kiểm tra lịch nhiều giáo viên</Menu.Item>
-                <Menu.Item key="kt3">Kiểm tra nhiều ca</Menu.Item>
-                <Menu.Item key="kt4">Kiểm tra một ca</Menu.Item>
-                <Menu.Item key="kt5">Kiểm tra phòng</Menu.Item>
+                <Menu.Item key="kt1">
+                  <Link href="/course/calendar-empty-teacher">
+                    <a>Lịch trống giáo viên</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="kt2">
+                  <Link href="/course/calendar-many-teacher">
+                    <a>Kiểm tra lịch nhiều giáo viên</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="kt3">
+                  <Link href="/course/check-many-study-time">
+                    <a>Kiểm tra nhiều ca</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="kt4">
+                  <Link href="/course/check-one-study-time">
+                    <a>Kiểm tra một ca</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="kt5">
+                  <Link href="/course/check-room">
+                    <a>Kiểm tra phòng</a>
+                  </Link>
+                </Menu.Item>
               </SubMenu>
 
               <Menu.Item
@@ -268,7 +308,9 @@ const MenuDefault = ({
                   </span>
                 }
               >
-                <Link href="/">Danh sách khóa báo cáo</Link>
+                <Link href="/course/course-list-report">
+                  <a>Danh sách khóa học - báo cáo</a>
+                </Link>
               </Menu.Item>
             </Menu.ItemGroup>
           </Menu>
