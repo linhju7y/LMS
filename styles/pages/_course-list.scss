@@ -2,26 +2,6 @@
   .ant-card-body {
     padding-top: 10px;
   }
-  .btn-icon {
-    background: #f7f7f7;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    transition: 0.3s;
-
-    &:hover {
-      background: #efefef;
-      transition: 0.3s;
-    }
-
-    svg {
-      color: $primary-color;
-      width: 23px;
-    }
-  }
 }
 .course-list-content {
   .ant-list-item {
