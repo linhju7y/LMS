@@ -326,29 +326,81 @@ const MenuDefault = ({
                 title="Học viên"
               >
                 <Menu.Item key="hv1">
-                  <Link href="/">Dữ liệu học viên</Link>
+                  <Link href="/customer/student/student-list">
+                    Dữ liệu học viên
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item key="hv2">
-                  <Link href="/">Học viên chuyển giao</Link>
+                  <Link href="/customer/student/exchange-student">
+                    Học viên chuyển giao
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item key="hv3">
-                  <Link href="/">HV trong khóa</Link>
+                  <Link href="/customer/student/student-course">
+                    HV trong khóa
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item key="hv4">
-                  <Link href="/">HV chuyển khóa</Link>
+                  <Link href="/customer/student/student-change-course">
+                    HV chuyển khóa
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item key="5">
-                  <Link href="/">HV hẹn đăng ký</Link>
+                  <Link href="/customer/student/student-appointment">
+                    HV hẹn đăng ký
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key="6">
-                  <Link href="/">HV bảo lưu</Link>
+                  <Link href="/customer/student/student-reserve">
+                    HV bảo lưu
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key="7">
-                  <Link href="/">HV cần tư vấn</Link>
+                  <Link href="/customer/student/student-advisory">
+                    HV cần tư vấn
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key="sub-list-course-child-2"
+                icon={
+                  <span className="anticon">
+                    <User />
+                  </span>
+                }
+                title="Thi, hẹn test và dịch vụ"
+              >
+                <Menu.Item key="1">
+                  <Link href="/customer/service/service-customer">
+                    Khách mua dịch vụ
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link href="/customer/service/service-customer-exam">
+                    Danh sách đăng kí thi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Link href="/customer/service/">Thêm lịch hẹn test</Link>
+                </Menu.Item>
+                <Menu.Item key="4">
+                  <Link href="/customer/service/service-appointment-test">
+                    Danh sách khách hẹn test
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="5">
+                  <Link href="/customer/service/service-package-customer">
+                    Danh sách khách mua gói
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="6">
+                  <Link href="/customer/service/service-package-result">
+                    Danh sách kết quả test
+                  </Link>
                 </Menu.Item>
               </SubMenu>
             </Menu.ItemGroup>

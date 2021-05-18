@@ -49,38 +49,40 @@ const ProFileStaff = () => {
           <Card>
             <div className="row">
               <div className="col-12 d-flex align-items-center justify-content-center">
-                <Avatar size={64} icon={<UserOutlined />}></Avatar>
+                <Avatar size={64} src="/images/user2.jpg" alt=""></Avatar>
               </div>
             </div>
             <div className="row pt-5">
               <div className="col-2">
                 <UserOutlined />
               </div>
-              <div className="col-10  d-flex flex-row-reverse">username</div>
+              <div className="col-10  d-flex flex-row-reverse">
+                Nguyễn Lâm Thảo Tâm
+              </div>
             </div>
             <div className="row pt-4">
               <div className="col-2">
                 <DeploymentUnitOutlined />
               </div>
-              <div className="col-10  d-flex flex-row-reverse">RoleName</div>
+              <div className="col-10  d-flex flex-row-reverse">Teacher</div>
             </div>
             <div className="row pt-4">
               <div className="col-2">
                 <WhatsAppOutlined />
               </div>
-              <div className="col-10  d-flex flex-row-reverse">Phone</div>
+              <div className="col-10  d-flex flex-row-reverse">09099123</div>
             </div>
             <div className="row pt-4">
               <div className="col-2">
                 <MailOutlined />
               </div>
-              <div className="col-10  d-flex flex-row-reverse">eMail</div>
+              <div className="col-10  d-flex flex-row-reverse">abc@gmail.com</div>
             </div>
             <div className="row pt-4">
               <div className="col-2">
                 <AimOutlined />
               </div>
-              <div className="col-10  d-flex flex-row-reverse">Address</div>
+              <div className="col-10  d-flex flex-row-reverse">Lý Thường Kiệt, Tân Bình</div>
             </div>
           </Card>
         </div>

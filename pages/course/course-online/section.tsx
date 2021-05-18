@@ -3,7 +3,7 @@ import { Input, Card, Button, Tag } from "antd";
 import { FormOutlined, EyeOutlined } from "@ant-design/icons";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
-import AddSection from "~/components/PopUp/AddSection";
+import AddSection from "~/components/Global/CourseOnline/AddSection";
 
 const SectionListing = () => {
   const { Search } = Input;
@@ -56,11 +56,7 @@ const SectionListing = () => {
       title: "Section",
       dataIndex: "section",
       render: (section, idx) => {
-        return (
-          <div>
-            Section {idx + 1}: {section}
-          </div>
-        );
+        return <div>Section: {section}</div>;
       },
     },
     {

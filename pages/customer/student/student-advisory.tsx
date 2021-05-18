@@ -4,7 +4,7 @@ import ExpandTable from "~/components/ExpandTable";
 import { Eye } from "react-feather";
 import { Button, Card, Tag, Form, Input, Select } from "antd";
 
-import { data4 } from "./data";
+import { data6 } from "./data";
 
 export default function StudentData() {
   const expandedRowRender = () => {
@@ -13,12 +13,14 @@ export default function StudentData() {
   };
 
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Khóa học", dataIndex: "nameStudent" },
-    { title: "Giá tiền", dataIndex: "center" },
-    { title: "Đã đóng", dataIndex: "class" },
-    { title: "Giảm giá", dataIndex: "time" },
-    { title: "Còn lại", dataIndex: "deposit" },
+    { title: "Tỉnh/TP", dataIndex: "city" },
+    { title: "Họ và tên", dataIndex: "nameStudent" },
+    { title: "Số điện thoại", dataIndex: "tel" },
+    { title: "Email", dataIndex: "email" },
+    { title: "Nguồn", dataIndex: "introducer" },
+    { title: "Trạng thái", dataIndex: "reserve" },
+    { title: "Tư vấn viên", dataIndex: "consultant" },
+
     {
       title: "",
       render: () => <Button type="link" icon={<Eye />} />,
@@ -36,7 +38,7 @@ export default function StudentData() {
         <div className="col-12">
           <ExpandTable
             expandable={{ expandedRowRender }}
-            dataSource={data4}
+            dataSource={data6}
             columns={columns}
             addButton={<></>}
           />
