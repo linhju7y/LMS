@@ -1,12 +1,12 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye, CheckCircle, XCircle } from "react-feather";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
-
+import { Eye, CheckCircle, XCircle, Filter } from "react-feather";
+import { Button, Tag, Select } from "antd";
+import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "./../dataCustomer";
 
-export default function CustomerServiceExam() {
+export default function AppointmentServiceTest() {
   const expandedRowRender = () => {
     const { Option } = Select;
     return <></>;
@@ -50,7 +50,7 @@ export default function CustomerServiceExam() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <TitlePage title="danh sách học viên" />
+          <TitlePage title="danh sách khách hẹn test" />
         </div>
       </div>
       <div className="row">
@@ -58,8 +58,15 @@ export default function CustomerServiceExam() {
           <ExpandTable
             dataSource={dataService}
             columns={columns}
-            addButton={<></>}
             expandable={{ expandedRowRender }}
+            Extra={
+              <div className="extra-table">
+                <SearchBox />
+                <button className="btn btn-secondary light btn-filter">
+                  <Filter />
+                </button>
+              </div>
+            }
           />
         </div>
       </div>

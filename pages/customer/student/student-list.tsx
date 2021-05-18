@@ -1,10 +1,12 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye } from "react-feather";
+import { Eye, Filter } from "react-feather";
 import { Button, Card, Tag, Form, Input, Select } from "antd";
+import SearchBox from "~/components/Elements/SearchBox";
+import FilterTable from "~/components/Global/FeedbackList/FitlerTable";
 
 import { data } from "./data";
+import TitlePage from "~/components/Elements/TitlePage";
 const { Option } = Select;
 const expandedRowRender = () => {
   return (
@@ -395,19 +397,24 @@ const StudentData = () => {
   ];
 
   return (
-    <div className="container-fluid">
+    <div>
       <div className="row">
         <div className="col-12">
-          <TitlePage title="danh sách học viên" />
+          <TitlePage title="Danh sách học viên" />
         </div>
-      </div>
-      <div className="row">
         <div className="col-12">
           <ExpandTable
-            addButton
             expandable={{ expandedRowRender }}
             dataSource={data}
             columns={columns}
+            Extra={
+              <div className="extra-table">
+                <SearchBox />
+                <button className="btn btn-secondary light btn-filter">
+                  <Filter />
+                </button>
+              </div>
+            }
           />
         </div>
       </div>

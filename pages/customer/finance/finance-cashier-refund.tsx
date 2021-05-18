@@ -1,12 +1,12 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { DollarSign } from "react-feather";
-import { Button, Card, Tag, Form, Input, Select, Table } from "antd";
-
+import { DollarSign, Filter } from "react-feather";
+import { Button, Tag } from "antd";
+import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "./../dataCustomer";
 
-export default function CustomerServiceExam() {
+export default function FinanceRefund() {
   const expandedRowRender = () => {
     <></>;
   };
@@ -42,7 +42,7 @@ export default function CustomerServiceExam() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <TitlePage title="danh sách học viên" />
+          <TitlePage title="danh sách yêu cầu hoàn tiền" />
         </div>
       </div>
       <div className="row">
@@ -50,8 +50,15 @@ export default function CustomerServiceExam() {
           <ExpandTable
             dataSource={dataService}
             columns={columns}
-            addButton={<></>}
             expandable={{ expandedRowRender }}
+            Extra={
+              <div className="extra-table">
+                <SearchBox />
+                <button className="btn btn-secondary light btn-filter">
+                  <Filter />
+                </button>
+              </div>
+            }
           />
         </div>
       </div>

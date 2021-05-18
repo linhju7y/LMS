@@ -1,12 +1,13 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye } from "react-feather";
+import { Eye, Filter } from "react-feather";
+import SearchBox from "~/components/Elements/SearchBox";
 import { Button, Card, Tag, Form, Input, Select } from "antd";
 
 import { data3 } from "./data";
 
-export default function StudentData() {
+export default function StudentCourseChange() {
   const expandedRowRender = () => {
     const { Option } = Select;
     return <></>;
@@ -39,7 +40,14 @@ export default function StudentData() {
             expandable={{ expandedRowRender }}
             dataSource={data3}
             columns={columns}
-            addButton={<></>}
+            Extra={
+              <div className="extra-table">
+                <SearchBox />
+                <button className="btn btn-secondary light btn-filter">
+                  <Filter />
+                </button>
+              </div>
+            }
           />
         </div>
       </div>

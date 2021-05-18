@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Edit, Printer } from "react-feather";
+import { Edit, Printer, Filter } from "react-feather";
 import { Button, Switch, Tag } from "antd";
-
+import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "./../dataCustomer";
 
-export default function CustomerServiceExam() {
+export default function ContractCensorship() {
   const expandedRowRender = () => {
     <></>;
   };
@@ -60,7 +60,7 @@ export default function CustomerServiceExam() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <TitlePage title="danh sách học viên" />
+          <TitlePage title="Duyệt hợp đồng học viên" />
         </div>
       </div>
       <div className="row">
@@ -68,8 +68,15 @@ export default function CustomerServiceExam() {
           <ExpandTable
             dataSource={dataService}
             columns={columns}
-            addButton={<></>}
             expandable={{ expandedRowRender }}
+            Extra={
+              <div className="extra-table">
+                <SearchBox />
+                <button className="btn btn-secondary light btn-filter">
+                  <Filter />
+                </button>
+              </div>
+            }
           />
         </div>
       </div>

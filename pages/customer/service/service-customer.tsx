@@ -1,9 +1,9 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye } from "react-feather";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
-
+import { Eye, Filter } from "react-feather";
+import { Button, Select } from "antd";
+import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "./../dataCustomer";
 
 export default function CustomerService() {
@@ -27,7 +27,7 @@ export default function CustomerService() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <TitlePage title="danh sách học viên" />
+          <TitlePage title="danh sách học viên mua dịch vụ" />
         </div>
       </div>
       <div className="row">
@@ -36,7 +36,14 @@ export default function CustomerService() {
             expandable={{ expandedRowRender }}
             dataSource={dataService}
             columns={columns}
-            addButton={<></>}
+            Extra={
+              <div className="extra-table">
+                <SearchBox />
+                <button className="btn btn-secondary light btn-filter">
+                  <Filter />
+                </button>
+              </div>
+            }
           />
         </div>
       </div>

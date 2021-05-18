@@ -1,12 +1,12 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
-import { Edit, ShoppingCart, XCircle } from "react-feather";
-import { Button, Card, Tag, Form, Input, Select, Image } from "antd";
-
+import { Filter } from "react-feather";
+import { Tag, Image } from "antd";
+import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "./../dataCustomer";
 
-export default function CustomerServiceExam() {
+export default function FinanceReward() {
   const columns = [
     { title: "Học viên", dataIndex: "nameStudent" },
     { title: "Số điện thoại", dataIndex: "tel" },
@@ -53,12 +53,23 @@ export default function CustomerServiceExam() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <TitlePage title="danh sách học viên" />
+          <TitlePage title="Danh sách khen thưởng" />
         </div>
       </div>
       <div className="row">
         <div className="col-12">
-          <PowerTable dataSource={dataService} columns={columns} />
+          <PowerTable
+            dataSource={dataService}
+            columns={columns}
+            Extra={
+              <div className="extra-table">
+                <SearchBox />
+                <button className="btn btn-secondary light btn-filter">
+                  <Filter />
+                </button>
+              </div>
+            }
+          />
         </div>
       </div>
     </div>
