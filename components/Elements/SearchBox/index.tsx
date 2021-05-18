@@ -1,20 +1,14 @@
-import {
-  SettingOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UserOutlined,
-  MailOutlined,
-  LogoutOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { Card, Select, Input } from "antd";
 
 export default function SearchBox() {
+  const { Search } = Input;
+  const onSearch = (value) => console.log(value);
   return (
-    <div className="search-box">
-      <div className="box-input">
-        <input type="text" placeholder="Search.." />
-        <SearchOutlined className="icon-search" />
-      </div>
-    </div>
+    <Search
+      placeholder="input search text"
+      onSearch={onSearch}
+      className="btn-search style-input"
+      size="large"
+    />
   );
 }

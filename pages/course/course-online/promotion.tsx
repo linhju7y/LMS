@@ -3,7 +3,7 @@ import { Input, Card, Button, Tag } from "antd";
 import { FormOutlined, EyeOutlined } from "@ant-design/icons";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
-import AddPromotion from "~/components/PopUp/AddPromotion";
+import AddPromotion from "~/components/Global/CourseOnline/AddPromotion";
 
 const CourseListing = () => {
   const { Search } = Input;

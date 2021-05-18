@@ -216,7 +216,9 @@ const MenuDefault = ({
                   </span>
                 }
               >
-                <Link href="/admin/dashboard">Trang chủ</Link>
+                <Link href="/admin/dashboard">
+                  <a>Trang chủ</a>
+                </Link>
               </Menu.Item>
             </Menu.ItemGroup>
           </Menu>
@@ -268,11 +270,31 @@ const MenuDefault = ({
                 }
                 title="Kiểm tra"
               >
-                <Menu.Item key="kt1">Lịch trống giáo viên</Menu.Item>
-                <Menu.Item key="kt2">Kiểm tra lịch nhiều giáo viên</Menu.Item>
-                <Menu.Item key="kt3">Kiểm tra nhiều ca</Menu.Item>
-                <Menu.Item key="kt4">Kiểm tra một ca</Menu.Item>
-                <Menu.Item key="kt5">Kiểm tra phòng</Menu.Item>
+                <Menu.Item key="kt1">
+                  <Link href="/course/calendar-empty-teacher">
+                    <a>Lịch trống giáo viên</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="kt2">
+                  <Link href="/course/calendar-many-teacher">
+                    <a>Kiểm tra lịch nhiều giáo viên</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="kt3">
+                  <Link href="/course/check-many-study-time">
+                    <a>Kiểm tra nhiều ca</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="kt4">
+                  <Link href="/course/check-one-study-time">
+                    <a>Kiểm tra một ca</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="kt5">
+                  <Link href="/course/check-room">
+                    <a>Kiểm tra phòng</a>
+                  </Link>
+                </Menu.Item>
               </SubMenu>
 
               <Menu.Item
@@ -283,7 +305,9 @@ const MenuDefault = ({
                   </span>
                 }
               >
-                <Link href="/">Danh sách khóa báo cáo</Link>
+                <Link href="/course/course-list-report">
+                  <a>Danh sách khóa học - báo cáo</a>
+                </Link>
               </Menu.Item>
             </Menu.ItemGroup>
           </Menu>

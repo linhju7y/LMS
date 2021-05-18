@@ -3,7 +3,7 @@ import { Input, Card, Button, Tag } from "antd";
 import { FormOutlined, EyeOutlined } from "@ant-design/icons";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
-import AddCourseMap from "~/components/PopUp/AddCourseMap";
+import AddCourseMap from "~/components/Global/CourseOnline/AddCourseMap";
 import { Router, useRouter } from "next/router";
 
 const CourseMap = () => {

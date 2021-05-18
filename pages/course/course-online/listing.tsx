@@ -3,7 +3,7 @@ import { Input, Card, Button, Tag } from "antd";
 import { FormOutlined, EyeOutlined } from "@ant-design/icons";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
-import AddCourse from "~/components/PopUp/AddCourse";
+import AddCourse from "~/components/Global/CourseOnline/AddCourse";
 
 const CourseListing = () => {
   const { Search } = Input;
@@ -80,11 +80,13 @@ const CourseListing = () => {
       render: () => {
         return (
           <>
-          <Button type="primary" icon={<FormOutlined />}>
-            Update
-          </Button>
-          <Button  style={{marginLeft: 10}} icon={<EyeOutlined />}>Detail</Button>
-        </>
+            <Button type="primary" icon={<FormOutlined />}>
+              Update
+            </Button>
+            <Button style={{ marginLeft: 10 }} icon={<EyeOutlined />}>
+              Detail
+            </Button>
+          </>
         );
       },
     },
