@@ -351,6 +351,86 @@ const MenuDefault = ({
                   <Link href="/">HV cần tư vấn</Link>
                 </Menu.Item>
               </SubMenu>
+              <SubMenu
+                key="sub-list-course-child-3"
+                icon={
+                  <span className="anticon">
+                    <User />
+                  </span>
+                }
+                title="Báo cáo học viên"
+              >
+                <Menu.Item key="1">
+                  <Link href="/customer/report/report-customer-warning">
+                    Cảnh báo học viên
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link href="/customer/report/report-customer-test">
+                    Học viên sắp thi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Link href="/customer/report/report-customer-result">
+                    Kết quả thi thực tế
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key="sub-list-course-child-4"
+                icon={
+                  <span className="anticon">
+                    <User />
+                  </span>
+                }
+                title="Báo cáo học viên"
+              >
+                <Menu.Item key="1">
+                  <Link href="/customer/finance/finance-customer-debts">
+                    Nợ học phí
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link href="/customer/finance/finance-cashier-refund">
+                    Yêu cầu hoàn tiền
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Link href="/customer/finance/finance-cashier-invoice">
+                    Phiếu thu
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="4">
+                  <Link href="/customer/finance/finance-cashier-payment">
+                    Phiếu chi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="5">
+                  <Link href="/customer/finance/finance-customer-reward">
+                    Thưởng/Tài trợ
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key="sub-list-course-child-5"
+                icon={
+                  <span className="anticon">
+                    <User />
+                  </span>
+                }
+                title="Hợp đồng"
+              >
+                <Menu.Item key="1">
+                  <Link href="/customer/contract/contract-customer-list">
+                    Học viên có hợp đồng
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link href="/customer/contract/contract-customer-censorship">
+                    Duyệt hợp đồng
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
             </Menu.ItemGroup>
           </Menu>
 
