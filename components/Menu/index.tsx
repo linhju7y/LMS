@@ -246,13 +246,11 @@ const MenuDefault = ({
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="taokhoatuhoc">
-                  {" "}
                   <Link href="/course/create-course-self">
                     <a>Tạo khóa tự học</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="listkhoahoc">
-                  {" "}
                   <Link href="/course/course-list">
                     <a>Danh sách khóa học</a>
                   </Link>
@@ -263,7 +261,6 @@ const MenuDefault = ({
                   </Link>
                 </Menu.Item>
               </SubMenu>
-
               <SubMenu
                 key="sub2"
                 icon={
@@ -369,41 +366,41 @@ const MenuDefault = ({
               >
                 <Menu.Item key="hv1">
                   <Link href="/customer/student/student-list">
-                    Dữ liệu học viên
+                    <a> Dữ liệu học viên</a>
                   </Link>
                 </Menu.Item>
 
                 <Menu.Item key="hv2">
                   <Link href="/customer/student/exchange-student">
-                    Học viên chuyển giao
+                    <a>Học viên chuyển giao</a>
                   </Link>
                 </Menu.Item>
 
                 <Menu.Item key="hv3">
                   <Link href="/customer/student/student-course">
-                    HV trong khóa
+                    <a> HV trong khóa</a>
                   </Link>
                 </Menu.Item>
 
                 <Menu.Item key="hv4">
                   <Link href="/customer/student/student-change-course">
-                    HV chuyển khóa
+                    <a> HV chuyển khóa</a>
                   </Link>
                 </Menu.Item>
 
                 <Menu.Item key="5">
                   <Link href="/customer/student/student-appointment">
-                    HV hẹn đăng ký
+                    <a> HV hẹn đăng ký</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="6">
                   <Link href="/customer/student/student-reserve">
-                    HV bảo lưu
+                    <a> HV bảo lưu</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="7">
                   <Link href="/customer/student/student-advisory">
-                    HV cần tư vấn
+                    <a> HV cần tư vấn</a>
                   </Link>
                 </Menu.Item>
               </SubMenu>
@@ -418,12 +415,12 @@ const MenuDefault = ({
               >
                 <Menu.Item key="1">
                   <Link href="/customer/service/service-customer">
-                    Khách mua dịch vụ
+                    <a>Khách mua dịch vụ</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="2">
                   <Link href="/customer/service/service-customer-exam">
-                    Danh sách đăng kí thi
+                    <a> Danh sách đăng kí thi</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="3">
@@ -431,17 +428,17 @@ const MenuDefault = ({
                 </Menu.Item>
                 <Menu.Item key="4">
                   <Link href="/customer/service/service-appointment-test">
-                    Danh sách khách hẹn test
+                    <a> Danh sách khách hẹn test</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="5">
                   <Link href="/customer/service/service-package-customer">
-                    Danh sách khách mua gói
+                    <a> Danh sách khách mua gói</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="6">
                   <Link href="/customer/service/service-package-result">
-                    Danh sách kết quả test
+                    <a> Danh sách kết quả test</a>
                   </Link>
                 </Menu.Item>
               </SubMenu>
@@ -456,17 +453,17 @@ const MenuDefault = ({
               >
                 <Menu.Item key="1">
                   <Link href="/customer/report/report-customer-warning">
-                    Cảnh báo học viên
+                    <a> Cảnh báo học viên</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="2">
                   <Link href="/customer/report/report-customer-test">
-                    Học viên sắp thi
+                    <a> Học viên sắp thi</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="3">
                   <Link href="/customer/report/report-customer-result">
-                    Kết quả thi thực tế
+                    <a> Kết quả thi thực tế</a>
                   </Link>
                 </Menu.Item>
               </SubMenu>
@@ -481,27 +478,27 @@ const MenuDefault = ({
               >
                 <Menu.Item key="1">
                   <Link href="/customer/finance/finance-customer-debts">
-                    Nợ học phí
+                    <a> Nợ học phí</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="2">
                   <Link href="/customer/finance/finance-cashier-refund">
-                    Yêu cầu hoàn tiền
+                    <a> Nợ học phí</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="3">
                   <Link href="/customer/finance/finance-cashier-invoice">
-                    Phiếu thu
+                    <a> Phiếu thu</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="4">
                   <Link href="/customer/finance/finance-cashier-payment">
-                    Phiếu chi
+                    <a> Phiếu chi</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="5">
                   <Link href="/customer/finance/finance-customer-reward">
-                    Thưởng/Tài trợ
+                    <a> Thưởng/Tài trợ</a>
                   </Link>
                 </Menu.Item>
               </SubMenu>
@@ -516,12 +513,12 @@ const MenuDefault = ({
               >
                 <Menu.Item key="1">
                   <Link href="/customer/contract/contract-customer-list">
-                    Học viên có hợp đồng
+                    <a> Học viên có hợp đồng</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="2">
                   <Link href="/customer/contract/contract-customer-censorship">
-                    Duyệt hợp đồng
+                    <a> Duyệt hợp đồng</a>
                   </Link>
                 </Menu.Item>
               </SubMenu>
