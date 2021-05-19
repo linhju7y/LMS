@@ -27,10 +27,16 @@ const RefundForm = () => {
           <div className="row">
             <div className="col-12 d-flex justify-content-end">
               <div style={{ paddingRight: 5 }}>
-                <Button type="primary">Xác nhận</Button>
+                <Button type="primary" size="large">
+                  Xác nhận
+                </Button>
               </div>
               <div>
-                <Button onClick={() => setIsModalVisible(false)} type="default">
+                <Button
+                  onClick={() => setIsModalVisible(false)}
+                  type="default"
+                  size="large"
+                >
                   Cancel
                 </Button>
               </div>
