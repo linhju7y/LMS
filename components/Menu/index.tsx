@@ -246,13 +246,11 @@ const MenuDefault = ({
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="taokhoatuhoc">
-                  {" "}
                   <Link href="/course/create-course-self">
                     <a>Tạo khóa tự học</a>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="listkhoahoc">
-                  {" "}
                   <Link href="/course/course-list">
                     <a>Danh sách khóa học</a>
                   </Link>
@@ -263,7 +261,6 @@ const MenuDefault = ({
                   </Link>
                 </Menu.Item>
               </SubMenu>
-
               <SubMenu
                 key="sub2"
                 icon={
@@ -368,29 +365,161 @@ const MenuDefault = ({
                 title="Học viên"
               >
                 <Menu.Item key="hv1">
-                  <Link href="/">Dữ liệu học viên</Link>
+                  <Link href="/customer/student/student-list">
+                    <a> Dữ liệu học viên</a>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item key="hv2">
-                  <Link href="/">Học viên chuyển giao</Link>
+                  <Link href="/customer/student/exchange-student">
+                    <a>Học viên chuyển giao</a>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item key="hv3">
-                  <Link href="/">HV trong khóa</Link>
+                  <Link href="/customer/student/student-course">
+                    <a> HV trong khóa</a>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item key="hv4">
-                  <Link href="/">HV chuyển khóa</Link>
+                  <Link href="/customer/student/student-change-course">
+                    <a> HV chuyển khóa</a>
+                  </Link>
                 </Menu.Item>
 
                 <Menu.Item key="5">
-                  <Link href="/">HV hẹn đăng ký</Link>
+                  <Link href="/customer/student/student-appointment">
+                    <a> HV hẹn đăng ký</a>
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key="6">
-                  <Link href="/">HV bảo lưu</Link>
+                  <Link href="/customer/student/student-reserve">
+                    <a> HV bảo lưu</a>
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key="7">
-                  <Link href="/">HV cần tư vấn</Link>
+                  <Link href="/customer/student/student-advisory">
+                    <a> HV cần tư vấn</a>
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key="sub-list-course-child-2"
+                icon={
+                  <span className="anticon">
+                    <User />
+                  </span>
+                }
+                title="Thi, hẹn test và dịch vụ"
+              >
+                <Menu.Item key="1">
+                  <Link href="/customer/service/service-customer">
+                    <a>Khách mua dịch vụ</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link href="/customer/service/service-customer-exam">
+                    <a> Danh sách đăng kí thi</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Link href="/customer/service/">Thêm lịch hẹn test</Link>
+                </Menu.Item>
+                <Menu.Item key="4">
+                  <Link href="/customer/service/service-appointment-test">
+                    <a> Danh sách khách hẹn test</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="5">
+                  <Link href="/customer/service/service-package-customer">
+                    <a> Danh sách khách mua gói</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="6">
+                  <Link href="/customer/service/service-package-result">
+                    <a> Danh sách kết quả test</a>
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key="sub-list-course-child-3"
+                icon={
+                  <span className="anticon">
+                    <User />
+                  </span>
+                }
+                title="Báo cáo học viên"
+              >
+                <Menu.Item key="1">
+                  <Link href="/customer/report/report-customer-warning">
+                    <a> Cảnh báo học viên</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link href="/customer/report/report-customer-test">
+                    <a> Học viên sắp thi</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Link href="/customer/report/report-customer-result">
+                    <a> Kết quả thi thực tế</a>
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key="sub-list-course-child-4"
+                icon={
+                  <span className="anticon">
+                    <User />
+                  </span>
+                }
+                title="Báo cáo học viên"
+              >
+                <Menu.Item key="1">
+                  <Link href="/customer/finance/finance-customer-debts">
+                    <a> Nợ học phí</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link href="/customer/finance/finance-cashier-refund">
+                    <a> Nợ học phí</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Link href="/customer/finance/finance-cashier-invoice">
+                    <a> Phiếu thu</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="4">
+                  <Link href="/customer/finance/finance-cashier-payment">
+                    <a> Phiếu chi</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="5">
+                  <Link href="/customer/finance/finance-customer-reward">
+                    <a> Thưởng/Tài trợ</a>
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
+              <SubMenu
+                key="sub-list-course-child-5"
+                icon={
+                  <span className="anticon">
+                    <User />
+                  </span>
+                }
+                title="Hợp đồng"
+              >
+                <Menu.Item key="1">
+                  <Link href="/customer/contract/contract-customer-list">
+                    <a> Học viên có hợp đồng</a>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link href="/customer/contract/contract-customer-censorship">
+                    <a> Duyệt hợp đồng</a>
+                  </Link>
                 </Menu.Item>
               </SubMenu>
             </Menu.ItemGroup>

@@ -2,25 +2,21 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
+import { Button } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
+import { dataService } from "./../dataCustomer";
 
-import { data3 } from "./data";
-
-export default function StudentCourseChange() {
+export default function ReportWarning() {
   const expandedRowRender = () => {
-    const { Option } = Select;
-    return <></>;
+    <></>;
   };
-
   const columns = [
+    { title: "Trung tâm", dataIndex: "center" },
     { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Khóa học", dataIndex: "course" },
-    { title: "Giá tiền", dataIndex: "money" },
-    { title: "Đã đóng", dataIndex: "payed" },
-    { title: "Giảm giá", dataIndex: "discount" },
-    { title: "Còn lại", dataIndex: "left" },
-
+    { title: "Lớp", dataIndex: "rpCourse" },
+    { title: "Ngày tạo", dataIndex: "testDate" },
+    { title: "Người tạo", dataIndex: "rpCreator" },
+    { title: "Chủ nhiệm", dataIndex: "rpLeader" },
     {
       title: "",
       render: () => <Button type="link" icon={<Eye />} />,
@@ -31,15 +27,15 @@ export default function StudentCourseChange() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <TitlePage title="học viên chuyển khóa" />
+          <TitlePage title="Danh sách học viên bị cảnh báo" />
         </div>
       </div>
       <div className="row">
         <div className="col-12">
           <ExpandTable
-            expandable={{ expandedRowRender }}
-            dataSource={data3}
+            dataSource={dataService}
             columns={columns}
+            expandable={{ expandedRowRender }}
             Extra={
               <div className="extra-table">
                 <SearchBox />

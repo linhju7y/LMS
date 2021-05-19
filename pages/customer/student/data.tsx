@@ -1,5 +1,6 @@
 export const data = [
   {
+    key: 1,
     city: "Hồ Chí Minh",
     nameStudent: "Nguyễn Thị Oanh",
     tel: "0898233146",
@@ -10,6 +11,7 @@ export const data = [
     signUp: "Đã xong",
   },
   {
+    key: 2,
     city: "Hồ Chí Minh",
     nameStudent: "Nguyễn Thị Oanh 1",
     tel: "0898233146",
@@ -20,6 +22,7 @@ export const data = [
     signUp: "Đã xong",
   },
   {
+    key: 3,
     city: "Hồ Chí Minh",
     nameStudent: "Nguyễn Thị Oanh 2",
     tel: "0898233146",
@@ -30,6 +33,7 @@ export const data = [
     signUp: "Chưa đăng kí",
   },
   {
+    key: 4,
     city: "Hồ Chí Minh",
     nameStudent: "Nguyễn Thị Oanh 3",
     tel: "0898233146",
@@ -77,5 +81,28 @@ export const data4 = [
     class: "AS-IELTS Intermediate",
     time: "Ca 18:30 - 20:30",
     deposit: "10.500.000",
+  },
+];
+
+export const data5 = [
+  {
+    nameStudent: "Nguyễn Thị Oanh",
+    city: "Hồ Chí Minh",
+    introducer: "TVV",
+    center: "ZIM – 12 Huỳnh Lan Khanh",
+    class: "AS-IELTS Intermediate",
+    time: "Ca 18:30 - 20:30",
+    reserve: "0",
+  },
+];
+
+export const data6 = [
+  {
+    tel: "0123456789",
+    introducer: "TVV",
+    consultant: "Nguyễn Kim Ngân",
+    email: "email@gmail.com",
+    nameStudent: "Nguyễn Thị Oanh",
+    city: "Hồ Chí Minh",
   },
 ];

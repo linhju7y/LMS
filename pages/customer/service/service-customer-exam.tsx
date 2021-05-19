@@ -1,26 +1,32 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
-import ExpandTable from "~/components/ExpandTable";
+import PowerTable from "~/components/PowerTable";
 import { Eye, Filter } from "react-feather";
+import { Button, Tag } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
 
-import { data3 } from "./data";
+import { dataService } from "./../dataCustomer";
 
-export default function StudentCourseChange() {
-  const expandedRowRender = () => {
-    const { Option } = Select;
-    return <></>;
-  };
-
+export default function CustomerServiceExam() {
   const columns = [
     { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Khóa học", dataIndex: "course" },
-    { title: "Giá tiền", dataIndex: "money" },
-    { title: "Đã đóng", dataIndex: "payed" },
-    { title: "Giảm giá", dataIndex: "discount" },
-    { title: "Còn lại", dataIndex: "left" },
-
+    { title: "Đợt thi", dataIndex: "testTime" },
+    {
+      title: "Loại",
+      dataIndex: "typeTest",
+      render: (typeTest) => {
+        let color = typeTest == "Thi thử" ? "green" : "blue";
+        return (
+          <Tag color={color} key={typeTest}>
+            <b> {typeTest.toUpperCase()}</b>
+          </Tag>
+        );
+      },
+    },
+    { title: "Nhà cung cấp", dataIndex: "provider" },
+    { title: "Giá tiền", dataIndex: "testCost" },
+    { title: "Ngày thi", dataIndex: "testDate" },
+    { title: "Ngày đăng kí", dataIndex: "regDate" },
     {
       title: "",
       render: () => <Button type="link" icon={<Eye />} />,
@@ -31,14 +37,13 @@ export default function StudentCourseChange() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <TitlePage title="học viên chuyển khóa" />
+          <TitlePage title="Danh sách đăng kí thi" />
         </div>
       </div>
       <div className="row">
         <div className="col-12">
-          <ExpandTable
-            expandable={{ expandedRowRender }}
-            dataSource={data3}
+          <PowerTable
+            dataSource={dataService}
             columns={columns}
             Extra={
               <div className="extra-table">
