@@ -14,12 +14,11 @@ const SortBox = () => {
         onChange={handleChange}
         size="large"
       >
-        <Option value="sort-title">Sort by</Option>
-        <Option value="lucy">Lucy</Option>
-        <Option value="disabled" disabled>
-          Disabled
-        </Option>
-        <Option value="Yiminghe">yiminghe</Option>
+        <Option value="sort-title">-- Sort by --</Option>
+        <Option value="hometown1">Tỉnh/TP A - Z</Option>
+        <Option value="hometown2">Tỉnh/TP Z - A</Option>
+        <Option value="name1">Họ tên A - Z</Option>
+        <Option value="name2">Họ tên Z - A</Option>
       </Select>
     </>
   );

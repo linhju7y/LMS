@@ -10,9 +10,11 @@ import ExpandTable from "~/components/ExpandTable";
 import FilterBox from "~/components/Elements/FilterBox";
 import { Filter, Eye, CheckCircle } from "react-feather";
 import { Tooltip } from "antd";
-import FilterTable from "~/components/Global/FeedbackList/FitlerTable";
+import FilterTable from "~/components/Global/TeachHoursList/FilterTable";
 
-const FeedbackList = () => {
+const TeachHoursList = () => {
+  const [showFilter, showFilterSet] = useState(false);
+
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -28,84 +30,72 @@ const FeedbackList = () => {
   const dataSource = [
     {
       key: "1",
-      Type: "Hỗ trợ học viên",
-      Title: "Xin nghỉ một sồ buổi học",
-      SendPeople: "Lan Anh",
-      Tvv: "Hải Tú",
-      SendDay: "02/03/2021",
-      Done: "",
-      Remark: "",
-      Action: "",
+      Teacher: "Mr.Bean",
+      Status: "",
+      Role: "Manager",
+      TypeClass: "Toeic",
+      StudyTime: 5,
+      Attendance: "Text",
+      AttendanceNone: "Text",
+      TotalHours: "20",
+      DutyTime: "20",
+      TotalDutyTime: "22",
     },
   ];
 
   const columns = [
     {
-      title: "Loại phản hồi",
-      dataIndex: "Type",
-      key: "type",
+      title: "Giáo viên",
+      dataIndex: "Teacher",
+      key: "teacher",
     },
     {
-      title: "Title",
-      dataIndex: "Title",
-      key: "title",
-    },
-    {
-      title: "Người gửi",
-      dataIndex: "SendPeople",
-      key: "sendpeople",
-    },
-    {
-      title: "Tư vấn viên",
-      dataIndex: "Tvv",
-      key: "tvv",
-    },
-
-    {
-      title: "Ngày gửi",
-      dataIndex: "StartDay",
+      title: "Trạng thái",
+      dataIndex: "Status",
       key: "status",
     },
     {
-      title: "Xong",
-      dataIndex: "Done",
-      key: "done",
-      render: (Status) => <Tag color="green">Xong</Tag>,
+      title: "Vai trò",
+      dataIndex: "Role",
+      key: "role",
     },
     {
-      title: "Đánh giá",
-      dataIndex: "Remark",
-      key: "remark",
+      title: "Loại lớp",
+      dataIndex: "TypeClass",
+      key: "typeclass",
+    },
+
+    {
+      title: "Giờ dạy",
+      dataIndex: "StudyTime",
+      key: "studytime",
     },
     {
-      title: "Thao tác",
-      dataIndex: "Action",
-      key: "action",
-      render: (Action) => (
-        <div>
-          <Tooltip title="Xử lý xong">
-            <a className="btn btn-icon" onClick={showModal}>
-              <CheckCircle />
-            </a>
-          </Tooltip>
-          <Tooltip title="Xem chi tiết">
-            <Link
-              href={{
-                pathname: "/staff/saler-list/detail/[slug]",
-                query: { slug: 2 },
-              }}
-            >
-              <a className="btn btn-icon">
-                <Eye />
-              </a>
-            </Link>
-          </Tooltip>
-        </div>
-      ),
+      title: "Điểm danh",
+      dataIndex: "Attendance",
+      key: "attendance",
+    },
+    {
+      title: "Không điểm danh",
+      dataIndex: "AttendanceNone",
+      key: "attendancenone",
+    },
+    {
+      title: "Tổng giờ",
+      dataIndex: "TotalHours",
+      key: "totalhourss",
+    },
+    {
+      title: "Giờ trực",
+      dataIndex: "DutyTime",
+      key: "dutytime",
+    },
+    {
+      title: "Tổng giờ trực",
+      dataIndex: "TotalDutyTime",
+      key: "TotalDutyTime",
     },
   ];
-
-  const [showFilter, showFilterSet] = useState(false);
 
   const funcShowFilter = () => {
     showFilter ? showFilterSet(false) : showFilterSet(true);
@@ -118,9 +108,10 @@ const FeedbackList = () => {
     return (
       <>
         <div className="feedback-detail-text">
-          Dương Lan Anh Advance1412. Buổi nghỉ: tối 02/03/2021 (writìng) và
-          03/03/2021(speaking) Lý do: Em đang ở vùng dịch ạ (thị xã Kinh Môn,
-          huyện Kinh Môn, tỉnh Hải Dương)
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum,
+          explicabo laboriosam. Molestias harum reiciendis quam suscipit
+          accusamus id voluptatem doloribus. Consectetur natus voluptatibus et
+          atque quibusdam vero iure reiciendis ratione?
         </div>
       </>
     );
@@ -139,10 +130,12 @@ const FeedbackList = () => {
       <ExpandTable
         columns={columns}
         dataSource={dataSource}
-        TitleCard="Feedback List"
+        TitlePage="Giờ dạy của giáo viên"
         Extra={
           <div className="extra-table">
+            <SortBox />
             <SearchBox />
+
             <button
               className="btn btn-secondary light btn-filter"
               onClick={funcShowFilter}
@@ -159,4 +152,4 @@ const FeedbackList = () => {
   );
 };
 
-export default FeedbackList;
+export default TeachHoursList;

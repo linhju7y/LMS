@@ -158,7 +158,7 @@ const columns = [
     render: (Action) => (
       <Link
         href={{
-          pathname: "/staff/saler-list/detail/[slug]",
+          pathname: "/staff/saler-list/saler-detail/[slug]",
           query: { slug: 2 },
         }}
       >

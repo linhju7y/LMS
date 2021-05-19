@@ -1,118 +1,118 @@
 import React, { useState } from "react";
 import { Table, Card, Tag } from "antd";
 import { FormOutlined, EyeOutlined } from "@ant-design/icons";
-import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
 import PowerTable from "~/components/PowerTable";
+import SortBox from "~/components/Elements/SortBox";
 
 const dataSource = [
   {
     key: "1",
-    Center: "ZIM – 65 Yên Lãng",
+    Place: "Hồ Chí Minh",
     NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
+    NumberPhone: "012345678",
     Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
     Status: "",
     StartDay: "03/05/2021",
     Action: "",
   },
   {
     key: "1",
-    Center: "ZIM – 65 Yên Lãng",
+    Place: "Hồ Chí Minh",
     NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
+    NumberPhone: "012345678",
     Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
     Status: "",
     StartDay: "03/05/2021",
     Action: "",
   },
   {
     key: "1",
-    Center: "ZIM – 65 Yên Lãng",
+    Place: "Hồ Chí Minh",
     NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
+    NumberPhone: "012345678",
     Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
     Status: "",
     StartDay: "03/05/2021",
     Action: "",
   },
   {
     key: "1",
-    Center: "ZIM – 65 Yên Lãng",
+    Place: "Hồ Chí Minh",
     NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
+    NumberPhone: "012345678",
     Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
     Status: "",
     StartDay: "03/05/2021",
     Action: "",
   },
   {
     key: "1",
-    Center: "ZIM – 65 Yên Lãng",
+    Place: "Hồ Chí Minh",
     NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
+    NumberPhone: "012345678",
     Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
     Status: "",
     StartDay: "03/05/2021",
     Action: "",
   },
   {
     key: "1",
-    Center: "ZIM – 65 Yên Lãng",
+    Place: "Hồ Chí Minh",
     NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
+    NumberPhone: "012345678",
     Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
     Status: "",
     StartDay: "03/05/2021",
     Action: "",
   },
   {
     key: "1",
-    Center: "ZIM – 65 Yên Lãng",
+    Place: "Hồ Chí Minh",
     NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
+    NumberPhone: "012345678",
     Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
     Status: "",
     StartDay: "03/05/2021",
     Action: "",
   },
   {
     key: "1",
-    Center: "ZIM – 65 Yên Lãng",
+    Place: "Hồ Chí Minh",
     NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
+    NumberPhone: "012345678",
     Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
     Status: "",
     StartDay: "03/05/2021",
     Action: "",
   },
   {
     key: "1",
-    Center: "ZIM – 65 Yên Lãng",
+    Place: "Hồ Chí Minh",
     NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
+    NumberPhone: "012345678",
     Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
     Status: "",
     StartDay: "03/05/2021",
     Action: "",
   },
   {
     key: "1",
-    Center: "ZIM – 65 Yên Lãng",
+    Place: "Hồ Chí Minh",
     NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
+    NumberPhone: "012345678",
     Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
+    Status: "",
+    StartDay: "03/05/2021",
+    Action: "",
+  },
+  {
+    key: "1",
+    Place: "Hồ Chí Minh",
+    NameStaff: "Nguyễn An",
+    NumberPhone: "012345678",
+    Email: "annguyen97dev@gmail.com",
     Status: "",
     StartDay: "03/05/2021",
     Action: "",
@@ -121,8 +121,8 @@ const dataSource = [
 
 const columns = [
   {
-    title: "Trung tâm",
-    dataIndex: "Center",
+    title: "Tỉnh/TP",
+    dataIndex: "Place",
     key: "center",
   },
   {
@@ -131,20 +131,16 @@ const columns = [
     key: "namestaff",
   },
   {
-    title: "Tài khoản",
-    dataIndex: "Account",
-    key: "account",
+    title: "SĐT",
+    dataIndex: "NumberPhone",
+    key: "numberphone",
   },
   {
     title: "Email",
     dataIndex: "Email",
     key: "email",
   },
-  {
-    title: "Chức vụ",
-    dataIndex: "Position",
-    key: "position",
-  },
+
   {
     title: "Trạng thái",
     dataIndex: "Status",
@@ -163,7 +159,7 @@ const columns = [
     render: (Action) => (
       <Link
         href={{
-          pathname: "/staff/staff-list/detail/[slug]",
+          pathname: "/staff/teacher-list/teacher-detail/[slug]",
           query: { slug: 2 },
         }}
       >
@@ -190,12 +186,18 @@ const TeacherList = () => {
           </div>
         </div>
       </div> */}
+
       <PowerTable
         columns={columns}
         dataSource={dataSource}
-        TitlePage="Danh sách nhân viên"
+        TitlePage="Danh sách Salers"
         TitleCard={<button className="btn btn-primary">Thêm mới</button>}
-        Extra={<SearchBox />}
+        Extra={
+          <div className="extra-table">
+            <SortBox/>
+            <SearchBox />
+          </div>
+        }
       />
     </>
   );

@@ -7,13 +7,14 @@ const PowerTable = (props) => {
     <>
       <div className="row">
         <div className="col-12">
-          <TitlePage title={props.Title} />
+          <TitlePage title={props.TitlePage} />
           <div className="wrap-table">
             <Card
               className="cardRadius"
               title={props.TitleCard}
               extra={props.Extra}
             >
+              {props.children}
               <Table
                 scroll={{ x: 1200 }}
                 columns={props.columns}
