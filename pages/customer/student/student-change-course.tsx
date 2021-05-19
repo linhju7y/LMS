@@ -4,13 +4,14 @@ import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
 import SearchBox from "~/components/Elements/SearchBox";
 import { Button, Card, Tag, Form, Input, Select } from "antd";
-
+import Link from "next/link";
 import { data3 } from "./data";
+import ExpandBox from "~/components/Elements/ExpandBox";
 
 export default function StudentCourseChange() {
   const expandedRowRender = () => {
     const { Option } = Select;
-    return <></>;
+    return <ExpandBox />;
   };
 
   const columns = [
@@ -23,7 +24,16 @@ export default function StudentCourseChange() {
 
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <Link
+          href={{
+            pathname: "/customer/student/detail/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <Button type="link" icon={<Eye />} />
+        </Link>
+      ),
     },
   ];
 

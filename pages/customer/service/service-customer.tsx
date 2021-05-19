@@ -5,11 +5,14 @@ import { Eye, Filter } from "react-feather";
 import { Button, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "./../dataCustomer";
+import { ExpandBoxService } from "~/components/Elements/ExpandBox";
+import Link from "next/link";
+import RegRefund from "~/components/Global/Customer/Student/RegRefund";
 
 export default function CustomerService() {
   const expandedRowRender = () => {
     const { Option } = Select;
-    return <></>;
+    return <ExpandBoxService />;
   };
 
   const columns = [
@@ -19,7 +22,20 @@ export default function CustomerService() {
     { title: "Nhà cung cấp", dataIndex: "provider" },
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <>
+          <Link
+            href={{
+              pathname: "/customer/student/detail/[slug]",
+              query: { slug: 2 },
+            }}
+          >
+            <Button type="link" icon={<Eye />} />
+          </Link>
+
+          <RegRefund />
+        </>
+      ),
     },
   ];
 

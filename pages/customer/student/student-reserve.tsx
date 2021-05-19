@@ -5,11 +5,15 @@ import { Eye, Filter } from "react-feather";
 import { Button, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { data5 } from "./data";
+import ExpandBox from "~/components/Elements/ExpandBox";
+import RegInfo from "~/components/Global/Customer/Student/RegInfo";
+import ReserveChangeCourse from "~/components/Global/Customer/Student/ReserveChangeCourse";
+import RegCancel from "~/components/Global/Customer/Student/RegCancel";
 
 export default function StudentReserve() {
   const expandedRowRender = () => {
     const { Option } = Select;
-    return <></>;
+    return <ExpandBox />;
   };
 
   const columns = [
@@ -21,7 +25,13 @@ export default function StudentReserve() {
     { title: "Còn lại", dataIndex: "reserve" },
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <>
+          <RegInfo />
+          <ReserveChangeCourse />
+          <RegCancel />
+        </>
+      ),
     },
   ];
 

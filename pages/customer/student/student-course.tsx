@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye, Filter } from "react-feather";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Eye, Filter, Move, Repeat, RotateCcw } from "react-feather";
+import { Button, Tag, Select } from "antd";
+import Link from "next/link";
 import { data2 } from "./data";
+import ChangeCourse from "~/components/Global/Customer/Student/ChangeCourse";
+import SearchBox from "~/components/Elements/SearchBox";
+import ReserveCourse from "~/components/Global/Customer/Student/ReserveCourse";
+import RefundCourse from "~/components/Global/Customer/Student/RefundCourse";
+import ExpandBox from "~/components/Elements/ExpandBox";
 
 export default function CourseStudent() {
   const expandedRowRender = () => {
     const { Option } = Select;
-    return <></>;
+    return <ExpandBox />;
   };
 
   const columns = [
@@ -43,7 +48,21 @@ export default function CourseStudent() {
 
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <>
+          <Link
+            href={{
+              pathname: "/customer/student/detail/[slug]",
+              query: { slug: 2 },
+            }}
+          >
+            <Button type="link" icon={<Eye />} />
+          </Link>
+          <ChangeCourse />
+          <ReserveCourse />
+          <RefundCourse />
+        </>
+      ),
     },
   ];
 

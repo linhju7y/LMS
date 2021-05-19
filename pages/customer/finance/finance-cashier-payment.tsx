@@ -5,6 +5,7 @@ import { Edit, ShoppingCart, Filter } from "react-feather";
 import { Button, Image } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "./../dataCustomer";
+import ConsultantForm from "~/components/Global/Customer/Finance/ConsultantForm";
 
 export default function FinancePayment() {
   const columns = [
@@ -26,7 +27,7 @@ export default function FinancePayment() {
       title: "",
       render: () => (
         <>
-          <Button type="link" icon={<Edit />} />
+          <ConsultantForm />
           <Button type="link" icon={<ShoppingCart />} />
         </>
       ),

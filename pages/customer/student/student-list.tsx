@@ -4,7 +4,7 @@ import { Eye, Filter } from "react-feather";
 import { Button, Card, Tag, Form, Input, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import FilterTable from "~/components/Global/FeedbackList/FitlerTable";
-
+import Link from "next/link";
 import { data } from "./data";
 import TitlePage from "~/components/Elements/TitlePage";
 const { Option } = Select;
@@ -392,7 +392,16 @@ const StudentData = () => {
     },
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <Link
+          href={{
+            pathname: "/customer/student/detail/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <Button type="link" icon={<Eye />} />
+        </Link>
+      ),
     },
   ];
 

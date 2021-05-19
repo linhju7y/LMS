@@ -15,6 +15,7 @@ const ExpandTable = (props) => {
         >
           {props.children}
           <Table
+            scroll={{ x: 500 }}
             columns={props.columns}
             dataSource={props.dataSource}
             expandable={props.expandable}

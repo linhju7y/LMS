@@ -388,17 +388,17 @@ const MenuDefault = ({
                   </Link>
                 </Menu.Item>
 
-                <Menu.Item key="5">
+                <Menu.Item key="hv5">
                   <Link href="/customer/student/student-appointment">
                     <a> HV hẹn đăng ký</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="6">
+                <Menu.Item key="hv6">
                   <Link href="/customer/student/student-reserve">
                     <a> HV bảo lưu</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="7">
+                <Menu.Item key="hv7">
                   <Link href="/customer/student/student-advisory">
                     <a> HV cần tư vấn</a>
                   </Link>
@@ -413,30 +413,32 @@ const MenuDefault = ({
                 }
                 title="Thi, hẹn test và dịch vụ"
               >
-                <Menu.Item key="1">
+                <Menu.Item key="sv1">
                   <Link href="/customer/service/service-customer">
                     <a>Khách mua dịch vụ</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="2">
+                <Menu.Item key="sv2">
                   <Link href="/customer/service/service-customer-exam">
                     <a> Danh sách đăng kí thi</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="3">
-                  <Link href="/customer/service/">Thêm lịch hẹn test</Link>
+                <Menu.Item key="sv3">
+                  <Link href="/customer/service/service-info-student">
+                    Thêm lịch hẹn test
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key="4">
                   <Link href="/customer/service/service-appointment-test">
                     <a> Danh sách khách hẹn test</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="5">
+                <Menu.Item key="sv5">
                   <Link href="/customer/service/service-package-customer">
                     <a> Danh sách khách mua gói</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="6">
+                <Menu.Item key="sv6">
                   <Link href="/customer/service/service-package-result">
                     <a> Danh sách kết quả test</a>
                   </Link>
@@ -451,17 +453,17 @@ const MenuDefault = ({
                 }
                 title="Báo cáo học viên"
               >
-                <Menu.Item key="1">
+                <Menu.Item key="bc1">
                   <Link href="/customer/report/report-customer-warning">
                     <a> Cảnh báo học viên</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="2">
+                <Menu.Item key="bc2">
                   <Link href="/customer/report/report-customer-test">
                     <a> Học viên sắp thi</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="3">
+                <Menu.Item key="bc3">
                   <Link href="/customer/report/report-customer-result">
                     <a> Kết quả thi thực tế</a>
                   </Link>
@@ -474,29 +476,29 @@ const MenuDefault = ({
                     <User />
                   </span>
                 }
-                title="Báo cáo học viên"
+                title="Tài chính"
               >
-                <Menu.Item key="1">
+                <Menu.Item key="tc1">
                   <Link href="/customer/finance/finance-customer-debts">
                     <a> Nợ học phí</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="2">
+                <Menu.Item key="tc2">
                   <Link href="/customer/finance/finance-cashier-refund">
-                    <a> Nợ học phí</a>
+                    <a> Yêu cầu hoàn tiền</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="3">
+                <Menu.Item key="tc3">
                   <Link href="/customer/finance/finance-cashier-invoice">
                     <a> Phiếu thu</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="4">
+                <Menu.Item key="tc4">
                   <Link href="/customer/finance/finance-cashier-payment">
                     <a> Phiếu chi</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="5">
+                <Menu.Item key="tc5">
                   <Link href="/customer/finance/finance-customer-reward">
                     <a> Thưởng/Tài trợ</a>
                   </Link>
@@ -511,12 +513,12 @@ const MenuDefault = ({
                 }
                 title="Hợp đồng"
               >
-                <Menu.Item key="1">
+                <Menu.Item key="hd1">
                   <Link href="/customer/contract/contract-customer-list">
                     <a> Học viên có hợp đồng</a>
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="2">
+                <Menu.Item key="hd2">
                   <Link href="/customer/contract/contract-customer-censorship">
                     <a> Duyệt hợp đồng</a>
                   </Link>

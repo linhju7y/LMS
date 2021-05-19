@@ -5,11 +5,13 @@ import { Eye, Filter } from "react-feather";
 import { Button, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { data6 } from "./data";
+import ExpandBox from "~/components/Elements/ExpandBox";
+import Link from "next/link";
 
 export default function StudentAdvisory() {
   const expandedRowRender = () => {
     const { Option } = Select;
-    return <></>;
+    return <ExpandBox />;
   };
 
   const columns = [
@@ -23,7 +25,16 @@ export default function StudentAdvisory() {
 
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <Link
+          href={{
+            pathname: "/customer/student/detail/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <Button type="link" icon={<Eye />} />
+        </Link>
+      ),
     },
   ];
 

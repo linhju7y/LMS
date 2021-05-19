@@ -5,6 +5,7 @@ import { Eye, Filter } from "react-feather";
 import { Button, Card, Tag, Form, Input, Select } from "antd";
 import { data } from "./data";
 import SearchBox from "~/components/Elements/SearchBox";
+import Link from "next/link";
 
 export default function ExchangeStudent() {
   const expandedRowRender = () => {
@@ -371,7 +372,16 @@ export default function ExchangeStudent() {
 
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <Link
+          href={{
+            pathname: "/customer/student/detail/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <Button type="link" icon={<Eye />} />
+        </Link>
+      ),
     },
   ];
 

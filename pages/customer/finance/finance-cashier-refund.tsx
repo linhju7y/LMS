@@ -5,11 +5,12 @@ import { DollarSign, Filter } from "react-feather";
 import { Button, Tag } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "./../dataCustomer";
+import { ExpandBoxService } from "~/components/Elements/ExpandBox";
+import RefundForm from "~/components/Global/Customer/Finance/RefundForm";
 
 export default function FinanceRefund() {
-  const expandedRowRender = () => {
-    <></>;
-  };
+  const expandedRowRender = () => <ExpandBoxService />;
+
   const columns = [
     { title: "Trung tâm", dataIndex: "center" },
     { title: "Học viên", dataIndex: "nameStudent" },
@@ -32,7 +33,7 @@ export default function FinanceRefund() {
       title: "",
       render: () => (
         <>
-          <Button type="link" icon={<DollarSign />} />
+          <RefundForm />
         </>
       ),
     },

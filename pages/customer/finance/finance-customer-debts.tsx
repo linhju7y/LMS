@@ -5,6 +5,8 @@ import { Eye, CheckCircle, Filter } from "react-feather";
 import { Button } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "./../dataCustomer";
+import Link from "next/link";
+import Tuition from "~/components/Global/Customer/Finance/Tuition";
 
 export default function FinanceDebts() {
   const columns = [
@@ -18,8 +20,15 @@ export default function FinanceDebts() {
       title: "",
       render: () => (
         <>
-          <Button type="link" icon={<Eye />} />
-          <Button type="link" icon={<CheckCircle />} />
+          <Link
+            href={{
+              pathname: "/customer/student/detail/[slug]",
+              query: { slug: 2 },
+            }}
+          >
+            <Button type="link" icon={<Eye />} />
+          </Link>
+          <Tuition />
         </>
       ),
     },

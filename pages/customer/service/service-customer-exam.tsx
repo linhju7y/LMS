@@ -4,7 +4,7 @@ import PowerTable from "~/components/PowerTable";
 import { Eye, Filter } from "react-feather";
 import { Button, Tag } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-
+import Link from "next/link";
 import { dataService } from "./../dataCustomer";
 
 export default function CustomerServiceExam() {
@@ -29,7 +29,16 @@ export default function CustomerServiceExam() {
     { title: "Ngày đăng kí", dataIndex: "regDate" },
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <Link
+          href={{
+            pathname: "/customer/student/detail/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <Button type="link" icon={<Eye />} />
+        </Link>
+      ),
     },
   ];
 

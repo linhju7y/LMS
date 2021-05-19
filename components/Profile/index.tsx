@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import {
   Row,
   Col,
@@ -14,7 +14,7 @@ import {
   Upload,
   Rate,
   Table,
-  Checkbox
+  Checkbox,
 } from "antd";
 import ImgCrop from "antd-img-crop";
 import {
@@ -39,102 +39,88 @@ import {
 //     fixed:string,
 // }
 
-const dataSource = [ 
+const dataSource = [
   {
-    key: '1',
-    ClassName: 'AS - IELTS Intermediate',
-    Check: '',
-    Listening: '',
-    Wrting:'',
-    Speaking:'',
-    Reading:'',
-    SpeakingWork:'',
-    ReadingWork:'',
-    width:'',
-    fixed:'',
+    key: "1",
+    ClassName: "AS - IELTS Intermediate",
+    Check: "",
+    Listening: "",
+    Wrting: "",
+    Speaking: "",
+    Reading: "",
+    SpeakingWork: "",
+    ReadingWork: "",
+    width: "",
+    fixed: "",
   },
- 
 ];
 
 const columns = [
   {
-    width:200,
-    title: 'Tên lớp học',
-    dataIndex: 'ClassName',
-    key: 'classname',
-    fixed: 'left',
-    render: text => <p className="color-primary">{text}</p>
+    width: 200,
+    title: "Tên lớp học",
+    dataIndex: "ClassName",
+    key: "classname",
+    fixed: "left",
+    render: (text) => <p className="color-primary">{text}</p>,
   },
   {
-    title: 'Dạy',
-    dataIndex: 'Check',
-    key: 'check',
-    render: () => (
-      <Checkbox/>
-    )
+    title: "Dạy",
+    dataIndex: "Check",
+    key: "check",
+    render: () => <Checkbox />,
   },
   {
-    title: 'Listening',
-    dataIndex: 'Listening',
-    key: 'listening',
-    render: () => (
-      <SelectRemark/>
-    )
+    title: "Listening",
+    dataIndex: "Listening",
+    key: "listening",
+    render: () => <SelectRemark />,
   },
   {
-    title: 'Wrting',
-    dataIndex: 'Wrting',
-    key: 'wrting',
-    render: () => (
-      <SelectRemark/>
-    )
+    title: "Wrting",
+    dataIndex: "Wrting",
+    key: "wrting",
+    render: () => <SelectRemark />,
   },
   {
-    title: 'Reading',
-    dataIndex: 'Reading',
-    key: 'reading',
-    render: () => (
-      <SelectRemark/>
-    )
+    title: "Reading",
+    dataIndex: "Reading",
+    key: "reading",
+    render: () => <SelectRemark />,
   },
 
   {
-    title: 'BT Listening',
-    dataIndex: 'ListeningWork',
-    key: 'listeningwork',
-    render: () => (
-      <SelectRemark/>
-    )
+    title: "BT Listening",
+    dataIndex: "ListeningWork",
+    key: "listeningwork",
+    render: () => <SelectRemark />,
   },
   {
-    title: 'BT Reading',
-    dataIndex: 'ReadingWork',
-    key: 'readingwork',
-    render: () => (
-      <SelectRemark/>
-    )
+    title: "BT Reading",
+    dataIndex: "ReadingWork",
+    key: "readingwork",
+    render: () => <SelectRemark />,
   },
 ];
 
 const SelectRemark = () => {
   const { Option } = Select;
 
-function handleChange(value) {
-  console.log(`selected ${value}`);
-}
-  return(
-    <Select defaultValue="trungbinh"  onChange={handleChange}>
-    <Option value="gioi">Giỏi</Option>
-    <Option value="kha">Khá</Option>
-    <Option value="trungbinh">Trung bình</Option>
-  </Select>
-  )
-}
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+  }
+  return (
+    <Select defaultValue="trungbinh" onChange={handleChange}>
+      <Option value="gioi">Giỏi</Option>
+      <Option value="kha">Khá</Option>
+      <Option value="trungbinh">Trung bình</Option>
+    </Select>
+  );
+};
 
 const ProfileBase = (props) => {
-
   // Get path and slug
-  const router = useRouter()
+  const router = useRouter();
   const slug = router.query.slug;
   let path: string = router.pathname;
   let pathString: string[] = path.split("/");
@@ -162,9 +148,7 @@ const ProfileBase = (props) => {
     imgWindow.document.write(image.outerHTML);
   };
 
-  useEffect(() => {
-
-  },[]);
+  useEffect(() => {}, []);
 
   return (
     <div className="container-fluid">
@@ -173,11 +157,18 @@ const ProfileBase = (props) => {
           <Card className="info-profile-left">
             <div className="row">
               <div className="col-12 d-flex align-items-center justify-content-center flex-wrap">
-                <Avatar size={64} src={<img src="/images/user.png" />} />
-                {
-                  path === "teacher-detail" && 
-                  <Rate disabled value={4} style={{width: '100%', textAlign:"center", marginTop:'10px'}} />
-                }
+                <Avatar size={120} src={<img src="/images/user.png" />} />
+                {path === "teacher-detail" && (
+                  <Rate
+                    disabled
+                    value={4}
+                    style={{
+                      width: "100%",
+                      textAlign: "center",
+                      marginTop: "10px",
+                    }}
+                  />
+                )}
               </div>
             </div>
             <div className="row pt-3">
@@ -217,7 +208,6 @@ const ProfileBase = (props) => {
                 hello
             </Card>
           } */}
-
         </div>
         <div className="col-9">
           <Card>
@@ -315,24 +305,49 @@ const ProfileBase = (props) => {
             </Form>
           </Card>
 
-          {
-            path === 'teacher-detail' && 
-           (
-             <>
-               <div className="wrap-table table-overflow-x mt-2">
-              <Card  title="Thông tin các lớp học">
-                <Table pagination={false} className="mt-4" dataSource={dataSource} columns={columns} scroll={{ x: 1500}} />
-                <Table pagination={false} className="mt-4" dataSource={dataSource} columns={columns} scroll={{ x: 1500}} />
-                <Table pagination={false} className="mt-4" dataSource={dataSource} columns={columns} scroll={{ x: 1500}} />
-                <Table pagination={false} className="mt-4" dataSource={dataSource} columns={columns} scroll={{ x: 1500}} />
-                <Table pagination={false} className="mt-4" dataSource={dataSource} columns={columns} scroll={{ x: 1500}} />
-              </Card>
-            </div>
-          
-             </>
-           )
-          }
-
+          {path === "teacher-detail" && (
+            <>
+              <div className="wrap-table table-overflow-x mt-2">
+                <Card title="Thông tin các lớp học">
+                  <Table
+                    pagination={false}
+                    className="mt-4"
+                    dataSource={dataSource}
+                    columns={columns}
+                    scroll={{ x: 1500 }}
+                  />
+                  <Table
+                    pagination={false}
+                    className="mt-4"
+                    dataSource={dataSource}
+                    columns={columns}
+                    scroll={{ x: 1500 }}
+                  />
+                  <Table
+                    pagination={false}
+                    className="mt-4"
+                    dataSource={dataSource}
+                    columns={columns}
+                    scroll={{ x: 1500 }}
+                  />
+                  <Table
+                    pagination={false}
+                    className="mt-4"
+                    dataSource={dataSource}
+                    columns={columns}
+                    scroll={{ x: 1500 }}
+                  />
+                  <Table
+                    pagination={false}
+                    className="mt-4"
+                    dataSource={dataSource}
+                    columns={columns}
+                    scroll={{ x: 1500 }}
+                  />
+                </Card>
+              </div>
+            </>
+          )}
         </div>
       </div>
 
