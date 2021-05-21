@@ -37,6 +37,7 @@ import {
   MapPin,
   UserCheck,
   CheckSquare,
+  Tool,
 } from "react-feather";
 import Link from "next/link";
 
@@ -188,6 +189,11 @@ const MenuDefault = ({
             <li className={tab === "tab-layout" ? "active" : ""}>
               <a href="#" onClick={changeTabs} data-tabs="tab-layout">
                 <Layers />
+              </a>
+            </li>
+            <li className={tab === "tab-option" ? "active" : ""}>
+              <a href="#" onClick={changeTabs} data-tabs="tab-option">
+                <Tool />
               </a>
             </li>
           </ul>
@@ -522,6 +528,100 @@ const MenuDefault = ({
                   <Link href="/customer/contract/contract-customer-censorship">
                     <a> Duyệt hợp đồng</a>
                   </Link>
+                </Menu.Item>
+              </SubMenu>
+            </Menu.ItemGroup>
+          </Menu>
+          {/*  */}
+          {/*  */}
+          {/*  */}
+          {/* linhmhl menu  */}
+          <Menu
+            defaultSelectedKeys={["1"]}
+            defaultOpenKeys={["sub1"]}
+            mode="inline"
+            theme="light"
+            inlineCollapsed={state.collapsed}
+            style={{ display: tab === "tab-option" ? "block" : "none" }}
+          >
+            <Menu.ItemGroup key="course" title="Option">
+              <SubMenu
+                key="sub100"
+                icon={
+                  <span className="anticon">
+                    <Tool />
+                  </span>
+                }
+                title="Cấu hình"
+              >
+                <Menu.Item key="ot23">
+                  <Link href="/option/center">Trung tâm</Link>
+                </Menu.Item>
+                <Menu.Item key="ot22">
+                  <Link href="/option/grade">Khối học</Link>
+                </Menu.Item>
+                <Menu.Item key="ot21">
+                  <Link href="/option/study-time">Ca học</Link>
+                </Menu.Item>
+                <Menu.Item key="ot20">
+                  <Link href="/option/program">Chương trình</Link>
+                </Menu.Item>
+                <Menu.Item key="ot19">
+                  <Link href="/option/provincial">Tỉnh/Tp</Link>
+                </Menu.Item>
+                <Menu.Item key="ot18">
+                  <Link href="/option/district">Quận huyện</Link>
+                </Menu.Item>
+                <Menu.Item key="ot17">
+                  <Link href="/option/discount">Mã khuyến mãi</Link>
+                </Menu.Item>
+                <Menu.Item key="ot16">
+                  <Link href="/option/customer-supplier">Nguồn khách hàng</Link>
+                </Menu.Item>
+                <Menu.Item key="ot15">
+                  <Link href="/option/day-off">Ngày nghỉ</Link>
+                </Menu.Item>
+                <Menu.Item key="ot14">
+                  <Link href="/option/jobs">Nghề nghiệp</Link>
+                </Menu.Item>
+                <Menu.Item key="ot13">
+                  <Link href="/option/services">Dịch vụ</Link>
+                </Menu.Item>
+                <Menu.Item key="ot12">
+                  <Link href="/option/feedback">Loại phản hồi</Link>
+                </Menu.Item>
+                <Menu.Item key="ot11">
+                  <Link href="/option/supplier">Nhà cung cấp</Link>
+                </Menu.Item>
+                <Menu.Item key="ot10">
+                  <Link href="/option/purpose">Mục đích học</Link>
+                </Menu.Item>
+                <Menu.Item key="ot9">
+                  <Link href="/option/staff-salary">Lương office</Link>
+                </Menu.Item>
+                <Menu.Item key="ot8">
+                  <Link href="/option/teacher-salary">Lương giáo viên</Link>
+                </Menu.Item>
+                <Menu.Item key="ot7">
+                  <Link href="/option/exam">Đợt thi</Link>
+                </Menu.Item>
+                <Menu.Item key="ot6">
+                  <Link href="/option/post">Kiểm duyệt bài viết</Link>
+                </Menu.Item>
+                <Menu.Item key="ot5">
+                  <Link href="/option/info-form">Form thông tin</Link>
+                </Menu.Item>
+                <Menu.Item key="ot4">
+                  <Link href="/option/notification">Tạo thông báo</Link>
+                </Menu.Item>
+                <Menu.Item key="ot3">
+                  <Link href="/option/idiom">Thành ngữ lịch</Link>
+                </Menu.Item>
+                <Menu.Item key="ot2">
+                  <Link href="/option/contract">Hợp đồng</Link>
+                </Menu.Item>
+                <Menu.Item key="ot1">
+                  <Link href="/option/term-of-service">Điều khoản</Link>
                 </Menu.Item>
               </SubMenu>
             </Menu.ItemGroup>

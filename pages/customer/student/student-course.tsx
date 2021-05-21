@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter, Move, Repeat, RotateCcw } from "react-feather";
-import { Button, Tag, Select } from "antd";
+import { Button, Tag, Select, Tooltip } from "antd";
 import Link from "next/link";
 import { data2 } from "./data";
 import ChangeCourse from "~/components/Global/Customer/Student/ChangeCourse";
@@ -56,11 +56,20 @@ export default function CourseStudent() {
               query: { slug: 2 },
             }}
           >
-            <Button type="link" icon={<Eye />} />
+            <Tooltip title="Xem chi tiết">
+              <Button type="link" icon={<Eye />} />
+            </Tooltip>
           </Link>
-          <ChangeCourse />
-          <ReserveCourse />
-          <RefundCourse />
+
+          <Tooltip title="Chuyển khóa">
+            <ChangeCourse />
+          </Tooltip>
+          <Tooltip title="Bảo lưu khóa">
+            <ReserveCourse />
+          </Tooltip>
+          <Tooltip title="Hoàn tiền">
+            <RefundCourse />
+          </Tooltip>
         </>
       ),
     },

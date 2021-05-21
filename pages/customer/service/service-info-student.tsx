@@ -216,7 +216,9 @@ const StudentAppointmentCreate = () => {
         <div className="row">
           <div className="col-12 d-flex justify-content-end">
             <div style={{ paddingRight: 5 }}>
-              <Button type="primary">Xác nhận</Button>
+              <Button type="primary" size="large">
+                Xác nhận
+              </Button>
             </div>
           </div>
         </div>

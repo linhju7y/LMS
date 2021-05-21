@@ -2,7 +2,7 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
+import { Button, Card, Tag, Form, Input, Select, Tooltip } from "antd";
 import { data } from "./data";
 import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
@@ -379,7 +379,9 @@ export default function ExchangeStudent() {
             query: { slug: 2 },
           }}
         >
-          <Button type="link" icon={<Eye />} />
+          <Tooltip title="Xem chi tiết">
+            <Button type="link" icon={<Eye />} />
+          </Tooltip>
         </Link>
       ),
     },

@@ -1,7 +1,7 @@
 import React from "react";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
+import { Button, Card, Tag, Form, Input, Select, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import FilterTable from "~/components/Global/FeedbackList/FitlerTable";
 import Link from "next/link";
@@ -399,7 +399,9 @@ const StudentData = () => {
             query: { slug: 2 },
           }}
         >
-          <Button type="link" icon={<Eye />} />
+          <Tooltip title="Xem chi tiết">
+            <Button type="link" icon={<Eye />} />
+          </Tooltip>
         </Link>
       ),
     },

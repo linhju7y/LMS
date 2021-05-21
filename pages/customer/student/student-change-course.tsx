@@ -3,7 +3,7 @@ import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
 import SearchBox from "~/components/Elements/SearchBox";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
+import { Button, Card, Tag, Form, Input, Select, Tooltip } from "antd";
 import Link from "next/link";
 import { data3 } from "./data";
 import ExpandBox from "~/components/Elements/ExpandBox";
@@ -31,7 +31,10 @@ export default function StudentCourseChange() {
             query: { slug: 2 },
           }}
         >
-          <Button type="link" icon={<Eye />} />
+          <Tooltip title="Xem chi tiết">
+            {" "}
+            <Button type="link" icon={<Eye />} />
+          </Tooltip>
         </Link>
       ),
     },
