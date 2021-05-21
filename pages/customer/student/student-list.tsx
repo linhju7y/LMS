@@ -6,7 +6,7 @@ import SearchBox from "~/components/Elements/SearchBox";
 import FilterTable from "~/components/Global/FeedbackList/FitlerTable";
 import Link from "next/link";
 
-import { data } from "./data";
+import { data } from "../../../lib/customer-student/data";
 import TitlePage from "~/components/Elements/TitlePage";
 const { Option } = Select;
 const expandedRowRender = () => {

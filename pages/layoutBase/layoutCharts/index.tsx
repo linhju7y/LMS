@@ -1,20 +1,18 @@
-import React from "react";
-import { Card } from "antd";
-import LineChart from "~/components/Chart/LineChart";
-import Doughnut from "~/components/Chart/Doughnut";
-import ColumnChartMix from "~/components/Chart/ColumnChartMix";
-import BarChart from "~/components/Chart/BarChart";
-import GroupedBar from "~/components/Chart/GroupBarChart";
-import CrazyChart from "~/components/Chart/CrazyChart";
-import MultiAxisLine from "~/components/Chart/MultiAxisLine";
+// import React from "react";
+// import { Card } from "antd";
+// import LineChart from "~/components/Chart/LineChart";
+// import Doughnut from "~/components/Chart/Doughnut";
+// import ColumnChartMix from "~/components/Chart/ColumnChartMix";
+// import BarChart from "~/components/Chart/BarChart";
+// import GroupedBar from "~/components/Chart/GroupBarChart";
+// import CrazyChart from "~/components/Chart/CrazyChart";
+// import MultiAxisLine from "~/components/Chart/MultiAxisLine";
 
 const testDashboard = () => {
   return (
     <div className="container-fluid">
-      <div className="row">
-        {/* <div className="col-6">
-          <ColumnChartMix />
-        </div> */}
+      {/* <div className="row">
+
         <div className="col-6">
           <Card>
             <GroupedBar />
@@ -37,7 +35,7 @@ const testDashboard = () => {
             <Doughnut />
           </Card>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

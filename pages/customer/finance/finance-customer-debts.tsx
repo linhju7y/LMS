@@ -4,7 +4,7 @@ import PowerTable from "~/components/PowerTable";
 import { Eye, CheckCircle, Filter } from "react-feather";
 import { Button } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-import { dataService } from "./../dataCustomer";
+import { dataService } from "../../../lib/customer/dataCustomer";
 
 export default function FinanceDebts() {
   const columns = [

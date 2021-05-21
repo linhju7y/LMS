@@ -3,7 +3,7 @@ import { Input, Card, Button, Tag, Rate } from "antd";
 import { FormOutlined, EyeOutlined } from "@ant-design/icons";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
-import AddLesson from "~/components/Global/CourseOnline/AddLesson";
+// import AddLesson from "~/components/Global/CourseOnline/AddLesson";
 
 const LessonListing = () => {
   const { Search } = Input;
@@ -204,10 +204,10 @@ const LessonListing = () => {
           </div>
         </div>
       </div>
-      <AddLesson
+      {/* <AddLesson
         visible={addLesson}
         onCancel={() => setAddLesson(false)}
-      ></AddLesson>
+      ></AddLesson> */}
     </>
   );
 };

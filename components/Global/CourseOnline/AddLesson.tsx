@@ -35,7 +35,6 @@ const AddLesson = ({ visible, onCancel }) => {
                     editor={ClassicEditor}
                     data=""
                     onInit={(editor) => {
-                      // You can store the "editor" and use when it's needed.
                       console.log("Editor is ready to use!", editor);
                     }}
                     onChange={(event, editor) => {

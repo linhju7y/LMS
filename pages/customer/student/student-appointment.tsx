@@ -4,7 +4,7 @@ import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
 import { Button, Card, Tag, Form, Input, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-import { data4 } from "./data";
+import { data4 } from "../../../lib/customer-student/data";
 
 export default function StudentAppointment() {
   const expandedRowRender = () => {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import events from "./events";
+import events from "../../../lib/create-course-self/events";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import TitlePage from "~/components/TitlePage";
 import FormCreateCourse from "~/components/Global/CreateCourse/FormCreateCourse";

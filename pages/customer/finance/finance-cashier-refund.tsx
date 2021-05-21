@@ -4,7 +4,7 @@ import ExpandTable from "~/components/ExpandTable";
 import { DollarSign, Filter } from "react-feather";
 import { Button, Tag } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-import { dataService } from "./../dataCustomer";
+import { dataService } from "../../../lib/customer/dataCustomer";
 
 export default function FinanceRefund() {
   const expandedRowRender = () => {

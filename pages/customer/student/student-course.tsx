@@ -4,7 +4,7 @@ import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter, Move, Repeat, RotateCcw } from "react-feather";
 import { Button, Tag, Select, Tooltip } from "antd";
 import Link from "next/link";
-import { data2 } from "./data";
+import { data2 } from "../../../lib/customer-student/data";
 import ChangeCourse from "~/components/Global/Customer/Student/ChangeCourse";
 import SearchBox from "~/components/Elements/SearchBox";
 import ReserveCourse from "~/components/Global/Customer/Student/ReserveCourse";

@@ -5,7 +5,7 @@ import { Eye, Filter } from "react-feather";
 import SearchBox from "~/components/Elements/SearchBox";
 import { Button, Card, Tag, Form, Input, Select, Tooltip } from "antd";
 import Link from "next/link";
-import { data3 } from "./data";
+import { data3 } from "../../../lib/customer-student/data";
 
 export default function StudentCourseChange() {
   const expandedRowRender = () => {

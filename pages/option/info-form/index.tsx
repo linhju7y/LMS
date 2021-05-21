@@ -2,7 +2,7 @@ import React from "react";
 import PowerTable from "~/components/PowerTable";
 import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
-import { data } from "../dataOption2";
+import { data } from "../../../lib/option/dataOption2";
 import InfoForm from "~/components/Global/Option/InfoForm";
 import { Input, Tag } from "antd";
 import TinyMCE from "~/components/TinyMCE";

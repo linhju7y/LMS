@@ -4,7 +4,7 @@ import PowerTable from "~/components/PowerTable";
 import { Filter } from "react-feather";
 import { Tag, Image } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-import { dataService } from "./../dataCustomer";
+import { dataService } from "../../../lib/customer/dataCustomer";
 
 export default function FinanceReward() {
   const columns = [

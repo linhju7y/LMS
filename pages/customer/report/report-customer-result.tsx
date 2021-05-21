@@ -4,7 +4,7 @@ import PowerTable from "~/components/PowerTable";
 import { Filter } from "react-feather";
 import { Button, Card, Tag, Form, Input, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-import { dataService } from "./../dataCustomer";
+import { dataService } from "../../../lib/customer/dataCustomer";
 
 export default function CustomerServiceResult() {
   const columns = [

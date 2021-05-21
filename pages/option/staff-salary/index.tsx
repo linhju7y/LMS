@@ -2,7 +2,7 @@ import React from "react";
 import PowerTable from "~/components/PowerTable";
 import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
-import { data } from "../dataOption2";
+import { data } from "../../../lib/option/dataOption2";
 import StaffSalaryForm from "~/components/Global/Option/StaffSalaryForm";
 
 const StaffSalary = () => {

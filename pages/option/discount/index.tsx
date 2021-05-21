@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PowerTable from "~/components/PowerTable";
 import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
-import { data } from "../dataOption2";
+import { data } from "../../../lib/option/dataOption2";
 import { Tag, Tooltip } from "antd";
 import DiscountForm from "~/components/Global/Option/DiscountForm";
 import SortBox from "~/components/Elements/SortBox";

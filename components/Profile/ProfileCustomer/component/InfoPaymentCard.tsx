@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Collapse, Divider, Tag } from "antd";
 import PowerTable from "~/components/PowerTable";
-import { dataService } from "../../../../pages/customer/dataCustomer";
+import { dataService } from "../../../../lib/customer/dataCustomer";
 import ExpandTable from "~/components/ExpandTable";
 import { File } from "react-feather";
 

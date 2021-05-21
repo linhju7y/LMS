@@ -2,7 +2,7 @@ import TitlePage from "~/components/TitlePage";
 import { Card, Form, Select, Input, Table, Button } from "antd";
 import TinyBox from "~/components/TinyMCE";
 import { Comment, Tooltip, Avatar, Rate, Tag } from "antd";
-import { dataService } from "../../../../pages/customer/dataCustomer";
+import { dataService } from "../../../../lib/customer/dataCustomer";
 import { Upload, Save } from "react-feather";
 
 const InfoTestResultCard = () => {

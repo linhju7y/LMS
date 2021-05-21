@@ -4,7 +4,7 @@ import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
 import { Button, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-import { dataService } from "./../dataCustomer";
+import { dataService } from "../../../lib/customer/dataCustomer";
 
 export default function CustomerService() {
   const expandedRowRender = () => {

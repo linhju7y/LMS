@@ -4,7 +4,7 @@ import ExpandTable from "~/components/ExpandTable";
 import { Eye, CheckCircle, XCircle, Filter } from "react-feather";
 import { Button, Tag, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-import { dataService } from "./../dataCustomer";
+import { dataService } from "../../../lib/customer/dataCustomer";
 
 export default function AppointmentServiceTest() {
   const expandedRowRender = () => {

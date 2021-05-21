@@ -1,7 +1,7 @@
 import { Divider } from "antd";
 import React from "react";
 import PowerTable from "~/components/PowerTable";
-import { dataService } from "../../../../pages/customer/dataCustomer";
+import { dataService } from "../../../../lib/customer/dataCustomer";
 
 const InfoOtherCard = () => {
   const columns = [

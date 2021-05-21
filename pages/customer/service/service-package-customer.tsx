@@ -4,7 +4,7 @@ import PowerTable from "~/components/PowerTable";
 import { Eye, Filter } from "react-feather";
 import { Button, Tag, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-import { dataService } from "./../dataCustomer";
+import { dataService } from "../../../lib/customer/dataCustomer";
 
 export default function CustomerServicePackage() {
   const expandedRowRender = () => {
