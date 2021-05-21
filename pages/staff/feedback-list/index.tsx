@@ -91,7 +91,7 @@ const FeedbackList = () => {
           <Tooltip title="Xem chi tiết">
             <Link
               href={{
-                pathname: "/staff/saler-list/detail/[slug]",
+                pathname: "/staff/feedback-list/[slug]",
                 query: { slug: 2 },
               }}
             >

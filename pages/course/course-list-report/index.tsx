@@ -1,4 +1,4 @@
-import { Card, Table } from "antd";
+import { Card, Table, Tag } from "antd";
 import ActionTable from "~/components/ActionTable";
 import SearchBox from "~/components/Elements/SearchBox";
 import TitlePage from "~/components/Elements/TitlePage";
@@ -16,7 +16,11 @@ const columns = [
     title: "Tên khóa",
     dataIndex: "CourseName",
     key: "coursename",
-    render: (text) => <a>{text}</a>,
+    render: (text) => (
+      <a className="color-primary" style={{ fontWeight: 500 }}>
+        {text}
+      </a>
+    ),
   },
   {
     title: "Cơ sở",
@@ -27,6 +31,7 @@ const columns = [
     title: "Tình trạng",
     dataIndex: "Status",
     key: "status",
+    render: () => <Tag className="style-tag active">Sắp mở</Tag>,
   },
   {
     title: "Giá khóa",
@@ -42,11 +47,21 @@ const columns = [
     title: "Đã thu",
     dataIndex: "PriceReceived",
     key: "pricereceived",
+    render: (text) => (
+      <p style={{ fontWeight: 500, color: "#636363", marginBottom: 0 }}>
+        {text}
+      </p>
+    ),
   },
   {
     title: "nợ",
     dataIndex: "Debt",
     key: "debt",
+    render: (text) => (
+      <p style={{ fontWeight: 500, color: "#636363", marginBottom: 0 }}>
+        {text}
+      </p>
+    ),
   },
   {
     title: "Tổng số buổi học",
@@ -70,9 +85,11 @@ const columns = [
   },
 ];
 
-const data = [
-  {
-    key: "1",
+const data = [];
+
+for (let i = 0; i < 50; i++) {
+  data.push({
+    key: 1,
     CourseName:
       "[ZIM - 1A - 1B Dân Chủ] - AS - Pronunciation, 03/04, 18:30-20:30,",
     Address: "ZIM - 1A - 1B Dân Chủ",
@@ -85,8 +102,8 @@ const data = [
     StudyDay: 30,
     StartDay: "03/04/2021",
     EndDay: "10/07/2021",
-  },
-];
+  });
+}
 
 const CourseListReport = () => {
   const [showFilter, showFilterSet] = useState(false);

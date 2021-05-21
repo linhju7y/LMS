@@ -8,6 +8,7 @@ import { Filter } from "react-feather";
 import React, { useState } from "react";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import CourseListContent from "~/components/Global/CourseList/CourseListContent";
+import Link from "next/link";
 
 const CourseList = () => {
   const [showFilter, showFilterSet] = useState(false);
@@ -25,15 +26,19 @@ const CourseList = () => {
             <Card
               title={
                 <div className="list-btn">
-                  <button
-                    className="btn btn-secondary light"
-                    style={{ marginRight: "10px" }}
-                  >
-                    Kiểm tra lịch phòng
-                  </button>
-                  <button className="btn btn-success light">
-                    Kiểm tra lịch giáo viên
-                  </button>
+                  <Link href="/course/schedule-room">
+                    <a
+                      className="btn btn-secondary light"
+                      style={{ marginRight: "10px" }}
+                    >
+                      Kiểm tra lịch phòng
+                    </a>
+                  </Link>
+                  <Link href="/course/schedule-teacher">
+                    <a className="btn btn-success light">
+                      Kiểm tra lịch giáo viên
+                    </a>
+                  </Link>
                 </div>
               }
               extra={

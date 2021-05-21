@@ -1,6 +1,6 @@
 import { Card, Select, Input } from "antd";
 
-const SortBox = () => {
+const SortBox = (props) => {
   const { Option } = Select;
   function handleChange(value) {
     console.log(`selected ${value}`);
@@ -8,9 +8,9 @@ const SortBox = () => {
   return (
     <>
       <Select
+        style={{ marginLeft: props.space ? "10px" : "", width: 120 }}
         className="style-input"
         defaultValue="sort-title"
-        style={{ width: 120 }}
         onChange={handleChange}
         size="large"
       >

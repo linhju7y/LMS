@@ -16,9 +16,10 @@ const PowerTable = (props) => {
             >
               {props.children}
               <Table
-                scroll={{ x: 1200 }}
+                scroll={{ x: 800 }}
                 columns={props.columns}
                 dataSource={props.dataSource}
+                size="middle"
               />
             </Card>
           </div>

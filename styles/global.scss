@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 @import "./fontawesome/css/all.css";
 @import "./fonts/Noir/font.css";
 
@@ -41,6 +42,16 @@ a {
 @import "./pages/course-list";
 
 @import "./pages/profile";
+
+@import "./pages/feedback-list";
+
+@import "./pages/package-list";
+
+@import "./pages/package-create";
+
+@import "./pages/package-set";
+
+@import "./pages/doing-test";
 
 // -------------------------- ELEMENTS ------------------------------//
 @import "./components/elements";

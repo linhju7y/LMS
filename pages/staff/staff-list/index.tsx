@@ -5,6 +5,7 @@ import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
 import PowerTable from "~/components/PowerTable";
+import ModalAdd from "~/components/Global/StaffList/ModalAdd";
 
 const dataSource = [
   {
@@ -194,7 +195,7 @@ const StaffList = () => {
         columns={columns}
         dataSource={dataSource}
         TitlePage="Danh sách nhân viên"
-        TitleCard={<button className="btn btn-primary">Thêm mới</button>}
+        TitleCard={<ModalAdd />}
         Extra={<SearchBox />}
       />
     </>

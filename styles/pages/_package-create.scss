@@ -1,0 +1,65 @@
+.package-create {
+  .box-form {
+    width: 50%;
+
+    .form-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+
+      label {
+        width: 100px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .box-type-package {
+    position: relative;
+    padding: 15px;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 12vw;
+    border-radius: 0.575rem;
+    cursor: pointer;
+
+    &.choose {
+      .box-detail {
+        background-color: #0088cc;
+      }
+    }
+
+    &:hover {
+      .box-detail {
+        background-color: #0088cc;
+        transition: 0.3s;
+      }
+    }
+
+    .box-detail {
+      position: absolute;
+      bottom: 0;
+      background: #884e125e;
+      width: 100%;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 3vw;
+      color: white;
+      transition: 0.3s;
+
+      p {
+        margin-bottom: 0;
+        margin-left: 20px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      svg {
+        font-size: 28px;
+      }
+    }
+  }
+}

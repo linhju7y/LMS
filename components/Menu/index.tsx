@@ -1,5 +1,6 @@
 import { Menu, Button } from "antd";
 import React, { useEffect, useState, useReducer, PureComponent } from "react";
+import { useRouter } from "next/router";
 
 import { BarChart, Bar, LineChart, Line } from "recharts";
 
@@ -37,6 +38,7 @@ import {
   MapPin,
   UserCheck,
   CheckSquare,
+  DollarSign,
 } from "react-feather";
 import Link from "next/link";
 
@@ -180,9 +182,14 @@ const MenuDefault = ({
                 <User />
               </a>
             </li>
-            <li className={tab === "tab-teacher" ? "active" : ""}>
-              <a href="#" onClick={changeTabs} data-tabs="tab-teacher">
+            <li className={tab === "tab-staff" ? "active" : ""}>
+              <a href="#" onClick={changeTabs} data-tabs="tab-staff">
                 <UserCheck />
+              </a>
+            </li>
+            <li className={tab === "tab-package" ? "active" : ""}>
+              <a href="#" onClick={changeTabs} data-tabs="tab-package">
+                <Package />
               </a>
             </li>
             <li className={tab === "tab-layout" ? "active" : ""}>
@@ -526,113 +533,201 @@ const MenuDefault = ({
           </Menu>
 
           {/* <Menu
-            defaultSelectedKeys={["5"]}
-            defaultOpenKeys={["sub-teacher"]}
+            defaultSelectedKeys={["1"]}
+            defaultOpenKeys={["sub1"]}
             mode="inline"
             theme="light"
             inlineCollapsed={state.collapsed}
-            style={{ display: tab === "tab-teacher" ? "block" : "none" }}
+            style={{ display: tab === "tab-layout" ? "block" : "none" }}
           >
-            <Menu.ItemGroup key="course" title="Giáo viên">
+            <Menu.ItemGroup key="course" title="Component Layout">
               <SubMenu
-                key="teacher-calendar"
+                key="sub1"
                 icon={
                   <span className="anticon">
-                    <Calendar />
+                    <Layers />
                   </span>
                 }
-                title="Lịch dạy"
+                title="Layout"
               >
-                <Menu.Item key="teacher-calendar-1">
-                  <Link href="/">Lịch dạy theo tuần</Link>
+                <Menu.Item key="9">
+                  <Link href="/layoutBase/layoutTables">Tables</Link>
                 </Menu.Item>
-                <Menu.Item key="teacher-calendar-2">
-                  <Link href="/">Lịch dạy theo khóa</Link>
+                <Menu.Item key="10">
+                  <Link href="/layoutBase/layoutButtons">Button</Link>
                 </Menu.Item>
-                <Menu.Item key="teacher-calendar-3">
-                  <Link href="/">Lịch nghỉ</Link>
+                <Menu.Item key="11">
+                  <Link href="/layoutBase/layoutForms">Form</Link>
+                </Menu.Item>
+                <Menu.Item key="12">
+                  <Link href="/layoutBase/layoutCharts">Charts</Link>
                 </Menu.Item>
               </SubMenu>
+            </Menu.ItemGroup>
+          </Menu> */}
 
+          <Menu
+            defaultSelectedKeys={["10"]}
+            defaultOpenKeys={["sub10"]}
+            mode="inline"
+            theme="light"
+            inlineCollapsed={state.collapsed}
+            style={{ display: tab === "tab-staff" ? "block" : "none" }}
+          >
+            <Menu.ItemGroup key="staff" title="Quản lí nhân viên">
               <SubMenu
-                key="teacher-course"
-                icon={
-                  <span className="anticon">
-                    <Award />
-                  </span>
-                }
-                title="Khóa học"
-              >
-                <Menu.Item key="teacher-course-1">
-                  <Link href="/">Thông tin khóa học</Link>
-                </Menu.Item>
-                <Menu.Item key="teacher-course-2">
-                  <Link href="/">Lịch học của khóa</Link>
-                </Menu.Item>
-                <Menu.Item key="teacher-course-3">
-                  <Link href="/">Tài liệu</Link>
-                </Menu.Item>
-                <Menu.Item key="teacher-course-4">
-                  <Link href="/">Thông báo</Link>
-                </Menu.Item>
-                <Menu.Item key="teacher-course-5">
-                  <Link href="/">Điểm danh</Link>
-                </Menu.Item>
-                <Menu.Item key="teacher-course-6">
-                  <Link href="/">Timeline</Link>
-                </Menu.Item>
-                <Menu.Item key="teacher-course-7">
-                  <Link href="/">Học viên</Link>
-                </Menu.Item>
-              </SubMenu>
-
-              <SubMenu
-                key="teacher-homework"
-                icon={
-                  <span className="anticon">
-                    <Book />
-                  </span>
-                }
-                title="Bài tập"
-              >
-                <Menu.Item key="teacher-homework-1">
-                  <Link href="/">Danh sách bài mới nộp</Link>
-                </Menu.Item>
-                <Menu.Item key="teacher-homework-2">
-                  <Link href="/">Danh sách bài chưa chấm</Link>
-                </Menu.Item>
-                <Menu.Item key="teacher-homework-3">
-                  <Link href="/">Danh sách bài chấm lại</Link>
-                </Menu.Item>
-                <Menu.Item key="teacher-homework-4">
-                  <Link href="/">Danh sách bài đã chấm</Link>
-                </Menu.Item>
-              </SubMenu>
-
-              <SubMenu
-                key="teacher-student"
+                key="sub-list-staff-child-1"
                 icon={
                   <span className="anticon">
                     <User />
                   </span>
                 }
-                title="Học viên"
+                title="Nhân viên"
               >
-                <Menu.Item key="teacher-student-1">
-                  <Link href="/">Thêm học viên</Link>
+                <Menu.Item key="nv1">
+                  <Link href="/staff/staff-list">
+                    <a>Danh sách nhân viên</a>
+                  </Link>
                 </Menu.Item>
-                <Menu.Item key="teacher-student-2">
-                  <Link href="/">Học viên bị cảnh báo</Link>
+
+                <Menu.Item key="nv2">
+                  <Link href="/staff/saler-list">
+                    <a>Danh sách Salers</a>
+                  </Link>
                 </Menu.Item>
-                <Menu.Item key="teacher-student-3">
-                  <Link href="/">Học viên sắp thi</Link>
+
+                <Menu.Item key="nv3">
+                  <Link href="/staff/feedback-list">
+                    <a>Duyệt feedback</a>
+                  </Link>
                 </Menu.Item>
-                <Menu.Item key="teacher-student-4">
-                  <Link href="/">Kết quả thi thực tế</Link>
+              </SubMenu>
+
+              <SubMenu
+                key="sub-list-staff-child-2"
+                icon={
+                  <span className="anticon">
+                    <User />
+                  </span>
+                }
+                title="Giáo viên"
+              >
+                <Menu.Item key="gv1">
+                  <Link href="/staff/teacher-list">
+                    <a>Giáo viên</a>
+                  </Link>
+                </Menu.Item>
+
+                <Menu.Item key="gv2">
+                  <Link href="/staff/exercise-done-list">
+                    <a>Bài đã chấm</a>
+                  </Link>
+                </Menu.Item>
+
+                <Menu.Item key="gv3">
+                  <Link href="/staff/exercise-check-list">
+                    <a>Duyệt bài</a>
+                  </Link>
+                </Menu.Item>
+
+                <Menu.Item key="gv4">
+                  <Link href="/staff/teach-hours-list">
+                    <a>Giờ dạy giáo viên</a>
+                  </Link>
+                </Menu.Item>
+
+                <Menu.Item key="gv5">
+                  <Link href="/staff/teach-hours-center">
+                    <a>Giờ dạy giáo viên theo trung tâm</a>
+                  </Link>
+                </Menu.Item>
+
+                <Menu.Item key="gv6">
+                  <Link href="/staff/cost-list">
+                    <a>Giá vốn hàng bán</a>
+                  </Link>
+                </Menu.Item>
+
+                <Menu.Item key="gv7">
+                  <Link href="/staff/teacher-salary-list">
+                    <a>Chi phí lương giáo viên</a>
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
+
+              <SubMenu
+                key="sub-list-staff-child-3"
+                icon={
+                  <span className="anticon">
+                    <DollarSign />
+                  </span>
+                }
+                title="Lương Office"
+              >
+                <Menu.Item key="s1">
+                  <Link href="/staff/campaign-sales">
+                    <a>Chiến dịch sale</a>
+                  </Link>
+                </Menu.Item>
+
+                <Menu.Item key="s2">
+                  <Link href="/staff/salary-review">
+                    <a>Duyệt lương office</a>
+                  </Link>
+                </Menu.Item>
+
+                <Menu.Item key="s3">
+                  <Link href="/staff/salary-history">
+                    <a>Lịch sử duyệt</a>
+                  </Link>
+                </Menu.Item>
+
+                <Menu.Item key="s4">
+                  <Link href="/staff/campaign-revenue">
+                    <a>Doanh thu chiến dịch sale</a>
+                  </Link>
                 </Menu.Item>
               </SubMenu>
             </Menu.ItemGroup>
-          </Menu> */}
+          </Menu>
+
+          <Menu
+            defaultSelectedKeys={["20"]}
+            defaultOpenKeys={["sub20"]}
+            mode="inline"
+            theme="light"
+            inlineCollapsed={state.collapsed}
+            style={{ display: tab === "tab-package" ? "block" : "none" }}
+          >
+            <Menu.ItemGroup key="staff" title="Gói bài tập">
+              <Menu.Item key="pk1">
+                <Link href="/package/package-list">
+                  <a>Quản lí gói bài</a>
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="pk2">
+                <Link href="/package/topic-list">
+                  <a>Topic</a>
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="pk3">
+                <Link href="/package/examiner-list">
+                  <a>Danh sách chấm gói bài</a>
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="pk4">
+                <Link href="/package/package-set">
+                  <a>Bộ sưu tập</a>
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="pk5">
+                <Link href="/staff/saler-list">
+                  <a>Cửa hàng</a>
+                </Link>
+              </Menu.Item>
+            </Menu.ItemGroup>
+          </Menu>
+
           <div className="menu-child-info white">
             <div className="box-title">
               <h6 className="title">Học viên mới</h6>

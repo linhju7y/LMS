@@ -244,6 +244,7 @@
         text-decoration: none;
         &:hover {
           text-decoration: none;
+          color: $primary-color;
         }
       }
 
@@ -268,6 +269,10 @@
         svg {
           color: $primary-color;
           transition: 0.3s;
+        }
+
+        a {
+          color: $primary-color;
         }
       }
 

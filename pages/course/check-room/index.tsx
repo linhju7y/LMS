@@ -11,7 +11,7 @@ const CheckRoom = () => {
   return (
     <div className="row">
       <div className="col-12">
-        <Card title="Xem lịch giáo viên">
+        <Card title="Kiểm tra phòng">
           <WrapFilter showFilter={showFilter} />
         </Card>
       </div>

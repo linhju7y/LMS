@@ -1,6 +1,6 @@
 import TitlePage from "../Elements/TitlePage";
 import { Card } from "antd";
-import TinyBox from "../TinyMCE";
+import TinyBox from "../Elements/TinyBox";
 import { Comment, Tooltip, Avatar, Rate } from "antd";
 
 const ExerciseDoneView = (props) => {

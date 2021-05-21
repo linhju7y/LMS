@@ -4,10 +4,13 @@ import { FormOutlined, EyeOutlined } from "@ant-design/icons";
 import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
 import PowerTable from "~/components/PowerTable";
+import ModalAdd from "~/components/Global/SalerList/ModalAdd";
 
-const dataSource = [
-  {
-    key: "1",
+const dataSource = [];
+
+for (let i = 0; i < 50; i++) {
+  dataSource.push({
+    key: i,
     Place: "Hồ Chí Minh",
     NameStaff: "Nguyễn An",
     NumberPhone: "012345678",
@@ -15,108 +18,8 @@ const dataSource = [
     Status: "",
     StartDay: "03/05/2021",
     Action: "",
-  },
-  {
-    key: "1",
-    Place: "Hồ Chí Minh",
-    NameStaff: "Nguyễn An",
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Place: "Hồ Chí Minh",
-    NameStaff: "Nguyễn An",
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Place: "Hồ Chí Minh",
-    NameStaff: "Nguyễn An",
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Place: "Hồ Chí Minh",
-    NameStaff: "Nguyễn An",
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Place: "Hồ Chí Minh",
-    NameStaff: "Nguyễn An",
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Place: "Hồ Chí Minh",
-    NameStaff: "Nguyễn An",
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Place: "Hồ Chí Minh",
-    NameStaff: "Nguyễn An",
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Place: "Hồ Chí Minh",
-    NameStaff: "Nguyễn An",
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Place: "Hồ Chí Minh",
-    NameStaff: "Nguyễn An",
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Place: "Hồ Chí Minh",
-    NameStaff: "Nguyễn An",
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-];
+  });
+}
 
 const columns = [
   {
@@ -144,7 +47,12 @@ const columns = [
     title: "Trạng thái",
     dataIndex: "Status",
     key: "status",
-    render: (Status) => <Tag color="green">Active</Tag>,
+    align: "center",
+    render: (Status) => (
+      <Tag className="style-tag active" color="green">
+        Active
+      </Tag>
+    ),
   },
   {
     title: "Ngày nhận việc",
@@ -155,6 +63,7 @@ const columns = [
     title: "Thao tác",
     dataIndex: "Action",
     key: "action",
+    align: "center",
     render: (Action) => (
       <Link
         href={{
@@ -162,7 +71,9 @@ const columns = [
           query: { slug: 2 },
         }}
       >
-        <a className="btn btn-primary">View</a>
+        <a className="btn btn-icon">
+          <EyeOutlined />
+        </a>
       </Link>
     ),
   },
@@ -190,7 +101,7 @@ const SalerList = () => {
         columns={columns}
         dataSource={dataSource}
         TitlePage="Danh sách Salers"
-        TitleCard={<button className="btn btn-primary">Thêm mới</button>}
+        TitleCard={<ModalAdd />}
         Extra={<SearchBox />}
       />
     </>

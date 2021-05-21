@@ -24,7 +24,7 @@ const TinyMceEditor = () => {
 };
 
 const TinyBox = () => (
-  <div>
+  <div className="w-100">
     <TinyMceEditor />
   </div>
 );
