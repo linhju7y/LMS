@@ -308,7 +308,7 @@ const ProfileBase = (props) => {
           {path === "teacher-detail" && (
             <>
               <div className="wrap-table table-overflow-x mt-2">
-                <Card title="Thông tin các lớp học">
+                {/* <Card title="Thông tin các lớp học">
                   <Table
                     pagination={false}
                     className="mt-4"
@@ -344,7 +344,7 @@ const ProfileBase = (props) => {
                     columns={columns}
                     scroll={{ x: 1500 }}
                   />
-                </Card>
+                </Card> */}
               </div>
             </>
           )}
