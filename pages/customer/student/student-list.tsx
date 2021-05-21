@@ -1,9 +1,10 @@
 import React from "react";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
+import { Button, Card, Tag, Form, Input, Select, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import FilterTable from "~/components/Global/FeedbackList/FitlerTable";
+import Link from "next/link";
 
 import { data } from "./data";
 import TitlePage from "~/components/Elements/TitlePage";
@@ -392,7 +393,18 @@ const StudentData = () => {
     },
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <Link
+          href={{
+            pathname: "/customer/student/detail/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <Tooltip title="Xem chi tiết">
+            <Button type="link" icon={<Eye />} />
+          </Tooltip>
+        </Link>
+      ),
     },
   ];
 

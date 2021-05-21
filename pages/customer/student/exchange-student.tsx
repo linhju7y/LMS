@@ -2,10 +2,10 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
+import { Button, Card, Tag, Form, Input, Select, Tooltip } from "antd";
 import { data } from "./data";
 import SearchBox from "~/components/Elements/SearchBox";
-
+import Link from "next/link";
 export default function ExchangeStudent() {
   const expandedRowRender = () => {
     const { Option } = Select;
@@ -371,7 +371,18 @@ export default function ExchangeStudent() {
 
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <Link
+          href={{
+            pathname: "/customer/student/detail/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <Tooltip title="Xem chi tiết">
+            <Button type="link" icon={<Eye />} />
+          </Tooltip>
+        </Link>
+      ),
     },
   ];
 

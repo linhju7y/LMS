@@ -1,10 +1,14 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye, Filter } from "react-feather";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Eye, Filter, Move, Repeat, RotateCcw } from "react-feather";
+import { Button, Tag, Select, Tooltip } from "antd";
+import Link from "next/link";
 import { data2 } from "./data";
+import ChangeCourse from "~/components/Global/Customer/Student/ChangeCourse";
+import SearchBox from "~/components/Elements/SearchBox";
+import ReserveCourse from "~/components/Global/Customer/Student/ReserveCourse";
+import RefundCourse from "~/components/Global/Customer/Student/RefundCourse";
 
 export default function CourseStudent() {
   const expandedRowRender = () => {
@@ -43,7 +47,30 @@ export default function CourseStudent() {
 
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <>
+          <Link
+            href={{
+              pathname: "/customer/student/detail/[slug]",
+              query: { slug: 2 },
+            }}
+          >
+            <Tooltip title="Xem chi tiết">
+              <Button type="link" icon={<Eye />} />
+            </Tooltip>
+          </Link>
+
+          <Tooltip title="Chuyển khóa">
+            <ChangeCourse />
+          </Tooltip>
+          <Tooltip title="Bảo lưu khóa">
+            <ReserveCourse />
+          </Tooltip>
+          <Tooltip title="Hoàn tiền">
+            <RefundCourse />
+          </Tooltip>
+        </>
+      ),
     },
   ];
 

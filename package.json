@@ -27,6 +27,7 @@
     "gray-matter": "^4.0.2",
     "moment": "^2.29.1",
     "next": "^10.0.0",
+    "randomcolor": "^0.6.2",
     "react": "17.0.1",
     "react-big-calendar": "^0.33.2",
     "react-bootstrap": "^1.5.2",
