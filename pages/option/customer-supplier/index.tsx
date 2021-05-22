@@ -3,6 +3,7 @@ import PowerTable from "~/components/PowerTable";
 import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption2";
+
 import { Tooltip, Tag } from "antd";
 import CustomerSupplierForm from "~/components/Global/Option/CustomerSupplierForm";
 const CustomerSupplier = () => {

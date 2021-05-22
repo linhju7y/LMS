@@ -1,8 +1,14 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 32fda8074c7babd0784bfcb3e85b16a9e5ebf4c1	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/-/npm/v1/security/audits/quick","integrity":null,"time":1620976883695}
 =======
 32fda8074c7babd0784bfcb3e85b16a9e5ebf4c1	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/-/npm/v1/security/audits/quick","integrity":null,"time":1620976883695}
 96d37ae0cdd49d6d76d292b36841632d012f6286	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/-/npm/v1/security/audits/quick","integrity":null,"time":1621395430746}
 672f22edbcb7290e03db61a8960628a714e0f68d	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/-/npm/v1/security/audits/quick","integrity":null,"time":1621476510892}
 >>>>>>> 2948665 (hy vong ko bi chui)
+=======
+32fda8074c7babd0784bfcb3e85b16a9e5ebf4c1	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/-/npm/v1/security/audits/quick","integrity":null,"time":1620976883695}
+96d37ae0cdd49d6d76d292b36841632d012f6286	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/-/npm/v1/security/audits/quick","integrity":null,"time":1621395430746}
+672f22edbcb7290e03db61a8960628a714e0f68d	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/-/npm/v1/security/audits/quick","integrity":null,"time":1621476510892}
+>>>>>>> feature/popup-customer

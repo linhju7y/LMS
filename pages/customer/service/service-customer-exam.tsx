@@ -6,6 +6,7 @@ import { Button, Tag } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 
 import { dataService } from "../../../lib/customer/dataCustomer";
+import Link from "next/link";
 
 export default function CustomerServiceExam() {
   const columns = [
@@ -29,7 +30,16 @@ export default function CustomerServiceExam() {
     { title: "Ngày đăng kí", dataIndex: "regDate" },
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <Link
+          href={{
+            pathname: "/customer/student/detail/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <Button type="link" icon={<Eye />} />
+        </Link>
+      ),
     },
   ];
 

@@ -7,10 +7,12 @@ import { Button, Card, Tag, Form, Input, Select, Tooltip } from "antd";
 import Link from "next/link";
 import { data3 } from "../../../lib/customer-student/data";
 
+import ExpandBox from "~/components/Elements/ExpandBox";
+
 export default function StudentCourseChange() {
   const expandedRowRender = () => {
     const { Option } = Select;
-    return <></>;
+    return <ExpandBox />;
   };
 
   const columns = [

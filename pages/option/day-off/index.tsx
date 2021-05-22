@@ -3,6 +3,7 @@ import PowerTable from "~/components/PowerTable";
 import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption2";
+
 import { Tag, Tooltip } from "antd";
 import DayOffForm from "~/components/Global/Option/DayOffForm";
 

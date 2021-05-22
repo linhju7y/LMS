@@ -3,6 +3,7 @@ import PowerTable from "~/components/PowerTable";
 import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption2";
+
 import PostForm from "~/components/Global/Option/PostForm";
 import ExpandTable from "~/components/ExpandTable";
 import { Switch, Tag, Card } from "antd";

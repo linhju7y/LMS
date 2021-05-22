@@ -3,6 +3,7 @@ import PowerTable from "~/components/PowerTable";
 import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption";
+
 import { Tooltip, Switch } from "antd";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 const StudyTime = () => {

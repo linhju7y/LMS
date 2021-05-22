@@ -6,10 +6,10 @@ import { Button } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 
+import { ExpandBoxWarning } from "~/components/Elements/ExpandBox";
+
 export default function ReportWarning() {
-  const expandedRowRender = () => {
-    <></>;
-  };
+  const expandedRowRender = () => <ExpandBoxWarning />;
   const columns = [
     { title: "Trung tâm", dataIndex: "center" },
     { title: "Học viên", dataIndex: "nameStudent" },

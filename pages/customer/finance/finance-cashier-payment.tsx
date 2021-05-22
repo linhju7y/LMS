@@ -6,6 +6,8 @@ import { Button, Image } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 
+import ConsultantForm from "~/components/Global/Customer/Finance/ConsultantForm";
+
 export default function FinancePayment() {
   const columns = [
     { title: "Trung tâm", dataIndex: "center" },
@@ -26,7 +28,7 @@ export default function FinancePayment() {
       title: "",
       render: () => (
         <>
-          <Button type="link" icon={<Edit />} />
+          <ConsultantForm />
           <Button type="link" icon={<ShoppingCart />} />
         </>
       ),

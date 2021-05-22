@@ -6,10 +6,13 @@ import { Button, Tag, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 
+import Link from "next/link";
+import TestInfo from "~/components/Global/Customer/Service/TestInfo";
+import { ExpandBoxService } from "~/components/Elements/ExpandBox";
 export default function AppointmentServiceTest() {
   const expandedRowRender = () => {
     const { Option } = Select;
-    return <></>;
+    return <ExpandBoxService />;
   };
   const columns = [
     { title: "Học viên", dataIndex: "nameStudent" },
@@ -42,7 +45,20 @@ export default function AppointmentServiceTest() {
     },
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <>
+          <Link
+            href={{
+              pathname: "/customer/student/detail/[slug]",
+              query: { slug: 2 },
+            }}
+          >
+            <Button type="link" icon={<Eye />} />
+          </Link>
+
+          <TestInfo />
+        </>
+      ),
     },
   ];
 

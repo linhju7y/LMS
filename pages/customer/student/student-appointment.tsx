@@ -6,10 +6,15 @@ import { Button, Card, Tag, Form, Input, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { data4 } from "../../../lib/customer-student/data";
 
+import ExpandBox from "~/components/Elements/ExpandBox";
+import RegInfo from "~/components/Global/Customer/Student/RegInfo";
+import RegCancel from "~/components/Global/Customer/Student/RegCancel";
+import RegRefund from "~/components/Global/Customer/Student/RegRefund";
+
 export default function StudentAppointment() {
   const expandedRowRender = () => {
     const { Option } = Select;
-    return <></>;
+    return <ExpandBox />;
   };
 
   const columns = [
@@ -21,7 +26,13 @@ export default function StudentAppointment() {
     { title: "Còn lại", dataIndex: "deposit" },
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <>
+          <RegInfo />
+          <RegCancel />
+          <RegRefund />
+        </>
+      ),
     },
   ];
 

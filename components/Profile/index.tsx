@@ -57,11 +57,11 @@ const dataSource = [
 
 const columns = [
   {
-    width: 200,
     title: "Tên lớp học",
+    width: 200,
     dataIndex: "ClassName",
     key: "classname",
-    fixed: "left",
+
     render: (text) => <p className="color-primary">{text}</p>,
   },
   {
@@ -308,7 +308,7 @@ const ProfileBase = (props) => {
           {path === "teacher-detail" && (
             <>
               <div className="wrap-table table-overflow-x mt-2">
-                {/* <Card title="Thông tin các lớp học">
+                <Card title="Thông tin các lớp học">
                   <Table
                     pagination={false}
                     className="mt-4"
@@ -344,7 +344,7 @@ const ProfileBase = (props) => {
                     columns={columns}
                     scroll={{ x: 1500 }}
                   />
-                </Card> */}
+                </Card>
               </div>
             </>
           )}

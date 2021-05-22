@@ -6,11 +6,9 @@ import { Button, Tag, Select } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 
+import PaymentService from "~/components/Global/Customer/Service/PaymentService";
+
 export default function CustomerServicePackage() {
-  const expandedRowRender = () => {
-    const { Option } = Select;
-    return <></>;
-  };
   const columns = [
     { title: "Học viên", dataIndex: "nameStudent" },
     { title: "Tên set", dataIndex: "pkgName" },
@@ -31,7 +29,7 @@ export default function CustomerServicePackage() {
     },
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => <PaymentService />,
     },
   ];
 

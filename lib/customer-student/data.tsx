@@ -47,6 +47,7 @@ export const data = [
 
 export const data2 = [
   {
+    key: 1,
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Không",
@@ -54,6 +55,7 @@ export const data2 = [
     money: "6.500.000",
   },
   {
+    key: 2,
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Có",
@@ -64,6 +66,7 @@ export const data2 = [
 
 export const data3 = [
   {
+    key: 1,
     nameStudent: "Nguyễn Thị Oanh",
     course: "[ZIM - 20L5 Thái Hà] - Online - Intermediate, 13/03, 19:00-21:00",
     money: "	19.500.000",
