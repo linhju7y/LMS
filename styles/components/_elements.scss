@@ -825,7 +825,7 @@ hr {
   .ant-table-thead {
     tr {
       th {
-        // white-space: nowrap;
+        padding: 8px 16px;
         padding-left: 15px !important;
         background: $primary-color;
         color: white;
@@ -853,13 +853,15 @@ hr {
       transition: 0.3s;
     }
 
-    tr:hover {
-      background-color: #ffed95 !important;
-      background: #ffed95 !important;
-      transition: 0.3s;
+    tr.ant-table-row:hover {
+      // background-color: #ffed95 !important;
+      td {
+        background: #ffed95 !important;
+        transition: 0.3s;
+      }
     }
 
-    tr:nth-of-type(2n + 1) {
+    .ant-table-row:nth-of-type(2n + 1) {
       background-color: #0088cc08;
     }
 
@@ -883,4 +885,7 @@ hr {
     background: #10ca93;
     border-color: #10ca93;
   }
+}
+.revenue-detail-row {
+  margin-top: 15px;
 }

@@ -8,17 +8,19 @@ import SortBox from "~/components/Elements/SortBox";
 import { Filter } from "react-feather";
 import FilterTable from "~/components/Global/CostList";
 
-const dataSource = [
-  {
-    key: "1",
+const dataSource = [];
+
+for (let i = 0; i < 50; i++) {
+  dataSource.push({
+    key: i,
     FullName: "Hoàng Linh",
     Email: "hoanglinh@gmail.com",
     CurrentCourse: "1",
     LessonLeft: "10",
     Salary: "250,000",
     TotalPrice: "2,500,000",
-  },
-];
+  });
+}
 
 const columns = [
   {
