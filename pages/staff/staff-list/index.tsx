@@ -150,6 +150,7 @@ const columns = [
     title: "Trạng thái",
     dataIndex: "Status",
     key: "status",
+    align: "center",
     render: (Status) => <Tag color="green">Active</Tag>,
   },
   {
