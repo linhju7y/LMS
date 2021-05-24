@@ -8,9 +8,8 @@ const DistrictForm = (props) => {
   return (
     <>
       {props.showIcon && (
-        <Button
-          style={{ paddingRight: 1, paddingLeft: 1 }}
-          type="link"
+        <button
+          className="btn btn-icon edit"
           onClick={() => {
             setIsModalVisible(true);
           }}
@@ -18,18 +17,17 @@ const DistrictForm = (props) => {
           <Tooltip title="Cập nhật">
             <RotateCcw />
           </Tooltip>
-        </Button>
+        </button>
       )}
       {props.showAdd && (
-        <Button
-          type="primary"
+        <button
+          className="btn btn-warning add-new"
           onClick={() => {
             setIsModalVisible(true);
           }}
-          size="large"
         >
-          Add District
-        </Button>
+          Thêm mới
+        </button>
       )}
 
       {/*  */}
@@ -57,7 +55,6 @@ const DistrictForm = (props) => {
                 </Form.Item>
               </div>
             </div>
-            <Divider />
             <div className="row ">
               <div className="col-12">
                 {props.showAdd == true ? (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Input, Select, Divider } from "antd";
+import { Modal, Button, Form, Input, Select, Divider, Tooltip } from "antd";
 import { LogIn } from "react-feather";
 
 const ReserveChangeCourse = () => {
@@ -9,15 +9,17 @@ const ReserveChangeCourse = () => {
 
   return (
     <>
-      <Button
-        style={{ paddingRight: 1, paddingLeft: 1 }}
-        type="link"
-        onClick={() => {
-          setIsModalVisible(true);
-        }}
-      >
-        <LogIn />
-      </Button>
+      <Tooltip title="Chuyển vào khóa">
+        <button
+          className="btn btn-icon"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <LogIn />
+        </button>
+      </Tooltip>
+
       <Modal
         width={850}
         title="Chuyển vào khóa"

@@ -2,7 +2,7 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
-import { Button, Select } from "antd";
+import { Button, Select, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 
@@ -12,7 +12,6 @@ import RegRefund from "~/components/Global/Customer/Student/RegRefund";
 
 export default function CustomerService() {
   const expandedRowRender = () => {
-    const { Option } = Select;
     return <ExpandBoxService />;
   };
 
@@ -31,7 +30,11 @@ export default function CustomerService() {
               query: { slug: 2 },
             }}
           >
-            <Button type="link" icon={<Eye />} />
+            <Tooltip title="Xem chi tiết">
+              <button className="btn btn-icon">
+                <Eye />
+              </button>
+            </Tooltip>
           </Link>
 
           <RegRefund />

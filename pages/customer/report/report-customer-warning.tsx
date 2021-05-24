@@ -2,10 +2,10 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
-import { Button } from "antd";
+import { Button, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
-
+import Link from "next/link";
 import { ExpandBoxWarning } from "~/components/Elements/ExpandBox";
 
 export default function ReportWarning() {
@@ -19,7 +19,22 @@ export default function ReportWarning() {
     { title: "Chủ nhiệm", dataIndex: "rpLeader" },
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <>
+          <Link
+            href={{
+              pathname: "/feedback/[slug]",
+              query: { slug: 2 },
+            }}
+          >
+            <Tooltip title="Xem chi tiết">
+              <button className="btn btn-icon">
+                <Eye />
+              </button>
+            </Tooltip>
+          </Link>
+        </>
+      ),
     },
   ];
 

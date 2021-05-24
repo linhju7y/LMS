@@ -7,9 +7,8 @@ const StudyTimeForm = (props) => {
   return (
     <>
       {props.showIcon && (
-        <Button
-          style={{ paddingRight: 1, paddingLeft: 1 }}
-          type="link"
+        <button
+          className="btn btn-icon edit"
           onClick={() => {
             setIsModalVisible(true);
           }}
@@ -17,18 +16,17 @@ const StudyTimeForm = (props) => {
           <Tooltip title="Cập nhật">
             <RotateCcw />
           </Tooltip>
-        </Button>
+        </button>
       )}
       {props.showAdd && (
-        <Button
-          type="primary"
+        <button
+          className="btn btn-warning add-new"
           onClick={() => {
             setIsModalVisible(true);
           }}
-          size="large"
         >
           Thêm mới
-        </Button>
+        </button>
       )}
 
       {/*  */}
@@ -69,8 +67,6 @@ const StudyTimeForm = (props) => {
                 </Form.Item>
               </div>
             </div>
-
-            <Divider />
             <div className="row ">
               <div className="col-12">
                 <Button className="w-100" type="primary" size="large">

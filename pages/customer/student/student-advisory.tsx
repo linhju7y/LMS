@@ -2,7 +2,7 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
-import { Button, Select } from "antd";
+import { Button, Select, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { data6 } from "../../../lib/customer-student/data";
 
@@ -11,7 +11,6 @@ import Link from "next/link";
 
 export default function StudentAdvisory() {
   const expandedRowRender = () => {
-    const { Option } = Select;
     return <ExpandBox />;
   };
 
@@ -33,7 +32,11 @@ export default function StudentAdvisory() {
             query: { slug: 2 },
           }}
         >
-          <Button type="link" icon={<Eye />} />
+          <Tooltip title="Xem chi tiết">
+            <button className="btn btn-icon">
+              <Eye />
+            </button>
+          </Tooltip>
         </Link>
       ),
     },

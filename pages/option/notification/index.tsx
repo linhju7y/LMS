@@ -23,8 +23,9 @@ const Notification = () => {
     {
       title: "Role",
       dataIndex: "teacher",
+      align: "center",
       render: (teacher) => (
-        <Tag key={teacher} color="#0077b6" className="style-input">
+        <Tag key={teacher} color="#0077b6" className="style-tag">
           {teacher.toUpperCase()}
         </Tag>
       ),
@@ -45,7 +46,7 @@ const Notification = () => {
   return (
     <div className="row">
       <div className="col-12">
-        <TitlePage title="Staff Salary " />
+        <TitlePage title="Notification" />
       </div>
       <div className="col-12">
         <ExpandTable

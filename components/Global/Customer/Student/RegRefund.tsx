@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Input, Select, Divider } from "antd";
+import { Modal, Button, Form, Input, Select, Divider, Tooltip } from "antd";
 import { RotateCcw } from "react-feather";
 
 const RegRefund = () => {
@@ -9,15 +9,17 @@ const RegRefund = () => {
 
   return (
     <>
-      <Button
-        style={{ paddingRight: 1, paddingLeft: 1 }}
-        type="link"
-        onClick={() => {
-          setIsModalVisible(true);
-        }}
-      >
-        <RotateCcw />
-      </Button>
+      <Tooltip title="Hoàn trả phí">
+        <button
+          className="btn btn-icon edit"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <RotateCcw />
+        </button>
+      </Tooltip>
+
       <Modal
         width={800}
         title="Hoàn tiền"

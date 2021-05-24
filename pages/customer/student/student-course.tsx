@@ -25,10 +25,10 @@ export default function CourseStudent() {
       title: "Cảnh báo",
       dataIndex: "warning",
       render: (status) => {
-        let color = status == "Không" ? "blue" : "volcano";
+        let color = status == "Không" ? "#0077b6" : "#d00000";
         return (
-          <Tag color={color} key={status}>
-            <b> {status.toUpperCase()}</b>
+          <Tag color={color} key={status} className="style-tag">
+            {status.toUpperCase()}
           </Tag>
         );
       },
@@ -37,10 +37,10 @@ export default function CourseStudent() {
       title: "Kết quả thi",
       dataIndex: "result",
       render: (status) => {
-        let color = status == "Không đạt" ? "volcano" : "blue";
+        let color = status == "Không đạt" ? "#d00000" : "#0077b6";
         return (
-          <Tag color={color} key={status}>
-            <b> {status.toUpperCase()}</b>
+          <Tag color={color} key={status} className="style-tag">
+            {status.toUpperCase()}
           </Tag>
         );
       },
@@ -58,19 +58,17 @@ export default function CourseStudent() {
             }}
           >
             <Tooltip title="Xem chi tiết">
-              <Button type="link" icon={<Eye />} />
+              <button className="btn btn-icon">
+                <Eye />
+              </button>
             </Tooltip>
           </Link>
 
-          <Tooltip title="Chuyển khóa">
-            <ChangeCourse />
-          </Tooltip>
-          <Tooltip title="Bảo lưu khóa">
-            <ReserveCourse />
-          </Tooltip>
-          <Tooltip title="Hoàn tiền">
-            <RefundCourse />
-          </Tooltip>
+          <ChangeCourse />
+
+          <ReserveCourse />
+
+          <RefundCourse />
         </>
       ),
     },

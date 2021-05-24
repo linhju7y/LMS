@@ -29,12 +29,15 @@ export default function FinanceInvoice() {
       render: () => (
         <>
           <ConsultantForm />
-          <Button type="link" icon={<ShoppingCart />} />
-          <Button type="link" icon={<XCircle />} />
+          <button className="btn btn-icon">
+            <ShoppingCart />
+          </button>
+          <button className="btn btn-icon">
+            <XCircle />
+          </button>
         </>
       ),
     },
-    ``,
   ];
 
   return (

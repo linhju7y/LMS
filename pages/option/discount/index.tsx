@@ -14,8 +14,8 @@ const Discount = () => {
       title: "Code",
       dataIndex: "code",
       render: (code) => (
-        <Tag color="orange">
-          <b>{code}</b>
+        <Tag color="#e76f51" className="style-tag">
+          {code}
         </Tag>
       ),
     },
@@ -29,9 +29,7 @@ const Discount = () => {
     {
       render: () => (
         <>
-          <Tooltip title="Cập nhật trung tâm">
-            <DiscountForm showIcon={true} />
-          </Tooltip>
+          <DiscountForm showIcon={true} />
         </>
       ),
     },
@@ -40,7 +38,7 @@ const Discount = () => {
   return (
     <div className="row">
       <div className="col-12">
-        <TitlePage title="Provincial List" />
+        <TitlePage title="Discount List" />
       </div>
       <div className="col-12">
         <PowerTable

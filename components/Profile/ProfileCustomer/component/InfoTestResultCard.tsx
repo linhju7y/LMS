@@ -4,6 +4,7 @@ import TinyBox from "~/components/TinyMCE";
 import { Comment, Tooltip, Avatar, Rate, Tag } from "antd";
 import { dataService } from "../../../../lib/customer/dataCustomer";
 import { Upload, Save } from "react-feather";
+import PowerTable from "~/components/PowerTable";
 
 const InfoTestResultCard = () => {
   const columns = [
@@ -104,7 +105,7 @@ const InfoTestResultCard = () => {
                       </div>
                     </div>
                     <div className="row">
-                      <Table
+                      <PowerTable
                         scroll={{ x: 300 }}
                         pagination={false}
                         columns={columns}

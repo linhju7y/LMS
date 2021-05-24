@@ -16,9 +16,7 @@ const DayOff = () => {
     {
       render: () => (
         <>
-          <Tooltip title="Cập nhật trung tâm">
-            <DayOffForm showIcon={true} />
-          </Tooltip>
+          <DayOffForm showIcon={true} />
         </>
       ),
     },

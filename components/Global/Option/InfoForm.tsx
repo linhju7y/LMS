@@ -12,7 +12,7 @@ const InfoForm = (props) => {
     <>
       {props.showIcon && (
         <>
-          <Tooltip title="View">
+          <Tooltip title="View Detail">
             <button
               className="btn btn-icon info"
               onClick={() => {
@@ -24,21 +24,20 @@ const InfoForm = (props) => {
           </Tooltip>
           <Tooltip title="Iframe">
             <button className="btn btn-icon info">
-              <Layout />
+              <Layout color="#ffb4a2" />
             </button>
           </Tooltip>
         </>
       )}
       {props.showAdd && (
-        <Button
-          type="primary"
+        <button
+          className="btn btn-warning add-new"
           onClick={() => {
             setIsModalVisible(true);
           }}
-          size="large"
         >
-          Create
-        </Button>
+          Thêm mới
+        </button>
       )}
 
       {/*  */}

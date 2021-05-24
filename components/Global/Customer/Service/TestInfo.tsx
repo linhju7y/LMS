@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Input, Select, Divider } from "antd";
+import { Modal, Button, Form, Input, Select, Divider, Tooltip } from "antd";
 import { Info } from "react-feather";
 
 const TextInfo = () => {
@@ -9,15 +9,17 @@ const TextInfo = () => {
 
   return (
     <>
-      <Button
-        style={{ paddingRight: 1, paddingLeft: 1 }}
-        type="link"
-        onClick={() => {
-          setIsModalVisible(true);
-        }}
-      >
-        <Info />
-      </Button>
+      <Tooltip title="Thông tin lịch hẹn test">
+        <button
+          className="btn btn-icon"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <Info />
+        </button>
+      </Tooltip>
+
       <Modal
         width={850}
         title="Thông tin hẹn test"

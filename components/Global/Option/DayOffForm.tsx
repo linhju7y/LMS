@@ -30,15 +30,14 @@ const CustomerSupplier = (props) => {
       )}
       {props.showAdd && (
         <>
-          <Button
-            type="primary"
+          <button
+            className="btn btn-warning add-new"
             onClick={() => {
               setIsModalVisible(true);
             }}
-            size="large"
           >
-            Create
-          </Button>
+            Thêm mới
+          </button>
           <Modal
             title="Create Day Off"
             visible={isModalVisible}

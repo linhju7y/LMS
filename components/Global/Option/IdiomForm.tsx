@@ -12,7 +12,7 @@ const IdiomForm = (props) => {
       {props.showIcon && (
         <Tooltip title="Cập nhật">
           <button
-            className="btn btn-icon update"
+            className="btn btn-icon edit"
             onClick={() => {
               setIsModalVisible(true);
             }}
@@ -22,15 +22,14 @@ const IdiomForm = (props) => {
         </Tooltip>
       )}
       {props.showAdd && (
-        <Button
-          type="primary"
+        <button
+          className="btn btn-warning add-new"
           onClick={() => {
             setIsModalVisible(true);
           }}
-          size="large"
         >
-          Create
-        </Button>
+          Thêm mới
+        </button>
       )}
 
       {/*  */}

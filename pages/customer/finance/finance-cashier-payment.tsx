@@ -29,7 +29,9 @@ export default function FinancePayment() {
       render: () => (
         <>
           <ConsultantForm />
-          <Button type="link" icon={<ShoppingCart />} />
+          <button className="btn btn-icon">
+            <ShoppingCart />
+          </button>
         </>
       ),
     },

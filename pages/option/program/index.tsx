@@ -16,10 +16,11 @@ const Program = () => {
     {
       title: "Type",
       dataIndex: "status",
+      align: "center",
       render: (status) => {
-        let color = status == "online" ? "green" : "gray";
+        let color = status == "online" ? "#52b69a" : "gray";
         return (
-          <Tag color={color} key={status}>
+          <Tag color={color} key={status} className="style-tag">
             <b> {status.toUpperCase()}</b>
           </Tag>
         );
