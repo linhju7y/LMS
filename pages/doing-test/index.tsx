@@ -121,7 +121,7 @@ const DoingTest = () => {
   const moveToTest = () => {
     message.success("We can do test now!");
     setTimeout(() => {
-      router.push("/doing-test/listening-test");
+      router.push("/doing-test/quiz/listening-test");
     }, 1000);
   };
 
