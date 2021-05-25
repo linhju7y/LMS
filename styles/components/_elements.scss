@@ -917,6 +917,13 @@ hr {
       background-color: rgb(8 181 5 / 17%);
     }
 
+    .ant-table-row-success {
+      background-color: #ffffff;
+    }
+    .ant-table-row-fail {
+      background-color: #fbfbfb;
+    }
+
     tr.ant-table-measure-row {
       td {
         padding: 0 !important;
@@ -1014,4 +1021,68 @@ hr {
   .btn {
     margin-left: 10px;
   }
+}
+// invoice
+.text {
+  &-lg {
+    font-size: 1.5rem;
+  }
+  &-xl {
+    font-size: 1.3125rem;
+  }
+  &-base {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  &-sm {
+    font-size: 1rem;
+  }
+  &-center {
+    text-align: center !important;
+  }
+  &-right {
+    text-align: right !important;
+  }
+  &-title {
+    font-size: 1rem;
+    color: #a1aab4;
+    font-weight: bolder;
+  }
+  &-white {
+    color: #ffffff;
+  }
+
+  &-report {
+    color: $text-report;
+  }
+}
+
+.table-invoice {
+  font-size: 1.3125rem;
+  th,
+  td {
+    border-bottom: 2px solid #dddddd;
+  }
+
+  .tb-left {
+    text-align: end;
+  }
+}
+.list-invoice {
+  list-style-type: "- ";
+}
+
+.table-payment {
+  font-size: 1.1rem;
+  width: 100%;
+  .tb-right {
+    text-align: start;
+  }
+  .tb-left {
+    text-align: end;
+  }
+}
+
+.signature {
+  text-align: center;
 }

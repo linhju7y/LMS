@@ -2,10 +2,13 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
 import { Eye, CheckCircle, Filter } from "react-feather";
-import { Button } from "antd";
+import { Button, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
+<<<<<<< HEAD
 
+=======
+>>>>>>> fix2305
 import Link from "next/link";
 import Tuition from "~/components/Global/Customer/Finance/Tuition";
 
@@ -27,7 +30,11 @@ export default function FinanceDebts() {
               query: { slug: 2 },
             }}
           >
-            <Button type="link" icon={<Eye />} />
+            <Tooltip title="Xem chi tiết">
+              <button className="btn btn-icon">
+                <Eye />
+              </button>
+            </Tooltip>
           </Link>
           <Tuition />
         </>

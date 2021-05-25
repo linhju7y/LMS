@@ -11,15 +11,14 @@ const NotificationForm = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <>
-      <Button
-        type="primary"
+      <button
+        className="btn btn-warning add-new"
         onClick={() => {
           setIsModalVisible(true);
         }}
-        size="large"
       >
-        Create
-      </Button>
+        Thêm mới
+      </button>
 
       {/*  */}
       <Modal

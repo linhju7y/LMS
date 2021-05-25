@@ -18,11 +18,12 @@ const Center = () => {
       render: () => (
         <>
           <Tooltip title="Cập nhật phòng">
-            <Button
-              type="link"
-              icon={<RotateCcw />}
+            <button
+              className="btn btn-icon edit"
               onClick={() => setRoomForm(true)}
-            />
+            >
+              <RotateCcw />
+            </button>
           </Tooltip>
         </>
       ),
@@ -37,13 +38,12 @@ const Center = () => {
       <div className="col-12">
         <PowerTable
           TitleCard={
-            <Button
-              type="primary"
-              size="large"
+            <button
               onClick={() => setRoomForm(true)}
+              className="btn btn-warning add-new"
             >
-              Thêm phòng
-            </Button>
+              Thêm mới
+            </button>
           }
           dataSource={data}
           columns={columns}

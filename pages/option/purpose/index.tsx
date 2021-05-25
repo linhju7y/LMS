@@ -15,9 +15,7 @@ const Purpose = () => {
     {
       render: () => (
         <>
-          <Tooltip title="Cập nhật trung tâm">
-            <PurposeForm showIcon={true} />
-          </Tooltip>
+          <PurposeForm showIcon={true} />
         </>
       ),
     },

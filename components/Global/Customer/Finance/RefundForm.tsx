@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Input, Select, Divider } from "antd";
+import { Modal, Button, Form, Input, Select, Divider, Tooltip } from "antd";
 import { DollarSign } from "react-feather";
 
 const RefundForm = () => {
@@ -9,15 +9,17 @@ const RefundForm = () => {
 
   return (
     <>
-      <Button
-        style={{ paddingRight: 1, paddingLeft: 1 }}
-        type="link"
-        onClick={() => {
-          setIsModalVisible(true);
-        }}
-      >
-        <DollarSign />
-      </Button>
+      <Tooltip title="Thông tin phiếu chi">
+        <button
+          className="btn btn-icon"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <DollarSign />
+        </button>
+      </Tooltip>
+
       <Modal
         width={850}
         title="Thông tin phiếu chi"

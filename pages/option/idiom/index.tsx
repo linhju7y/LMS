@@ -19,7 +19,6 @@ const Idioms = () => {
     {
       render: () => (
         <>
-          {" "}
           <IdiomForm showIcon={true} />{" "}
         </>
       ),

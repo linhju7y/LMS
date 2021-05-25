@@ -16,9 +16,7 @@ const Provincial = () => {
     {
       render: () => (
         <>
-          <Tooltip title="Cập nhật trung tâm">
-            <DistrictForm showIcon={true} />
-          </Tooltip>
+          <DistrictForm showIcon={true} />
         </>
       ),
     },

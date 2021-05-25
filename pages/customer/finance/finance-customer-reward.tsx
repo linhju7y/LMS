@@ -14,11 +14,12 @@ export default function FinanceReward() {
     {
       title: "Khen thưởng",
       dataIndex: "fnReward",
+      align: "center",
       render: (fnReward) => {
-        let color = fnReward == "Tài trợ thi lại" ? "cyan" : "blue";
+        let color = fnReward == "Tài trợ thi lại" ? "#00b2ca" : "#7dcfb6";
         return (
-          <Tag color={color} key={fnReward}>
-            <b> {fnReward.toUpperCase()}</b>
+          <Tag color={color} key={fnReward} className="style-tag">
+            {fnReward.toUpperCase()}
           </Tag>
         );
       },
@@ -30,11 +31,12 @@ export default function FinanceReward() {
     {
       title: "Trạng thái",
       dataIndex: "fnStatus",
+      align: "center",
       render: (fnStatus) => {
-        let color = fnStatus == "Duyệt" ? "green" : "red";
+        let color = fnStatus == "Duyệt" ? "#3590f3" : "#ea3546";
         return (
-          <Tag color={color} key={fnStatus}>
-            <b> {fnStatus.toUpperCase()}</b>
+          <Tag color={color} key={fnStatus} className="style-tag">
+            {fnStatus.toUpperCase()}
           </Tag>
         );
       },

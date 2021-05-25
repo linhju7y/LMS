@@ -2,10 +2,10 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
 import { Eye, Filter } from "react-feather";
-import { Button } from "antd";
+import { Button, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
-
+import Link from "next/link";
 export default function ReportTest() {
   const columns = [
     { title: "Tỉnh/TP", dataIndex: "city" },
@@ -17,7 +17,22 @@ export default function ReportTest() {
     { title: "Ngày thi", dataIndex: "testDate" },
     {
       title: "",
-      render: () => <Button type="link" icon={<Eye />} />,
+      render: () => (
+        <>
+          <Link
+            href={{
+              pathname: "/feedback/[slug]",
+              query: { slug: 2 },
+            }}
+          >
+            <Tooltip title="Xem chi tiết">
+              <button className="btn btn-icon">
+                <Eye />
+              </button>
+            </Tooltip>
+          </Link>
+        </>
+      ),
     },
   ];
 

@@ -23,6 +23,8 @@
     "bootstrap-icons": "^1.5.0",
     "chart.js": "^3.2.1",
     "date-fns": "^2.11.1",
+    "devextreme": "^20.2.7",
+    "devextreme-react": "^20.2.7",
     "fullcalendar": "^5.7.0",
     "gray-matter": "^4.0.2",
     "moment": "^2.29.1",

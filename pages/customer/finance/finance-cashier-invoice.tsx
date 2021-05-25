@@ -2,9 +2,10 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
 import { Edit, ShoppingCart, XCircle, Filter } from "react-feather";
-import { Button, Image } from "antd";
+import { Button, Image, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
+import Link from "next/link";
 
 import ConsultantForm from "~/components/Global/Customer/Finance/ConsultantForm";
 
@@ -29,8 +30,23 @@ export default function FinanceInvoice() {
       render: () => (
         <>
           <ConsultantForm />
-          <Button type="link" icon={<ShoppingCart />} />
-          <Button type="link" icon={<XCircle />} />
+          <Link
+            href={{
+              pathname: "/customer/finance/invoice/[slug]",
+              query: { slug: 2 },
+            }}
+          >
+            <Tooltip title="Xuất phiếu thu">
+              <button className="btn btn-icon">
+                <ShoppingCart />
+              </button>
+            </Tooltip>
+          </Link>
+          <Tooltip title="Xóa phiếu thu">
+            <button className="btn btn-icon">
+              <XCircle />
+            </button>
+          </Tooltip>
         </>
       ),
     },

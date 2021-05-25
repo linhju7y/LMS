@@ -17,9 +17,7 @@ const Service = () => {
     {
       render: () => (
         <>
-          <Tooltip title="Cập nhật trung tâm">
-            <ProvincialForm showIcon={true} />
-          </Tooltip>
+          <ProvincialForm showIcon={true} />
         </>
       ),
     },

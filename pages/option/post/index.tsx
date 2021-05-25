@@ -43,6 +43,7 @@ const Post = () => {
     {
       title: "Status",
       dataIndex: "postStatus",
+      align: "center",
       render: (postStatus) => {
         let color = postStatus % 2 == 0 ? "#70e000" : "#837569";
         let status = postStatus % 2 == 0 ? "Active" : "Inactive";
@@ -83,7 +84,7 @@ const Post = () => {
   return (
     <div className="row">
       <div className="col-12">
-        <TitlePage title="Staff Salary" />
+        <TitlePage title="Post List" />
       </div>
       <div className="col-12">
         <ExpandTable

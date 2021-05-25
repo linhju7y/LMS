@@ -34,5 +34,7 @@ for (let i = 1; i < 99; i++) {
     title: `Tiêu đề ${i}`,
     postStatus: i + 1,
     idiom: `Ta đã ở bên nhau. Những năm tháng nhọc nhằn. You make me feel like....I got everything. Dù mai có ra sao. Ta vẫn sẽ tự hào. Vì đã luôn bên nhau. We do everything. Đưa tay đây nào. Mãi bên nhau bạn nhớ`,
+    fbType: `Hỗ trợ học viên`,
+    fbReason: `Xin nghỉ buổi học`,
   });
 }

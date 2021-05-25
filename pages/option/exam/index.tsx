@@ -39,7 +39,6 @@ const Exam = () => {
           Extra={
             <div className="extra-table">
               <SearchBox />
-              {/* <FilterBox /> */}
               <SortBox />
             </div>
           }

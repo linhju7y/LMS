@@ -33,8 +33,9 @@ export default function StudentCourseChange() {
           }}
         >
           <Tooltip title="Xem chi tiết">
-            {" "}
-            <Button type="link" icon={<Eye />} />
+            <button className="btn btn-icon">
+              <Eye />
+            </button>
           </Tooltip>
         </Link>
       ),

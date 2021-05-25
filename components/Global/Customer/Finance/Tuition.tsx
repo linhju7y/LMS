@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Input, Select, Divider } from "antd";
+import { Modal, Button, Form, Input, Select, Divider, Tooltip } from "antd";
 import { CreditCard } from "react-feather";
 
 const PaymentService = () => {
@@ -9,15 +9,17 @@ const PaymentService = () => {
 
   return (
     <>
-      <Button
-        style={{ paddingRight: 1, paddingLeft: 1 }}
-        type="link"
-        onClick={() => {
-          setIsModalVisible(true);
-        }}
-      >
-        <CreditCard />
-      </Button>
+      <Tooltip title="Thanh toán học phí">
+        <button
+          className="btn btn-icon"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <CreditCard />
+        </button>
+      </Tooltip>
+
       <Modal
         width={850}
         title="Hoàn thành học phí"

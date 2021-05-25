@@ -12,3 +12,6 @@
 96d37ae0cdd49d6d76d292b36841632d012f6286	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/-/npm/v1/security/audits/quick","integrity":null,"time":1621395430746}
 672f22edbcb7290e03db61a8960628a714e0f68d	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/-/npm/v1/security/audits/quick","integrity":null,"time":1621476510892}
 >>>>>>> feature/popup-customer
+
+27e96a70919be1a5899be70097addb662610ad46	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/-/npm/v1/security/audits/quick","integrity":null,"time":1621914580594}
+b43740d0b3050335d47c4e411b6ed3f8e10b2c3c	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/-/npm/v1/security/audits/quick","integrity":null,"time":1621915303924}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Input, Select, Divider } from "antd";
+import { Modal, Button, Form, Input, Select, Divider, Tooltip } from "antd";
 import { Repeat } from "react-feather";
 
 const ReserveCourse = () => {
@@ -9,15 +9,17 @@ const ReserveCourse = () => {
 
   return (
     <>
-      <Button
-        style={{ paddingRight: 1, paddingLeft: 1 }}
-        type="link"
-        onClick={() => {
-          setIsModalVisible(true);
-        }}
-      >
-        <Repeat />
-      </Button>
+      <Tooltip title="Bảo lưu khóa">
+        <button
+          className="btn btn-icon"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <Repeat />
+        </button>
+      </Tooltip>
+
       <Modal
         title="Bảo lưu khóa"
         visible={isModalVisible}

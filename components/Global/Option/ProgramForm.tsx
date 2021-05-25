@@ -8,9 +8,8 @@ const ProgramForm = (props) => {
   return (
     <>
       {props.showIcon && (
-        <Button
-          style={{ paddingRight: 1, paddingLeft: 1 }}
-          type="link"
+        <button
+          className="btn btn-icon edit"
           onClick={() => {
             setIsModalVisible(true);
           }}
@@ -18,20 +17,18 @@ const ProgramForm = (props) => {
           <Tooltip title="Cập nhật">
             <RotateCcw />
           </Tooltip>
-        </Button>
+        </button>
       )}
       {props.showAdd && (
-        <Button
-          type="primary"
+        <button
+          className="btn btn-warning add-new"
           onClick={() => {
             setIsModalVisible(true);
           }}
-          size="large"
         >
-          Add program
-        </Button>
+          Thêm mới
+        </button>
       )}
-
       {/*  */}
       <Modal
         title="Create Class"

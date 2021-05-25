@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Input, Select, Divider } from "antd";
+import { Modal, Button, Form, Input, Select, Divider, Tooltip } from "antd";
 import { AlertCircle } from "react-feather";
 
 const RegInfo = () => {
@@ -10,15 +10,17 @@ const RegInfo = () => {
 
   return (
     <>
-      <Button
-        style={{ paddingRight: 1, paddingLeft: 1 }}
-        type="link"
-        onClick={() => {
-          setIsModalVisible(true);
-        }}
-      >
-        <AlertCircle />
-      </Button>
+      <Tooltip title="Xem thông tin">
+        <button
+          className="btn btn-icon"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <AlertCircle />
+        </button>
+      </Tooltip>
+
       <Modal
         width={800}
         title="Thông tin đăng ký"

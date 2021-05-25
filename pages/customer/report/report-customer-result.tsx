@@ -18,7 +18,7 @@ export default function CustomerServiceResult() {
       dataIndex: "listening",
       render: (listening) => {
         return (
-          <Tag color={"default"} key={listening}>
+          <Tag color={"#00b4d8"} key={listening} className="style-tag">
             <b> {listening}</b>
           </Tag>
         );
@@ -29,7 +29,7 @@ export default function CustomerServiceResult() {
       dataIndex: "reading",
       render: (reading) => {
         return (
-          <Tag color={"default"} key={reading}>
+          <Tag color={"#00b4d8"} key={reading} className="style-tag">
             <b> {reading}</b>
           </Tag>
         );
@@ -40,7 +40,7 @@ export default function CustomerServiceResult() {
       dataIndex: "writing",
       render: (writing) => {
         return (
-          <Tag color={"default"} key={writing}>
+          <Tag color={"#00b4d8"} key={writing} className="style-tag">
             <b> {writing}</b>
           </Tag>
         );
@@ -51,7 +51,7 @@ export default function CustomerServiceResult() {
       dataIndex: "speaking",
       render: (speaking) => {
         return (
-          <Tag color={"default"} key={speaking}>
+          <Tag color={"#00b4d8"} key={speaking} className="style-tag">
             <b> {speaking}</b>
           </Tag>
         );
@@ -62,7 +62,7 @@ export default function CustomerServiceResult() {
       dataIndex: "overall",
       render: (overall) => {
         return (
-          <Tag color={"cyan"} key={overall}>
+          <Tag color={"#0466c8"} key={overall} className="style-tag">
             <b> {overall}</b>
           </Tag>
         );

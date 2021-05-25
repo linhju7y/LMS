@@ -21,11 +21,12 @@ export default function FinanceRefund() {
     {
       title: "Trạng thái",
       dataIndex: "fnStatus",
+      align: "center",
       render: (fnStatus) => {
-        let color = fnStatus == "Duyệt" ? "green" : "volcano";
+        let color = fnStatus == "Duyệt" ? "#06d6a0" : "#ef476f";
         return (
-          <Tag color={color} key={fnStatus}>
-            <b> {fnStatus.toUpperCase()}</b>
+          <Tag color={color} key={fnStatus} className="style-tag">
+            {fnStatus.toUpperCase()}
           </Tag>
         );
       },

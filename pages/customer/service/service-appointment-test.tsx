@@ -2,7 +2,7 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, CheckCircle, XCircle, Filter } from "react-feather";
-import { Button, Tag, Select } from "antd";
+import { Button, Tag, Select, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 
@@ -11,7 +11,6 @@ import TestInfo from "~/components/Global/Customer/Service/TestInfo";
 import { ExpandBoxService } from "~/components/Elements/ExpandBox";
 export default function AppointmentServiceTest() {
   const expandedRowRender = () => {
-    const { Option } = Select;
     return <ExpandBoxService />;
   };
   const columns = [
@@ -24,6 +23,7 @@ export default function AppointmentServiceTest() {
     {
       title: "Xong",
       dataIndex: "apmStatus",
+      align: "center",
       render: (apmStatus) => {
         let color = apmStatus == "Xong" ? "green" : "red";
         if (apmStatus == "Xong") {
@@ -34,11 +34,12 @@ export default function AppointmentServiceTest() {
     {
       title: "Đã đăng kí",
       dataIndex: "apmReg",
+      align: "center",
       render: (apmReg) => {
-        let color = apmReg == "Đã đăng kí" ? "blue" : "volcano";
+        let color = apmReg == "Đã đăng kí" ? "#0466c8" : "#e85d04";
         return (
-          <Tag color={color} key={apmReg}>
-            <b> {apmReg.toUpperCase()}</b>
+          <Tag color={color} key={apmReg} className="style-tag">
+            {apmReg.toUpperCase()}
           </Tag>
         );
       },
@@ -53,7 +54,11 @@ export default function AppointmentServiceTest() {
               query: { slug: 2 },
             }}
           >
-            <Button type="link" icon={<Eye />} />
+            <Tooltip title="Xem chi tiết">
+              <button className="btn btn-icon">
+                <Eye />
+              </button>
+            </Tooltip>
           </Link>
 
           <TestInfo />

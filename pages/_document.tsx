@@ -39,6 +39,21 @@ export default class MyDocument extends Document {
             type="text/css"
             media="all"
           />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn3.devexpress.com/jslib/20.2.7/css/dx.common.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn3.devexpress.com/jslib/20.2.7/css/dx.light.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn3.devexpress.com/jslib/20.2.7/css/dx-gantt.min.css"
+          />
 
           <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
           <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>

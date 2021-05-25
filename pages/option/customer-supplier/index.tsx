@@ -14,17 +14,18 @@ const CustomerSupplier = () => {
     {
       title: "Hidden",
       dataIndex: "srcStatus",
+      align: "center",
       render: (srcStatus) => {
         let isHidden = srcStatus % 2 == 0 ? true : false;
         return (
           <div>
             {isHidden ? (
-              <Tag color="gray" className="style-input">
-                <b>Hidden</b>
+              <Tag color="gray" className="style-tag">
+                Hidden
               </Tag>
             ) : (
-              <Tag color="blue" className="style-input">
-                <b>Visible</b>
+              <Tag color="#0096c7" className="style-tag">
+                Visible
               </Tag>
             )}
           </div>
@@ -35,9 +36,7 @@ const CustomerSupplier = () => {
     {
       render: () => (
         <>
-          <Tooltip title="Cập nhật trung tâm">
-            <CustomerSupplierForm showIcon={true} />
-          </Tooltip>
+          <CustomerSupplierForm showIcon={true} />
         </>
       ),
     },

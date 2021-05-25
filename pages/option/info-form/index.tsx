@@ -19,6 +19,7 @@ const InfoFormList = () => {
     {
       title: "Receive",
       dataIndex: "modBy",
+      align: "center",
       render: (modBy) => (
         <Tag color="#1eae98" className="style-tag">
           {modBy}

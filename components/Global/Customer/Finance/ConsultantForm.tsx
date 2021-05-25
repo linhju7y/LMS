@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Input, Select, Divider } from "antd";
+import { Modal, Button, Form, Input, Select, Divider, Tooltip } from "antd";
 import { Edit } from "react-feather";
 
 const ConsultantForm = () => {
@@ -8,15 +8,17 @@ const ConsultantForm = () => {
 
   return (
     <>
-      <Button
-        style={{ paddingRight: 1, paddingLeft: 1 }}
-        type="link"
-        onClick={() => {
-          setIsModalVisible(true);
-        }}
-      >
-        <Edit />
-      </Button>
+      <Tooltip title="Chỉnh sửa tư vấn viên">
+        <button
+          className="btn btn-icon"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <Edit />
+        </button>
+      </Tooltip>
+
       <Modal
         title="Thay đổi tư vấn viên nguồn"
         visible={isModalVisible}

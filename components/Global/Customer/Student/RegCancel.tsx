@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, Input, Select, Divider } from "antd";
+import { Modal, Button, Form, Input, Select, Divider, Tooltip } from "antd";
 import { X } from "react-feather";
 
 const RegCancel = () => {
@@ -9,15 +9,17 @@ const RegCancel = () => {
 
   return (
     <>
-      <Button
-        style={{ paddingRight: 1, paddingLeft: 1 }}
-        type="link"
-        onClick={() => {
-          setIsModalVisible(true);
-        }}
-      >
-        <X />
-      </Button>
+      <Tooltip title="Hủy đăng kí">
+        <button
+          className="btn btn-icon delete"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          <X />
+        </button>
+      </Tooltip>
+
       <Modal
         width={650}
         title="Hủy đăng ký"

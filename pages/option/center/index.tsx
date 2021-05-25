@@ -3,7 +3,6 @@ import PowerTable from "~/components/PowerTable";
 import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption";
-
 import randomColor from "randomcolor";
 import { Tag, Button, Tooltip } from "antd";
 import CenterFrom from "~/components/Global/Option/CenterForm";
@@ -18,7 +17,7 @@ const Center = () => {
       render: (center) => {
         let color = randomColor();
         return (
-          <Tag color={color} key={center}>
+          <Tag color={color} key={center} className="style-tag">
             <b> {center.toUpperCase()}</b>
           </Tag>
         );
@@ -36,16 +35,19 @@ const Center = () => {
             }}
           >
             <Tooltip title="Xem phòng">
-              <Button type="link" icon={<Info />} />
+              <button className="btn btn-icon">
+                <Info />
+              </button>
             </Tooltip>
           </Link>
 
           <Tooltip title="Cập nhật trung tâm">
-            <Button
-              type="link"
-              icon={<RotateCcw />}
+            <button
+              className="btn btn-icon edit"
               onClick={() => setCenterForm(true)}
-            />
+            >
+              <RotateCcw />
+            </button>
           </Tooltip>
         </>
       ),
@@ -60,13 +62,12 @@ const Center = () => {
       <div className="col-12">
         <PowerTable
           TitleCard={
-            <Button
-              type="primary"
-              size="large"
+            <button
               onClick={() => setCenterForm(true)}
+              className="btn btn-warning add-new"
             >
-              Thêm trung tâm
-            </Button>
+              Thêm mới
+            </button>
           }
           dataSource={data}
           columns={columns}

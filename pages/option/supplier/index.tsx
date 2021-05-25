@@ -23,7 +23,7 @@ const SupplierList = () => {
   return (
     <div className="row">
       <div className="col-12">
-        <TitlePage title="Services List" />
+        <TitlePage title="Supplier List" />
       </div>
       <div className="col-12">
         <PowerTable

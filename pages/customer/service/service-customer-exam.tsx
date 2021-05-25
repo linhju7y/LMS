@@ -2,7 +2,7 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
 import { Eye, Filter } from "react-feather";
-import { Button, Tag } from "antd";
+import { Button, Tag, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 
 import { dataService } from "../../../lib/customer/dataCustomer";
@@ -16,10 +16,10 @@ export default function CustomerServiceExam() {
       title: "Loại",
       dataIndex: "typeTest",
       render: (typeTest) => {
-        let color = typeTest == "Thi thử" ? "green" : "blue";
+        let color = typeTest == "Thi thử" ? "#2a9d8f" : "#023e8a";
         return (
-          <Tag color={color} key={typeTest}>
-            <b> {typeTest.toUpperCase()}</b>
+          <Tag color={color} key={typeTest} className="style-tag">
+            {typeTest.toUpperCase()}
           </Tag>
         );
       },
@@ -37,7 +37,11 @@ export default function CustomerServiceExam() {
             query: { slug: 2 },
           }}
         >
-          <Button type="link" icon={<Eye />} />
+          <Tooltip title="Xem chi tiết">
+            <button className="btn btn-icon">
+              <Eye />
+            </button>
+          </Tooltip>
         </Link>
       ),
     },

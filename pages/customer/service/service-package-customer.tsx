@@ -19,10 +19,10 @@ export default function CustomerServicePackage() {
       title: "Trạng thái",
       dataIndex: "pgkPayment",
       render: (pgkPayment) => {
-        let color = pgkPayment == "Đã thanh toán" ? "blue" : "volcano";
+        let color = pgkPayment == "Đã thanh toán" ? "#3a86ff" : "#dc2f02";
         return (
-          <Tag color={color} key={pgkPayment}>
-            <b> {pgkPayment.toUpperCase()}</b>
+          <Tag color={color} key={pgkPayment} className="style-tag">
+            {pgkPayment.toUpperCase()}
           </Tag>
         );
       },
