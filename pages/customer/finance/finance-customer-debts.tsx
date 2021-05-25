@@ -5,10 +5,6 @@ import { Eye, CheckCircle, Filter } from "react-feather";
 import { Button, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
-<<<<<<< HEAD
-
-=======
->>>>>>> fix2305
 import Link from "next/link";
 import Tuition from "~/components/Global/Customer/Finance/Tuition";
 
