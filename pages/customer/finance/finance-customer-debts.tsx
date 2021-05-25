@@ -4,13 +4,10 @@ import PowerTable from "~/components/PowerTable";
 import { Eye, CheckCircle, Filter } from "react-feather";
 import { Button } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
-<<<<<<< HEAD
 import { dataService } from "../../../lib/customer/dataCustomer";
-=======
-import { dataService } from "./../dataCustomer";
+
 import Link from "next/link";
 import Tuition from "~/components/Global/Customer/Finance/Tuition";
->>>>>>> feature/popup-customer
 
 export default function FinanceDebts() {
   const columns = [

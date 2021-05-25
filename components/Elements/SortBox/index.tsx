@@ -15,10 +15,9 @@ const SortBox = (props) => {
         size="large"
       >
         <Option value="sort-title">-- Sort by --</Option>
-        <Option value="hometown1">Tỉnh/TP A - Z</Option>
-        <Option value="hometown2">Tỉnh/TP Z - A</Option>
-        <Option value="name1">Họ tên A - Z</Option>
-        <Option value="name2">Họ tên Z - A</Option>
+        {props.dataOption.map((option, index) => (
+          <Option value={option.value}>{option.text}</Option>
+        ))}
       </Select>
     </>
   );
