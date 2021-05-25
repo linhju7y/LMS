@@ -89,8 +89,7 @@
   margin-bottom: 8px;
 }
 
-.btn,
-.ant-btn {
+.btn {
   padding: 0.575rem 1.25rem;
   border-radius: 0.375rem;
   font-weight: 500;
@@ -420,6 +419,11 @@ textarea.form-control {
       line-height: 22px !important;
     }
   }
+
+  &.table {
+    height: 27px !important;
+    margin-bottom: 0;
+  }
 }
 .ant-form-item-label {
   font-weight: 500;
@@ -672,19 +676,19 @@ hr {
 
 .btn-icon {
   background: transparent;
-  width: 45px;
-  height: 45px;
+  padding: 0;
+  transition: 0.3s;
+  // width: 45px;
+  // height: 45px;
   // display: flex;
   // justify-content: center;
   // align-items: center;
-  line-height: 3;
-  padding: 0;
-  transition: 0.3s;
+  // line-height: 3;
 
-  &:hover {
-    background: #efefef;
-    transition: 0.3s;
-  }
+  // &:hover {
+  //   background: #efefef;
+  //   transition: 0.3s;
+  // }
 
   &.view {
     svg {
@@ -706,7 +710,7 @@ hr {
 
   svg {
     color: $primary-color;
-    width: 23px;
+    width: 20px;
     font-size: 20px;
   }
 }
@@ -825,10 +829,11 @@ hr {
   .ant-table-thead {
     tr {
       th {
-        padding: 8px 16px;
+        padding: 9px 16px !important;
         padding-left: 15px !important;
         background: $primary-color;
         color: white;
+        border-bottom: none;
         // background: #eee;
         // color: #3e3e3e;
       }
@@ -862,7 +867,8 @@ hr {
     }
 
     .ant-table-row:nth-of-type(2n + 1) {
-      background-color: #0088cc08;
+      // background-color: #0088cc08;
+      background-color: rgb(8 181 5 / 17%);
     }
 
     tr.ant-table-measure-row {
@@ -888,4 +894,72 @@ hr {
 }
 .revenue-detail-row {
   margin-top: 15px;
+}
+
+.ant-table-filter-dropdown {
+  .ant-dropdown-menu-item {
+    span:last-child {
+      color: $primary-color;
+    }
+  }
+
+  .ant-btn-link {
+    color: #971414;
+  }
+}
+
+.ant-table-filter-trigger-container {
+  // right: inherit;
+  // left: -15px;
+  &.ant-table-filter-trigger-container-open {
+    .ant-table-filter-trigger {
+      color: rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  &:hover {
+    .ant-table-filter-trigger {
+      color: rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  .ant-table-filter-trigger {
+    color: #f6f6f6;
+    // &:hover {
+    //   color: rgba(0, 0, 0, 0.45);
+    // }
+    // &.ant-dropdown-open {
+    //   color: rgba(0, 0, 0, 0.45);
+    // }
+    // &.active {
+    //   color: #f6f6f6;
+
+    //   .anticon-search {
+    //     color: white !important;
+    //   }
+
+    //   &.ant-dropdown-open {
+    //     .anticon-search {
+    //       color: rgba(0, 0, 0, 0.45) !important;
+    //     }
+    //   }
+    // }
+  }
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #0088cc;
+  border-color: #0088cc;
+}
+
+.wrap-search-in-table {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+
+  .btn-primary {
+    margin-left: 10px;
+    height: 36px;
+    padding: 0 10px;
+  }
 }

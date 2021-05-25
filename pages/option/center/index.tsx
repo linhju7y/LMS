@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import PowerTable from "~/components/PowerTable";
 import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
-<<<<<<< HEAD
 import { data } from "../../../lib/option/dataOption";
-=======
-import { data } from "../dataOption";
->>>>>>> feature/popup-customer
+
 import randomColor from "randomcolor";
 import { Tag, Button, Tooltip } from "antd";
 import CenterFrom from "~/components/Global/Option/CenterForm";
