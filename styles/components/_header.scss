@@ -1,6 +1,6 @@
 .app-header {
   position: fixed;
-  width: calc(100% - 330px);
+  width: calc(100% - 80px);
   height: 65px;
   top: 0;
   right: 0;
@@ -37,6 +37,8 @@
     align-items: center;
     justify-content: space-between;
     transition: 0.2s width;
+    border-right: 1px solid #f0f0f0;
+
     p {
       margin: 0;
       text-transform: uppercase;
@@ -48,8 +50,7 @@
   }
 
   .app-header-inner {
-    // width: calc(100% - 230px);
-    width: 100%;
+    width: calc(100% - 250px);
     height: 100%;
     display: flex;
     justify-content: space-between;

@@ -7,10 +7,14 @@ import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import Dashboard from "~/pages/dashboard";
 
+import { AuthProvider } from "~/context/auth";
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout home>
-      <Component {...pageProps} />
-    </Layout>
+    <AuthProvider>
+      <Layout home>
+        <Component {...pageProps} />
+      </Layout>
+    </AuthProvider>
   );
 }

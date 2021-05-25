@@ -17,7 +17,7 @@ export default function Layout({
   children: React.ReactNode;
   home?: boolean;
 }) {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   const toggleMenu = () => {
     if (toggle) {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Popover, Button } from "antd";
 
 import { Grid } from "react-feather";
+import { useAuth } from "~/context/auth";
 
 import {
   SettingOutlined,
@@ -12,6 +13,7 @@ import {
   LogoutOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
+import TitlePage from "../Elements/TitlePage";
 
 export default function Header({
   toggleMenu,
@@ -49,6 +51,10 @@ export default function Header({
     </ul>
   );
 
+  const { titlePage } = useAuth();
+
+  console.log("Title: ", titlePage);
+
   let visibleUser: {
     visible: Boolean;
   };
@@ -68,25 +74,28 @@ export default function Header({
   };
 
   return (
-    <header className={`app-header ${!toggle ? "close" : ""}`}>
-      {/* <div className="app-header-logo">
+    <header className={`app-header `}>
+      <div className="app-header-logo">
         <p>Mona Media</p>
-        <p style={{ display: !toggle ? "block" : "none" }}>M</p>
-      </div> */}
+        {/* <p style={{ display: !toggle ? "block" : "none" }}>M</p> */}
+      </div>
       <div className="app-header-inner">
         <div className="right">
-          <div className="col-button" onClick={() => toggleMenu()}>
+          {/* <div className="col-button" onClick={() => toggleMenu()}>
             <div className="box-menu">
               <div className="icon-action">
                 {!toggle ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
               </div>
             </div>
-          </div>
-          <div className="col-search">
+          </div> */}
+          {/* <div className="col-search">
             <div className="box-input">
               <SearchOutlined className="icon-search" />
               <input type="text" placeholder="Search in app..." />
             </div>
+          </div> */}
+          <div className="col-title-page">
+            <TitlePage title={titlePage} />
           </div>
         </div>
         <div className="col-setting">

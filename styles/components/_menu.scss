@@ -10,6 +10,8 @@
   z-index: 101;
 
   .menu-parent {
+    position: relative;
+    z-index: 10;
     width: 80px;
     height: 100%;
     background: $primary-color;
@@ -49,7 +51,7 @@
           a {
             color: white;
             display: block;
-            padding: 14px 0 14px 20px;
+            padding: 14px 0 14px 18px;
           }
 
           svg {
@@ -61,10 +63,64 @@
     }
   }
 
+  .menu-child-bg {
+    position: fixed;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 8;
+
+    &.close {
+      display: none;
+    }
+
+    &.open {
+      display: block;
+    }
+  }
+
   .menu-child {
     width: 250px;
     transition: 0.3s width;
     background: white;
+    position: fixed;
+    left: -100%;
+    top: 65px;
+    height: calc(100vh - 65px);
+    box-shadow: 10px 9px 15px #0000000d;
+    z-index: 9;
+
+    &.close {
+      // display: none;
+
+      animation: HideMenuChild 0.5s forwards;
+
+      @keyframes HideMenuChild {
+        0% {
+          left: 80px;
+        }
+
+        100% {
+          left: -100%;
+        }
+      }
+    }
+
+    &.open {
+      animation: ShowMenuChild 0.5s forwards;
+
+      @keyframes ShowMenuChild {
+        0% {
+          left: -100%;
+        }
+
+        100% {
+          left: 80px;
+        }
+      }
+    }
 
     .menu-child-info {
       padding: 25px 25px;
@@ -124,10 +180,6 @@
       border-right: none;
     }
 
-    &.close {
-      width: 0;
-    }
-
     .app-header-logo {
       width: 100%;
       height: 65px;
@@ -159,7 +211,7 @@
     padding-top: 20px;
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100% - 65px) !important;
+    height: 100% !important;
 
     &::-webkit-scrollbar-track {
       border-radius: 10px;

@@ -133,13 +133,13 @@ const MenuDefault = ({
 
   const [tab, tabSet] = useState<String>("tab-home");
 
-  useEffect(() => {
-    if (toggle) {
-      setState({ collapsed: false });
-    } else {
-      setState({ collapsed: true });
-    }
-  }, [toggle]);
+  // useEffect(() => {
+  //   if (toggle) {
+  //     setState({ collapsed: false });
+  //   } else {
+  //     setState({ collapsed: true });
+  //   }
+  // }, [toggle]);
 
   const changeTabs = (e) => {
     e.preventDefault();
@@ -148,6 +148,15 @@ const MenuDefault = ({
     }
     let dataTab = e.target.getAttribute("data-tabs");
     tabSet(dataTab);
+  };
+
+  const closeTabs = (e) => {
+    e.preventDefault();
+    if (toggle) {
+      toggleMenu();
+    }
+    // let dataTab = e.target.getAttribute("data-tabs");
+    // tabSet(dataTab);
   };
 
   // useEffect(() => {
@@ -169,55 +178,59 @@ const MenuDefault = ({
         <div className="menu-parent-body">
           <ul className="list-menu">
             <li className={tab === "tab-home" ? "active" : ""}>
-              <a href="#" onClick={changeTabs} data-tabs="tab-home">
+              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-home">
                 <Home />
               </a>
             </li>
             <li className={tab === "tab-course" ? "active" : ""}>
-              <a href="#" onClick={changeTabs} data-tabs="tab-course">
+              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-course">
                 <Airplay />
               </a>
             </li>
             <li className={tab === "tab-student" ? "active" : ""}>
-              <a href="#" onClick={changeTabs} data-tabs="tab-student">
+              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-student">
                 <User />
               </a>
             </li>
             <li className={tab === "tab-staff" ? "active" : ""}>
-              <a href="#" onClick={changeTabs} data-tabs="tab-staff">
+              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-staff">
                 <UserCheck />
               </a>
             </li>
             <li className={tab === "tab-package" ? "active" : ""}>
-              <a href="#" onClick={changeTabs} data-tabs="tab-package">
+              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-package">
                 <Package />
               </a>
             </li>
             <li className={tab === "tab-layout" ? "active" : ""}>
-              <a href="#" onClick={changeTabs} data-tabs="tab-layout">
+              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-layout">
                 <Layers />
               </a>
             </li>
             <li className={tab === "tab-option" ? "active" : ""}>
-              <a href="#" onClick={changeTabs} data-tabs="tab-option">
+              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-option">
                 <Tool />
               </a>
             </li>
           </ul>
         </div>
       </div>
-      <div className={`menu-child ${!toggle ? "close" : ""}`}>
-        <div className="app-header-logo">
+      <div
+        className={`menu-child-bg ${!toggle ? "close" : "open"}`}
+        onMouseEnter={closeTabs}
+      ></div>
+      <div className={`menu-child ${!toggle ? "close" : "open"}`}>
+        {/* <div className="app-header-logo">
           <p style={{ display: toggle ? "block" : "none" }}>Mona Media</p>
           <p style={{ display: !toggle ? "block" : "none" }}>M</p>
-        </div>
+        </div> */}
         <div className="menu-child-body">
           <Menu
             defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}
             mode="inline"
             theme="light"
-            inlineCollapsed={state.collapsed}
+            inlineCollapsed={false}
             style={{ display: tab === "tab-home" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="all" title="Dashboad">
@@ -240,7 +253,7 @@ const MenuDefault = ({
             defaultOpenKeys={["sub1"]}
             mode="inline"
             theme="light"
-            inlineCollapsed={state.collapsed}
+            inlineCollapsed={false}
             style={{ display: tab === "tab-course" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="course" title="Khóa học">
@@ -274,7 +287,7 @@ const MenuDefault = ({
                   </Link>
                 </Menu.Item>
               </SubMenu>
-              <SubMenu
+              {/* <SubMenu
                 key="sub2"
                 icon={
                   <span className="anticon">
@@ -308,7 +321,19 @@ const MenuDefault = ({
                     <a>Kiểm tra phòng</a>
                   </Link>
                 </Menu.Item>
-              </SubMenu>
+              </SubMenu> */}
+              <Menu.Item
+                key="calendar-study"
+                icon={
+                  <span className="anticon">
+                    <Calendar />
+                  </span>
+                }
+              >
+                <Link href="/course/schedule-study">
+                  <a>Kiểm tra lịch học</a>
+                </Link>
+              </Menu.Item>
 
               <Menu.Item
                 key="dsbc"
@@ -330,7 +355,7 @@ const MenuDefault = ({
             defaultOpenKeys={["sub1"]}
             mode="inline"
             theme="light"
-            inlineCollapsed={state.collapsed}
+            inlineCollapsed={false}
             style={{ display: tab === "tab-layout" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="course" title="Component Layout">
@@ -364,7 +389,7 @@ const MenuDefault = ({
             defaultOpenKeys={["sub1"]}
             mode="inline"
             theme="light"
-            inlineCollapsed={state.collapsed}
+            inlineCollapsed={false}
             style={{ display: tab === "tab-student" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="course" title="Khách hàng">
@@ -548,7 +573,7 @@ const MenuDefault = ({
             defaultOpenKeys={["sub1"]}
             mode="inline"
             theme="light"
-            inlineCollapsed={state.collapsed}
+            inlineCollapsed={false}
             style={{ display: tab === "tab-option" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="course" title="Option">
@@ -639,7 +664,7 @@ const MenuDefault = ({
             defaultOpenKeys={["sub1"]}
             mode="inline"
             theme="light"
-            inlineCollapsed={state.collapsed}
+            inlineCollapsed={false}
             style={{ display: tab === "tab-layout" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="course" title="Component Layout">
@@ -673,7 +698,7 @@ const MenuDefault = ({
             defaultOpenKeys={["sub10"]}
             mode="inline"
             theme="light"
-            inlineCollapsed={state.collapsed}
+            inlineCollapsed={false}
             style={{ display: tab === "tab-staff" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="staff" title="Quản lí nhân viên">
@@ -798,7 +823,7 @@ const MenuDefault = ({
             defaultOpenKeys={["sub20"]}
             mode="inline"
             theme="light"
-            inlineCollapsed={state.collapsed}
+            inlineCollapsed={false}
             style={{ display: tab === "tab-package" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="staff" title="Gói bài tập">
@@ -830,7 +855,7 @@ const MenuDefault = ({
             </Menu.ItemGroup>
           </Menu>
 
-          <div className="menu-child-info white">
+          {/* <div className="menu-child-info white">
             <div className="box-title">
               <h6 className="title">Học viên mới</h6>
               <p className="des">Thống kê số học viên mới trong tháng</p>
@@ -862,7 +887,7 @@ const MenuDefault = ({
                 />
               </LineChart>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </aside>
