@@ -6,7 +6,15 @@ import React, {
   useCallback,
 } from "react";
 
-const AuthContext = createContext({});
+export type IProps = {
+  getTitlePage: any;
+  titlePage: any;
+};
+
+const AuthContext = createContext<IProps>({
+  titlePage: "",
+  getTitlePage: () => {},
+});
 
 export const AuthProvider = ({ children }) => {
   console.log("Run auth");
