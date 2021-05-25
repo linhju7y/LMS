@@ -15,9 +15,10 @@ const SortBox = (props) => {
         size="large"
       >
         <Option value="sort-title">-- Sort by --</Option>
-        {props.dataOption.map((option, index) => (
-          <Option value={option.value}>{option.text}</Option>
-        ))}
+        {props.dataOption?.lenght > 0 &&
+          props.dataOption.map((option, index) => (
+            <Option value={option.value}>{option.text}</Option>
+          ))}
       </Select>
     </>
   );
