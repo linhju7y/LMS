@@ -6,7 +6,7 @@ export const data = [
     tel: "0898233146",
     email: "abc@gmail.com",
     introducer: "TVV",
-    status: "Active",
+    status: "Inactive",
     consultant: "Nguyễn Kim Ngân",
     signUp: "Chưa đăng kí",
   },
@@ -227,14 +227,14 @@ export const data2 = [
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Có",
-    result: "Không đạt",
+    result: "Đạt",
     money: "-6.500.000",
   },
   {
     key: 2,
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
-    warning: "Có",
+    warning: "Không",
     result: "Không đạt",
     money: "-6.500.000",
   },
@@ -307,7 +307,7 @@ export const data2 = [
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Không",
-    result: "",
+    result: "Đạt",
     money: "6.500.000",
   },
   {
@@ -315,7 +315,7 @@ export const data2 = [
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Không",
-    result: "",
+    result: "Đạt",
     money: "6.500.000",
   },
   {
@@ -323,7 +323,7 @@ export const data2 = [
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Không",
-    result: "",
+    result: "Đạt",
     money: "6.500.000",
   },
   {
@@ -331,7 +331,7 @@ export const data2 = [
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Không",
-    result: "",
+    result: "Đạt",
     money: "6.500.000",
   },
   {
@@ -339,7 +339,7 @@ export const data2 = [
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Không",
-    result: "",
+    result: "Đạt",
     money: "6.500.000",
   },
   {
@@ -347,7 +347,7 @@ export const data2 = [
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Không",
-    result: "",
+    result: "Đạt",
     money: "6.500.000",
   },
   {
@@ -355,7 +355,7 @@ export const data2 = [
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Không",
-    result: "",
+    result: "Đạt",
     money: "6.500.000",
   },
   {
@@ -363,7 +363,7 @@ export const data2 = [
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Không",
-    result: "",
+    result: "Đạt",
     money: "6.500.000",
   },
   {
@@ -371,7 +371,7 @@ export const data2 = [
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Không",
-    result: "",
+    result: "Đạt",
     money: "6.500.000",
   },
   {
@@ -379,7 +379,7 @@ export const data2 = [
     nameStudent: "Nguyễn Thị Oanh",
     center: "ZIM 1",
     warning: "Không",
-    result: "",
+    result: "Đạt",
     money: "6.500.000",
   },
 ];

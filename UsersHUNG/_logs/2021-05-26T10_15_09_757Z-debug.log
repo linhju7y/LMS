@@ -11,13 +11,13 @@
 5 info lifecycle my-app@0.1.0~predev: my-app@0.1.0
 6 info lifecycle my-app@0.1.0~dev: my-app@0.1.0
 7 verbose lifecycle my-app@0.1.0~dev: unsafe-perm in lifecycle true
-8 verbose lifecycle my-app@0.1.0~dev: PATH: C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\HUNG PC\Desktop\LMS\LMS\node_modules\.bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\HUNG PC\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH;C:\Users\HUNG PC\AppData\Local\Microsoft\WindowsApps;C:\Users\HUNG PC\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\HUNG PC\AppData\Roaming\npm;C:\Program Files\heroku\bin
+8 verbose lifecycle my-app@0.1.0~dev: PATH: C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\HUNG PC\Desktop\LMS\LMS\node_modules\.bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\HUNG PC\bin;C:\Users\HUNG PC\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\HUNG PC\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH;C:\Users\HUNG PC\AppData\Local\Microsoft\WindowsApps;C:\Users\HUNG PC\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\HUNG PC\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 9 verbose lifecycle my-app@0.1.0~dev: CWD: C:\Users\HUNG PC\Desktop\LMS\LMS
 10 silly lifecycle my-app@0.1.0~dev: Args: [ '/d /s /c', 'next dev -p 3001' ]
-11 silly lifecycle my-app@0.1.0~dev: Returned: code: 1  signal: null
+11 silly lifecycle my-app@0.1.0~dev: Returned: code: 134  signal: null
 12 info lifecycle my-app@0.1.0~dev: Failed to exec dev script
 13 verbose stack Error: my-app@0.1.0 dev: `next dev -p 3001`
-13 verbose stack Exit status 1
+13 verbose stack Exit status 134
 13 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\index.js:332:16)
 13 verbose stack     at EventEmitter.emit (events.js:315:20)
 13 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\lib\spawn.js:55:14)
@@ -31,9 +31,9 @@
 18 verbose node v14.16.0
 19 verbose npm  v6.14.11
 20 error code ELIFECYCLE
-21 error errno 1
+21 error errno 134
 22 error my-app@0.1.0 dev: `next dev -p 3001`
-22 error Exit status 1
+22 error Exit status 134
 23 error Failed at the my-app@0.1.0 dev script.
 23 error This is probably not a problem with npm. There is likely additional logging output above.
-24 verbose exit [ 1, true ]
+24 verbose exit [ 134, true ]

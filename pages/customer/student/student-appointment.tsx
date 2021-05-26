@@ -1,13 +1,13 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Select } from "antd";
 import { data4 } from "../../../lib/customer-student/data";
 import ExpandBox from "~/components/Elements/ExpandBox";
 import RegInfo from "~/components/Global/Customer/Student/RegInfo";
 import RegCancel from "~/components/Global/Customer/Student/RegCancel";
 import RegRefund from "~/components/Global/Customer/Student/RegRefund";
 import SortBox from "~/components/Elements/SortBox";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 
 export default function StudentAppointment() {
   const expandedRowRender = () => {
@@ -15,12 +15,20 @@ export default function StudentAppointment() {
   };
 
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Khóa học", dataIndex: "nameStudent" },
-    { title: "Giá tiền", dataIndex: "center" },
-    { title: "Đã đóng", dataIndex: "class" },
-    { title: "Giảm giá", dataIndex: "time" },
-    { title: "Còn lại", dataIndex: "deposit" },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    {
+      title: "Tỉnh/TP",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },
+    { title: "Lớp", dataIndex: "class", ...FilterColumn("class") },
+    { title: "Ca", dataIndex: "time", ...FilterColumn("time") },
+    { title: "Đặt cọc", dataIndex: "deposit", ...FilterColumn("deposit") },
     {
       title: "",
       render: () => (
@@ -34,26 +42,17 @@ export default function StudentAppointment() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="học viên HẸN ĐĂNG KÍ" />
+    <ExpandTable
+      TitlePage="Danh sách học viên hẹn đăng kí"
+      expandable={{ expandedRowRender }}
+      dataSource={data4}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={data4} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <ExpandTable
-            expandable={{ expandedRowRender }}
-            dataSource={data4}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={data4} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

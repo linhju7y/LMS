@@ -1,21 +1,28 @@
 import React, { useState } from "react";
-import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Edit, Printer } from "react-feather";
 import { Switch, Tooltip } from "antd";
 import SortBox from "~/components/Elements/SortBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 export default function ContractCensorship() {
   const expandedRowRender = () => {
     <></>;
   };
+
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Khóa học", dataIndex: "rpCourse" },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "Khóa học", dataIndex: "rpCourse", ...FilterColumn("rpCourse") },
     {
       title: "Trạng thái",
-
+      dataIndex: "censorShipStatus",
       render: () => {
         const [censorShipStatus, setCensorShipStatus] =
           useState("Not accepted");
@@ -44,8 +51,16 @@ export default function ContractCensorship() {
         );
       },
     },
-    { title: "Ngày tạo", dataIndex: "testDate" },
-    { title: "Người tạo", dataIndex: "apmConsultant" },
+    {
+      title: "Ngày tạo",
+      dataIndex: "testDate",
+      ...FilterDateColumn("testDate"),
+    },
+    {
+      title: "Người tạo",
+      dataIndex: "apmConsultant",
+      ...FilterColumn("apmConsultant"),
+    },
     {
       title: "",
       render: () => (
@@ -66,26 +81,17 @@ export default function ContractCensorship() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="Duyệt hợp đồng học viên" />
+    <ExpandTable
+      TitlePage="Duyệt hợp đồng học viên"
+      dataSource={dataService}
+      columns={columns}
+      expandable={{ expandedRowRender }}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={dataService} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <ExpandTable
-            dataSource={dataService}
-            columns={columns}
-            expandable={{ expandedRowRender }}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={dataService} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

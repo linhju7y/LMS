@@ -8,6 +8,8 @@ import Link from "next/link";
 import { data3 } from "../../../lib/customer-student/data";
 import ExpandBox from "~/components/Elements/ExpandBox";
 import SortBox from "~/components/Elements/SortBox";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 
 export default function StudentCourseChange() {
   const expandedRowRender = () => {
@@ -15,12 +17,16 @@ export default function StudentCourseChange() {
   };
 
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Khóa học", dataIndex: "course" },
-    { title: "Giá tiền", dataIndex: "money" },
-    { title: "Đã đóng", dataIndex: "payed" },
-    { title: "Giảm giá", dataIndex: "discount" },
-    { title: "Còn lại", dataIndex: "left" },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "Khóa học", dataIndex: "course", ...FilterColumn("course") },
+    { title: "Giá tiền", dataIndex: "money", ...FilterColumn("money") },
+    { title: "Đã đóng", dataIndex: "payed", ...FilterColumn("payed") },
+    { title: "Giảm giá", dataIndex: "discount", ...FilterColumn("discount") },
+    { title: "Còn lại", dataIndex: "left", ...FilterColumn("left") },
 
     {
       title: "",
@@ -42,26 +48,17 @@ export default function StudentCourseChange() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="học viên chuyển khóa" />
+    <ExpandTable
+      TitlePage="Học viên chuyển khóa"
+      expandable={{ expandedRowRender }}
+      dataSource={data3}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={data3} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <ExpandTable
-            expandable={{ expandedRowRender }}
-            dataSource={data3}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={data3} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

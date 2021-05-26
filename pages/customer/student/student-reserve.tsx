@@ -7,6 +7,8 @@ import ExpandBox from "~/components/Elements/ExpandBox";
 import RegInfo from "~/components/Global/Customer/Student/RegInfo";
 import ReserveChangeCourse from "~/components/Global/Customer/Student/ReserveChangeCourse";
 import RegCancel from "~/components/Global/Customer/Student/RegCancel";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 
 export default function StudentReserve() {
   const expandedRowRender = () => {
@@ -14,12 +16,16 @@ export default function StudentReserve() {
   };
 
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Tỉnh/TP", dataIndex: "city" },
-    { title: "Giá tiền", dataIndex: "center" },
-    { title: "Đã đóng", dataIndex: "class" },
-    { title: "Giảm giá", dataIndex: "time" },
-    { title: "Còn lại", dataIndex: "reserve" },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "Tỉnh/TP", dataIndex: "city", ...FilterColumn("city") },
+    { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },
+    { title: "Lớp", dataIndex: "class", ...FilterColumn("class") },
+    { title: "Ca", dataIndex: "time", ...FilterColumn("time") },
+    { title: "Đóng thêm", dataIndex: "reserve", ...FilterColumn("reserve") },
     {
       title: "",
       render: () => (
@@ -33,26 +39,17 @@ export default function StudentReserve() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="Học viên bảo lưu" />
+    <ExpandTable
+      TitlePage="Học viên bảo lưu"
+      expandable={{ expandedRowRender }}
+      dataSource={data5}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={data5} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <ExpandTable
-            expandable={{ expandedRowRender }}
-            dataSource={data5}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={data5} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

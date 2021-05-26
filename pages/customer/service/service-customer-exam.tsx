@@ -4,14 +4,20 @@ import PowerTable from "~/components/PowerTable";
 import { Eye } from "react-feather";
 import { Tooltip } from "antd";
 import SortBox from "~/components/Elements/SortBox";
-
 import { dataService } from "../../../lib/customer/dataCustomer";
 import Link from "next/link";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 export default function CustomerServiceExam() {
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Đợt thi", dataIndex: "testTime" },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "Đợt thi", dataIndex: "testTime", ...FilterColumn("testTime") },
     {
       title: "Loại",
       dataIndex: "typeTest",
@@ -26,11 +32,30 @@ export default function CustomerServiceExam() {
           </>
         );
       },
+      filters: [
+        {
+          text: "Thi thử",
+          value: "Thi thử",
+        },
+      ],
+      onFilter: (value, record) => record.typeTest.indexOf(value) === 0,
     },
-    { title: "Nhà cung cấp", dataIndex: "provider" },
-    { title: "Giá tiền", dataIndex: "testCost" },
-    { title: "Ngày thi", dataIndex: "testDate" },
-    { title: "Ngày đăng kí", dataIndex: "regDate" },
+    {
+      title: "Nhà cung cấp",
+      dataIndex: "provider",
+      ...FilterColumn("provider"),
+    },
+    { title: "Giá tiền", dataIndex: "testCost", ...FilterColumn("testCost") },
+    {
+      title: "Ngày thi",
+      dataIndex: "testDate",
+      ...FilterDateColumn("testDate"),
+    },
+    {
+      title: "Ngày đăng kí",
+      dataIndex: "regDate",
+      ...FilterDateColumn("regDate"),
+    },
     {
       title: "",
       render: () => (
@@ -51,26 +76,16 @@ export default function CustomerServiceExam() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="Danh sách đăng kí thi" />
+    <PowerTable
+      TitlePage="Danh sách đăng kí đi thi"
+      dataSource={dataService}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={dataService} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <PowerTable
-            // TitlePage="Danh sách đăng kí đi thi"
-            dataSource={dataService}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={dataService} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

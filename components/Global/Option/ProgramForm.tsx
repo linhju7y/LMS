@@ -71,7 +71,6 @@ const ProgramForm = (props) => {
               </div>
             </div>
 
-            <Divider />
             <div className="row ">
               <div className="col-12">
                 {props.showAdd == true ? (

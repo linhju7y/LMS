@@ -1,15 +1,17 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
 import { Eye } from "react-feather";
 import { Tooltip } from "antd";
 import { dataService } from "../../../lib/customer/dataCustomer";
 import SortBox from "~/components/Elements/SortBox";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 export default function ContractList() {
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Khóa học", dataIndex: "rpCourse" },
+    { title: "Học viên", dataIndex: "nameStudent", ...FilterColumn("city") },
+    { title: "Khóa học", dataIndex: "rpCourse", ...FilterColumn("city") },
     {
       title: "Trạng thái",
       dataIndex: "cntStatus",
@@ -24,8 +26,19 @@ export default function ContractList() {
           </>
         );
       },
+      filters: [
+        {
+          text: "Đã có hợp đông",
+          value: "Đã có hợp đông",
+        },
+        {
+          text: "Chưa soạn hợp đông",
+          value: "Chưa soạn hợp đông",
+        },
+      ],
+      onFilter: (value, record) => record.status.indexOf(value) === 0,
     },
-    { title: "Ngày tạo", dataIndex: "regDate" },
+    { title: "Ngày tạo", dataIndex: "regDate", ...FilterDateColumn("city") },
     {
       title: "",
       render: () => (
@@ -41,25 +54,16 @@ export default function ContractList() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="Danh sách học viên có hợp đồng" />
+    <PowerTable
+      TitlePage="Danh sách học viên có hợp đồng"
+      dataSource={dataService}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={dataService} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <PowerTable
-            dataSource={dataService}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={dataService} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

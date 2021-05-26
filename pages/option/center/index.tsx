@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import PowerTable from "~/components/PowerTable";
-import TitlePage from "~/components/TitlePage";
-import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption";
 import randomColor from "randomcolor";
-import { Tag, Button, Tooltip } from "antd";
+import { Tag, Tooltip } from "antd";
 import CenterFrom from "~/components/Global/Option/CenterForm";
 import { Info, RotateCcw } from "react-feather";
+import SortBox from "~/components/Elements/SortBox";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import Link from "next/link";
 const Center = () => {
   const [centerForm, setCenterForm] = useState(false);
@@ -22,9 +23,10 @@ const Center = () => {
           </Tag>
         );
       },
+      ...FilterColumn("center"),
     },
-    { title: "Địa chỉ", dataIndex: "address" },
-    { title: "Quận", dataIndex: "district" },
+    { title: "Địa chỉ", dataIndex: "address", ...FilterColumn("address") },
+    { title: "Quận", dataIndex: "district", ...FilterColumn("district") },
     {
       render: () => (
         <>
@@ -55,31 +57,29 @@ const Center = () => {
   ];
 
   return (
-    <div className="row">
-      <div className="col-12">
-        <TitlePage title="Danh sách trung tâm" />
-      </div>
-      <div className="col-12">
-        <PowerTable
-          TitleCard={
-            <button
-              onClick={() => setCenterForm(true)}
-              className="btn btn-warning add-new"
-            >
-              Thêm mới
-            </button>
-          }
-          dataSource={data}
-          columns={columns}
-          Extra={
-            <div className="extra-table">
-              <SearchBox />
-            </div>
-          }
-        />
-      </div>
+    <>
+      <PowerTable
+        TitlePage="Danh sách trung tâm"
+        TitleCard={
+          <button
+            onClick={() => setCenterForm(true)}
+            className="btn btn-warning add-new"
+          >
+            Thêm mới
+          </button>
+        }
+        dataSource={data}
+        columns={columns}
+        Extra={
+          <div className="extra-table">
+            <FilterTable />
+            <SortBox />
+          </div>
+        }
+      />
+
       <CenterFrom visible={centerForm} onCancel={() => setCenterForm(false)} />
-    </div>
+    </>
   );
 };
 

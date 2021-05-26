@@ -8,6 +8,8 @@ import SortBox from "~/components/Elements/SortBox";
 import { ExpandBoxService } from "~/components/Elements/ExpandBox";
 import Link from "next/link";
 import RegRefund from "~/components/Global/Customer/Student/RegRefund";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 
 export default function CustomerService() {
   const expandedRowRender = () => {
@@ -15,10 +17,18 @@ export default function CustomerService() {
   };
 
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Dịch vụ", dataIndex: "service" },
-    { title: "Giá tiền", dataIndex: "cost" },
-    { title: "Nhà cung cấp", dataIndex: "provider" },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "Dịch vụ", dataIndex: "service", ...FilterColumn("service") },
+    { title: "Giá tiền", dataIndex: "cost", ...FilterColumn("cost") },
+    {
+      title: "Nhà cung cấp",
+      dataIndex: "provider",
+      ...FilterColumn("provider"),
+    },
     {
       title: "",
       render: () => (
@@ -43,26 +53,17 @@ export default function CustomerService() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="danh sách học viên mua dịch vụ" />
+    <ExpandTable
+      TitlePage="Khách mua dịch vụ"
+      expandable={{ expandedRowRender }}
+      dataSource={dataService}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={dataService} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <ExpandTable
-            expandable={{ expandedRowRender }}
-            dataSource={dataService}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={dataService} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }
