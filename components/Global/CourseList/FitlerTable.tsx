@@ -18,7 +18,7 @@ const FilterTable = () => {
   };
 
   const content = (
-    <div className={`wrap-filter small left`}>
+    <div className={`wrap-filter small`}>
       <Form layout="vertical">
         <div className="row">
           <div className="col-md-6">
