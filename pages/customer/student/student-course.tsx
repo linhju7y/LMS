@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye, Filter, Move, Repeat, RotateCcw } from "react-feather";
-import { Button, Tag, Select, Tooltip } from "antd";
+import { Eye } from "react-feather";
+import { Tooltip } from "antd";
 import Link from "next/link";
 import { data2 } from "../../../lib/customer-student/data";
-
+import SortBox from "~/components/Elements/SortBox";
 import ChangeCourse from "~/components/Global/Customer/Student/ChangeCourse";
-import SearchBox from "~/components/Elements/SearchBox";
 import ReserveCourse from "~/components/Global/Customer/Student/ReserveCourse";
 import RefundCourse from "~/components/Global/Customer/Student/RefundCourse";
 import ExpandBox from "~/components/Elements/ExpandBox";
 
 export default function CourseStudent() {
   const expandedRowRender = () => {
-    const { Option } = Select;
     return <ExpandBox />;
   };
 
@@ -24,24 +22,30 @@ export default function CourseStudent() {
     {
       title: "Cảnh báo",
       dataIndex: "warning",
-      render: (status) => {
-        let color = status == "Không" ? "#0077b6" : "#d00000";
+      render: (warning) => {
         return (
-          <Tag color={color} key={status} className="style-tag">
-            {status.toUpperCase()}
-          </Tag>
+          <>
+            {warning == "Có" ? (
+              <span className="tag red">{warning}</span>
+            ) : (
+              <span className="tag blue">{warning}</span>
+            )}
+          </>
         );
       },
     },
     {
       title: "Kết quả thi",
       dataIndex: "result",
-      render: (status) => {
-        let color = status == "Không đạt" ? "#d00000" : "#0077b6";
+      render: (result) => {
         return (
-          <Tag color={color} key={status} className="style-tag">
-            {status.toUpperCase()}
-          </Tag>
+          <>
+            {result == "Không đạt" ? (
+              <span className="tag black">{result}</span>
+            ) : (
+              <span className="tag green">{result}</span>
+            )}
+          </>
         );
       },
     },
@@ -58,7 +62,7 @@ export default function CourseStudent() {
             }}
           >
             <Tooltip title="Xem chi tiết">
-              <button className="btn btn-icon">
+              <button className="btn btn-icon view">
                 <Eye />
               </button>
             </Tooltip>
@@ -89,10 +93,7 @@ export default function CourseStudent() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={data2} />
               </div>
             }
           />

@@ -1,11 +1,12 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
-import { Eye, Filter } from "react-feather";
-import { Button, Tooltip } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Eye } from "react-feather";
+import { Tooltip } from "antd";
+import SortBox from "~/components/Elements/SortBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 import Link from "next/link";
+
 export default function ReportTest() {
   const columns = [
     { title: "Tỉnh/TP", dataIndex: "city" },
@@ -26,7 +27,7 @@ export default function ReportTest() {
             }}
           >
             <Tooltip title="Xem chi tiết">
-              <button className="btn btn-icon">
+              <button className="btn btn-icon view">
                 <Eye />
               </button>
             </Tooltip>
@@ -50,10 +51,7 @@ export default function ReportTest() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={dataService} />
               </div>
             }
           />

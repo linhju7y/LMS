@@ -1,9 +1,9 @@
 import React from "react";
 import TitlePage from "~/components/Elements/TitlePage";
 import PowerTable from "~/components/PowerTable";
-import { Eye, Filter } from "react-feather";
-import { Button, Tag, Tooltip } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Eye } from "react-feather";
+import { Tooltip } from "antd";
+import SortBox from "~/components/Elements/SortBox";
 
 import { dataService } from "../../../lib/customer/dataCustomer";
 import Link from "next/link";
@@ -16,11 +16,14 @@ export default function CustomerServiceExam() {
       title: "Loại",
       dataIndex: "typeTest",
       render: (typeTest) => {
-        let color = typeTest == "Thi thử" ? "#2a9d8f" : "#023e8a";
         return (
-          <Tag color={color} key={typeTest} className="style-tag">
-            {typeTest.toUpperCase()}
-          </Tag>
+          <>
+            {typeTest == "Thi Thử" ? (
+              <span className="tag blue">{typeTest}</span>
+            ) : (
+              <span className="tag green">{typeTest}</span>
+            )}
+          </>
         );
       },
     },
@@ -38,7 +41,7 @@ export default function CustomerServiceExam() {
           }}
         >
           <Tooltip title="Xem chi tiết">
-            <button className="btn btn-icon">
+            <button className="btn btn-icon view">
               <Eye />
             </button>
           </Tooltip>
@@ -62,10 +65,7 @@ export default function CustomerServiceExam() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={dataService} />
               </div>
             }
           />

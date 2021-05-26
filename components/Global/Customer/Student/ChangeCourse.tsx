@@ -4,7 +4,7 @@ import { Move } from "react-feather";
 
 const ChangeCourse = () => {
   const { Option } = Select;
-
+  const { TextArea } = Input;
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
@@ -21,7 +21,6 @@ const ChangeCourse = () => {
       </Tooltip>
 
       <Modal
-        width={800}
         title="Chuyển khóa"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
@@ -63,22 +62,26 @@ const ChangeCourse = () => {
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Giá khóa học">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Giảm giá">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+            </div>
+            {/*  */}
+            {/*  */}
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Đã đóng">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Còn lại">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
@@ -86,19 +89,15 @@ const ChangeCourse = () => {
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-7">
+              <div className="col-6">
                 <Form.Item label="Khóa chuyển đến">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
                     <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
                   </Select>
                 </Form.Item>
               </div>
-              <div className="col-5">
+              <div className="col-6">
                 <Form.Item label="Giá khóa học">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
@@ -106,30 +105,30 @@ const ChangeCourse = () => {
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Giảm giá">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Số tiền đóng thêm">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+            </div>
+            {/*  */}
+            {/*  */}
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Thanh toán">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Phương thức">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
                     <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
                   </Select>
                 </Form.Item>
               </div>
@@ -138,7 +137,7 @@ const ChangeCourse = () => {
             <div className="row">
               <div className="col-12">
                 <Form.Item label="Ghi chú">
-                  <Input className="style-input" placeholder="" />
+                  <TextArea rows={2} />
                 </Form.Item>
               </div>
             </div>

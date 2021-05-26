@@ -1,19 +1,16 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye, Filter } from "react-feather";
-import { Button, Card, Tag, Form, Input, Select } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Select } from "antd";
 import { data4 } from "../../../lib/customer-student/data";
-
 import ExpandBox from "~/components/Elements/ExpandBox";
 import RegInfo from "~/components/Global/Customer/Student/RegInfo";
 import RegCancel from "~/components/Global/Customer/Student/RegCancel";
 import RegRefund from "~/components/Global/Customer/Student/RegRefund";
+import SortBox from "~/components/Elements/SortBox";
 
 export default function StudentAppointment() {
   const expandedRowRender = () => {
-    const { Option } = Select;
     return <ExpandBox />;
   };
 
@@ -51,9 +48,7 @@ export default function StudentAppointment() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={data4} />
               </div>
             }
           />

@@ -21,7 +21,6 @@ const PaymentService = () => {
       </Tooltip>
 
       <Modal
-        width={850}
         title="Thông tin thanh toán"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
@@ -50,24 +49,29 @@ const PaymentService = () => {
           <Form layout="vertical">
             {/*  */}
             <div className="row">
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Học viên">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Tên set">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+            </div>
+            {/*  */}
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Giá">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
-                <Form.Item label="Discount">
-                  <Input className="style-input" placeholder="" />
+              <div className="col-6">
+                <Form.Item label="Trung tâm thu tiền">
+                  <Select defaultValue="lucy" className="w-100 style-input">
+                    <Option value="jack">Jack</Option>
+                  </Select>
                 </Form.Item>
               </div>
             </div>
@@ -84,15 +88,8 @@ const PaymentService = () => {
                 </Form.Item>
               </div>
               <div className="col-4">
-                <Form.Item label="Trung tâm thu tiền">
-                  <Select defaultValue="lucy" className="w-100 style-input">
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
-                  </Select>
+                <Form.Item label="Discount">
+                  <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
             </div>

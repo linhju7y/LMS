@@ -1,12 +1,11 @@
 import React from "react";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye, Filter } from "react-feather";
-import { Tag, Card, Tooltip } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Eye } from "react-feather";
+import { Card, Tooltip } from "antd";
 import Link from "next/link";
 import InfoCusCard from "~/components/Profile/ProfileCustomer/component/InfoCusCard";
-
 import { data } from "../../../lib/customer-student/data";
+import SortBox from "~/components/Elements/SortBox";
 
 const expandedRowRender = () => {
   return (
@@ -30,11 +29,14 @@ const StudentData = () => {
       dataIndex: "status",
       align: "center",
       render: (status) => {
-        let color = status == "Active" ? "#4361ee" : "#d00000";
         return (
-          <Tag color={color} key={status} className="style-tag">
-            {status.toUpperCase()}
-          </Tag>
+          <>
+            {status == "Active" ? (
+              <span className="tag green">{status}</span>
+            ) : (
+              <span className="tag gray">{status}</span>
+            )}
+          </>
         );
       },
     },
@@ -44,11 +46,14 @@ const StudentData = () => {
       dataIndex: "signUp",
       align: "center",
       render: (status) => {
-        let color = status == "Đã xong" ? "#06d6a0" : "#d00000";
         return (
-          <Tag color={color} key={status} className="style-tag">
-            {status.toUpperCase()}
-          </Tag>
+          <>
+            {status == "Đã xong" ? (
+              <span className="tag blue">{status}</span>
+            ) : (
+              <span className="tag black">{status}</span>
+            )}
+          </>
         );
       },
     },
@@ -79,10 +84,7 @@ const StudentData = () => {
       columns={columns}
       Extra={
         <div className="extra-table">
-          <SearchBox />
-          <button className="btn btn-secondary light btn-filter">
-            <Filter />
-          </button>
+          <SortBox dataOption={data} />
         </div>
       }
     />

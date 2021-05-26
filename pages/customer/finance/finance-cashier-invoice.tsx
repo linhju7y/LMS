@@ -1,12 +1,11 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
-import { Edit, ShoppingCart, XCircle, Filter } from "react-feather";
-import { Button, Image, Tooltip } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { ShoppingCart, XCircle } from "react-feather";
+import { Image, Tooltip } from "antd";
 import { dataService } from "../../../lib/customer/dataCustomer";
 import Link from "next/link";
-
+import SortBox from "~/components/Elements/SortBox";
 import ConsultantForm from "~/components/Global/Customer/Finance/ConsultantForm";
 
 export default function FinanceInvoice() {
@@ -37,13 +36,13 @@ export default function FinanceInvoice() {
             }}
           >
             <Tooltip title="Xuất phiếu thu">
-              <button className="btn btn-icon">
+              <button className="btn btn-icon exchange">
                 <ShoppingCart />
               </button>
             </Tooltip>
           </Link>
           <Tooltip title="Xóa phiếu thu">
-            <button className="btn btn-icon">
+            <button className="btn btn-icon delete">
               <XCircle />
             </button>
           </Tooltip>
@@ -66,10 +65,7 @@ export default function FinanceInvoice() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={dataService} />
               </div>
             }
           />

@@ -22,7 +22,6 @@ const RegInfo = () => {
       </Tooltip>
 
       <Modal
-        width={800}
         title="Thông tin đăng ký"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
@@ -56,32 +55,30 @@ const RegInfo = () => {
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Số điện thoại">
-                  <Input className="style-input" placeholder="" />
-                </Form.Item>
-              </div>
-              <div className="col-3">
-                <Form.Item label="Ngày hẹn">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-3">
+              <div className="col-6">
+                <Form.Item label="Ngày hẹn">
+                  <Input className="style-input" placeholder="" />
+                </Form.Item>
+              </div>
+              <div className="col-6">
                 <Form.Item label="Tỉnh/TP">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
                   </Select>
                 </Form.Item>
               </div>
-              <div className="col-3">
+            </div>
+            {/*  */}
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Trung tâm">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
@@ -93,20 +90,8 @@ const RegInfo = () => {
                   </Select>
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Lớp">
-                  <Select defaultValue="lucy" className="w-100 style-input">
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
-                  </Select>
-                </Form.Item>
-              </div>
-              <div className="col-3">
-                <Form.Item label="Ca">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
                     <Option value="lucy">Lucy</Option>
@@ -120,24 +105,29 @@ const RegInfo = () => {
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-4">
+              <div className="col-6">
+                <Form.Item label="Ca">
+                  <Select defaultValue="lucy" className="w-100 style-input">
+                    <Option value="jack">Jack</Option>
+                  </Select>
+                </Form.Item>
+              </div>
+              <div className="col-6">
+                <Form.Item label="Lớp">
+                  <Select defaultValue="lucy" className="w-100 style-input">
+                    <Option value="jack">Jack</Option>
+                  </Select>
+                </Form.Item>
+              </div>
+            </div>
+            {/*  */}
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Số tiền đóng thêm">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-4">
-                <Form.Item label="Lớp">
-                  <Select defaultValue="lucy" className="w-100 style-input">
-                    <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
-                  </Select>
-                </Form.Item>
-              </div>
-              <div className="col-4">
+              <div className="col-6">
                 <Form.Item label="Phương thức thanh toán">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>

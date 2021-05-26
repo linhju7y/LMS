@@ -1,9 +1,9 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye, CheckCircle, XCircle, Filter } from "react-feather";
-import { Button, Tag, Select, Tooltip } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Eye, CheckCircle, XCircle } from "react-feather";
+import { Tooltip } from "antd";
+import SortBox from "~/components/Elements/SortBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 
 import Link from "next/link";
@@ -36,11 +36,14 @@ export default function AppointmentServiceTest() {
       dataIndex: "apmReg",
       align: "center",
       render: (apmReg) => {
-        let color = apmReg == "Đã đăng kí" ? "#0466c8" : "#e85d04";
         return (
-          <Tag color={color} key={apmReg} className="style-tag">
-            {apmReg.toUpperCase()}
-          </Tag>
+          <>
+            {apmReg == "Đã đăng kí" ? (
+              <span className="tag blue">{apmReg}</span>
+            ) : (
+              <span className="tag black">{apmReg}</span>
+            )}
+          </>
         );
       },
     },
@@ -55,7 +58,7 @@ export default function AppointmentServiceTest() {
             }}
           >
             <Tooltip title="Xem chi tiết">
-              <button className="btn btn-icon">
+              <button className="btn btn-icon view">
                 <Eye />
               </button>
             </Tooltip>
@@ -82,10 +85,7 @@ export default function AppointmentServiceTest() {
             expandable={{ expandedRowRender }}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={dataService} />
               </div>
             }
           />

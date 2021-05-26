@@ -21,7 +21,6 @@ const RegRefund = () => {
       </Tooltip>
 
       <Modal
-        width={800}
         title="Hoàn tiền"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
@@ -50,30 +49,27 @@ const RegRefund = () => {
           <Form layout="vertical">
             {/*  */}
             <div className="row">
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Học viên">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Đã đóng">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+            </div>
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Hoàn trả">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Trung tâm hoàn trả">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
                   </Select>
                 </Form.Item>
               </div>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Edit, Printer, Filter } from "react-feather";
-import { Button, Switch, Tag } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Edit, Printer } from "react-feather";
+import { Switch, Tooltip } from "antd";
+import SortBox from "~/components/Elements/SortBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 
 export default function ContractCensorship() {
@@ -21,18 +21,19 @@ export default function ContractCensorship() {
           useState("Not accepted");
         function onChange(checked) {
           if (checked == true) {
-            setCensorShipStatus("accepted");
+            setCensorShipStatus("Accepted");
           } else setCensorShipStatus("Not accepted");
         }
-        let color = censorShipStatus == "accepted" ? "blue" : "volcano";
         return (
           <>
             <div className="container-fluid">
               <div className="row">
                 <div className="col-6">
-                  <Tag color={color} key={censorShipStatus} className="pl-2">
-                    <b> {censorShipStatus.toLocaleUpperCase()} </b>
-                  </Tag>
+                  {censorShipStatus == "Accepted" ? (
+                    <span className="tag green">{censorShipStatus}</span>
+                  ) : (
+                    <span className="tag red">{censorShipStatus}</span>
+                  )}
                 </div>
                 <div className="col-6">
                   <Switch onChange={onChange} />
@@ -49,8 +50,16 @@ export default function ContractCensorship() {
       title: "",
       render: () => (
         <>
-          <Button type="link" icon={<Edit />} />
-          <Button type="link" icon={<Printer />} />
+          <Tooltip title="Chỉnh sửa">
+            <button className="btn btn-icon exchange">
+              <Edit />
+            </button>
+          </Tooltip>
+          <Tooltip title="In hợp đồng">
+            <button className="btn btn-icon">
+              <Printer />
+            </button>
+          </Tooltip>
         </>
       ),
     },
@@ -71,10 +80,7 @@ export default function ContractCensorship() {
             expandable={{ expandedRowRender }}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={dataService} />
               </div>
             }
           />

@@ -11,7 +11,7 @@ const ReserveCourse = () => {
     <>
       <Tooltip title="Bảo lưu khóa">
         <button
-          className="btn btn-icon"
+          className="btn btn-icon exchange"
           onClick={() => {
             setIsModalVisible(true);
           }}
@@ -63,7 +63,7 @@ const ReserveCourse = () => {
             {/*  */}
             <div className="row">
               <Form.Item label="Hạn bảo lưu">
-                <TextArea className="style-input" placeholder="" rows={5} />
+                <TextArea rows={2} />
               </Form.Item>
             </div>
             <div className="col-12"></div>

@@ -7,6 +7,8 @@ import { data } from "../../../lib/customer-student/data";
 import InfoCusCard from "~/components/Profile/ProfileCustomer/component/InfoCusCard";
 import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
+import SortBox from "~/components/Elements/SortBox";
+
 export default function ExchangeStudent() {
   const expandedRowRender = () => {
     return (
@@ -29,11 +31,14 @@ export default function ExchangeStudent() {
       dataIndex: "status",
       align: "center",
       render: (status) => {
-        let color = status == "Active" ? "#4361ee" : "volcano";
         return (
-          <Tag color={color} key={status} className="style-tag">
-            {status.toUpperCase()}
-          </Tag>
+          <>
+            {status == "Active" ? (
+              <span className="tag blue">{status}</span>
+            ) : (
+              <span className="tag gray">{status}</span>
+            )}
+          </>
         );
       },
     },
@@ -73,10 +78,7 @@ export default function ExchangeStudent() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={data} />
               </div>
             }
           />

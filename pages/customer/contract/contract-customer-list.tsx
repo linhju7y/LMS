@@ -1,10 +1,10 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
-import { Eye, Filter } from "react-feather";
-import { Button, Tag } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Eye } from "react-feather";
+import { Tooltip } from "antd";
 import { dataService } from "../../../lib/customer/dataCustomer";
+import SortBox from "~/components/Elements/SortBox";
 
 export default function ContractList() {
   const columns = [
@@ -14,11 +14,14 @@ export default function ContractList() {
       title: "Trạng thái",
       dataIndex: "cntStatus",
       render: (cntStatus) => {
-        let color = cntStatus == "Đã có hợp đồng" ? "cyan" : "red";
         return (
-          <Tag color={color} key={cntStatus}>
-            <b> {cntStatus.toUpperCase()}</b>
-          </Tag>
+          <>
+            {cntStatus == "Đã có hợp đồng" ? (
+              <span className="tag green">{cntStatus}</span>
+            ) : (
+              <span className="tag red">{cntStatus}</span>
+            )}
+          </>
         );
       },
     },
@@ -27,7 +30,11 @@ export default function ContractList() {
       title: "",
       render: () => (
         <>
-          <Button type="link" icon={<Eye />} />
+          <Tooltip title="Xem chi tiết">
+            <button className="btn btn-icon view">
+              <Eye />
+            </button>
+          </Tooltip>
         </>
       ),
     },
@@ -47,10 +54,7 @@ export default function ContractList() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={dataService} />
               </div>
             }
           />

@@ -21,7 +21,6 @@ const TextInfo = () => {
       </Tooltip>
 
       <Modal
-        width={850}
         title="Thông tin hẹn test"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
@@ -55,21 +54,24 @@ const TextInfo = () => {
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Số điện thoại">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+            </div>
+            {/*  */}
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Người hẹn">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
                   </Select>
+                </Form.Item>
+              </div>
+              <div className="col-6">
+                <Form.Item label="Ngày hẹn">
+                  <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
             </div>
@@ -79,28 +81,14 @@ const TextInfo = () => {
                 <Form.Item label="Trung tâm">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
                   </Select>
                 </Form.Item>
               </div>
-              <div className="col-3">
-                <Form.Item label="Ngày hẹn">
-                  <Input className="style-input" placeholder="" />
-                </Form.Item>
-              </div>
-              <div className="col-3">
+              {/*  */}
+              <div className="col-6">
                 <Form.Item label="Giờ hẹn">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
                   </Select>
                 </Form.Item>
               </div>

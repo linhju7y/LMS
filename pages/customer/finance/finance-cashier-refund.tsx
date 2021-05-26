@@ -1,11 +1,9 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { DollarSign, Filter } from "react-feather";
-import { Button, Tag } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Tag } from "antd";
+import SortBox from "~/components/Elements/SortBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
-
 import { ExpandBoxService } from "~/components/Elements/ExpandBox";
 import RefundForm from "~/components/Global/Customer/Finance/RefundForm";
 
@@ -23,11 +21,14 @@ export default function FinanceRefund() {
       dataIndex: "fnStatus",
       align: "center",
       render: (fnStatus) => {
-        let color = fnStatus == "Duyệt" ? "#06d6a0" : "#ef476f";
         return (
-          <Tag color={color} key={fnStatus} className="style-tag">
-            {fnStatus.toUpperCase()}
-          </Tag>
+          <>
+            {fnStatus == "Duyệt" ? (
+              <span className="tag green">{fnStatus}</span>
+            ) : (
+              <span className="tag red">{fnStatus}</span>
+            )}
+          </>
         );
       },
     },
@@ -56,10 +57,7 @@ export default function FinanceRefund() {
             expandable={{ expandedRowRender }}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={dataService} />
               </div>
             }
           />
