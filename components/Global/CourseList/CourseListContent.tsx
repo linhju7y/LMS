@@ -55,7 +55,7 @@ const CourseListContent = () => {
       renderItem={(item) => (
         <List.Item extra={<ModalUpdate />}>
           <List.Item.Meta
-            avatar={<Tag color="gold">IS COMING</Tag>}
+            avatar={<span className="tag green">Active</span>}
             title={<a href="https://ant.design">{item.title}</a>}
             description={
               <div className="content-body">

@@ -3,7 +3,6 @@ import ActionTable from "~/components/ActionTable";
 import SearchBox from "~/components/Elements/SearchBox";
 
 import SortBox from "~/components/Elements/SortBox";
-import { Filter } from "react-feather";
 
 import React, { useState } from "react";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
@@ -12,14 +11,24 @@ import Link from "next/link";
 import ScheduleRoom from "~/components/Global/CourseList/ScheduleRoom";
 import ScheduleTeacher from "~/components/Global/CourseList/ScheduleTeacher";
 import TitlePage from "~/components/Elements/TitlePage";
+import FilterBase from "~/components/FilterBase";
+
+const dataOption = [
+  {
+    text: "Option 1",
+    value: "option 1",
+  },
+  {
+    text: "Option 2",
+    value: "option 2",
+  },
+  {
+    text: "Option 3",
+    value: "option 3",
+  },
+];
 
 const CourseList = () => {
-  const [showFilter, showFilterSet] = useState(false);
-
-  const funcShowFilter = () => {
-    showFilter ? showFilterSet(false) : showFilterSet(true);
-  };
-
   return (
     <div className="course-list-page">
       <div className="row">
@@ -30,24 +39,17 @@ const CourseList = () => {
             <Card
               title={
                 <div className="list-action-table">
-                  <button
-                    className="btn btn-secondary light btn-filter"
-                    onClick={funcShowFilter}
-                  >
-                    <Filter />
-                  </button>
-                  <SortBox />
+                  <FilterTable />
+                  <SortBox dataOption={dataOption} />
                 </div>
               }
               extra={
                 <div className="list-btn">
                   <ScheduleRoom />
-
                   <ScheduleTeacher />
                 </div>
               }
             >
-              <FilterTable showFilter={showFilter} />
               <div className="course-list-content">
                 <CourseListContent />
               </div>

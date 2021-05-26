@@ -27,6 +27,7 @@ const PowerTable = (props) => {
             >
               {props.children}
               <Table
+                className={props.Size ? props.Size : ""}
                 scroll={{ x: 800 }}
                 columns={props.columns}
                 dataSource={props.dataSource}

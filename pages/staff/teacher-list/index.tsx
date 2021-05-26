@@ -32,16 +32,29 @@ const dataOption = [
 const dataSource = [];
 
 for (let i = 0; i < 50; i++) {
-  dataSource.push({
-    key: i,
-    Place: "HCM" + i,
-    NameStaff: "Nguyễn An" + i,
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com" + i,
-    Status: "active",
-    StartDay: "03/05/2021",
-    Action: "",
-  });
+  if (i == 34) {
+    dataSource.push({
+      key: i,
+      Place: "HCM" + i,
+      NameStaff: "Nguyễn An" + i,
+      NumberPhone: "012345678",
+      Email: "annguyen97dev@gmail.com" + i,
+      Status: "active",
+      StartDay: "12-05-2021",
+      Action: "",
+    });
+  } else {
+    dataSource.push({
+      key: i,
+      Place: "HCM" + i,
+      NameStaff: "Nguyễn An" + i,
+      NumberPhone: "012345678",
+      Email: "annguyen97dev@gmail.com" + i,
+      Status: "active",
+      StartDay: "03-05-2021",
+      Action: "",
+    });
+  }
 }
 
 const TeacherList = () => {
@@ -50,6 +63,7 @@ const TeacherList = () => {
       title: "Tỉnh/TP",
       dataIndex: "Place",
       key: "center",
+
       ...FilterColumn("Place"),
     },
     {

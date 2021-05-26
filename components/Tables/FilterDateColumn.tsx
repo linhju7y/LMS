@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Input, Tooltip, Table, Button, Space } from "antd";
+import { Input, Tooltip, Table, Button, Space, DatePicker } from "antd";
 import { FormOutlined, EyeOutlined, SearchOutlined } from "@ant-design/icons";
 import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
@@ -31,6 +31,10 @@ const FilterDateColumn = (dataIndex) => {
     });
   };
 
+  function onChange(date, dateString) {
+    console.log("Date is: ", dateString);
+  }
+
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
       setSelectedKeys,
@@ -39,7 +43,7 @@ const FilterDateColumn = (dataIndex) => {
       clearFilters,
     }) => (
       <div style={{ padding: 8 }}>
-        <Input
+        {/* <Input
           ref={searchInput}
           placeholder={`Search ${dataIndex}`}
           value={selectedKeys[0]}
@@ -48,7 +52,13 @@ const FilterDateColumn = (dataIndex) => {
           }
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{ marginBottom: 8, display: "block" }}
+        /> */}
+        <DatePicker
+          style={{ marginBottom: 8, display: "block" }}
+          format="DD-MM-YYYY"
+          onChange={(date, dateString) => setSelectedKeys([dateString])}
         />
+
         <Space>
           <Button
             type="primary"
@@ -90,11 +100,11 @@ const FilterDateColumn = (dataIndex) => {
             .toLowerCase()
             .includes(value.toLowerCase())
         : "",
-    onFilterDropdownVisibleChange: (visible) => {
-      if (visible) {
-        setTimeout(() => searchInput.current.select(), 100);
-      }
-    },
+    // onFilterDropdownVisibleChange: (visible) => {
+    //   if (visible) {
+    //     setTimeout(() => searchInput.current.select(), 100);
+    //   }
+    // },
     render: (text) =>
       state.searchedColumn === dataIndex ? (
         <Highlighter

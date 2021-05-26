@@ -484,18 +484,18 @@ textarea.form-control {
   position: relative;
   display: inline-block;
 }
-
+.ant-card-head-title {
+  overflow: inherit;
+}
 .wrap-filter {
-  position: absolute;
-  padding: 20px;
+  // position: absolute;
+  // left: 50%;
+  // transform: translateX(-50%);
+  // top: 62px;
+  padding: 15px;
   width: 97.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 62px;
   background: white;
-  box-shadow: 0px 2px 15px #0000001c;
   z-index: 10;
-  border-radius: 0.575rem;
 
   &.small {
     width: 400px;
@@ -503,6 +503,11 @@ textarea.form-control {
     transform: inherit;
     left: inherit;
     top: 115%;
+
+    &.left {
+      right: inherit;
+      left: 0;
+    }
 
     .btn-primary {
       margin-left: 0;
@@ -541,9 +546,9 @@ textarea.form-control {
   }
 }
 
-.wrap-filter {
-  display: none;
-}
+// .wrap-filter {
+//   display: none;
+// }
 
 .extra-table {
   display: flex;
@@ -693,6 +698,37 @@ textarea.form-control {
       }
     }
   }
+
+  .ant-table-filter-column {
+    display: table;
+
+    .ant-table-filter-column-title {
+      padding: 12px 0.3em 12px 8px !important;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .ant-table-filter-trigger-container {
+      position: relative;
+      top: inherit;
+      right: inherit;
+      bottom: inherit;
+      display: inline-block;
+      vertical-align: middle;
+      border-radius: 0.375rem;
+
+      .ant-table-filter-trigger {
+        padding: 14px 2px;
+      }
+    }
+  }
+
+  .table-medium {
+    width: 75%;
+  }
+
+  .table-small {
+    width: 60%;
+  }
 }
 
 .space-between {
@@ -724,6 +760,7 @@ hr {
   background: transparent;
   padding: 0;
   transition: 0.3s;
+  margin: 0 5px;
   // width: 45px;
   // height: 45px;
   // display: flex;
