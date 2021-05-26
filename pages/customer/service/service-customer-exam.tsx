@@ -1,5 +1,5 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
+import TitlePage from "~/components/Elements/TitlePage";
 import PowerTable from "~/components/PowerTable";
 import { Eye, Filter } from "react-feather";
 import { Button, Tag, Tooltip } from "antd";
@@ -57,6 +57,7 @@ export default function CustomerServiceExam() {
       <div className="row">
         <div className="col-12">
           <PowerTable
+            // TitlePage="Danh sách đăng kí đi thi"
             dataSource={dataService}
             columns={columns}
             Extra={

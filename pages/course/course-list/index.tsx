@@ -1,7 +1,7 @@
 import { Card, Select, DatePicker, Input, Form } from "antd";
 import ActionTable from "~/components/ActionTable";
 import SearchBox from "~/components/Elements/SearchBox";
-import TitlePage from "~/components/Elements/TitlePage";
+
 import SortBox from "~/components/Elements/SortBox";
 import { Filter } from "react-feather";
 
@@ -9,15 +9,11 @@ import React, { useState } from "react";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import CourseListContent from "~/components/Global/CourseList/CourseListContent";
 import Link from "next/link";
-
-import { useAuth } from "~/context/auth";
 import ScheduleRoom from "~/components/Global/CourseList/ScheduleRoom";
 import ScheduleTeacher from "~/components/Global/CourseList/ScheduleTeacher";
+import TitlePage from "~/components/Elements/TitlePage";
 
 const CourseList = () => {
-  const { getTitlePage } = useAuth();
-
-  getTitlePage("Danh sách khóa học");
   const [showFilter, showFilterSet] = useState(false);
 
   const funcShowFilter = () => {
@@ -28,6 +24,8 @@ const CourseList = () => {
     <div className="course-list-page">
       <div className="row">
         <div className="col-12">
+          <TitlePage title="Danh sách khóa học" />
+
           <div className="wrap-table">
             <Card
               title={

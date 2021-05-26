@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Popover, Button } from "antd";
+import { Popover, Button, Input, Select } from "antd";
 
 import { Grid } from "react-feather";
 import { useAuth } from "~/context/auth";
@@ -14,6 +14,10 @@ import {
   SearchOutlined,
 } from "@ant-design/icons";
 import TitlePage from "../Elements/TitlePage";
+import TitlePageHeader from "../Elements/TitlePageHeader";
+const { Search } = Input;
+
+const { Option } = Select;
 
 export default function Header({
   toggleMenu,
@@ -22,6 +26,16 @@ export default function Header({
   toggle: boolean;
   toggleMenu: Function;
 }) {
+  const content_search = (
+    <div className="input-search">
+      <Input className="style-input" placeholder="search" />
+      <SearchOutlined />
+    </div>
+  );
+  function onChange(value) {
+    console.log(`selected ${value}`);
+  }
+
   const content = (
     <ul className="user-function">
       <li>
@@ -51,9 +65,12 @@ export default function Header({
     </ul>
   );
 
-  const { titlePage } = useAuth();
+  const [isSearch, setIsSearch] = useState(false);
+  const openSearch = () => {
+    !isSearch ? setIsSearch(true) : setIsSearch(false);
+  };
 
-  console.log("Title: ", titlePage);
+  const { titlePage } = useAuth();
 
   let visibleUser: {
     visible: Boolean;
@@ -95,16 +112,41 @@ export default function Header({
             </div>
           </div> */}
           <div className="col-title-page">
-            <TitlePage title={titlePage} />
+            <TitlePageHeader title={titlePage} />
           </div>
         </div>
         <div className="col-setting">
           <ul className="col-setting-list">
-            <li className="notification">
+            {/* <li className="notification">
               <span className="notification-icon">
                 <i className="fal fa-bell" />
               </span>
               <span className="notification-number">5</span>
+            </li> */}
+            <li className="select-center">
+              <Select
+                className="style-input"
+                showSearch
+                style={{ width: 200 }}
+                placeholder="Chọn trung tâm"
+                optionFilterProp="children"
+                onChange={onChange}
+                filterOption={(input, option) =>
+                  option.children.toLowerCase().indexOf(input.toLowerCase()) >=
+                  0
+                }
+              >
+                <Option value="center-1">Trung tâm Anh Ngữ Zim</Option>
+                <Option value="center-2">Trung tâm Việt Hoa</Option>
+                <Option value="center-3">Mona Media</Option>
+              </Select>
+            </li>
+            <li className="search">
+              <Popover content={content_search} trigger="click">
+                <a className="search-icon">
+                  <SearchOutlined />
+                </a>
+              </Popover>
             </li>
             <li className="user">
               <Popover

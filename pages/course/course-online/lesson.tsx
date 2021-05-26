@@ -181,7 +181,7 @@ const LessonListing = () => {
     <>
       <div className="row">
         <div className="col-12">
-          <TitlePage title={"Danh sách bài học"} />
+          <TitlePage title="Danh sách bài học" />
           <div className="wrap-table">
             <Card
               className="cardRadius"

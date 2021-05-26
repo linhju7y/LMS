@@ -123,12 +123,12 @@ const TeacherList = () => {
         columns={columns}
         dataSource={dataSource}
         TitlePage="Danh sách giáo viên"
-        TitleCard={
+        TitleCard={<ModalAdd />}
+        Extra={
           <div className="extra-table">
             <SortBox dataOption={dataOption} />
           </div>
         }
-        Extra={<ModalAdd />}
       />
     </>
   );

@@ -96,7 +96,7 @@ const CourseListing = () => {
     <>
       <div className="row">
         <div className="col-12">
-          <TitlePage title={"Danh sách khóa học"} />
+          <TitlePage title="Danh sách khóa học" />
           <div className="wrap-table">
             <Card
               className="cardRadius"

@@ -51,7 +51,6 @@ export default function StudentAppointment() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <SearchBox />
                 <button className="btn btn-secondary light btn-filter">
                   <Filter />
                 </button>

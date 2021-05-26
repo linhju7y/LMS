@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   const [titlePage, setTitlePage] = useState("This is title");
 
   const getTitlePage = (title) => {
-    console.log("run this");
+    console.log("run this: ", title);
     setTitlePage(title);
   };
 

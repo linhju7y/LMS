@@ -5,6 +5,7 @@ import SortBox from "~/components/Elements/SortBox";
 import { table } from "console";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useAuth } from "~/context/auth";
 
 const columns = [
   {
@@ -135,11 +136,13 @@ const data = [
 ];
 
 const CourseListSelf = () => {
+  const { getTitlePage } = useAuth();
+  getTitlePage("Danh sách khóa tự học");
+
   return (
     <>
       <div className="row">
         <div className="col-12">
-          <TitlePage title="Danh sách khóa tự học" />
           <div className="wrap-table">
             <Card
               extra={

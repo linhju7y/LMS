@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table, Card } from "antd";
 import TitlePage from "~/components/TitlePage";
 import { useAuth } from "~/context/auth";
@@ -6,7 +6,13 @@ import { useAuth } from "~/context/auth";
 const PowerTable = (props) => {
   const { getTitlePage } = useAuth();
 
-  getTitlePage(props.TitlePage);
+  console.log("Title page: ", props.TitlePage);
+
+  useEffect(() => {
+    if (props.TitlePage) {
+      getTitlePage(props.TitlePage);
+    }
+  }, []);
 
   return (
     <>
@@ -16,8 +22,8 @@ const PowerTable = (props) => {
           <div className="wrap-table">
             <Card
               className="cardRadius"
-              title={props.TitleCard}
-              extra={props.Extra}
+              title={props.Extra}
+              extra={props.TitleCard}
             >
               {props.children}
               <Table
