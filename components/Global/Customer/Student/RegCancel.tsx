@@ -21,7 +21,6 @@ const RegCancel = () => {
       </Tooltip>
 
       <Modal
-        width={650}
         title="Hủy đăng ký"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}

@@ -21,7 +21,6 @@ const RefundForm = () => {
       </Tooltip>
 
       <Modal
-        width={850}
         title="Thông tin phiếu chi"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
@@ -50,17 +49,21 @@ const RefundForm = () => {
           <Form layout="vertical">
             {/*  */}
             <div className="row">
-              <div className="col-4">
+              <div className="col-6">
                 <Form.Item label="Học viên">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-4">
+              <div className="col-6">
                 <Form.Item label="Số điện thoại">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-4">
+            </div>
+            {/*  */}
+            {/*  */}
+            <div className="row">
+              <div className="col-12">
                 <Form.Item label="Địa chi">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
@@ -68,22 +71,25 @@ const RefundForm = () => {
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="CMND">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Ngày cấp">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+            </div>
+            {/*  */}
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Nơi cấp">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Số tiền">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
@@ -95,11 +101,6 @@ const RefundForm = () => {
                 <Form.Item label="Phương thức thanh toán">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
                   </Select>
                 </Form.Item>
               </div>
@@ -108,10 +109,6 @@ const RefundForm = () => {
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
                     <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
                   </Select>
                 </Form.Item>
               </div>

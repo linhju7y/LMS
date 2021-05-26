@@ -2,10 +2,9 @@ import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
-import { Button, Select, Tooltip } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Tooltip } from "antd";
 import { dataService } from "../../../lib/customer/dataCustomer";
-
+import SortBox from "~/components/Elements/SortBox";
 import { ExpandBoxService } from "~/components/Elements/ExpandBox";
 import Link from "next/link";
 import RegRefund from "~/components/Global/Customer/Student/RegRefund";
@@ -31,7 +30,7 @@ export default function CustomerService() {
             }}
           >
             <Tooltip title="Xem chi tiết">
-              <button className="btn btn-icon">
+              <button className="btn btn-icon view">
                 <Eye />
               </button>
             </Tooltip>
@@ -58,10 +57,7 @@ export default function CustomerService() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={dataService} />
               </div>
             }
           />

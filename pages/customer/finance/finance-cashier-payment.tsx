@@ -1,9 +1,9 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
-import { Edit, ShoppingCart, Filter } from "react-feather";
-import { Button, Image } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
+import { ShoppingCart, Filter } from "react-feather";
+import { Image } from "antd";
+import SortBox from "~/components/Elements/SortBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 
 import ConsultantForm from "~/components/Global/Customer/Finance/ConsultantForm";
@@ -29,7 +29,7 @@ export default function FinancePayment() {
       render: () => (
         <>
           <ConsultantForm />
-          <button className="btn btn-icon">
+          <button className="btn btn-icon exchange">
             <ShoppingCart />
           </button>
         </>
@@ -51,10 +51,7 @@ export default function FinancePayment() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={dataService} />
               </div>
             }
           />

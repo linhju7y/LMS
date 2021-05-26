@@ -21,7 +21,6 @@ const RefundCourse = () => {
       </Tooltip>
 
       <Modal
-        width={850}
         title="Hoàn tiền"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
@@ -50,22 +49,25 @@ const RefundCourse = () => {
           <Form layout="vertical">
             {/*  */}
             <div className="row">
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Học viên">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Đã đóng">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+            </div>
+            {/*  */}
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Hoàn trả">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Xóa khỏi khóa">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
@@ -74,7 +76,7 @@ const RefundCourse = () => {
             {/*  */}
             <div className="row">
               <Form.Item label="Ghi chú">
-                <TextArea className="style-input" placeholder="" rows={5} />
+                <TextArea rows={2} />
               </Form.Item>
             </div>
             {/*  */}

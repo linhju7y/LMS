@@ -791,6 +791,12 @@ hr {
     }
   }
 
+  &.exchange {
+    svg {
+      color: #ff9f00;
+    }
+  }
+
   svg {
     color: $primary-color;
     width: 20px;

@@ -1,11 +1,8 @@
 import React from "react";
 import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye, Filter } from "react-feather";
-import { Button, Select } from "antd";
-import SearchBox from "~/components/Elements/SearchBox";
 import { data5 } from "../../../lib/customer-student/data";
-
+import SortBox from "~/components/Elements/SortBox";
 import ExpandBox from "~/components/Elements/ExpandBox";
 import RegInfo from "~/components/Global/Customer/Student/RegInfo";
 import ReserveChangeCourse from "~/components/Global/Customer/Student/ReserveChangeCourse";
@@ -13,7 +10,6 @@ import RegCancel from "~/components/Global/Customer/Student/RegCancel";
 
 export default function StudentReserve() {
   const expandedRowRender = () => {
-    const { Option } = Select;
     return <ExpandBox />;
   };
 
@@ -51,10 +47,7 @@ export default function StudentReserve() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={data5} />
               </div>
             }
           />

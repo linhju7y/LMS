@@ -11,7 +11,7 @@ const ReserveChangeCourse = () => {
     <>
       <Tooltip title="Chuyển vào khóa">
         <button
-          className="btn btn-icon"
+          className="btn btn-icon exchange"
           onClick={() => {
             setIsModalVisible(true);
           }}
@@ -21,7 +21,6 @@ const ReserveChangeCourse = () => {
       </Tooltip>
 
       <Modal
-        width={850}
         title="Chuyển vào khóa"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
@@ -55,45 +54,45 @@ const ReserveChangeCourse = () => {
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Số điện thoại">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+            </div>
+            {/*  */}
+
+            {/*  */}
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Ngày hẹn">
                   <Input className="style-input" placeholder="" type="date" />
                 </Form.Item>
               </div>
-            </div>
-            {/*  */}
-            <div className="row">
-              <div className="col-12">
+              <div className="col-6">
                 <Form.Item label="Chọn khóa">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
-                    <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
                   </Select>
                 </Form.Item>
               </div>
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Giá khóa học">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Số tiền đã đóng">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+            </div>
+            {/*  */}
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Mã giảm giá">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
@@ -105,7 +104,7 @@ const ReserveChangeCourse = () => {
                   </Select>
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Giảm giá">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
@@ -113,29 +112,28 @@ const ReserveChangeCourse = () => {
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Còn lại">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Thanh toán">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-3">
+            </div>
+            {/*  */}
+            <div className="row">
+              <div className="col-6">
                 <Form.Item label="Phương thức">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
                     <Option value="lucy">Lucy</Option>
-                    <Option value="disabled" disabled>
-                      Disabled
-                    </Option>
-                    <Option value="Yiminghe">yiminghe</Option>
                   </Select>
                 </Form.Item>
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <Form.Item label="Ngày thu nợ">
                   <Input className="style-input" placeholder="" type="date" />
                 </Form.Item>

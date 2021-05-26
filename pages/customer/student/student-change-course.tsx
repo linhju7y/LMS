@@ -3,15 +3,14 @@ import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, Filter } from "react-feather";
 import SearchBox from "~/components/Elements/SearchBox";
-import { Button, Card, Tag, Form, Input, Select, Tooltip } from "antd";
+import { Tooltip } from "antd";
 import Link from "next/link";
 import { data3 } from "../../../lib/customer-student/data";
-
 import ExpandBox from "~/components/Elements/ExpandBox";
+import SortBox from "~/components/Elements/SortBox";
 
 export default function StudentCourseChange() {
   const expandedRowRender = () => {
-    const { Option } = Select;
     return <ExpandBox />;
   };
 
@@ -33,7 +32,7 @@ export default function StudentCourseChange() {
           }}
         >
           <Tooltip title="Xem chi tiết">
-            <button className="btn btn-icon">
+            <button className="btn btn-icon view">
               <Eye />
             </button>
           </Tooltip>
@@ -57,10 +56,7 @@ export default function StudentCourseChange() {
             columns={columns}
             Extra={
               <div className="extra-table">
-                <SearchBox />
-                <button className="btn btn-secondary light btn-filter">
-                  <Filter />
-                </button>
+                <SortBox dataOption={data3} />
               </div>
             }
           />
