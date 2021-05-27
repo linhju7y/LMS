@@ -19,15 +19,33 @@ export default function StudentAppointment() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (nameStudent) => (
+        <a className="font-weight-blue">{nameStudent}</a>
+      ),
     },
     {
       title: "Tỉnh/TP",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
     },
-    { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },
-    { title: "Lớp", dataIndex: "class", ...FilterColumn("class") },
-    { title: "Ca", dataIndex: "time", ...FilterColumn("time") },
+    {
+      title: "Trung tâm",
+      dataIndex: "center",
+      ...FilterColumn("center"),
+      render: (center) => <a className="font-weight-black">{center}</a>,
+    },
+    {
+      title: "Lớp",
+      dataIndex: "class",
+      ...FilterColumn("class"),
+      render: (class1) => <a className="font-weight-black">{class1}</a>,
+    },
+    {
+      title: "Ca",
+      dataIndex: "time",
+      ...FilterColumn("time"),
+      render: (time) => <a className="font-weight-blue">{time}</a>,
+    },
     { title: "Đặt cọc", dataIndex: "deposit", ...FilterColumn("deposit") },
     {
       title: "",

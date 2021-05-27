@@ -23,8 +23,16 @@ export default function CourseStudent() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (nameStudent) => (
+        <a className="font-weight-blue">{nameStudent}</a>
+      ),
     },
-    { title: "Khóa học", dataIndex: "center", ...FilterColumn("center") },
+    {
+      title: "Khóa học",
+      dataIndex: "center",
+      ...FilterColumn("center"),
+      render: (center) => <a className="font-weight-black">{center}</a>,
+    },
     {
       title: "Cảnh báo",
       dataIndex: "warning",
@@ -77,8 +85,12 @@ export default function CourseStudent() {
       ],
       onFilter: (value, record) => record.result.indexOf(value) === 0,
     },
-    { title: "Còn lại", dataIndex: "money", ...FilterColumn("money") },
-
+    {
+      title: "Còn lại",
+      dataIndex: "money",
+      ...FilterColumn("money"),
+      render: (money) => <a className="font-weight-black">{money}</a>,
+    },
     {
       title: "",
       render: () => (

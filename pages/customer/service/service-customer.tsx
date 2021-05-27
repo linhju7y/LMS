@@ -21,9 +21,20 @@ export default function CustomerService() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (a) => <a className="font-weight-blue">{a}</a>,
     },
-    { title: "Dịch vụ", dataIndex: "service", ...FilterColumn("service") },
-    { title: "Giá tiền", dataIndex: "cost", ...FilterColumn("cost") },
+    {
+      title: "Dịch vụ",
+      dataIndex: "service",
+      ...FilterColumn("service"),
+      render: (a) => <a className="font-weight-black">{a}</a>,
+    },
+    {
+      title: "Giá tiền",
+      dataIndex: "cost",
+      ...FilterColumn("cost"),
+      render: (a) => <a className="font-weight-black">{a}</a>,
+    },
     {
       title: "Nhà cung cấp",
       dataIndex: "provider",

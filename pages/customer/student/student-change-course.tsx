@@ -21,8 +21,16 @@ export default function StudentCourseChange() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (nameStudent) => (
+        <a className="font-weight-blue">{nameStudent}</a>
+      ),
     },
-    { title: "Khóa học", dataIndex: "course", ...FilterColumn("course") },
+    {
+      title: "Khóa học",
+      dataIndex: "course",
+      ...FilterColumn("course"),
+      render: (course) => <a className="font-weight-black">{course}</a>,
+    },
     { title: "Giá tiền", dataIndex: "money", ...FilterColumn("money") },
     { title: "Đã đóng", dataIndex: "payed", ...FilterColumn("payed") },
     { title: "Giảm giá", dataIndex: "discount", ...FilterColumn("discount") },

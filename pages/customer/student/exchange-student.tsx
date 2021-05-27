@@ -28,6 +28,9 @@ export default function ExchangeStudent() {
       title: "Họ và tên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (nameStudent) => (
+        <a className="font-weight-blue">{nameStudent}</a>
+      ),
     },
     { title: "SĐT", dataIndex: "tel", ...FilterColumn("tel") },
     { title: "Email", dataIndex: "email", ...FilterColumn("email") },

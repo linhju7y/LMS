@@ -21,6 +21,7 @@ export default function StudentAdvisory() {
       title: "Họ và tên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (a) => <a className="font-weight-blue">{a}</a>,
     },
     { title: "Số điện thoại", dataIndex: "tel", ...FilterColumn("tel") },
     { title: "Email", dataIndex: "email", ...FilterColumn("email") },
