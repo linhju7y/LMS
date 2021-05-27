@@ -142,7 +142,7 @@ const FeedbackList = () => {
         }
         expandable={{ expandedRowRender }}
       >
-        <FilterTable showFilter={showFilter} />
+        <FilterTable />
       </ExpandTable>
     </>
   );
