@@ -949,7 +949,7 @@ hr {
 
   .ant-table-tbody {
     td {
-      padding: 6px 8px !important;
+      padding: 6px 15px !important;
       padding-left: 15px !important;
       transition: 0.3s;
     }
@@ -978,6 +978,11 @@ hr {
       td {
         padding: 0 !important;
       }
+    }
+  }
+  .ant-table-expanded-row {
+    .ant-table-cell {
+      padding: 15px !important;
     }
   }
 }
@@ -1153,3 +1158,18 @@ hr {
     margin-left: 0 !important;
   }
 }
+
+.font-weight-blue {
+  font-weight: 500;
+  color: $primary-color;
+  margin-bottom: 0;
+}
+.font-weight-black {
+  font-weight: 500;
+  color: rgb(99, 99, 99);
+  margin-bottom: 0px;
+}
+// .font-weight-green {
+//   font-weight: 500;
+//   color: #2e9e0a;
+// }
