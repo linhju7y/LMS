@@ -32,14 +32,14 @@ const InfoOtherCard = () => {
       <PowerTable
         dataSource={dataService}
         columns={columns}
-        TitleCard="Chuyển khóa"
+        Extra={<h5>Chuyển khóa</h5>}
       />
       <Divider />
 
       <PowerTable
         dataSource={dataService}
         columns={columns2}
-        TitleCard="Khóa hẹn đăng kí"
+        Extra={<h5>Khóa hẹn đăng kí</h5>}
       />
 
       <Divider />
@@ -47,7 +47,7 @@ const InfoOtherCard = () => {
       <PowerTable
         dataSource={dataService}
         columns={columns3}
-        TitleCard="Bảo lưu"
+        Extra={<h5>Bảo lưu</h5>}
       />
     </>
   );

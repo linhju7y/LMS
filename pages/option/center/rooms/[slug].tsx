@@ -1,19 +1,30 @@
 import React, { useState } from "react";
 import PowerTable from "~/components/PowerTable";
-import TitlePage from "~/components/TitlePage";
-import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../../lib/option/dataOption";
 
-import { Tag, Button, Tooltip } from "antd";
+import { Tooltip } from "antd";
 import RoomForm from "~/components/Global/Option/RoomForm";
-import { Info, RotateCcw } from "react-feather";
+import { RotateCcw } from "react-feather";
+import SortBox from "~/components/Elements/SortBox";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+
 const Center = () => {
   const [roomForm, setRoomForm] = useState(false);
   const columns = [
-    { title: "Phòng", dataIndex: "room" },
-    { title: "Lầu", dataIndex: "floor" },
-    { title: "Người cập nhật", dataIndex: "rpCreator" },
-    { title: "Ngày cập nhật", dataIndex: "regDate" },
+    { title: "Phòng", dataIndex: "room", ...FilterColumn("room") },
+    { title: "Lầu", dataIndex: "floor", ...FilterColumn("floor") },
+    {
+      title: "Người cập nhật",
+      dataIndex: "rpCreator",
+      ...FilterColumn("rpCreator"),
+    },
+    {
+      title: "Ngày cập nhật",
+      dataIndex: "regDate",
+      ...FilterDateColumn("regDate"),
+    },
     {
       render: () => (
         <>
@@ -31,31 +42,28 @@ const Center = () => {
   ];
 
   return (
-    <div className="row">
-      <div className="col-12">
-        <TitlePage title="Danh sách phòng" />
-      </div>
-      <div className="col-12">
-        <PowerTable
-          TitleCard={
-            <button
-              onClick={() => setRoomForm(true)}
-              className="btn btn-warning add-new"
-            >
-              Thêm mới
-            </button>
-          }
-          dataSource={data}
-          columns={columns}
-          Extra={
-            <div className="extra-table">
-              <SearchBox />
-            </div>
-          }
-        />
-      </div>
+    <>
+      <PowerTable
+        TitlePage="Danh sách phòng"
+        TitleCard={
+          <button
+            onClick={() => setRoomForm(true)}
+            className="btn btn-warning add-new"
+          >
+            Thêm mới
+          </button>
+        }
+        dataSource={data}
+        columns={columns}
+        Extra={
+          <div className="extra-table">
+            <FilterTable />
+            <SortBox />
+          </div>
+        }
+      />
       <RoomForm visible={roomForm} onCancel={() => setRoomForm(false)} />
-    </div>
+    </>
   );
 };
 

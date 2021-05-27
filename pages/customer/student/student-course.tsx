@@ -10,6 +10,8 @@ import ChangeCourse from "~/components/Global/Customer/Student/ChangeCourse";
 import ReserveCourse from "~/components/Global/Customer/Student/ReserveCourse";
 import RefundCourse from "~/components/Global/Customer/Student/RefundCourse";
 import ExpandBox from "~/components/Elements/ExpandBox";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 
 export default function CourseStudent() {
   const expandedRowRender = () => {
@@ -17,8 +19,12 @@ export default function CourseStudent() {
   };
 
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Khóa học", dataIndex: "center" },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "Khóa học", dataIndex: "center", ...FilterColumn("center") },
     {
       title: "Cảnh báo",
       dataIndex: "warning",
@@ -33,6 +39,17 @@ export default function CourseStudent() {
           </>
         );
       },
+      filters: [
+        {
+          text: "Có",
+          value: "Có",
+        },
+        {
+          text: "Không",
+          value: "Không",
+        },
+      ],
+      onFilter: (value, record) => record.warning.indexOf(value) === 0,
     },
     {
       title: "Kết quả thi",
@@ -48,8 +65,19 @@ export default function CourseStudent() {
           </>
         );
       },
+      filters: [
+        {
+          text: "Đạt",
+          value: "Đạt",
+        },
+        {
+          text: "Không đạt",
+          value: "Không đạt",
+        },
+      ],
+      onFilter: (value, record) => record.result.indexOf(value) === 0,
     },
-    { title: "Còn lại", dataIndex: "money" },
+    { title: "Còn lại", dataIndex: "money", ...FilterColumn("money") },
 
     {
       title: "",
@@ -79,26 +107,17 @@ export default function CourseStudent() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="danh sách học viên trong khóa" />
+    <ExpandTable
+      TitlePage="Học viên trong khóa"
+      expandable={{ expandedRowRender }}
+      dataSource={data2}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={data2} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <ExpandTable
-            expandable={{ expandedRowRender }}
-            dataSource={data2}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={data2} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

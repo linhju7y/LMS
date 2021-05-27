@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Modal, Form, Input, Button, Tooltip, Select, Switch } from "antd";
-import { Info, Layout } from "react-feather";
+import { Modal, Form, Input, Button, Select, Switch } from "antd";
 import TinyMCE from "~/components/TinyMCE";
 import SortBox from "~/components/Elements/SortBox";
 
 const NotificationForm = (props) => {
   const { Option } = Select;
-  const { TextArea } = Input;
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
@@ -22,7 +20,6 @@ const NotificationForm = (props) => {
 
       {/*  */}
       <Modal
-        width={1000}
         title="Create Notification Form"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
@@ -35,12 +32,12 @@ const NotificationForm = (props) => {
                 <Form layout="vertical">
                   {/*  */}
                   <div className="row">
-                    <div className="col-10">
+                    <div className="col-8">
                       <Form.Item label="Title Notification">
                         <Input placeholder="" className="style-input" />
                       </Form.Item>
                     </div>
-                    <div className="col-2">
+                    <div className="col-4">
                       <Form.Item label="Sort">
                         <SortBox />
                       </Form.Item>
@@ -48,13 +45,13 @@ const NotificationForm = (props) => {
                   </div>
                   {/*  */}
                   <div className="row">
-                    <div className="col-10">
+                    <div className="col-8">
                       <Form.Item label="Title Notification">
                         <Select
                           mode="multiple"
                           style={{ width: "100%" }}
                           placeholder="select one country"
-                          defaultValue={["china"]}
+                          defaultValue={["MONA Lý Thường Kiệt"]}
                           optionLabelProp="label"
                         >
                           <Option
@@ -76,7 +73,7 @@ const NotificationForm = (props) => {
                         </Select>
                       </Form.Item>
                     </div>
-                    <div className="col-2">
+                    <div className="col-4">
                       <Form.Item label="Send email">
                         <Switch checkedChildren="Yes" unCheckedChildren="No" />
                       </Form.Item>

@@ -1,16 +1,25 @@
 import React from "react";
 import PowerTable from "~/components/PowerTable";
-import TitlePage from "~/components/TitlePage";
-import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption2";
-
-import { Tooltip, Tag } from "antd";
 import CustomerSupplierForm from "~/components/Global/Option/CustomerSupplierForm";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import SortBox from "~/components/Elements/SortBox";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
+
 const CustomerSupplier = () => {
   const columns = [
-    { title: "Customer Supplier", dataIndex: "source" },
-    { title: "Modified By", dataIndex: "modBy" },
-    { title: "Modified Date", dataIndex: "modDate" },
+    {
+      title: "Customer Supplier",
+      dataIndex: "source",
+      ...FilterColumn("source"),
+    },
+    { title: "Modified By", dataIndex: "modBy", ...FilterColumn("modBy") },
+    {
+      title: "Modified Date",
+      dataIndex: "modDate",
+      ...FilterDateColumn("modDate"),
+    },
     {
       title: "Hidden",
       dataIndex: "srcStatus",
@@ -20,13 +29,9 @@ const CustomerSupplier = () => {
         return (
           <div>
             {isHidden ? (
-              <Tag color="gray" className="style-tag">
-                Hidden
-              </Tag>
+              <span className="tag blue">Visible</span>
             ) : (
-              <Tag color="#0096c7" className="style-tag">
-                Visible
-              </Tag>
+              <span className="tag black">Hidden</span>
             )}
           </div>
         );
@@ -43,23 +48,18 @@ const CustomerSupplier = () => {
   ];
 
   return (
-    <div className="row">
-      <div className="col-12">
-        <TitlePage title="Customer Supplier List" />
-      </div>
-      <div className="col-12">
-        <PowerTable
-          TitleCard={<CustomerSupplierForm showAdd={true} />}
-          dataSource={data}
-          columns={columns}
-          Extra={
-            <div className="extra-table">
-              <SearchBox />
-            </div>
-          }
-        />
-      </div>
-    </div>
+    <PowerTable
+      TitlePage="CUSTOMER SUPPLIER LIST"
+      TitleCard={<CustomerSupplierForm showAdd={true} />}
+      dataSource={data}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox />
+        </div>
+      }
+    />
   );
 };
 

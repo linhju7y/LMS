@@ -7,16 +7,27 @@ import SortBox from "~/components/Elements/SortBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 import Link from "next/link";
 import { ExpandBoxWarning } from "~/components/Elements/ExpandBox";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 export default function ReportWarning() {
   const expandedRowRender = () => <ExpandBoxWarning />;
   const columns = [
-    { title: "Trung tâm", dataIndex: "center" },
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Lớp", dataIndex: "rpCourse" },
-    { title: "Ngày tạo", dataIndex: "testDate" },
-    { title: "Người tạo", dataIndex: "rpCreator" },
-    { title: "Chủ nhiệm", dataIndex: "rpLeader" },
+    { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },
+    { title: "Học viên", dataIndex: "center", ...FilterColumn("center") },
+    { title: "Lớp", dataIndex: "rpCourse", ...FilterColumn("rpCourse") },
+    {
+      title: "Ngày tạo",
+      dataIndex: "testDate",
+      ...FilterDateColumn("testDate"),
+    },
+    {
+      title: "Người tạo",
+      dataIndex: "rpCreator",
+      ...FilterColumn("rpCreator"),
+    },
+    { title: "Chủ nhiệm", dataIndex: "rpLeader", ...FilterColumn("rpLeader") },
     {
       title: "",
       render: () => (
@@ -39,26 +50,17 @@ export default function ReportWarning() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="Danh sách học viên bị cảnh báo" />
+    <ExpandTable
+      TitlePage="Danh sách học viên bị cảnh báo"
+      dataSource={dataService}
+      columns={columns}
+      expandable={{ expandedRowRender }}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={dataService} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <ExpandTable
-            dataSource={dataService}
-            columns={columns}
-            expandable={{ expandedRowRender }}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={dataService} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

@@ -26,7 +26,6 @@ const RoomForm = ({ visible, onCancel }) => {
             </div>
           </div>
 
-          <Divider />
           <div className="row ">
             <div className="col-12">
               <Button className="w-100" type="primary" size="large">

@@ -1,5 +1,4 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
 import { ShoppingCart, XCircle } from "react-feather";
 import { Image, Tooltip } from "antd";
@@ -7,15 +6,26 @@ import { dataService } from "../../../lib/customer/dataCustomer";
 import Link from "next/link";
 import SortBox from "~/components/Elements/SortBox";
 import ConsultantForm from "~/components/Global/Customer/Finance/ConsultantForm";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 export default function FinanceInvoice() {
   const columns = [
-    { title: "Trung tâm", dataIndex: "center" },
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Số điện thoại", dataIndex: "tel" },
-    { title: "Số tiền", dataIndex: "cost" },
-    { title: "Lý do", dataIndex: "fnReason" },
-    { title: "Ngày giờ tạo", dataIndex: "regDate" },
+    { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "Số điện thoại", dataIndex: "tel", ...FilterColumn("tel") },
+    { title: "Số tiền", dataIndex: "cost", ...FilterColumn("cost") },
+    { title: "Lý do", dataIndex: "fnReason", ...FilterColumn("fnReason") },
+    {
+      title: "Ngày giờ tạo",
+      dataIndex: "regDate",
+      ...FilterDateColumn("regDate"),
+    },
     {
       title: "QR Code",
       render: () => (
@@ -52,25 +62,16 @@ export default function FinanceInvoice() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="danh sách phiếu thu" />
+    <PowerTable
+      TitlePage="Danh sách phiếu thu"
+      dataSource={dataService}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={dataService} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <PowerTable
-            dataSource={dataService}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={dataService} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

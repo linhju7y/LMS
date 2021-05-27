@@ -7,15 +7,30 @@ import SortBox from "~/components/Elements/SortBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 import Link from "next/link";
 import Tuition from "~/components/Global/Customer/Finance/Tuition";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 export default function FinanceDebts() {
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Khóa học", dataIndex: "rpCourse" },
-    { title: "Trung tâm", dataIndex: "center" },
-    { title: "Số tiền", dataIndex: "cost" },
-    { title: "Ngày hẹn thu", dataIndex: "apmDate" },
-    { title: "Ngày nhập học", dataIndex: "testDate" },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "Khóa học", dataIndex: "rpCourse", ...FilterColumn("rpCourse") },
+    { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },
+    { title: "Số tiền", dataIndex: "cost", ...FilterColumn("cost") },
+    {
+      title: "Ngày hẹn thu",
+      dataIndex: "apmDate",
+      ...FilterDateColumn("apmDate"),
+    },
+    {
+      title: "Ngày nhập học",
+      dataIndex: "testDate",
+      ...FilterDateColumn("testDate"),
+    },
     {
       title: "",
       render: () => (
@@ -39,25 +54,16 @@ export default function FinanceDebts() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="danh sách học viên nợ học phí" />
+    <PowerTable
+      TitlePage="Danh sách học viên nợ học phí"
+      dataSource={dataService}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={dataService} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <PowerTable
-            dataSource={dataService}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={dataService} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

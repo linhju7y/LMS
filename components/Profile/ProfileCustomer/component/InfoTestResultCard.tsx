@@ -12,63 +12,47 @@ const InfoTestResultCard = () => {
       title: "Listening",
       dataIndex: "listening",
       render: (listening) => {
-        return (
-          <Tag color={"default"} key={listening}>
-            <b> {listening}</b>
-          </Tag>
-        );
+        return <span className="tag green">{listening}</span>;
       },
     },
     {
       title: "Reading",
       dataIndex: "reading",
       render: (reading) => {
-        return (
-          <Tag color={"default"} key={reading}>
-            <b> {reading}</b>
-          </Tag>
-        );
+        return <span className="tag green">{reading}</span>;
       },
     },
     {
       title: "Writing",
       dataIndex: "writing",
       render: (writing) => {
-        return (
-          <Tag color={"default"} key={writing}>
-            <b> {writing}</b>
-          </Tag>
-        );
+        return <span className="tag green">{writing}</span>;
       },
     },
     {
       title: "Speaking",
       dataIndex: "speaking",
       render: (speaking) => {
-        return (
-          <Tag color={"default"} key={speaking}>
-            <b> {speaking}</b>
-          </Tag>
-        );
+        return <span className="tag green">{speaking}</span>;
       },
     },
     {
       title: "Overall",
       dataIndex: "overall",
       render: (overall) => {
-        return (
-          <Tag color={"cyan"} key={overall}>
-            <b> {overall}</b>
-          </Tag>
-        );
+        return <span className="tag blue">{overall}</span>;
       },
     },
     { title: "Noted", dataIndex: "service" },
     {
       render: () => (
         <>
-          <Button type="link" icon={<Upload />} />
-          <Button type="link" icon={<Save />} />
+          <button className="btn btn-icon">
+            <Upload />
+          </button>
+          <button className="btn btn-icon exchange">
+            <Save />
+          </button>
         </>
       ),
     },

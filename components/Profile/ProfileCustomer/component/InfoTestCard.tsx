@@ -20,7 +20,7 @@ const InfoTestCard = () => {
       <PowerTable
         dataSource={dataService}
         columns={columns}
-        TitleCard="Chi tiết bài test"
+        Extra={<h5>Chi tiết bài test</h5>}
       />
     </>
   );

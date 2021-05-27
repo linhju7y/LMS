@@ -1,12 +1,12 @@
 import React from "react";
-import { Tag } from "antd";
-import TitlePage from "~/components/TitlePage";
-import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption2";
-
 import NotificationForm from "~/components/Global/Option/NotificationForm";
 import ExpandTable from "~/components/ExpandTable";
-import { CheckCircle, XCircle } from "react-feather";
+import { CheckCircle } from "react-feather";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import SortBox from "~/components/Elements/SortBox";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 
 const Notification = () => {
   const expandedRowRender = () => {
@@ -19,18 +19,14 @@ const Notification = () => {
     );
   };
   const columns = [
-    { title: "Date", dataIndex: "expires" },
+    { title: "Date", dataIndex: "expires", ...FilterDateColumn("expires") },
     {
       title: "Role",
       dataIndex: "teacher",
-      align: "center",
-      render: (teacher) => (
-        <Tag key={teacher} color="#0077b6" className="style-tag">
-          {teacher.toUpperCase()}
-        </Tag>
-      ),
+      ...FilterColumn("teacher"),
+      render: (teacher) => <span className="tag yellow">{teacher}</span>,
     },
-    { title: "Center", dataIndex: "center" },
+    { title: "Center", dataIndex: "center", ...FilterColumn("center") },
     {
       title: "Email",
       dataIndex: "postStatus",
@@ -44,24 +40,19 @@ const Notification = () => {
   ];
 
   return (
-    <div className="row">
-      <div className="col-12">
-        <TitlePage title="Notification" />
-      </div>
-      <div className="col-12">
-        <ExpandTable
-          expandable={{ expandedRowRender }}
-          TitleCard={<NotificationForm showAdd={true} />}
-          dataSource={data}
-          columns={columns}
-          Extra={
-            <div className="extra-table">
-              <SearchBox />
-            </div>
-          }
-        />
-      </div>
-    </div>
+    <ExpandTable
+      TitlePage="Notification List"
+      expandable={{ expandedRowRender }}
+      TitleCard={<NotificationForm showAdd={true} />}
+      dataSource={data}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox />
+        </div>
+      }
+    />
   );
 };
 

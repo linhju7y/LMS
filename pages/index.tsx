@@ -8,9 +8,9 @@ import Dashboard from "~/pages/dashboard";
 export default function Home() {
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>{siteTitle}</title>
-      </Head>
+      </Head> */}
       <Dashboard />
     </>
   );

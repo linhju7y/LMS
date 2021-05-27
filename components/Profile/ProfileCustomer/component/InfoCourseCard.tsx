@@ -23,15 +23,11 @@ const InfoCourseCard = () => {
       title: "Học lực",
       dataIndex: "pfRank",
       render: (pfRank) => {
-        let color = pfRank == "Giỏi" ? "#06d6a0" : "#e63946";
+        let tag = pfRank == "Giỏi" ? "tag blue" : "tag red";
         if (pfRank == "Khá") {
-          color = "#ffba08";
+          tag = "tag yellow";
         }
-        return (
-          <Tag color={color} key={pfRank}>
-            <b> {pfRank.toUpperCase()}</b>
-          </Tag>
-        );
+        return <span className={tag}>{pfRank}</span>;
       },
     },
     { title: "Giáo viên", dataIndex: "nameStudent" },
@@ -39,12 +35,11 @@ const InfoCourseCard = () => {
       title: "Điểm danh",
       dataIndex: "pfRollCall",
       render: (pfRollCall) => {
-        let color = pfRollCall == "Có" ? "cyan" : "volcano";
-
+        let tag = pfRollCall == "Có" ? "tag green" : "tag black";
         return (
-          <Tag color={color} key={pfRollCall}>
-            <b> {pfRollCall.toUpperCase()}</b>
-          </Tag>
+          <span className={tag} key={pfRollCall}>
+            {pfRollCall}
+          </span>
         );
       },
     },
@@ -58,11 +53,11 @@ const InfoCourseCard = () => {
       title: "Trạng thái",
       dataIndex: "pfRollCall",
       render: (pfRollCall) => {
-        let color = pfRollCall == "Có" ? "cyan" : "volcano";
+        let tag = pfRollCall == "Có" ? "tag green" : "tag black";
 
         return (
-          <Tag color={color} key={pfRollCall}>
-            <b> {pfRollCall.toUpperCase()}</b>
+          <Tag className={tag} key={pfRollCall}>
+            {pfRollCall}
           </Tag>
         );
       },
@@ -72,18 +67,16 @@ const InfoCourseCard = () => {
       dataIndex: "listening",
 
       render: (listening) => {
-        return (
-          <Tag color={"default"} key={listening}>
-            <b> {listening}</b>
-          </Tag>
-        );
+        return <span className="tag blue">{listening}</span>;
       },
     },
     {
       dataIndex: "",
       render: () => (
         <>
-          <Button type="link" icon={<Info />} />
+          <button className="btn btn-icon">
+            <Info />
+          </button>
         </>
       ),
     },
@@ -98,44 +91,28 @@ const InfoCourseCard = () => {
       title: "Listening",
       dataIndex: "listening",
       render: (listening) => {
-        return (
-          <Tag color={"cyan"} key={listening}>
-            <b> {listening}</b>
-          </Tag>
-        );
+        return <span className="tag blue">{listening}</span>;
       },
     },
     {
       title: "Reading",
       dataIndex: "reading",
       render: (reading) => {
-        return (
-          <Tag color={"cyan"} key={reading}>
-            <b> {reading}</b>
-          </Tag>
-        );
+        return <span className="tag blue">{reading}</span>;
       },
     },
     {
       title: "Writing",
       dataIndex: "writing",
       render: (writing) => {
-        return (
-          <Tag color={"cyan"} key={writing}>
-            <b> {writing}</b>
-          </Tag>
-        );
+        return <span className="tag blue">{writing}</span>;
       },
     },
     {
       title: "Speaking",
       dataIndex: "speaking",
       render: (speaking) => {
-        return (
-          <Tag color={"cyan"} key={speaking}>
-            <b> {speaking}</b>
-          </Tag>
-        );
+        return <span className="tag blue">{speaking}</span>;
       },
     },
     {
@@ -153,12 +130,12 @@ const InfoCourseCard = () => {
           <PowerTable
             dataSource={dataService}
             columns={columns}
-            TitleCard="Điểm danh"
+            Extra={<h5>Điểm danh</h5>}
           />
           <Divider />
 
           <ExpandTable
-            TitleCard="Bài tập"
+            Extra={<h5>Bài tập</h5>}
             expandable={{ expandedRowRender }}
             dataSource={dataService}
             columns={columns2}
@@ -169,7 +146,7 @@ const InfoCourseCard = () => {
           <PowerTable
             dataSource={dataService}
             columns={columns3}
-            TitleCard="Điểm thi"
+            Extra={<h5>Điểm thi</h5>}
           />
         </Panel>
       </Collapse>

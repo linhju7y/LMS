@@ -5,21 +5,32 @@ import { Eye, CheckCircle, XCircle } from "react-feather";
 import { Tooltip } from "antd";
 import SortBox from "~/components/Elements/SortBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
-
 import Link from "next/link";
 import TestInfo from "~/components/Global/Customer/Service/TestInfo";
 import { ExpandBoxService } from "~/components/Elements/ExpandBox";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+
 export default function AppointmentServiceTest() {
   const expandedRowRender = () => {
     return <ExpandBoxService />;
   };
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Nguồn", dataIndex: "source" },
-    { title: "Trung tâm", dataIndex: "center" },
-    { title: "Người hẹn", dataIndex: "apmConsultant" },
-    { title: "Ngày hẹn", dataIndex: "apmDate" },
-    { title: "Giờ hẹn", dataIndex: "apmTime" },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "Nguồn", dataIndex: "source", ...FilterColumn("source") },
+    { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },
+    {
+      title: "Người hẹn",
+      dataIndex: "apmConsultant",
+      ...FilterColumn("apmConsultant"),
+    },
+    { title: "Ngày hẹn", dataIndex: "apmDate", ...FilterDateColumn("apmDate") },
+    { title: "Giờ hẹn", dataIndex: "apmTime", ...FilterColumn("apmTime") },
     {
       title: "Xong",
       dataIndex: "apmStatus",
@@ -46,6 +57,17 @@ export default function AppointmentServiceTest() {
           </>
         );
       },
+      filters: [
+        {
+          text: "Đã đăng kí",
+          value: "Đã đăng kí",
+        },
+        {
+          text: "Chưa đăng kí",
+          value: "Chưa đăng kí",
+        },
+      ],
+      onFilter: (value, record) => record.apmReg.indexOf(value) === 0,
     },
     {
       title: "",
@@ -71,26 +93,17 @@ export default function AppointmentServiceTest() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="danh sách khách hẹn test" />
+    <ExpandTable
+      TitlePage="Danh sách khách hẹn test"
+      dataSource={dataService}
+      columns={columns}
+      expandable={{ expandedRowRender }}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={dataService} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <ExpandTable
-            dataSource={dataService}
-            columns={columns}
-            expandable={{ expandedRowRender }}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={dataService} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

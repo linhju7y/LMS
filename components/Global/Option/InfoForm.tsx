@@ -42,7 +42,6 @@ const InfoForm = (props) => {
 
       {/*  */}
       <Modal
-        width={1000}
         title={
           <>
             {props.showAdd
@@ -56,30 +55,40 @@ const InfoForm = (props) => {
       >
         <div className="container-fluid">
           <Form layout="vertical">
-            <div className="row">
-              <div className="col-12">
-                <Form layout="vertical">
+            <Form layout="vertical">
+              <div className="row">
+                <div className="col-6">
                   <Form.Item label="Title Form">
                     <Input placeholder="" className="style-input" />
                   </Form.Item>
+                </div>
+                <div className="col-6">
                   <Form.Item label="Role receive email ">
                     <Input placeholder="" className="style-input" />
                   </Form.Item>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-6">
                   <Form.Item label="Consultant">
                     <Input placeholder="" className="style-input" />
                   </Form.Item>
+                </div>
+                <div className="col-6">
                   <Form.Item label="Source">
                     <Input placeholder="" className="style-input" />
                   </Form.Item>
-                  <Form.Item label="Note">
-                    <TextArea rows={2} />
-                  </Form.Item>
-                  <Form.Item label="Content">
-                    <TinyMCE />
-                  </Form.Item>
-                </Form>
+                </div>
               </div>
-            </div>
+
+              <Form.Item label="Note">
+                <TextArea rows={2} />
+              </Form.Item>
+              <Form.Item label="Content">
+                <TinyMCE />
+              </Form.Item>
+            </Form>
+
             <div className="row ">
               <div className="col-12">
                 {props.showAdd == true ? (

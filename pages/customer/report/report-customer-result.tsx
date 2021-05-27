@@ -1,16 +1,18 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
 import SortBox from "~/components/Elements/SortBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 export default function CustomerServiceResult() {
   const columns = [
-    { title: "Ngày", dataIndex: "testDate" },
-    { title: "Họ và tên", dataIndex: "nameStudent" },
-    { title: "Số điện thoại", dataIndex: "tel" },
-    { title: "Test", dataIndex: "pkgName" },
-    { title: "Skills", dataIndex: "pkgSkill" },
+    { title: "Ngày", dataIndex: "testDate", ...FilterDateColumn("city") },
+    { title: "Họ và tên", dataIndex: "nameStudent", ...FilterColumn("city") },
+    { title: "Số điện thoại", dataIndex: "tel", ...FilterColumn("city") },
+    { title: "Test", dataIndex: "pkgName", ...FilterColumn("city") },
+    { title: "Skills", dataIndex: "pkgSkill", ...FilterColumn("city") },
     {
       title: "Listening",
       dataIndex: "listening",
@@ -49,25 +51,17 @@ export default function CustomerServiceResult() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="Danh sách kết quả test" />
+    <PowerTable
+      TitlePage="báo cáo kết quả test"
+      dataSource={dataService}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+
+          <SortBox dataOption={dataService} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <PowerTable
-            dataSource={dataService}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={dataService} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

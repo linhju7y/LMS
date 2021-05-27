@@ -10,7 +10,13 @@ const InfoPaymentCard = () => {
     { title: "Ngày tạo", dataIndex: "regDate" },
     { title: "Số tiền", dataIndex: "cost" },
     { title: "Ghi chú", dataIndex: "service" },
-    { render: () => <Button type="link" icon={<File />} /> },
+    {
+      render: () => (
+        <button className="btn btn-icon">
+          <File />
+        </button>
+      ),
+    },
   ];
 
   return (
@@ -21,13 +27,13 @@ const InfoPaymentCard = () => {
       <PowerTable
         dataSource={dataService}
         columns={columns}
-        TitleCard="Lịch sử thanh toán"
+        Extra={<h5>Lịch sử thanh toán</h5>}
       />
 
       <PowerTable
         dataSource={""}
         columns={columns}
-        TitleCard="Lịch sử hoàn tiền"
+        Extra={<h5>Lịch sử hoàn tiền</h5>}
       />
     </div>
   );

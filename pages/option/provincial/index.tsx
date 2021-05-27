@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import PowerTable from "~/components/PowerTable";
-import TitlePage from "~/components/TitlePage";
-import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption";
-
-import { Tag, Button, Tooltip, Switch } from "antd";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import SortBox from "~/components/Elements/SortBox";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import ProvincialForm from "~/components/Global/Option/ProvincialForm";
-import { Info, RotateCcw } from "react-feather";
-const Service = () => {
+
+const Provincial = () => {
   const columns = [
-    { title: "Provincial", dataIndex: "provincial" },
-    { title: "Districts", dataIndex: "district" },
-    { title: "Modified By", dataIndex: "rpCreator" },
-    { title: "Modified Date", dataIndex: "regDate" },
+    {
+      title: "Provincial",
+      dataIndex: "provincial",
+      ...FilterColumn("provincial"),
+    },
+    { title: "Districts", dataIndex: "district", ...FilterColumn("district") },
+    {
+      title: "Modified By",
+      dataIndex: "rpCreator",
+      ...FilterColumn("rpCreator"),
+    },
+    {
+      title: "Modified Date",
+      dataIndex: "regDate",
+      ...FilterDateColumn("regDate"),
+    },
 
     {
       render: () => (
@@ -24,24 +36,19 @@ const Service = () => {
   ];
 
   return (
-    <div className="row">
-      <div className="col-12">
-        <TitlePage title="Provincial List" />
-      </div>
-      <div className="col-12">
-        <PowerTable
-          TitleCard={<ProvincialForm showAdd={true} />}
-          dataSource={data}
-          columns={columns}
-          Extra={
-            <div className="extra-table">
-              <SearchBox />
-            </div>
-          }
-        />
-      </div>
-    </div>
+    <PowerTable
+      TitlePage="Provincial List"
+      TitleCard={<ProvincialForm showAdd={true} />}
+      dataSource={data}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox />
+        </div>
+      }
+    />
   );
 };
 
-export default Service;
+export default Provincial;

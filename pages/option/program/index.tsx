@@ -1,30 +1,41 @@
 import React, { useState } from "react";
 import PowerTable from "~/components/PowerTable";
-import TitlePage from "~/components/TitlePage";
-import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption";
-
-import { Tag, Button, Tooltip, Switch } from "antd";
+import { Tag } from "antd";
 import ProgramForm from "~/components/Global/Option/ProgramForm";
+import FilterColumn from "~/components/Tables/FilterColumn";
+
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import SortBox from "~/components/Elements/SortBox";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 const Program = () => {
   const columns = [
-    { title: "Grade", dataIndex: "grade" },
-    { title: "Class", dataIndex: "class" },
+    { title: "Grade", dataIndex: "grade", ...FilterColumn("grade") },
+    { title: "Class", dataIndex: "class", ...FilterColumn("class") },
     { title: "Price", dataIndex: "price" },
-    { title: "Modified By", dataIndex: "rpCreator" },
-    { title: "Modified Date", dataIndex: "regDate" },
+    {
+      title: "Modified By",
+      dataIndex: "rpCreator",
+      ...FilterColumn("rpCreator"),
+    },
+    {
+      title: "Modified Date",
+      dataIndex: "regDate",
+      ...FilterDateColumn("regDate"),
+    },
     {
       title: "Type",
       dataIndex: "status",
       align: "center",
-      render: (status) => {
-        let color = status == "online" ? "#52b69a" : "gray";
-        return (
-          <Tag color={color} key={status} className="style-tag">
-            <b> {status.toUpperCase()}</b>
-          </Tag>
-        );
-      },
+      render: (status) => (
+        <>
+          {status == "online" ? (
+            <span className="tag green">{status}</span>
+          ) : (
+            <span className="tag black">{status}</span>
+          )}
+        </>
+      ),
     },
     {
       render: () => (
@@ -36,23 +47,18 @@ const Program = () => {
   ];
 
   return (
-    <div className="row">
-      <div className="col-12">
-        <TitlePage title="Danh sách khối học" />
-      </div>
-      <div className="col-12">
-        <PowerTable
-          TitleCard={<ProgramForm showAdd={true} />}
-          dataSource={data}
-          columns={columns}
-          Extra={
-            <div className="extra-table">
-              <SearchBox />
-            </div>
-          }
-        />
-      </div>
-    </div>
+    <PowerTable
+      TitlePage="Programs list"
+      TitleCard={<ProgramForm showAdd={true} />}
+      dataSource={data}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox />
+        </div>
+      }
+    />
   );
 };
 

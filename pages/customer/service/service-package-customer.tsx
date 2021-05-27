@@ -4,14 +4,25 @@ import PowerTable from "~/components/PowerTable";
 import SortBox from "~/components/Elements/SortBox";
 import { dataService } from "../../../lib/customer/dataCustomer";
 import PaymentService from "~/components/Global/Customer/Service/PaymentService";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 export default function CustomerServicePackage() {
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent" },
-    { title: "Tên set", dataIndex: "pkgName" },
-    { title: "Giá tiền", dataIndex: "testCost" },
-    { title: "Giảm giá", dataIndex: "pkgDiscount" },
-    { title: "Ngày mua", dataIndex: "apmDate" },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "Tên set", dataIndex: "pkgName", ...FilterColumn("pkgName") },
+    { title: "Giá tiền", dataIndex: "testCost", ...FilterColumn("testCost") },
+    {
+      title: "Giảm giá",
+      dataIndex: "pkgDiscount",
+      ...FilterColumn("pkgDiscount"),
+    },
+    { title: "Ngày mua", dataIndex: "apmDate", ...FilterDateColumn("apmDate") },
     {
       title: "Trạng thái",
       dataIndex: "pgkPayment",
@@ -26,6 +37,17 @@ export default function CustomerServicePackage() {
           </>
         );
       },
+      filters: [
+        {
+          text: "Đã thanh toán",
+          value: "Đã thanh toán",
+        },
+        {
+          text: "Chưa thanh toán",
+          value: "Chưa thanh toán",
+        },
+      ],
+      onFilter: (value, record) => record.pgkPayment.indexOf(value) === 0,
     },
     {
       title: "",
@@ -34,25 +56,16 @@ export default function CustomerServicePackage() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="Danh sách học viên mua gói" />
+    <PowerTable
+      TitlePage="Danh sách khách mua gói"
+      dataSource={dataService}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={dataService} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <PowerTable
-            dataSource={dataService}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={dataService} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

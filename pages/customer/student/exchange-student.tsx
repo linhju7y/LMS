@@ -8,6 +8,8 @@ import InfoCusCard from "~/components/Profile/ProfileCustomer/component/InfoCusC
 import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
 import SortBox from "~/components/Elements/SortBox";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 
 export default function ExchangeStudent() {
   const expandedRowRender = () => {
@@ -21,11 +23,15 @@ export default function ExchangeStudent() {
   };
 
   const columns = [
-    { title: "Tỉnh/TP", dataIndex: "city" },
-    { title: "Họ và tên", dataIndex: "nameStudent" },
-    { title: "SĐT", dataIndex: "tel" },
-    { title: "Email", dataIndex: "email" },
-    { title: "Nguồn", dataIndex: "introducer" },
+    { title: "Tỉnh/TP", dataIndex: "city", ...FilterColumn("city") },
+    {
+      title: "Họ và tên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+    },
+    { title: "SĐT", dataIndex: "tel", ...FilterColumn("tel") },
+    { title: "Email", dataIndex: "email", ...FilterColumn("email") },
+    { title: "Nguồn", dataIndex: "introducer", ...FilterColumn("introducer") },
     {
       title: "Trạng thái",
       dataIndex: "status",
@@ -41,8 +47,23 @@ export default function ExchangeStudent() {
           </>
         );
       },
+      filters: [
+        {
+          text: "Active",
+          value: "Active",
+        },
+        {
+          text: "Inactive",
+          value: "Inactive",
+        },
+      ],
+      onFilter: (value, record) => record.status.indexOf(value) === 0,
     },
-    { title: "Tư vấn viên", dataIndex: "consultant" },
+    {
+      title: "Tư vấn viên",
+      dataIndex: "consultant",
+      ...FilterColumn("consultant"),
+    },
 
     {
       title: "",
@@ -64,26 +85,17 @@ export default function ExchangeStudent() {
   ];
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <TitlePage title="Danh sách học viên chuyển giao" />
+    <ExpandTable
+      TitlePage="Danh sách học viên chuyển giao"
+      expandable={{ expandedRowRender }}
+      dataSource={data}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox dataOption={data} />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <ExpandTable
-            expandable={{ expandedRowRender }}
-            dataSource={data}
-            columns={columns}
-            Extra={
-              <div className="extra-table">
-                <SortBox dataOption={data} />
-              </div>
-            }
-          />
-        </div>
-      </div>
-    </div>
+      }
+    />
   );
 }
