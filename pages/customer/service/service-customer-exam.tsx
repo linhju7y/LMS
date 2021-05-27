@@ -16,8 +16,14 @@ export default function CustomerServiceExam() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (a) => <a className="font-weight-blue">{a}</a>,
     },
-    { title: "Đợt thi", dataIndex: "testTime", ...FilterColumn("testTime") },
+    {
+      title: "Đợt thi",
+      dataIndex: "testTime",
+      ...FilterColumn("testTime"),
+      render: (a) => <a className="font-weight-black">{a}</a>,
+    },
     {
       title: "Loại",
       dataIndex: "typeTest",
@@ -45,11 +51,17 @@ export default function CustomerServiceExam() {
       dataIndex: "provider",
       ...FilterColumn("provider"),
     },
-    { title: "Giá tiền", dataIndex: "testCost", ...FilterColumn("testCost") },
+    {
+      title: "Giá tiền",
+      dataIndex: "testCost",
+      ...FilterColumn("testCost"),
+      render: (a) => <a className="font-weight-black">{a}</a>,
+    },
     {
       title: "Ngày thi",
       dataIndex: "testDate",
       ...FilterDateColumn("testDate"),
+      render: (a) => <a className="font-weight-black">{a}</a>,
     },
     {
       title: "Ngày đăng kí",

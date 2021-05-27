@@ -20,12 +20,20 @@ export default function StudentReserve() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (nameStudent) => (
+        <a className="font-weight-blue">{nameStudent}</a>
+      ),
     },
     { title: "Tỉnh/TP", dataIndex: "city", ...FilterColumn("city") },
     { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },
     { title: "Lớp", dataIndex: "class", ...FilterColumn("class") },
     { title: "Ca", dataIndex: "time", ...FilterColumn("time") },
-    { title: "Đóng thêm", dataIndex: "reserve", ...FilterColumn("reserve") },
+    {
+      title: "Đóng thêm",
+      dataIndex: "reserve",
+      ...FilterColumn("reserve"),
+      render: (a) => <a className="font-weight-black">{a}</a>,
+    },
     {
       title: "",
       render: () => (
