@@ -7,6 +7,11 @@ import PowerTable from "~/components/PowerTable";
 import TopicModal from "~/components/Global/TopicList/TopicModal";
 import QuestionModal from "~/components/Global/TopicList/QuestionModal";
 
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+
+import { Eye, Filter, Search } from "react-feather";
+
 const QuestionList = () => {
   let dataSource = [];
   for (let i = 0; i < 50; i++) {
@@ -56,9 +61,10 @@ const QuestionList = () => {
 
   return (
     <PowerTable
+      Size="table-medium  table-child"
       dataSource={dataSource}
       columns={columns}
-      TitleCard="List Question"
+      TitleCard=""
       Extra={<QuestionModal showBtn={true} />}
     />
   );
@@ -82,6 +88,7 @@ const TopicList = () => {
       title: "Topic Name",
       dataIndex: "TopicName",
       key: "topicname",
+      ...FilterColumn("TopicName"),
     },
     {
       title: "Topic Description",
@@ -92,13 +99,18 @@ const TopicList = () => {
       title: "Status",
       dataIndex: "Status",
       key: "status",
-      render: () => (
-        <Switch
-          checkedChildren="Active"
-          unCheckedChildren="Active"
-          defaultChecked
-        />
-      ),
+      filters: [
+        {
+          text: "Active",
+          value: "active",
+        },
+        {
+          text: "Unactive",
+          value: "unactive",
+        },
+      ],
+      onFilter: (value, record) => record.Status.indexOf(value) === 0,
+      render: (Status) => <span className="tag green">Active</span>,
     },
     {
       title: "",

@@ -12,6 +12,9 @@ import { Filter, Eye, CheckCircle } from "react-feather";
 import { Tooltip } from "antd";
 import FilterTable from "~/components/Global/FeedbackList/FitlerTable";
 
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+
 const FeedbackList = () => {
   const showModal = () => {
     setIsModalVisible(true);
@@ -25,17 +28,34 @@ const FeedbackList = () => {
     setIsModalVisible(false);
   };
 
-  const dataSource = [
-    {
-      key: "1",
+  const dataSource = [];
+
+  for (let i = 0; i < 50; i++) {
+    dataSource.push({
+      key: i,
       Type: "Hỗ trợ học viên",
       Title: "Xin nghỉ một sồ buổi học",
       SendPeople: "Lan Anh",
       Tvv: "Hải Tú",
-      SendDay: "02/03/2021",
+      StartDay: "02-03-2021",
       Done: "",
-      Remark: "",
+      Remark: "Tốt",
       Action: "",
+    });
+  }
+
+  const dataOption = [
+    {
+      text: "Option 1",
+      value: "option 1",
+    },
+    {
+      text: "Option 2",
+      value: "option 2",
+    },
+    {
+      text: "Option 3",
+      value: "option 3",
     },
   ];
 
@@ -54,23 +74,38 @@ const FeedbackList = () => {
       title: "Người gửi",
       dataIndex: "SendPeople",
       key: "sendpeople",
+      ...FilterColumn("SendPeople"),
     },
     {
       title: "Tư vấn viên",
       dataIndex: "Tvv",
       key: "tvv",
+      ...FilterColumn("Tvv"),
     },
 
     {
       title: "Ngày gửi",
       dataIndex: "StartDay",
       key: "status",
+      ...FilterDateColumn("StartDay"),
     },
     {
       title: "Xong",
       dataIndex: "Done",
       key: "done",
-      render: (Status) => <Tag color="green">Xong</Tag>,
+      align: "center",
+      filters: [
+        {
+          text: "Active",
+          value: "active",
+        },
+        {
+          text: "Unactive",
+          value: "unactive",
+        },
+      ],
+      onFilter: (value, record) => record.Status.indexOf(value) === 0,
+      render: (Status) => <span className="tag green">Active</span>,
     },
     {
       title: "Đánh giá",
@@ -139,22 +174,14 @@ const FeedbackList = () => {
       <ExpandTable
         columns={columns}
         dataSource={dataSource}
-        TitleCard="Feedback List"
         Extra={
           <div className="extra-table">
-            <SearchBox />
-            <button
-              className="btn btn-secondary light btn-filter"
-              onClick={funcShowFilter}
-            >
-              <Filter />
-            </button>
+            <FilterTable />
+            <SortBox dataOption={dataOption} />
           </div>
         }
         expandable={{ expandedRowRender }}
-      >
-        <FilterTable showFilter={showFilter} />
-      </ExpandTable>
+      ></ExpandTable>
     </>
   );
 };

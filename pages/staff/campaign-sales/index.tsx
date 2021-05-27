@@ -1,59 +1,28 @@
 import React, { useState } from "react";
-import { Table, Card, Tag } from "antd";
+import { Table, Card, Tag, Tooltip } from "antd";
 
 import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
 import PowerTable from "~/components/PowerTable";
 import SortBox from "~/components/Elements/SortBox";
-import { Filter } from "react-feather";
-import FilterTable from "~/components/Global/CostList";
+import { Filter, Eye } from "react-feather";
+import FilterTable from "~/components/Global/CostList/FilterTable";
 
-const dataSource = [
-  {
-    key: "1",
-    Start: "21/12/2021",
-    End: "31/12/2021",
-    TotalDay: "10",
-    Note: "Nothing",
-    Action: "",
-  },
-];
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
-const columns = [
+const dataOption = [
   {
-    title: "Start",
-    dataIndex: "Start",
-    key: "start",
+    text: "Option 1",
+    value: "option 1",
   },
   {
-    title: "End",
-    dataIndex: "End",
-    key: "end",
+    text: "Option 2",
+    value: "option 2",
   },
   {
-    title: "Total Day",
-    dataIndex: "TotalDay",
-    key: "totalday",
-  },
-  {
-    title: "Note",
-    dataIndex: "Note",
-    key: "checker",
-  },
-  {
-    title: "Action",
-    dataIndex: "Action",
-    key: "action",
-    render: () => (
-      <Link
-        href={{
-          pathname: "/staff/campaign-sales/[slug]",
-          query: { slug: 2 },
-        }}
-      >
-        <a className="btn btn-primary">View</a>
-      </Link>
-    ),
+    text: "Option 3",
+    value: "option 3",
   },
 ];
 
@@ -63,17 +32,74 @@ const CostList = () => {
     showFilter ? showFilterSet(false) : showFilterSet(true);
   };
 
+  const dataSource = [];
+
+  for (let i = 0; i < 50; i++) {
+    dataSource.push({
+      key: i,
+      Start: "21/12/2021",
+      End: "31/12/2021",
+      TotalDay: "10",
+      Note: "Nothing",
+      Action: "",
+    });
+  }
+
+  const columns = [
+    {
+      title: "Start",
+      dataIndex: "Start",
+      key: "start",
+      ...FilterDateColumn("Start"),
+    },
+    {
+      title: "End",
+      dataIndex: "End",
+      key: "end",
+      ...FilterDateColumn("End"),
+    },
+    {
+      title: "Total Day",
+      dataIndex: "TotalDay",
+      key: "totalday",
+    },
+    {
+      title: "Note",
+      dataIndex: "Note",
+      key: "checker",
+    },
+    {
+      title: "Action",
+      dataIndex: "Action",
+      key: "action",
+      render: () => (
+        <Link
+          href={{
+            pathname: "/staff/campaign-sales/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <a className="btn btn-icon">
+            <Tooltip title="Chi tiết">
+              <Eye />
+            </Tooltip>
+          </a>
+        </Link>
+      ),
+    },
+  ];
+
   return (
     <>
       <PowerTable
+        Size="table-small"
         columns={columns}
         dataSource={dataSource}
-        TitlePage="Giá vốn hàng bán"
+        TitlePage="Chiến dịch sale"
         TitleCard=""
         Extra={
           <div className="extra-table">
-            <SortBox />
-            <SearchBox />
+            <SortBox dataOption={dataOption} />
           </div>
         }
       ></PowerTable>

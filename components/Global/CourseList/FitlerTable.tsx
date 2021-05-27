@@ -117,10 +117,7 @@ const FilterTable = () => {
     <>
       <div className="wrap-filter-parent">
         <Popover placement="bottomRight" content={content} trigger="click">
-          <button
-            className="btn btn-secondary light btn-filter"
-            onClick={funcShowFilter}
-          >
+          <button className="btn btn-secondary light btn-filter">
             <Filter />
           </button>
         </Popover>

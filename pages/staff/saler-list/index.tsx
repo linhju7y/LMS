@@ -1,108 +1,129 @@
 import React, { useState } from "react";
-import { Table, Card, Tag } from "antd";
+import { Table, Card, Tag, Tooltip } from "antd";
 import { FormOutlined, EyeOutlined } from "@ant-design/icons";
 import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
 import PowerTable from "~/components/PowerTable";
 import ModalAdd from "~/components/Global/SalerList/ModalAdd";
 
-const dataSource = [];
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
-for (let i = 0; i < 50; i++) {
-  dataSource.push({
-    key: i,
-    Place: "Hồ Chí Minh",
-    NameStaff: "Nguyễn An",
-    NumberPhone: "012345678",
-    Email: "annguyen97dev@gmail.com",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  });
-}
+import { Eye, Filter, Search } from "react-feather";
+import SortBox from "~/components/Elements/SortBox";
 
-const columns = [
+const dataOption = [
   {
-    title: "Tỉnh/TP",
-    dataIndex: "Place",
-    key: "center",
+    text: "Option 1",
+    value: "option 1",
   },
   {
-    title: "Họ và tên",
-    dataIndex: "NameStaff",
-    key: "namestaff",
+    text: "Option 2",
+    value: "option 2",
   },
   {
-    title: "SĐT",
-    dataIndex: "NumberPhone",
-    key: "numberphone",
-  },
-  {
-    title: "Email",
-    dataIndex: "Email",
-    key: "email",
-  },
-
-  {
-    title: "Trạng thái",
-    dataIndex: "Status",
-    key: "status",
-    align: "center",
-    render: (Status) => (
-      <Tag className="style-tag active" color="green">
-        Active
-      </Tag>
-    ),
-  },
-  {
-    title: "Ngày nhận việc",
-    dataIndex: "StartDay",
-    key: "startday",
-  },
-  {
-    title: "Thao tác",
-    dataIndex: "Action",
-    key: "action",
-    align: "center",
-    render: (Action) => (
-      <Link
-        href={{
-          pathname: "/staff/saler-list/saler-detail/[slug]",
-          query: { slug: 2 },
-        }}
-      >
-        <a className="btn btn-icon">
-          <EyeOutlined />
-        </a>
-      </Link>
-    ),
+    text: "Option 3",
+    value: "option 3",
   },
 ];
 
 const SalerList = () => {
+  const dataSource = [];
+
+  for (let i = 0; i < 50; i++) {
+    dataSource.push({
+      key: i,
+      Place: "Hồ Chí Minh",
+      NameStaff: "Nguyễn An",
+      NumberPhone: "012345678",
+      Email: "annguyen97dev@gmail.com",
+      Status: "",
+      StartDay: "03/05/2021",
+      Action: "",
+    });
+  }
+
+  const columns = [
+    {
+      title: "Tỉnh/TP",
+      dataIndex: "Place",
+      key: "center",
+
+      ...FilterColumn("Place"),
+    },
+    {
+      title: "Họ và tên",
+
+      dataIndex: "NameStaff",
+      key: "namestaff",
+      ...FilterColumn("NameStaff"),
+    },
+    {
+      title: "SĐT",
+      dataIndex: "NumberPhone",
+      key: "numberphone",
+      ...FilterColumn("Numberphone"),
+    },
+    {
+      title: "Email",
+      dataIndex: "Email",
+      key: "email",
+      ...FilterColumn("Email"),
+    },
+
+    {
+      title: "Trạng thái",
+      dataIndex: "Status",
+      key: "status",
+      filters: [
+        {
+          text: "Active",
+          value: "active",
+        },
+        {
+          text: "Unactive",
+          value: "unactive",
+        },
+      ],
+      onFilter: (value, record) => record.Status.indexOf(value) === 0,
+      render: (Status) => <span className="tag green">Active</span>,
+    },
+    {
+      title: "Ngày nhận việc",
+      dataIndex: "StartDay",
+      key: "startday",
+      ...FilterDateColumn("StartDay"),
+    },
+    {
+      title: "",
+      dataIndex: "Action",
+      key: "action",
+      align: "center",
+      render: (Action) => (
+        <Link
+          href={{
+            pathname: "/staff/teacher-list/teacher-detail/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <a className="btn btn-icon">
+            <Tooltip title="Chi tiết">
+              <Eye />
+            </Tooltip>
+          </a>
+        </Link>
+      ),
+    },
+  ];
+
   return (
     <>
-      {/* <div className="row">
-        <div className="col-12">
-          <TitlePage title={"Danh sách nhân viên"} />
-          <div className="wrap-table">
-            <Card
-              className="cardRadius"
-              title={<button className="btn btn-primary">Thêm mới</button>}
-              extra={<SearchBox />}
-            >
-              <Table dataSource={dataSource} columns={columns} />
-            </Card>
-          </div>
-        </div>
-      </div> */}
-
       <PowerTable
         columns={columns}
         dataSource={dataSource}
         TitlePage="Danh sách Salers"
         TitleCard={<ModalAdd />}
-        Extra={<SearchBox />}
+        Extra={<SortBox dataOption={dataOption} />}
       />
     </>
   );

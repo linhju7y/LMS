@@ -1,135 +1,29 @@
 import React, { useState } from "react";
-import { Input, Modal } from "antd";
+import { Input, Modal, Tooltip } from "antd";
 
 import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
 import PowerTable from "~/components/PowerTable";
 import SortBox from "~/components/Elements/SortBox";
-import { Filter } from "react-feather";
-import FilterTable from "~/components/Global/CostList";
+import { Filter, Eye, CreditCard } from "react-feather";
+import FilterTable from "~/components/Global/CostList/FilterTable";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 const { TextArea } = Input;
-const dataSource = [
-  {
-    key: "1",
-    FullName: "Nguyễn Phi Hùng",
-    SaleCamp: "Giai đoạn 1 - 7/2019",
-    Money: "2,200,000",
-    MoneyBonus: "",
-    Total: "2,200,000",
-    Note: "",
-    Action: "",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn Phi Hùng",
-    SaleCamp: "Giai đoạn 1 - 7/2019",
-    Money: "2,200,000",
-    MoneyBonus: "",
-    Total: "2,200,000",
-    Note: "",
-    Action: "",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn Phi Hùng",
-    SaleCamp: "Giai đoạn 1 - 7/2019",
-    Money: "2,200,000",
-    MoneyBonus: "",
-    Total: "2,200,000",
-    Note: "",
-    Action: "",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn Phi Hùng",
-    SaleCamp: "Giai đoạn 1 - 7/2019",
-    Money: "2,200,000",
-    MoneyBonus: "",
-    Total: "2,200,000",
-    Note: "",
-    Action: "",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn Phi Hùng",
-    SaleCamp: "Giai đoạn 1 - 7/2019",
-    Money: "2,200,000",
-    MoneyBonus: "",
-    Total: "2,200,000",
-    Note: "",
-    Action: "",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn Phi Hùng",
-    SaleCamp: "Giai đoạn 1 - 7/2019",
-    Money: "2,200,000",
-    MoneyBonus: "",
-    Total: "2,200,000",
-    Note: "",
-    Action: "",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn Phi Hùng",
-    SaleCamp: "Giai đoạn 1 - 7/2019",
-    Money: "2,200,000",
-    MoneyBonus: "",
-    Total: "2,200,000",
-    Note: "",
-    Action: "",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn Phi Hùng",
-    SaleCamp: "Giai đoạn 1 - 7/2019",
-    Money: "2,200,000",
-    MoneyBonus: "",
-    Total: "2,200,000",
-    Note: "",
-    Action: "",
-  },
-];
 
-const columns = [
+const dataOption = [
   {
-    title: "Họ và tên",
-    dataIndex: "FullName",
-    key: "fullname",
+    text: "Option 1",
+    value: "option 1",
   },
   {
-    title: "Chiến dịch sale",
-    dataIndex: "SaleCamp",
-    key: "salecamp",
+    text: "Option 2",
+    value: "option 2",
   },
   {
-    title: "Số tiền",
-    dataIndex: "Money",
-    key: "money",
-  },
-  {
-    title: "Thưởng",
-    dataIndex: "MoneyBonus",
-    key: "moneybonus",
-    render: () => <Input style={{ width: 150 }} placeholder="2,500,000" />,
-  },
-  {
-    title: "Tổng",
-    dataIndex: "Total",
-    key: "total",
-  },
-  {
-    title: "Ghi chú",
-    dataIndex: "Note",
-    key: "note",
-    render: () => <TextArea rows={3} />,
-  },
-  {
-    title: "Action",
-    dataIndex: "Action",
-    key: "action",
-    render: () => <AcceptPay />,
+    text: "Option 3",
+    value: "option 3",
   },
 ];
 
@@ -150,9 +44,12 @@ const AcceptPay = () => {
 
   return (
     <>
-      <button className="btn btn-primary" onClick={showModal}>
-        Thanh toán
+      <button className="btn btn-icon" onClick={showModal}>
+        <Tooltip title="Thanh toán">
+          <CreditCard />
+        </Tooltip>
       </button>
+
       <Modal
         title="Xác nhận"
         visible={isModalVisible}
@@ -171,17 +68,75 @@ const SalaryReview = () => {
     showFilter ? showFilterSet(false) : showFilterSet(true);
   };
 
+  const dataSource = [];
+
+  for (let i = 0; i < 50; i++) {
+    dataSource.push({
+      key: i,
+      FullName: "Nguyễn Phi Hùng",
+      SaleCamp: "Giai đoạn 1 - 7/2019",
+      Money: "2,200,000",
+      MoneyBonus: "",
+      Total: "2,200,000",
+      Note: "",
+      Action: "",
+    });
+  }
+
+  const columns = [
+    {
+      title: "Họ và tên",
+      dataIndex: "FullName",
+      key: "fullname",
+      ...FilterColumn("FullName"),
+    },
+    {
+      title: "Chiến dịch sale",
+      dataIndex: "SaleCamp",
+      key: "salecamp",
+      ...FilterColumn("SaleCamp"),
+    },
+    {
+      title: "Số tiền",
+      dataIndex: "Money",
+      key: "money",
+    },
+    {
+      title: "Thưởng",
+      dataIndex: "MoneyBonus",
+      key: "moneybonus",
+      render: () => <Input style={{ width: 150 }} placeholder="2,500,000" />,
+    },
+    {
+      title: "Tổng",
+      dataIndex: "Total",
+      key: "total",
+    },
+    {
+      title: "Ghi chú",
+      dataIndex: "Note",
+      key: "note",
+      render: () => <TextArea rows={3} />,
+    },
+    {
+      title: "Action",
+      dataIndex: "Action",
+      key: "action",
+      align: "center",
+      render: () => <AcceptPay />,
+    },
+  ];
+
   return (
     <>
       <PowerTable
         columns={columns}
         dataSource={dataSource}
-        TitlePage="Duyệt lương Saler"
+        TitlePage="Duyệt lương Office"
         TitleCard=""
         Extra={
           <div className="extra-table">
-            <SortBox />
-            <SearchBox />
+            <SortBox dataOption={dataOption} />
           </div>
         }
       ></PowerTable>

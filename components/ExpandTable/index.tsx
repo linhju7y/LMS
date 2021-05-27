@@ -25,6 +25,7 @@ const ExpandTable = (props) => {
             columns={props.columns}
             dataSource={props.dataSource}
             expandable={props.expandable}
+            size="middle"
           />
         </Card>
       </div>

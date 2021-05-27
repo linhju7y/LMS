@@ -6,8 +6,14 @@ import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
 import PowerTable from "~/components/PowerTable";
 import SortBox from "~/components/Elements/SortBox";
+import ExpandTable from "~/components/ExpandTable";
+import FilterBox from "~/components/Elements/FilterBox";
 import { Filter, Eye, CheckCircle } from "react-feather";
-import FilterTable from "~/components/Global/TeachHoursCenter/FilterTable";
+import { Tooltip } from "antd";
+import FilterTable from "~/components/Global/TeachHoursList/FilterTable";
+
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 const TeachHoursCenter = () => {
   const [showFilter, showFilterSet] = useState(false);
@@ -24,9 +30,32 @@ const TeachHoursCenter = () => {
     setIsModalVisible(false);
   };
 
-  const dataSource = [
-    {
-      key: "1",
+  const funcShowFilter = () => {
+    showFilter ? showFilterSet(false) : showFilterSet(true);
+  };
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const expandedRowRender = () => {
+    const { Option } = Select;
+
+    return (
+      <>
+        <div className="feedback-detail-text">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum,
+          explicabo laboriosam. Molestias harum reiciendis quam suscipit
+          accusamus id voluptatem doloribus. Consectetur natus voluptatibus et
+          atque quibusdam vero iure reiciendis ratione?
+        </div>
+      </>
+    );
+  };
+
+  const dataSource = [];
+
+  for (let i = 0; i < 50; i++) {
+    dataSource.push({
+      key: i,
       Teacher: "Mr.Bean",
       Status: "",
       Role: "Manager",
@@ -37,6 +66,21 @@ const TeachHoursCenter = () => {
       TotalHours: "20",
       DutyTime: "20",
       TotalDutyTime: "22",
+    });
+  }
+
+  const dataOption = [
+    {
+      text: "Option 1",
+      value: "option 1",
+    },
+    {
+      text: "Option 2",
+      value: "option 2",
+    },
+    {
+      text: "Option 3",
+      value: "option 3",
     },
   ];
 
@@ -45,22 +89,36 @@ const TeachHoursCenter = () => {
       title: "Giáo viên",
       dataIndex: "Teacher",
       key: "teacher",
+      ...FilterColumn("Teacher"),
     },
     {
       title: "Trạng thái",
       dataIndex: "Status",
       key: "status",
-      render: (status) => <Tag color="green">Active</Tag>,
+      filters: [
+        {
+          text: "Active",
+          value: "active",
+        },
+        {
+          text: "Unactive",
+          value: "unactive",
+        },
+      ],
+      onFilter: (value, record) => record.Status.indexOf(value) === 0,
+      render: (Status) => <span className="tag green">Active</span>,
     },
     {
       title: "Vai trò",
       dataIndex: "Role",
       key: "role",
+      ...FilterColumn("role"),
     },
     {
       title: "Loại lớp",
       dataIndex: "TypeClass",
       key: "typeclass",
+      ...FilterColumn("TypeClass"),
     },
 
     {
@@ -95,48 +153,28 @@ const TeachHoursCenter = () => {
     },
   ];
 
-  const funcShowFilter = () => {
-    showFilter ? showFilterSet(false) : showFilterSet(true);
-  };
-
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const expandedRowRender = () => {
-    const { Option } = Select;
-    return (
-      <>
-        <div className="feedback-detail-text">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum,
-          explicabo laboriosam. Molestias harum reiciendis quam suscipit
-          accusamus id voluptatem doloribus. Consectetur natus voluptatibus et
-          atque quibusdam vero iure reiciendis ratione?
-        </div>
-      </>
-    );
-  };
-
   return (
     <>
-      <PowerTable
+      <Modal
+        title="Xác nhận thông tin"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>Bạn chắc chắn đã xử lí xong phản hồi</p>
+      </Modal>
+      <ExpandTable
         columns={columns}
         dataSource={dataSource}
-        TitlePage="Giờ dạy của giáo viên theo trung tâm"
+        TitlePage="Giờ dạy của giáo viên"
         Extra={
           <div className="extra-table">
-            <SortBox />
-            <SearchBox />
-
-            <button
-              className="btn btn-secondary light btn-filter"
-              onClick={funcShowFilter}
-            >
-              <Filter />
-            </button>
+            <FilterTable />
+            <SortBox dataOption={dataOption} />
           </div>
         }
-      >
-        <FilterTable showFilter={showFilter} />
-      </PowerTable>
+        expandable={{ expandedRowRender }}
+      ></ExpandTable>
     </>
   );
 };

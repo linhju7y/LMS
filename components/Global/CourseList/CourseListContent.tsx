@@ -1,5 +1,6 @@
 import { List, Avatar, Tag, Divider } from "antd";
 import ModalUpdate from "./ModalUpdate";
+import Link from "next/link";
 
 const CourseListContent = () => {
   const data = [
@@ -56,7 +57,11 @@ const CourseListContent = () => {
         <List.Item extra={<ModalUpdate />}>
           <List.Item.Meta
             avatar={<span className="tag green">Active</span>}
-            title={<a href="https://ant.design">{item.title}</a>}
+            title={
+              <Link href="/course/schedule-study">
+                <a>{item.title}</a>
+              </Link>
+            }
             description={
               <div className="content-body">
                 <ul className="list-ver">

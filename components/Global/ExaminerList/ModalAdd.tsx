@@ -67,7 +67,7 @@ const ModalAdd = (props) => {
 
   return (
     <>
-      <button className="btn btn-primary" onClick={showModal}>
+      <button className="btn btn-warning" onClick={showModal}>
         Select Teacher
       </button>
 

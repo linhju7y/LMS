@@ -1,137 +1,41 @@
 import TitlePage from "~/components/Elements/TitlePage";
-import { Card, Tag, Space, Table } from "antd";
+import { Card, Tag, Space, Table, Tooltip } from "antd";
 import SearchBox from "~/components/Elements/SearchBox";
 import SortBox from "~/components/Elements/SortBox";
 import { table } from "console";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useAuth } from "~/context/auth";
+import PowerTable from "~/components/PowerTable";
+import { Eye, Filter, Search } from "react-feather";
 
-const columns = [
-  {
-    title: "Trung tâm",
-    dataIndex: "center",
-    key: "trungtam",
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: "Khóa",
-    dataIndex: "course",
-    key: "khoa",
-  },
-  {
-    title: "Ngày mở",
-    dataIndex: "startday",
-    key: "ngaymo",
-  },
-  {
-    title: "Phòng",
-    key: "phong",
-    dataIndex: "room",
-  },
-  {
-    title: "Ngày tạo",
-    key: "ngaytao",
-    dataIndex: "createday",
-  },
-  {
-    title: "",
-    key: "action",
-    dataIndex: "action",
-    render: (text) => (
-      <Link
-        href={{
-          pathname: "/course/course-list-self/detail/[slug]",
-          query: { slug: 2 },
-        }}
-      >
-        <a className="btn btn-primary">View</a>
-      </Link>
-    ),
-  },
-];
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
-const data = [
+const dataOption = [
   {
-    key: "1",
-    center: "ZIM - 35 Võ Oanh",
-    course: "Phòng tự học (30/9 - 5/10) - Ca chiều",
-    startday: "12/05/2021",
-    room: "1B",
-    createday: "30/05/2021",
-    action: ["view"],
+    text: "Trung tâm A - Z",
+    value: "1",
   },
   {
-    key: "2",
-    center: "ZIM - 35 Võ Oanh",
-    course: "Phòng tự học (30/9 - 5/10) - Ca chiều",
-    startday: "12/05/2021",
-    room: "1B",
-    createday: "30/05/2021",
-    action: ["view"],
+    text: "Trung tâm Z - A",
+    value: "2",
   },
   {
-    key: "3",
-    center: "ZIM - 35 Võ Oanh",
-    course: "Phòng tự học (30/9 - 5/10) - Ca chiều",
-    startday: "12/05/2021",
-    room: "1B",
-    createday: "30/05/2021",
-    action: ["view"],
+    text: "Khóa A - Z",
+    value: "3",
   },
   {
-    key: "4",
-    center: "ZIM - 35 Võ Oanh",
-    course: "Phòng tự học (30/9 - 5/10) - Ca chiều",
-    startday: "12/05/2021",
-    room: "1B",
-    createday: "30/05/2021",
-    action: ["view"],
+    text: "Khóa Z - A",
+    value: "4",
   },
   {
-    key: "5",
-    center: "ZIM - 35 Võ Oanh",
-    course: "Phòng tự học (30/9 - 5/10) - Ca chiều",
-    startday: "12/05/2021",
-    room: "1B",
-    createday: "30/05/2021",
-    action: ["view"],
+    text: "Ngày tạo(low)",
+    value: "5",
   },
   {
-    key: "6",
-    center: "ZIM - 35 Võ Oanh",
-    course: "Phòng tự học (30/9 - 5/10) - Ca chiều",
-    startday: "12/05/2021",
-    room: "1B",
-    createday: "30/05/2021",
-    action: ["view"],
-  },
-  {
-    key: "7",
-    center: "ZIM - 35 Võ Oanh",
-    course: "Phòng tự học (30/9 - 5/10) - Ca chiều",
-    startday: "12/05/2021",
-    room: "1B",
-    createday: "30/05/2021",
-    action: ["view"],
-  },
-  {
-    key: "8",
-    center: "ZIM - 35 Võ Oanh",
-    course: "Phòng tự học (30/9 - 5/10) - Ca chiều",
-    startday: "12/05/2021",
-    room: "1B",
-    createday: "30/05/2021",
-    action: ["view"],
-  },
-  {
-    key: "9",
-    center: "ZIM - 35 Võ Oanh",
-    course: "Phòng tự học (30/9 - 5/10) - Ca chiều",
-    startday: "12/05/2021",
-    room: "1B",
-    createday: "30/05/2021",
-    action: ["view"],
+    text: "Ngày tạo(high)",
+    value: "6",
   },
 ];
 
@@ -139,23 +43,85 @@ const CourseListSelf = () => {
   const { getTitlePage } = useAuth();
   getTitlePage("Danh sách khóa tự học");
 
+  const columns = [
+    {
+      title: "Trung tâm",
+      dataIndex: "center",
+      key: "trungtam",
+      ...FilterColumn("center"),
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Khóa",
+      dataIndex: "course",
+      key: "khoa",
+      ...FilterColumn("course"),
+    },
+    {
+      title: "Ngày mở",
+      dataIndex: "startday",
+      key: "ngaymo",
+      ...FilterColumn("startday"),
+    },
+    {
+      title: "Phòng",
+      key: "phong",
+      dataIndex: "room",
+      ...FilterColumn("room"),
+    },
+    {
+      title: "Ngày tạo",
+      key: "ngaytao",
+      dataIndex: "createday",
+      ...FilterDateColumn("createday"),
+    },
+    {
+      title: "",
+      key: "action",
+      dataIndex: "action",
+      render: (Action) => (
+        <Link
+          href={{
+            pathname: "/course/course-list-self/detail/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <a className="btn btn-icon">
+            <Tooltip title="Chi tiết">
+              <Eye />
+            </Tooltip>
+          </a>
+        </Link>
+      ),
+    },
+  ];
+
+  const data = [];
+
+  for (let i = 0; i < 50; i++) {
+    data.push({
+      key: i,
+      center: "ZIM - 35 Võ Oanh chi nhánh " + i,
+      course: "Phòng tự học (30/9 - 5/10) - Ca chiều",
+      startday: "12/05/2021",
+      room: "Room " + i,
+      createday: "30-05-2021",
+      action: ["view"],
+    });
+  }
+
   return (
     <>
-      <div className="row">
-        <div className="col-12">
-          <div className="wrap-table">
-            <Card
-              extra={
-                <div className="list-action-table">
-                  <SortBox /> <SearchBox />
-                </div>
-              }
-            >
-              <Table columns={columns} dataSource={data} />
-            </Card>
+      <PowerTable
+        Size="table-medium"
+        dataSource={data}
+        columns={columns}
+        Extra={
+          <div className="list-action-table">
+            <SortBox dataOption={dataOption} />
           </div>
-        </div>
-      </div>
+        }
+      />
     </>
   );
 };

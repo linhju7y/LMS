@@ -765,7 +765,7 @@ const MenuDefault = ({
 
                 <Menu.Item key="gv5">
                   <Link href="/staff/teach-hours-center">
-                    <a>Giờ dạy giáo viên theo trung tâm</a>
+                    <a>Giờ dạy GV theo trung tâm</a>
                   </Link>
                 </Menu.Item>
 
@@ -848,7 +848,7 @@ const MenuDefault = ({
                 </Link>
               </Menu.Item>
               <Menu.Item key="pk5">
-                <Link href="/staff/saler-list">
+                <Link href="/package/package-store">
                   <a>Cửa hàng</a>
                 </Link>
               </Menu.Item>

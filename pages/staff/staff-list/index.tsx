@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Table, Card, Tag } from "antd";
+import { Table, Card, Tag, Tooltip } from "antd";
 import { FormOutlined, EyeOutlined } from "@ant-design/icons";
 import TitlePage from "~/components/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
@@ -7,197 +7,125 @@ import Link from "next/link";
 import PowerTable from "~/components/PowerTable";
 import ModalAdd from "~/components/Global/StaffList/ModalAdd";
 
-const dataSource = [
-  {
-    key: "1",
-    Center: "ZIM – 65 Yên Lãng",
-    NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
-    Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Center: "ZIM – 65 Yên Lãng",
-    NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
-    Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Center: "ZIM – 65 Yên Lãng",
-    NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
-    Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Center: "ZIM – 65 Yên Lãng",
-    NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
-    Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Center: "ZIM – 65 Yên Lãng",
-    NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
-    Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Center: "ZIM – 65 Yên Lãng",
-    NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
-    Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Center: "ZIM – 65 Yên Lãng",
-    NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
-    Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Center: "ZIM – 65 Yên Lãng",
-    NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
-    Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Center: "ZIM – 65 Yên Lãng",
-    NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
-    Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-  {
-    key: "1",
-    Center: "ZIM – 65 Yên Lãng",
-    NameStaff: "Nguyễn An",
-    Account: "annguyen97dev",
-    Email: "annguyen97dev@gmail.com",
-    Position: "Dev",
-    Status: "",
-    StartDay: "03/05/2021",
-    Action: "",
-  },
-];
-
-const columns = [
-  {
-    title: "Trung tâm",
-    dataIndex: "Center",
-    key: "center",
-  },
-  {
-    title: "Họ và tên",
-    dataIndex: "NameStaff",
-    key: "namestaff",
-  },
-  {
-    title: "Tài khoản",
-    dataIndex: "Account",
-    key: "account",
-  },
-  {
-    title: "Email",
-    dataIndex: "Email",
-    key: "email",
-  },
-  {
-    title: "Chức vụ",
-    dataIndex: "Position",
-    key: "position",
-  },
-  {
-    title: "Trạng thái",
-    dataIndex: "Status",
-    key: "status",
-    align: "center",
-    render: (Status) => <Tag color="green">Active</Tag>,
-  },
-  {
-    title: "Ngày nhận việc",
-    dataIndex: "StartDay",
-    key: "startday",
-  },
-  {
-    title: "Thao tác",
-    dataIndex: "Action",
-    key: "action",
-    render: (Action) => (
-      <Link
-        href={{
-          pathname: "/staff/staff-list/staff-detail/[slug]",
-          query: { slug: 2 },
-        }}
-      >
-        <a className="btn btn-primary">View</a>
-      </Link>
-    ),
-  },
-];
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import { Eye, Filter, Search } from "react-feather";
 
 const StaffList = () => {
+  const dataSource = [];
+
+  for (let i = 0; i < 50; i++) {
+    dataSource.push({
+      key: i,
+      Center: "ZIM – 65 Yên Lãng",
+      NameStaff: "User name " + i,
+      Account: "annguyen97dev",
+      Email: "annguyen97dev@gmail.com",
+      Position: "Dev",
+      Status: i % 2 == 0 ? "Active" : "Unactive",
+      StartDay: "03/05/2021",
+      Action: "",
+    });
+  }
+
+  const columns = [
+    {
+      title: "Trung tâm",
+      dataIndex: "Center",
+      key: "center",
+      ...FilterColumn("Center"),
+    },
+    {
+      title: "Họ và tên",
+      dataIndex: "NameStaff",
+      key: "namestaff",
+      ...FilterColumn("NameStaff"),
+    },
+    {
+      title: "Tài khoản",
+      dataIndex: "Account",
+      key: "account",
+      ...FilterColumn("Account"),
+    },
+    {
+      title: "Email",
+      dataIndex: "Email",
+      key: "email",
+      ...FilterColumn("Email"),
+    },
+    {
+      title: "Chức vụ",
+      dataIndex: "Position",
+      key: "position",
+      ...FilterColumn("Position"),
+    },
+    {
+      title: "Trạng thái",
+      dataIndex: "Status",
+      key: "status",
+      align: "center",
+      filters: [
+        {
+          text: "Active",
+          value: "active",
+        },
+        {
+          text: "Unactive",
+          value: "unactive",
+        },
+      ],
+      onFilter: (value, record) => record.Status.indexOf(value) === 0,
+      render: (Status) => {
+        let color = "";
+        let text = "";
+        if (Status === "Active") {
+          color = "red";
+        }
+        if (Status === "Unactive") {
+          color = "green";
+        }
+        return (
+          <span style={{ width: "90px" }} className={`tag ${color}`}>
+            {Status}
+          </span>
+        );
+      },
+    },
+    {
+      title: "Ngày nhận việc",
+      dataIndex: "StartDay",
+      key: "startday",
+      ...FilterDateColumn("StartDay"),
+    },
+    {
+      title: "Thao tác",
+      dataIndex: "Action",
+      key: "action",
+      align: "center",
+      render: (Action) => (
+        <Link
+          href={{
+            pathname: "/staff/staff-list/staff-detail/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <a className="btn btn-icon">
+            <Tooltip title="Chi tiết">
+              <Eye />
+            </Tooltip>
+          </a>
+        </Link>
+      ),
+    },
+  ];
+
   return (
     <>
-      {/* <div className="row">
-        <div className="col-12">
-          <TitlePage title={"Danh sách nhân viên"} />
-          <div className="wrap-table">
-            <Card
-              className="cardRadius"
-              title={<button className="btn btn-primary">Thêm mới</button>}
-              extra={<SearchBox />}
-            >
-              <Table dataSource={dataSource} columns={columns} />
-            </Card>
-          </div>
-        </div>
-      </div> */}
       <PowerTable
         columns={columns}
         dataSource={dataSource}
         TitlePage="Danh sách nhân viên"
         TitleCard={<ModalAdd />}
-        Extra={<SearchBox />}
       />
     </>
   );

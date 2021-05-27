@@ -6,17 +6,19 @@ import SortBox from "~/components/Elements/SortBox";
 import { table } from "console";
 import Link from "next/link";
 
-const PackageSet = () => {
+const PackageStore = () => {
   return (
     <>
       <div className="row package-set">
         <div className="col-12">
           <TitlePage title="My Set" />
           <Card
-            className="package-set-wrap"
-            title={
+            title="Các gói bài tập"
+            extra={
               <div className="extra-table">
                 <SortBox />
+                <SortBox space={true} />
+                <SearchBox />
               </div>
             }
           >
@@ -128,4 +130,4 @@ const PackageSet = () => {
   );
 };
 
-export default PackageSet;
+export default PackageStore;

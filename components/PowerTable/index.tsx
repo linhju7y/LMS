@@ -21,13 +21,13 @@ const PowerTable = (props) => {
           {/* <TitlePage title={props.TitlePage} /> */}
           <div className="wrap-table">
             <Card
-              className="cardRadius"
+              className={`cardRadius ${props.Size ? props.Size : ""}`}
               title={props.Extra}
               extra={props.TitleCard}
             >
               {props.children}
               <Table
-                className={props.Size ? props.Size : ""}
+                bordered={props.haveBorder ? props.haveBorder : false}
                 scroll={{ x: 800 }}
                 columns={props.columns}
                 dataSource={props.dataSource}

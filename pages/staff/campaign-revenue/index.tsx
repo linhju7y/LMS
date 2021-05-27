@@ -13,6 +13,9 @@ import { Tooltip } from "antd";
 import FilterTable from "~/components/Global/CampaignRevenue/FilterTable";
 import RevenueChart from "~/components/Dashboard/RevenueChart";
 
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+
 const expandedRowRender = () => {
   const { Option } = Select;
 
@@ -28,7 +31,7 @@ const expandedRowRender = () => {
       <div className="revenue-detail-row">
         <Form layout="vertical">
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-md-2">
               <Form.Item>
                 <DatePicker
                   placeholder="Từ ngày"
@@ -38,7 +41,7 @@ const expandedRowRender = () => {
               </Form.Item>
             </div>
 
-            <div className="col-md-3">
+            <div className="col-md-2">
               <Form.Item>
                 <DatePicker
                   placeholder="Đến ngày"
@@ -51,7 +54,7 @@ const expandedRowRender = () => {
             <div className="col-md-3">
               <Form.Item>
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-primary btn-height-input"
                   style={{ marginRight: "10px" }}
                 >
                   Tìm kiếm
@@ -81,115 +84,31 @@ const CampRevenue = () => {
     setIsModalVisible(false);
   };
 
-  const dataSource = [
-    {
-      key: "1",
+  const dataSource = [];
+
+  for (let i = 0; i < 50; i++) {
+    dataSource.push({
+      key: i,
       FullName: "Jack",
       NumberPhone: "0129303021",
       TotalMoney: "5,800,929,000",
       TotalPill: "500",
       TotalCustomer: "743",
-    },
-    {
-      key: "2",
-      FullName: "Jack",
-      NumberPhone: "0129303021",
-      TotalMoney: "5,800,929,000",
-      TotalPill: "500",
-      TotalCustomer: "743",
-    },
-    {
-      key: "3",
-      FullName: "Jack",
-      NumberPhone: "0129303021",
-      TotalMoney: "5,800,929,000",
-      TotalPill: "500",
-      TotalCustomer: "743",
-    },
-    {
-      key: "4",
-      FullName: "Jack",
-      NumberPhone: "0129303021",
-      TotalMoney: "5,800,929,000",
-      TotalPill: "500",
-      TotalCustomer: "743",
-    },
-    {
-      key: "5",
-      FullName: "Jack",
-      NumberPhone: "0129303021",
-      TotalMoney: "5,800,929,000",
-      TotalPill: "500",
-      TotalCustomer: "743",
-    },
-    {
-      key: "6",
-      FullName: "Jack",
-      NumberPhone: "0129303021",
-      TotalMoney: "5,800,929,000",
-      TotalPill: "500",
-      TotalCustomer: "743",
-    },
-    {
-      key: "7",
-      FullName: "Jack",
-      NumberPhone: "0129303021",
-      TotalMoney: "5,800,929,000",
-      TotalPill: "500",
-      TotalCustomer: "743",
-    },
-    {
-      key: "8",
-      FullName: "Jack",
-      NumberPhone: "0129303021",
-      TotalMoney: "5,800,929,000",
-      TotalPill: "500",
-      TotalCustomer: "743",
-    },
-    {
-      key: "9",
-      FullName: "Jack",
-      NumberPhone: "0129303021",
-      TotalMoney: "5,800,929,000",
-      TotalPill: "500",
-      TotalCustomer: "743",
-    },
-    {
-      key: "10",
-      FullName: "Jack",
-      NumberPhone: "0129303021",
-      TotalMoney: "5,800,929,000",
-      TotalPill: "500",
-      TotalCustomer: "743",
-    },
-    {
-      key: "11",
-      FullName: "Jack",
-      NumberPhone: "0129303021",
-      TotalMoney: "5,800,929,000",
-      TotalPill: "500",
-      TotalCustomer: "743",
-    },
-    {
-      key: "12",
-      FullName: "Jack",
-      NumberPhone: "0129303021",
-      TotalMoney: "5,800,929,000",
-      TotalPill: "500",
-      TotalCustomer: "743",
-    },
-  ];
+    });
+  }
 
   const columns = [
     {
       title: "Họ và tên",
       dataIndex: "FullName",
       key: "fullname",
+      ...FilterColumn("FullName"),
     },
     {
       title: "Số diện thoại",
       dataIndex: "NumberPhone",
       key: "numberphone",
+      ...FilterColumn("NumberPhone"),
     },
     {
       title: "Tổng doanh thu",
@@ -232,21 +151,9 @@ const CampRevenue = () => {
         dataSource={dataSource}
         TitlePage="THÔNG TIN SALER, DOANH THU THEO CHIẾN DỊCH
         "
-        Extra={
-          <div className="extra-table">
-            <SearchBox />
-            <button
-              className="btn btn-secondary light btn-filter"
-              onClick={funcShowFilter}
-            >
-              <Filter />
-            </button>
-          </div>
-        }
+        Extra={<FilterTable />}
         expandable={{ expandedRowRender }}
-      >
-        <FilterTable showFilter={showFilter} />
-      </ExpandTable>
+      ></ExpandTable>
     </>
   );
 };

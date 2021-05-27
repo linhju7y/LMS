@@ -47,7 +47,7 @@ const PackageCreate = () => {
     <>
       <div className="package-create">
         <TitlePage title="Tạo gói mới" />
-        <Card title="Set Up">
+        <Card title="Set Up" className="package-create-card">
           <div className="row">
             <div className="col-md-3 col-sm-6 col-12">
               <div

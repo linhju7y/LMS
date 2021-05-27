@@ -5,124 +5,28 @@ import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
 import PowerTable from "~/components/PowerTable";
 import SortBox from "~/components/Elements/SortBox";
-import { Filter } from "react-feather";
-import FilterTable from "~/components/Global/CostList";
+
+import FilterTable from "~/components/Global/CostList/FilterTable";
+
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+
+import { Eye, Filter, Search } from "react-feather";
 
 const { TextArea } = Input;
-const dataSource = [
-  {
-    key: "1",
-    FullName: "Nguyễn An",
-    Camp: "Something",
-    Money: "4,500,000",
-    Note: "Text",
-    CreatedDate: "20/05/2020",
-    CreatedPeople: "Hùng Nguyễn",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn An",
-    Camp: "Something",
-    Money: "4,500,000",
-    Note: "Text",
-    CreatedDate: "20/05/2020",
-    CreatedPeople: "Hùng Nguyễn",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn An",
-    Camp: "Something",
-    Money: "4,500,000",
-    Note: "Text",
-    CreatedDate: "20/05/2020",
-    CreatedPeople: "Hùng Nguyễn",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn An",
-    Camp: "Something",
-    Money: "4,500,000",
-    Note: "Text",
-    CreatedDate: "20/05/2020",
-    CreatedPeople: "Hùng Nguyễn",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn An",
-    Camp: "Something",
-    Money: "4,500,000",
-    Note: "Text",
-    CreatedDate: "20/05/2020",
-    CreatedPeople: "Hùng Nguyễn",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn An",
-    Camp: "Something",
-    Money: "4,500,000",
-    Note: "Text",
-    CreatedDate: "20/05/2020",
-    CreatedPeople: "Hùng Nguyễn",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn An",
-    Camp: "Something",
-    Money: "4,500,000",
-    Note: "Text",
-    CreatedDate: "20/05/2020",
-    CreatedPeople: "Hùng Nguyễn",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn An",
-    Camp: "Something",
-    Money: "4,500,000",
-    Note: "Text",
-    CreatedDate: "20/05/2020",
-    CreatedPeople: "Hùng Nguyễn",
-  },
-  {
-    key: "1",
-    FullName: "Nguyễn An",
-    Camp: "Something",
-    Money: "4,500,000",
-    Note: "Text",
-    CreatedDate: "20/05/2020",
-    CreatedPeople: "Hùng Nguyễn",
-  },
-];
 
-const columns = [
+const dataOption = [
   {
-    title: "Họ và tên",
-    dataIndex: "FullName",
-    key: "fullname",
+    text: "Option 1",
+    value: "option 1",
   },
   {
-    title: "Chiến dịch",
-    dataIndex: "Camp",
-    key: "Camp",
+    text: "Option 2",
+    value: "option 2",
   },
   {
-    title: "Số tiền",
-    dataIndex: "Money",
-    key: "money",
-  },
-  {
-    title: "Ghi chú",
-    dataIndex: "Note",
-    key: "note",
-  },
-  {
-    title: "Ngày tạo",
-    dataIndex: "CreatedDate",
-    key: "createddate",
-  },
-  {
-    title: "Người tạo",
-    dataIndex: "CreatedPeople",
-    key: "createdpeople",
+    text: "Option 3",
+    value: "option 3",
   },
 ];
 
@@ -131,6 +35,57 @@ const SalaryHistory = () => {
   const funcShowFilter = () => {
     showFilter ? showFilterSet(false) : showFilterSet(true);
   };
+
+  const dataSource = [];
+
+  for (let i = 0; i < 50; i++) {
+    dataSource.push({
+      key: i,
+      FullName: "Nguyễn An",
+      Camp: "Something",
+      Money: "4,500,000",
+      Note: "Text",
+      CreatedDate: "20-05-2020",
+      CreatedPeople: "Hùng Nguyễn",
+    });
+  }
+
+  const columns = [
+    {
+      title: "Họ và tên",
+      dataIndex: "FullName",
+      key: "fullname",
+      ...FilterColumn("FullName"),
+    },
+    {
+      title: "Chiến dịch",
+      dataIndex: "Camp",
+      key: "Camp",
+      ...FilterColumn("Camp"),
+    },
+    {
+      title: "Số tiền",
+      dataIndex: "Money",
+      key: "money",
+    },
+    {
+      title: "Ghi chú",
+      dataIndex: "Note",
+      key: "note",
+    },
+    {
+      title: "Ngày tạo",
+      dataIndex: "CreatedDate",
+      key: "createddate",
+      ...FilterDateColumn("StartDay"),
+    },
+    {
+      title: "Người tạo",
+      dataIndex: "CreatedPeople",
+      key: "createdpeople",
+      ...FilterColumn("CreatedDate"),
+    },
+  ];
 
   return (
     <>
@@ -141,8 +96,7 @@ const SalaryHistory = () => {
         TitleCard=""
         Extra={
           <div className="extra-table">
-            <SortBox />
-            <SearchBox />
+            <SortBox dataOption={dataOption} />
           </div>
         }
       ></PowerTable>

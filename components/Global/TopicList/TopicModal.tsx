@@ -21,7 +21,7 @@ const TopicModal = (props) => {
   return (
     <>
       {props.showBtn && (
-        <button className="btn btn-primary" onClick={showModal}>
+        <button className="btn btn-warning" onClick={showModal}>
           New Topic
         </button>
       )}

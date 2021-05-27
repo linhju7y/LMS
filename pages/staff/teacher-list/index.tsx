@@ -11,6 +11,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 import { Eye, Filter, Search } from "react-feather";
+
 import ModalAdd from "~/components/Global/TeacherList/ModalAdd";
 // import SearchInTable from "~/components/Tables/SearchInTable";
 
@@ -32,29 +33,16 @@ const dataOption = [
 const dataSource = [];
 
 for (let i = 0; i < 50; i++) {
-  if (i == 34) {
-    dataSource.push({
-      key: i,
-      Place: "HCM" + i,
-      NameStaff: "Nguyễn An" + i,
-      NumberPhone: "012345678",
-      Email: "annguyen97dev@gmail.com" + i,
-      Status: "active",
-      StartDay: "12-05-2021",
-      Action: "",
-    });
-  } else {
-    dataSource.push({
-      key: i,
-      Place: "HCM" + i,
-      NameStaff: "Nguyễn An" + i,
-      NumberPhone: "012345678",
-      Email: "annguyen97dev@gmail.com" + i,
-      Status: "active",
-      StartDay: "03-05-2021",
-      Action: "",
-    });
-  }
+  dataSource.push({
+    key: i,
+    Place: "HCM" + i,
+    NameStaff: "Nguyễn An" + i,
+    NumberPhone: "012345678",
+    Email: "annguyen97dev@gmail.com" + i,
+    Status: "active",
+    StartDay: i === 34 ? "02-05-2021" : "12-05-2021",
+    Action: "",
+  });
 }
 
 const TeacherList = () => {
@@ -63,7 +51,6 @@ const TeacherList = () => {
       title: "Tỉnh/TP",
       dataIndex: "Place",
       key: "center",
-
       ...FilterColumn("Place"),
     },
     {

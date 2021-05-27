@@ -27,7 +27,7 @@ const QuestionModal = (props) => {
   return (
     <>
       {props.showBtn && (
-        <button className="btn btn-secondary" onClick={showModal}>
+        <button className="btn btn-warning" onClick={showModal}>
           New Question
         </button>
       )}

@@ -1,10 +1,13 @@
 .tag {
   color: white;
+  font-size: 13px;
   font-weight: 500;
   padding: 3px 15px;
   border-radius: 999px;
   margin: 0 2px;
   background: #0088cc;
+  display: inline-block;
+  white-space: pre;
 
   &.green {
     background: rgb(31, 217, 124);

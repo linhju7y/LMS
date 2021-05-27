@@ -1,87 +1,105 @@
 import React, { useState } from "react";
-import { Table, Card, Tag, Select } from "antd";
+import { Table, Card, Tag, Select, Tooltip } from "antd";
 import { FormOutlined, EyeOutlined } from "@ant-design/icons";
 
 import Link from "next/link";
 import ExpandTable from "~/components/ExpandTable";
 import { table } from "console";
 import SearchBox from "~/components/Elements/SearchBox";
-import { Filter } from "react-feather";
+
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+
+import { Eye, Filter, Search } from "react-feather";
+
 import FilterTable from "~/components/Global/ExerciseDoneList/FilterTable";
-
-const dataSource = [
-  {
-    key: "1",
-    Student: "Lê Kha",
-    Coruse: "[ZIM – 12 Huỳnh Lan Khanh] - AM - Advanced, 18/01, 09:30-11:30",
-    Teacher: "Thầy An",
-    Rating: 5,
-    CreateDate: "25/02/2020",
-    SubmitDate: "27/01/2020",
-    ModifiedDate: "27/01/2020",
-    Action: "",
-  },
-];
-
-const columns = [
-  {
-    title: "Học viên",
-    dataIndex: "Student",
-    key: "student",
-  },
-  {
-    title: "Khóa học",
-    dataIndex: "Coruse",
-    key: "course",
-  },
-  {
-    title: "Giáo viên",
-    dataIndex: "Teacher",
-    key: "teacher",
-  },
-  {
-    title: "Đánh giá",
-    dataIndex: "Rating",
-    key: "rating",
-  },
-
-  {
-    title: "Ngày khởi tạo",
-    dataIndex: "CreateDate",
-    key: "createdate",
-  },
-  {
-    title: "Ngày submit",
-    dataIndex: "SubmitDate",
-    key: "submitdate",
-  },
-  {
-    title: "Ngày sửa",
-    dataIndex: "ModifiedDate",
-    key: "modifiedDate",
-  },
-  {
-    title: "Thao tác",
-    dataIndex: "Action",
-    key: "action",
-    render: (Action) => (
-      <Link
-        href={{
-          pathname: "/staff/exercise-done-list/[slug]",
-          query: { slug: 2 },
-        }}
-      >
-        <a className="btn btn-primary">View</a>
-      </Link>
-    ),
-  },
-];
 
 const ExerciseDoneList = () => {
   const [showFilter, showFilterSet] = useState(false);
   const funcShowFilter = () => {
     showFilter ? showFilterSet(false) : showFilterSet(true);
   };
+
+  const dataSource = [];
+
+  for (let i = 0; i < 50; i++) {
+    dataSource.push({
+      key: i,
+      Student: "Lê Kha",
+      Course: "[ZIM – 12 Huỳnh Lan Khanh] - AM - Advanced, 18/01, 09:30-11:30",
+      Teacher: "Thầy An",
+      Rating: 5,
+      CreateDate: "25-02-2020",
+      SubmitDate: "27-01-2020",
+      ModifiedDate: "27-01-2020",
+      Action: "",
+    });
+  }
+
+  const columns = [
+    {
+      title: "Học viên",
+      dataIndex: "Student",
+      key: "student",
+      ...FilterColumn("Student"),
+    },
+    {
+      title: "Khóa học",
+      dataIndex: "Course",
+      key: "course",
+      ...FilterColumn("Course"),
+    },
+    {
+      title: "Giáo viên",
+      dataIndex: "Teacher",
+      key: "teacher",
+      ...FilterColumn("Teacher"),
+    },
+    {
+      title: "Đánh giá",
+      dataIndex: "Rating",
+      key: "rating",
+    },
+
+    {
+      title: "Ngày khởi tạo",
+      dataIndex: "CreateDate",
+      key: "createdate",
+      ...FilterDateColumn("CreateDay"),
+    },
+    {
+      title: "Ngày submit",
+      dataIndex: "SubmitDate",
+      key: "submitdate",
+      ...FilterDateColumn("SubmitDay"),
+    },
+    {
+      title: "Ngày sửa",
+      dataIndex: "ModifiedDate",
+      key: "modifiedDate",
+      ...FilterDateColumn("ModifiedDate"),
+    },
+    {
+      title: "Thao tác",
+      dataIndex: "Action",
+      key: "action",
+      align: "center",
+      render: (Action) => (
+        <Link
+          href={{
+            pathname: "/staff/exercise-done-list/[slug]",
+            query: { slug: 2 },
+          }}
+        >
+          <a className="btn btn-icon">
+            <Tooltip title="Chi tiết">
+              <Eye />
+            </Tooltip>
+          </a>
+        </Link>
+      ),
+    },
+  ];
 
   const expandedRowRender = () => {
     const { Option } = Select;
@@ -105,22 +123,9 @@ const ExerciseDoneList = () => {
       <ExpandTable
         dataSource={dataSource}
         columns={columns}
-        TitleCard="Bài đã chấm"
-        Extra={
-          <div className="extra-table">
-            <SearchBox />
-            <button
-              className="btn btn-secondary light btn-filter"
-              onClick={funcShowFilter}
-            >
-              <Filter />
-            </button>
-          </div>
-        }
+        Extra={<FilterTable />}
         expandable={{ expandedRowRender }}
-      >
-        <FilterTable showFilter={showFilter} />
-      </ExpandTable>
+      ></ExpandTable>
     </>
   );
 };

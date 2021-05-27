@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Card, Select, DatePicker, Input, Form } from "antd";
+import { Card, Select, DatePicker, Input, Form, Popover } from "antd";
+import { Eye, Filter } from "react-feather";
 
-const FilterTable = ({ showFilter }) => {
+const FilterTable = () => {
   const { Option } = Select;
   function handleChange(value) {
     console.log(`selected ${value}`);
@@ -11,11 +12,11 @@ const FilterTable = ({ showFilter }) => {
     console.log(date, dateString);
   }
 
-  return (
-    <div className={`wrap-filter ${showFilter ? "show" : "hide"}`}>
+  const content = (
+    <div className={`wrap-filter small`}>
       <Form layout="vertical">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-12">
             <Form.Item label="Loại phản hồi">
               <Select
                 showSearch
@@ -37,20 +38,20 @@ const FilterTable = ({ showFilter }) => {
             </Form.Item>
           </div>
 
-          <div className="col-md-3">
+          <div className="col-md-12">
             <Form.Item label="Từ">
               <DatePicker className="style-input" onChange={onChange} />
             </Form.Item>
           </div>
 
-          <div className="col-md-3">
+          <div className="col-md-12">
             <Form.Item label="Đến">
               <DatePicker className="style-input" onChange={onChange} />
             </Form.Item>
           </div>
 
-          <div className="col-md-3">
-            <Form.Item label="Thao tác">
+          <div className="col-md-12">
+            <Form.Item className="mb-0">
               <button
                 className="btn btn-primary"
                 style={{ marginRight: "10px" }}
@@ -63,6 +64,14 @@ const FilterTable = ({ showFilter }) => {
         </div>
       </Form>
     </div>
+  );
+
+  return (
+    <Popover placement="bottomRight" content={content} trigger="click">
+      <button className="btn btn-secondary light btn-filter">
+        <Filter />
+      </button>
+    </Popover>
   );
 };
 

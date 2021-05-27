@@ -1,6 +1,6 @@
 .package-create {
   .box-form {
-    width: 50%;
+    width: 100%;
 
     .form-item {
       display: flex;
@@ -62,4 +62,8 @@
       }
     }
   }
+}
+
+.package-create-card {
+  width: 75%;
 }

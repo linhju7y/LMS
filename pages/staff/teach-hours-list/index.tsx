@@ -12,6 +12,9 @@ import { Filter, Eye, CheckCircle } from "react-feather";
 import { Tooltip } from "antd";
 import FilterTable from "~/components/Global/TeachHoursList/FilterTable";
 
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+
 const TeachHoursList = () => {
   const [showFilter, showFilterSet] = useState(false);
 
@@ -27,9 +30,32 @@ const TeachHoursList = () => {
     setIsModalVisible(false);
   };
 
-  const dataSource = [
-    {
-      key: "1",
+  const funcShowFilter = () => {
+    showFilter ? showFilterSet(false) : showFilterSet(true);
+  };
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const expandedRowRender = () => {
+    const { Option } = Select;
+
+    return (
+      <>
+        <div className="feedback-detail-text">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum,
+          explicabo laboriosam. Molestias harum reiciendis quam suscipit
+          accusamus id voluptatem doloribus. Consectetur natus voluptatibus et
+          atque quibusdam vero iure reiciendis ratione?
+        </div>
+      </>
+    );
+  };
+
+  const dataSource = [];
+
+  for (let i = 0; i < 50; i++) {
+    dataSource.push({
+      key: i,
       Teacher: "Mr.Bean",
       Status: "",
       Role: "Manager",
@@ -40,6 +66,21 @@ const TeachHoursList = () => {
       TotalHours: "20",
       DutyTime: "20",
       TotalDutyTime: "22",
+    });
+  }
+
+  const dataOption = [
+    {
+      text: "Option 1",
+      value: "option 1",
+    },
+    {
+      text: "Option 2",
+      value: "option 2",
+    },
+    {
+      text: "Option 3",
+      value: "option 3",
     },
   ];
 
@@ -48,21 +89,36 @@ const TeachHoursList = () => {
       title: "Giáo viên",
       dataIndex: "Teacher",
       key: "teacher",
+      ...FilterColumn("Teacher"),
     },
     {
       title: "Trạng thái",
       dataIndex: "Status",
       key: "status",
+      filters: [
+        {
+          text: "Active",
+          value: "active",
+        },
+        {
+          text: "Unactive",
+          value: "unactive",
+        },
+      ],
+      onFilter: (value, record) => record.Status.indexOf(value) === 0,
+      render: (Status) => <span className="tag green">Active</span>,
     },
     {
       title: "Vai trò",
       dataIndex: "Role",
       key: "role",
+      ...FilterColumn("role"),
     },
     {
       title: "Loại lớp",
       dataIndex: "TypeClass",
       key: "typeclass",
+      ...FilterColumn("TypeClass"),
     },
 
     {
@@ -97,26 +153,6 @@ const TeachHoursList = () => {
     },
   ];
 
-  const funcShowFilter = () => {
-    showFilter ? showFilterSet(false) : showFilterSet(true);
-  };
-
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const expandedRowRender = () => {
-    const { Option } = Select;
-    return (
-      <>
-        <div className="feedback-detail-text">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum,
-          explicabo laboriosam. Molestias harum reiciendis quam suscipit
-          accusamus id voluptatem doloribus. Consectetur natus voluptatibus et
-          atque quibusdam vero iure reiciendis ratione?
-        </div>
-      </>
-    );
-  };
-
   return (
     <>
       <Modal
@@ -133,21 +169,12 @@ const TeachHoursList = () => {
         TitlePage="Giờ dạy của giáo viên"
         Extra={
           <div className="extra-table">
-            <SortBox />
-            <SearchBox />
-
-            <button
-              className="btn btn-secondary light btn-filter"
-              onClick={funcShowFilter}
-            >
-              <Filter />
-            </button>
+            <FilterTable />
+            <SortBox dataOption={dataOption} />
           </div>
         }
         expandable={{ expandedRowRender }}
-      >
-        <FilterTable showFilter={showFilter} />
-      </ExpandTable>
+      ></ExpandTable>
     </>
   );
 };

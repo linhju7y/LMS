@@ -3,7 +3,7 @@
     padding: 20px;
     border-radius: 0.575rem;
     background: #effaff;
-    width: 60%;
+    width: 100%;
     position: relative;
     overflow: hidden;
     border: 1px solid #e7f3ff;
@@ -95,4 +95,8 @@
       }
     }
   }
+}
+
+.package-set-wrap {
+  width: 70%;
 }
