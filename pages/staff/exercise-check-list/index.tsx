@@ -55,12 +55,16 @@ const ExerciseCheckList = () => {
       dataIndex: "Student",
       key: "student",
       ...FilterColumn("Student"),
+
+      render: (text) => <p className="font-weight-blue">{text}</p>,
     },
     {
       title: "Khóa học",
       dataIndex: "Course",
       key: "course",
       ...FilterColumn("Course"),
+
+      render: (text) => <p className="font-weight-black">{text}</p>,
     },
 
     {

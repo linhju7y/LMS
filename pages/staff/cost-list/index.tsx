@@ -52,12 +52,14 @@ const CostList = () => {
       dataIndex: "FullName",
       key: "fullname",
       ...FilterColumn("FullName"),
+      render: (text) => <p className="font-weight-blue">{text}</p>,
     },
     {
       title: "Email",
       dataIndex: "Email",
       key: "email",
       ...FilterColumn("Email"),
+      render: (text) => <p className="font-weight-black">{text}</p>,
     },
     {
       title: "Khóa học hiện tại",

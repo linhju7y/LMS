@@ -75,12 +75,14 @@ const FeedbackList = () => {
       dataIndex: "SendPeople",
       key: "sendpeople",
       ...FilterColumn("SendPeople"),
+      render: (text) => <p className="font-weight-blue">{text}</p>,
     },
     {
       title: "Tư vấn viên",
       dataIndex: "Tvv",
       key: "tvv",
       ...FilterColumn("Tvv"),
+      render: (text) => <p className="font-weight-black">{text}</p>,
     },
 
     {
@@ -172,6 +174,7 @@ const FeedbackList = () => {
         <p>Bạn chắc chắn đã xử lí xong phản hồi</p>
       </Modal>
       <ExpandTable
+        TitlePage="Duyệt feedback"
         columns={columns}
         dataSource={dataSource}
         Extra={

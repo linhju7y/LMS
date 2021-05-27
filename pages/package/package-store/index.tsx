@@ -13,6 +13,7 @@ const PackageStore = () => {
         <div className="col-12">
           <TitlePage title="My Set" />
           <Card
+            className="package-set-wrap"
             title="Các gói bài tập"
             extra={
               <div className="extra-table">

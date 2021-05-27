@@ -59,6 +59,7 @@ const TeacherList = () => {
       dataIndex: "NameStaff",
       key: "namestaff",
       ...FilterColumn("NameStaff"),
+      render: (text) => <p className="font-weight-blue">{text}</p>,
     },
     {
       title: "SĐT",
@@ -71,6 +72,7 @@ const TeacherList = () => {
       dataIndex: "Email",
       key: "email",
       ...FilterColumn("Email"),
+      render: (text) => <p className="font-weight-black">{text}</p>,
     },
 
     {

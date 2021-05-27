@@ -90,6 +90,8 @@ const TeachHoursList = () => {
       dataIndex: "Teacher",
       key: "teacher",
       ...FilterColumn("Teacher"),
+
+      render: (text) => <p className="font-weight-blue">{text}</p>,
     },
     {
       title: "Trạng thái",
@@ -113,6 +115,8 @@ const TeachHoursList = () => {
       dataIndex: "Role",
       key: "role",
       ...FilterColumn("role"),
+
+      render: (text) => <p className="font-weight-black">{text}</p>,
     },
     {
       title: "Loại lớp",

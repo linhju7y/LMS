@@ -49,13 +49,18 @@ const CourseListSelf = () => {
       dataIndex: "center",
       key: "trungtam",
       ...FilterColumn("center"),
-      render: (text) => <a>{text}</a>,
+      render: (text) => (
+        <a href="/" className="font-weight-blue">
+          {text}
+        </a>
+      ),
     },
     {
       title: "Khóa",
       dataIndex: "course",
-      key: "khoa",
+      key: "course",
       ...FilterColumn("course"),
+      render: (text) => <p className="font-weight-black">{text}</p>,
     },
     {
       title: "Ngày mở",

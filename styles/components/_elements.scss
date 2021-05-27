@@ -962,6 +962,13 @@ hr {
       }
     }
 
+    tr.ant-table-row:focus {
+      td {
+        background: #ffed95 !important;
+        transition: 0.3s;
+      }
+    }
+
     .ant-table-row:nth-of-type(2n + 1) {
       // background-color: #0088cc08;
       background-color: rgb(8 181 5 / 17%);

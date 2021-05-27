@@ -48,8 +48,8 @@ const SalerList = () => {
       title: "Tỉnh/TP",
       dataIndex: "Place",
       key: "center",
-
       ...FilterColumn("Place"),
+      render: (text) => <p className="font-weight-black">{text}</p>,
     },
     {
       title: "Họ và tên",
@@ -57,6 +57,7 @@ const SalerList = () => {
       dataIndex: "NameStaff",
       key: "namestaff",
       ...FilterColumn("NameStaff"),
+      render: (text) => <p className="font-weight-blue">{text}</p>,
     },
     {
       title: "SĐT",

@@ -34,12 +34,18 @@ const StaffList = () => {
       dataIndex: "Center",
       key: "center",
       ...FilterColumn("Center"),
+      render: (text) => (
+        <a href="/" className="font-weight-blue">
+          {text}
+        </a>
+      ),
     },
     {
       title: "Họ và tên",
       dataIndex: "NameStaff",
       key: "namestaff",
       ...FilterColumn("NameStaff"),
+      render: (text) => <p className="font-weight-black">{text}</p>,
     },
     {
       title: "Tài khoản",
