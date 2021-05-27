@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Form, Card, Input, Select, Avatar, Button, Tabs, Affix } from "antd";
-import ImgCrop from "antd-img-crop";
+import { Card, Select, Avatar, Tabs, Affix } from "antd";
 import {
   UserOutlined,
   DeploymentUnitOutlined,
@@ -21,7 +20,6 @@ const ProfileCustomer = () => {
   const { Option } = Select;
 
   const [fileList, setFileList] = useState([]);
-
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
   };

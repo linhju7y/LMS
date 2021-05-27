@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { BarChart, Bar, LineChart, Line } from "recharts";
 
 import {
+  PaperClipOutlined,
   AppstoreOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -40,6 +41,8 @@ import {
   CheckSquare,
   Tool,
   DollarSign,
+  Briefcase,
+  Info,
 } from "react-feather";
 import Link from "next/link";
 
@@ -210,6 +213,11 @@ const MenuDefault = ({
             <li className={tab === "tab-option" ? "active" : ""}>
               <a href="#" onMouseEnter={changeTabs} data-tabs="tab-option">
                 <Tool />
+              </a>
+            </li>
+            <li className={tab === "tab-document" ? "active" : ""}>
+              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-document">
+                <Book />
               </a>
             </li>
           </ul>
@@ -446,7 +454,7 @@ const MenuDefault = ({
                 key="sub-list-course-child-2"
                 icon={
                   <span className="anticon">
-                    <User />
+                    <Info />
                   </span>
                 }
                 title="Thi, hẹn test và dịch vụ"
@@ -511,7 +519,7 @@ const MenuDefault = ({
                 key="sub-list-course-child-4"
                 icon={
                   <span className="anticon">
-                    <User />
+                    <DollarSign />
                   </span>
                 }
                 title="Tài chính"
@@ -546,7 +554,7 @@ const MenuDefault = ({
                 key="sub-list-course-child-5"
                 icon={
                   <span className="anticon">
-                    <User />
+                    <Briefcase />
                   </span>
                 }
                 title="Hợp đồng"
@@ -656,6 +664,22 @@ const MenuDefault = ({
                   <Link href="/option/term-of-service">Điều khoản</Link>
                 </Menu.Item>
               </SubMenu>
+            </Menu.ItemGroup>
+          </Menu>
+          {/*  */}
+          {/* linhmenu document-list */}
+          <Menu
+            defaultSelectedKeys={["100"]}
+            defaultOpenKeys={["sub1"]}
+            mode="inline"
+            theme="light"
+            inlineCollapsed={false}
+            style={{ display: tab === "tab-document" ? "block" : "none" }}
+          >
+            <Menu.ItemGroup key="document" title="Document List">
+              <Menu.Item key="dm1">
+                <Link href="/document-list">Danh sách tài liệu</Link>
+              </Menu.Item>
             </Menu.ItemGroup>
           </Menu>
 

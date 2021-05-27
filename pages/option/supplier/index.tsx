@@ -1,16 +1,21 @@
 import React from "react";
 import PowerTable from "~/components/PowerTable";
-import TitlePage from "~/components/TitlePage";
-import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption2";
-
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import SortBox from "~/components/Elements/SortBox";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import SupplierForm from "~/components/Global/Option/SupplierForm";
 
 const SupplierList = () => {
   const columns = [
-    { title: "Supplier", dataIndex: "supplier" },
-    { title: "Modified By", dataIndex: "modBy" },
-    { title: "Modified Date", dataIndex: "modDate" },
+    { title: "Supplier", dataIndex: "supplier", ...FilterColumn("supplier") },
+    { title: "Modified By", dataIndex: "modBy", ...FilterColumn("modBy") },
+    {
+      title: "Modified Date",
+      dataIndex: "modDate",
+      ...FilterDateColumn("modDate"),
+    },
     {
       render: () => (
         <>
@@ -21,23 +26,18 @@ const SupplierList = () => {
   ];
 
   return (
-    <div className="row">
-      <div className="col-12">
-        <TitlePage title="Supplier List" />
-      </div>
-      <div className="col-12">
-        <PowerTable
-          TitleCard={<SupplierForm showAdd={true} />}
-          dataSource={data}
-          columns={columns}
-          Extra={
-            <div className="extra-table">
-              <SearchBox />
-            </div>
-          }
-        />
-      </div>
-    </div>
+    <PowerTable
+      TitlePage="Supplier List"
+      TitleCard={<SupplierForm showAdd={true} />}
+      dataSource={data}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox />
+        </div>
+      }
+    />
   );
 };
 

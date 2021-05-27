@@ -10,7 +10,7 @@ const DocumentList = () => {
       <div>
         <TitlePage title="Danh sách tài liệu" />
       </div>
-      <Card>
+      <Card title="Danh sách tài liệu">
         <FileManagerForm fileItems={fileItems} />
       </Card>
     </>

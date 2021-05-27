@@ -1,30 +1,22 @@
 import React from "react";
 import PowerTable from "~/components/PowerTable";
-import TitlePage from "~/components/TitlePage";
-import SearchBox from "~/components/Elements/SearchBox";
 import { data } from "../../../lib/option/dataOption2";
-
 import InfoForm from "~/components/Global/Option/InfoForm";
-import { Input, Tag } from "antd";
-import TinyMCE from "~/components/TinyMCE";
-import { Info, Layout } from "react-feather";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import SortBox from "~/components/Elements/SortBox";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 
 const InfoFormList = () => {
-  const { TextArea } = Input;
   const columns = [
-    { title: "Title", dataIndex: "title" },
+    { title: "Title", dataIndex: "title", ...FilterColumn("title") },
     { title: "Note", dataIndex: "note" },
     { title: "Source", dataIndex: "source" },
-    { title: "Seller", dataIndex: "staff" },
+    { title: "Seller", dataIndex: "staff", ...FilterColumn("staff") },
     {
       title: "Receive",
       dataIndex: "modBy",
-      align: "center",
-      render: (modBy) => (
-        <Tag color="#1eae98" className="style-tag">
-          {modBy}
-        </Tag>
-      ),
+      ...FilterColumn("modBy"),
+      render: (modBy) => <span className="tag yellow">{modBy}</span>,
     },
     {
       render: () => <InfoForm showIcon={true} />,
@@ -32,23 +24,18 @@ const InfoFormList = () => {
   ];
 
   return (
-    <div className="row">
-      <div className="col-12">
-        <TitlePage title="Staff Salary " />
-      </div>
-      <div className="col-12">
-        <PowerTable
-          TitleCard={<InfoForm showAdd={true} />}
-          dataSource={data}
-          columns={columns}
-          Extra={
-            <div className="extra-table">
-              <SearchBox />
-            </div>
-          }
-        />
-      </div>
-    </div>
+    <PowerTable
+      TitlePage="Info form"
+      TitleCard={<InfoForm showAdd={true} />}
+      dataSource={data}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox />
+        </div>
+      }
+    />
   );
 };
 

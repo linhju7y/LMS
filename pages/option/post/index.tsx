@@ -1,13 +1,12 @@
 import React from "react";
-import PowerTable from "~/components/PowerTable";
-import TitlePage from "~/components/TitlePage";
-import SearchBox from "~/components/Elements/SearchBox";
+import FilterColumn from "~/components/Tables/FilterColumn";
+import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import SortBox from "~/components/Elements/SortBox";
+import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import { data } from "../../../lib/option/dataOption2";
-
 import PostForm from "~/components/Global/Option/PostForm";
 import ExpandTable from "~/components/ExpandTable";
 import { Switch, Tag, Card } from "antd";
-import SortBox from "~/components/Elements/SortBox";
 
 const Post = () => {
   const expandedRowRender = () => {
@@ -39,23 +38,41 @@ const Post = () => {
       title: "Image",
       render: () => <img src="" alt="Image" />,
     },
-    { title: "Title", dataIndex: "title" },
+    { title: "Title", dataIndex: "title", ...FilterColumn("title") },
     {
       title: "Status",
       dataIndex: "postStatus",
       align: "center",
       render: (postStatus) => {
-        let color = postStatus % 2 == 0 ? "#70e000" : "#837569";
         let status = postStatus % 2 == 0 ? "Active" : "Inactive";
         return (
-          <Tag color={color} className="style-tag">
-            {status}
-          </Tag>
+          <>
+            {status == "Active" ? (
+              <span className="tag green">{status}</span>
+            ) : (
+              <span className="tag gray">{status}</span>
+            )}
+          </>
         );
       },
+      filters: [
+        {
+          text: "Active",
+          value: "Active",
+        },
+        {
+          text: "Inactive",
+          value: "Inactive",
+        },
+      ],
+      onFilter: (value, record) => record.postStatus.indexOf(value) === 0,
     },
-    { title: "Create date", dataIndex: "expires" },
-    { title: "Create by", dataIndex: "modBy" },
+    {
+      title: "Create date",
+      dataIndex: "expires",
+      ...FilterDateColumn("expires"),
+    },
+    { title: "Create by", dataIndex: "modBy", ...FilterColumn("modBy") },
     {
       title: "Staff",
       render: () => (
@@ -82,25 +99,19 @@ const Post = () => {
   ];
 
   return (
-    <div className="row">
-      <div className="col-12">
-        <TitlePage title="Post List" />
-      </div>
-      <div className="col-12">
-        <ExpandTable
-          expandable={{ expandedRowRender }}
-          TitleCard={<PostForm showAdd={true} />}
-          dataSource={data}
-          columns={columns}
-          Extra={
-            <div className="extra-table">
-              <SearchBox />
-              <SortBox />
-            </div>
-          }
-        />
-      </div>
-    </div>
+    <ExpandTable
+      TitlePage="Post List"
+      expandable={{ expandedRowRender }}
+      TitleCard={<PostForm showAdd={true} />}
+      dataSource={data}
+      columns={columns}
+      Extra={
+        <div className="extra-table">
+          <FilterTable />
+          <SortBox />
+        </div>
+      }
+    />
   );
 };
 

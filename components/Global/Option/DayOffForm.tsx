@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Form, Input, Button, Divider, Tooltip, Select } from "antd";
 import { X, AlertTriangle } from "react-feather";
-const CustomerSupplier = (props) => {
-  const { Option } = Select;
+const DayOffForm = (props) => {
   const { TextArea } = Input;
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
@@ -80,4 +79,4 @@ const CustomerSupplier = (props) => {
   );
 };
 
-export default CustomerSupplier;
+export default DayOffForm;
