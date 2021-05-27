@@ -11,7 +11,7 @@ import { ExpandBoxService } from "~/components/Elements/ExpandBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
-
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 export default function AppointmentServiceTest() {
   const expandedRowRender = () => {
     return <ExpandBoxService />;
@@ -21,16 +21,32 @@ export default function AppointmentServiceTest() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (a) => <p className="font-weight-blue">{a}</p>,
     },
     { title: "Nguồn", dataIndex: "source", ...FilterColumn("source") },
-    { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },
+    {
+      title: "Trung tâm",
+      dataIndex: "center",
+      ...FilterColumn("center"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
+    },
     {
       title: "Người hẹn",
       dataIndex: "apmConsultant",
       ...FilterColumn("apmConsultant"),
     },
-    { title: "Ngày hẹn", dataIndex: "apmDate", ...FilterDateColumn("apmDate") },
-    { title: "Giờ hẹn", dataIndex: "apmTime", ...FilterColumn("apmTime") },
+    {
+      title: "Ngày hẹn",
+      dataIndex: "apmDate",
+      ...FilterDateColumn("apmDate"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
+    },
+    {
+      title: "Giờ hẹn",
+      dataIndex: "apmTime",
+      ...FilterColumn("apmTime"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
+    },
     {
       title: "Xong",
       dataIndex: "apmStatus",
@@ -95,6 +111,7 @@ export default function AppointmentServiceTest() {
   return (
     <ExpandTable
       TitlePage="Danh sách khách hẹn test"
+      TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}
       columns={columns}
       expandable={{ expandedRowRender }}

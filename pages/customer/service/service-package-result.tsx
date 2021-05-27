@@ -5,14 +5,30 @@ import { dataService } from "../../../lib/customer/dataCustomer";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 
 export default function CustomerServiceResult() {
   const columns = [
-    { title: "Ngày", dataIndex: "testDate", ...FilterDateColumn("city") },
-    { title: "Họ và tên", dataIndex: "nameStudent", ...FilterColumn("city") },
-    { title: "Số điện thoại", dataIndex: "tel", ...FilterColumn("city") },
-    { title: "Test", dataIndex: "pkgName", ...FilterColumn("city") },
-    { title: "Skills", dataIndex: "pkgSkill", ...FilterColumn("city") },
+    { title: "Ngày", dataIndex: "testDate", ...FilterDateColumn("testDate") },
+    {
+      title: "Họ và tên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("nameStudent"),
+      render: (a) => <p className="font-weight-blue">{a}</p>,
+    },
+    { title: "Số điện thoại", dataIndex: "tel", ...FilterColumn("tel") },
+    {
+      title: "Test",
+      dataIndex: "pkgName",
+      ...FilterColumn("pkgName"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
+    },
+    {
+      title: "Skills",
+      dataIndex: "pkgSkill",
+      ...FilterColumn("pkgSkill"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
+    },
     {
       title: "Listening",
       dataIndex: "listening",
@@ -53,6 +69,7 @@ export default function CustomerServiceResult() {
   return (
     <PowerTable
       TitlePage="Danh sách kết quả test"
+      TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}
       columns={columns}
       Extra={

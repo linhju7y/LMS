@@ -8,7 +8,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import { ShoppingCart } from "react-feather";
-
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 export default function FinancePayment() {
   const columns = [
     { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },
@@ -16,13 +16,21 @@ export default function FinancePayment() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (a) => <p className="font-weight-blue">{a}</p>,
     },
     { title: "Số điện thoại", dataIndex: "tel", ...FilterColumn("tel") },
-    { title: "Số tiền", dataIndex: "cost", ...FilterColumn("cost") },
+    {
+      title: "Số tiền",
+      dataIndex: "cost",
+      ...FilterColumn("cost"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
+    },
     {
       title: "Lý do",
       dataIndex: "fnReasonPayment",
       ...FilterColumn("fnReasonPayment"),
+
+      render: (a) => <p className="font-weight-black">{a}</p>,
     },
     {
       title: "Ngày giờ tạo",
@@ -55,6 +63,7 @@ export default function FinancePayment() {
   return (
     <PowerTable
       TitlePage="Danh sách phiếu chi"
+      TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}
       columns={columns}
       Extra={

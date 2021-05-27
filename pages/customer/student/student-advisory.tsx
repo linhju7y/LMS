@@ -9,7 +9,7 @@ import ExpandBox from "~/components/Elements/ExpandBox";
 import Link from "next/link";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
-
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 export default function StudentAdvisory() {
   const expandedRowRender = () => {
     return <ExpandBox />;
@@ -21,7 +21,7 @@ export default function StudentAdvisory() {
       title: "Họ và tên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
-      render: (a) => <a className="font-weight-blue">{a}</a>,
+      render: (a) => <p className="font-weight-blue">{a}</p>,
     },
     { title: "Số điện thoại", dataIndex: "tel", ...FilterColumn("tel") },
     { title: "Email", dataIndex: "email", ...FilterColumn("email") },
@@ -57,6 +57,7 @@ export default function StudentAdvisory() {
       TitlePage="Học viên cần tư vấn"
       expandable={{ expandedRowRender }}
       dataSource={data6}
+      TitleCard={<StudyTimeForm showAdd={true} />}
       columns={columns}
       Extra={
         <div className="extra-table">

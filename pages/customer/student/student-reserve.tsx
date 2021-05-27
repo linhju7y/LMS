@@ -9,6 +9,7 @@ import ReserveChangeCourse from "~/components/Global/Customer/Student/ReserveCha
 import RegCancel from "~/components/Global/Customer/Student/RegCancel";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 
 export default function StudentReserve() {
   const expandedRowRender = () => {
@@ -21,7 +22,7 @@ export default function StudentReserve() {
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
       render: (nameStudent) => (
-        <a className="font-weight-blue">{nameStudent}</a>
+        <p className="font-weight-blue">{nameStudent}</p>
       ),
     },
     { title: "Tỉnh/TP", dataIndex: "city", ...FilterColumn("city") },
@@ -32,7 +33,7 @@ export default function StudentReserve() {
       title: "Đóng thêm",
       dataIndex: "reserve",
       ...FilterColumn("reserve"),
-      render: (a) => <a className="font-weight-black">{a}</a>,
+      render: (a) => <p className="font-weight-black">{a}</p>,
     },
     {
       title: "",
@@ -51,6 +52,7 @@ export default function StudentReserve() {
       TitlePage="Học viên bảo lưu"
       expandable={{ expandedRowRender }}
       dataSource={data5}
+      TitleCard={<StudyTimeForm showAdd={true} />}
       columns={columns}
       Extra={
         <div className="extra-table">

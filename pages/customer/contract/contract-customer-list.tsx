@@ -7,10 +7,15 @@ import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
-
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 export default function ContractList() {
   const columns = [
-    { title: "Học viên", dataIndex: "nameStudent", ...FilterColumn("city") },
+    {
+      title: "Học viên",
+      dataIndex: "nameStudent",
+      ...FilterColumn("city"),
+      render: (a) => <p className="font-weight-blue">{a}</p>,
+    },
     { title: "Khóa học", dataIndex: "rpCourse", ...FilterColumn("city") },
     {
       title: "Trạng thái",
@@ -56,6 +61,7 @@ export default function ContractList() {
   return (
     <PowerTable
       TitlePage="Danh sách học viên có hợp đồng"
+      TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}
       columns={columns}
       Extra={

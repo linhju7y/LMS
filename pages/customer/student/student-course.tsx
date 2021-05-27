@@ -12,6 +12,7 @@ import RefundCourse from "~/components/Global/Customer/Student/RefundCourse";
 import ExpandBox from "~/components/Elements/ExpandBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 
 export default function CourseStudent() {
   const expandedRowRender = () => {
@@ -24,14 +25,14 @@ export default function CourseStudent() {
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
       render: (nameStudent) => (
-        <a className="font-weight-blue">{nameStudent}</a>
+        <p className="font-weight-blue">{nameStudent}</p>
       ),
     },
     {
       title: "Khóa học",
       dataIndex: "center",
       ...FilterColumn("center"),
-      render: (center) => <a className="font-weight-black">{center}</a>,
+      render: (center) => <p className="font-weight-black">{center}</p>,
     },
     {
       title: "Cảnh báo",
@@ -89,7 +90,7 @@ export default function CourseStudent() {
       title: "Còn lại",
       dataIndex: "money",
       ...FilterColumn("money"),
-      render: (money) => <a className="font-weight-black">{money}</a>,
+      render: (money) => <p className="font-weight-black">{money}</p>,
     },
     {
       title: "",
@@ -124,6 +125,7 @@ export default function CourseStudent() {
       expandable={{ expandedRowRender }}
       dataSource={data2}
       columns={columns}
+      TitleCard={<StudyTimeForm showAdd={true} />}
       Extra={
         <div className="extra-table">
           <FilterTable />

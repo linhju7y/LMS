@@ -7,7 +7,7 @@ import { ExpandBoxService } from "~/components/Elements/ExpandBox";
 import RefundForm from "~/components/Global/Customer/Finance/RefundForm";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
-
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 export default function FinanceRefund() {
   const expandedRowRender = () => <ExpandBoxService />;
 
@@ -17,10 +17,16 @@ export default function FinanceRefund() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (a) => <p className="font-weight-blue">{a}</p>,
     },
     { title: "Nguồn", dataIndex: "source", ...FilterColumn("source") },
     { title: "Số điện thoại", dataIndex: "tel", ...FilterColumn("tel") },
-    { title: "Số tiền", dataIndex: "cost", ...FilterColumn("cost") },
+    {
+      title: "Số tiền",
+      dataIndex: "cost",
+      ...FilterColumn("cost"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
+    },
     {
       title: "Trạng thái",
       dataIndex: "fnStatus",
@@ -62,6 +68,7 @@ export default function FinanceRefund() {
     <ExpandTable
       TitlePage="Danh sách yêu cầu hoàn tiền"
       dataSource={dataService}
+      TitleCard={<StudyTimeForm showAdd={true} />}
       columns={columns}
       expandable={{ expandedRowRender }}
       Extra={

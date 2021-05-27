@@ -7,7 +7,7 @@ import { dataService } from "../../../lib/customer/dataCustomer";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
-
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 export default function ContractCensorship() {
   const expandedRowRender = () => {
     <></>;
@@ -18,6 +18,7 @@ export default function ContractCensorship() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (a) => <p className="font-weight-blue">{a}</p>,
     },
     { title: "Khóa học", dataIndex: "rpCourse", ...FilterColumn("rpCourse") },
     {
@@ -83,6 +84,7 @@ export default function ContractCensorship() {
   return (
     <ExpandTable
       TitlePage="Duyệt hợp đồng học viên"
+      TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}
       columns={columns}
       expandable={{ expandedRowRender }}

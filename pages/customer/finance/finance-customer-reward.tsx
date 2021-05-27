@@ -11,6 +11,7 @@ export default function FinanceReward() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (a) => <p className="font-weight-blue">{a}</p>,
     },
     { title: "Số điện thoại", dataIndex: "tel", ...FilterColumn("tel") },
     { title: "Email", dataIndex: "email", ...FilterColumn("email") },

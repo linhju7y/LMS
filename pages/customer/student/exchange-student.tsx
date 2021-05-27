@@ -10,6 +10,7 @@ import Link from "next/link";
 import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 
 export default function ExchangeStudent() {
   const expandedRowRender = () => {
@@ -29,7 +30,7 @@ export default function ExchangeStudent() {
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
       render: (nameStudent) => (
-        <a className="font-weight-blue">{nameStudent}</a>
+        <p className="font-weight-blue">{nameStudent}</p>
       ),
     },
     { title: "SĐT", dataIndex: "tel", ...FilterColumn("tel") },
@@ -92,6 +93,7 @@ export default function ExchangeStudent() {
       TitlePage="Danh sách học viên chuyển giao"
       expandable={{ expandedRowRender }}
       dataSource={data}
+      TitleCard={<StudyTimeForm showAdd={true} />}
       columns={columns}
       Extra={
         <div className="extra-table">

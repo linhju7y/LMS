@@ -10,13 +10,28 @@ import { ExpandBoxWarning } from "~/components/Elements/ExpandBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
-
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 export default function ReportWarning() {
   const expandedRowRender = () => <ExpandBoxWarning />;
   const columns = [
-    { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },
-    { title: "Học viên", dataIndex: "center", ...FilterColumn("center") },
-    { title: "Lớp", dataIndex: "rpCourse", ...FilterColumn("rpCourse") },
+    {
+      title: "Trung tâm",
+      dataIndex: "center",
+      ...FilterColumn("center"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
+    },
+    {
+      title: "Học viên",
+      dataIndex: "center",
+      ...FilterColumn("center"),
+      render: (a) => <p className="font-weight-blue">{a}</p>,
+    },
+    {
+      title: "Lớp",
+      dataIndex: "rpCourse",
+      ...FilterColumn("rpCourse"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
+    },
     {
       title: "Ngày tạo",
       dataIndex: "testDate",
@@ -52,6 +67,7 @@ export default function ReportWarning() {
   return (
     <ExpandTable
       TitlePage="Danh sách học viên bị cảnh báo"
+      TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}
       columns={columns}
       expandable={{ expandedRowRender }}

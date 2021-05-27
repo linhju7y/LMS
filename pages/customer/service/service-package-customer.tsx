@@ -7,16 +7,27 @@ import PaymentService from "~/components/Global/Customer/Service/PaymentService"
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
-
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 export default function CustomerServicePackage() {
   const columns = [
     {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (a) => <p className="font-weight-blue">{a}</p>,
     },
-    { title: "Tên set", dataIndex: "pkgName", ...FilterColumn("pkgName") },
-    { title: "Giá tiền", dataIndex: "testCost", ...FilterColumn("testCost") },
+    {
+      title: "Tên set",
+      dataIndex: "pkgName",
+      ...FilterColumn("pkgName"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
+    },
+    {
+      title: "Giá tiền",
+      dataIndex: "testCost",
+      ...FilterColumn("testCost"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
+    },
     {
       title: "Giảm giá",
       dataIndex: "pkgDiscount",
@@ -58,6 +69,7 @@ export default function CustomerServicePackage() {
   return (
     <PowerTable
       TitlePage="Danh sách khách mua gói"
+      TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}
       columns={columns}
       Extra={

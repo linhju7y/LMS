@@ -8,6 +8,7 @@ import { data } from "../../../lib/customer-student/data";
 import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 
 const expandedRowRender = () => {
   return (
@@ -27,7 +28,7 @@ const StudentData = () => {
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
       render: (nameStudent) => (
-        <a className="font-weight-blue">{nameStudent}</a>
+        <p className="font-weight-blue">{nameStudent}</p>
       ),
     },
     { title: "SĐT", dataIndex: "tel", ...FilterColumn("tel") },
@@ -114,6 +115,7 @@ const StudentData = () => {
   return (
     <ExpandTable
       TitlePage="DANH SÁCH HỌC VIÊN"
+      TitleCard={<StudyTimeForm showAdd={true} />}
       expandable={{ expandedRowRender }}
       dataSource={data}
       columns={columns}

@@ -9,7 +9,7 @@ import Link from "next/link";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
-
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 export default function ReportTest() {
   const columns = [
     { title: "Tỉnh/TP", dataIndex: "city", ...FilterColumn("city") },
@@ -17,6 +17,7 @@ export default function ReportTest() {
       title: "Họ và tên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
+      render: (a) => <p className="font-weight-blue">{a}</p>,
     },
     { title: "SĐT", dataIndex: "tel", ...FilterColumn("tel") },
     { title: "Email", dataIndex: "email", ...FilterColumn("email") },
@@ -30,6 +31,7 @@ export default function ReportTest() {
       title: "Ngày thi",
       dataIndex: "testDate",
       ...FilterDateColumn("testDate"),
+      render: (a) => <p className="font-weight-black">{a}</p>,
     },
     {
       title: "",
@@ -57,6 +59,7 @@ export default function ReportTest() {
       TitlePage="Danh sách học viên sắp thi"
       dataSource={dataService}
       columns={columns}
+      TitleCard={<StudyTimeForm showAdd={true} />}
       Extra={
         <div className="extra-table">
           <FilterTable />

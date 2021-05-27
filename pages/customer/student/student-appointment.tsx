@@ -8,6 +8,7 @@ import RegRefund from "~/components/Global/Customer/Student/RegRefund";
 import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 
 export default function StudentAppointment() {
   const expandedRowRender = () => {
@@ -20,7 +21,7 @@ export default function StudentAppointment() {
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
       render: (nameStudent) => (
-        <a className="font-weight-blue">{nameStudent}</a>
+        <p className="font-weight-blue">{nameStudent}</p>
       ),
     },
     {
@@ -32,19 +33,19 @@ export default function StudentAppointment() {
       title: "Trung tâm",
       dataIndex: "center",
       ...FilterColumn("center"),
-      render: (center) => <a className="font-weight-black">{center}</a>,
+      render: (center) => <p className="font-weight-black">{center}</p>,
     },
     {
       title: "Lớp",
       dataIndex: "class",
       ...FilterColumn("class"),
-      render: (class1) => <a className="font-weight-black">{class1}</a>,
+      render: (class1) => <p className="font-weight-black">{class1}</p>,
     },
     {
       title: "Ca",
       dataIndex: "time",
       ...FilterColumn("time"),
-      render: (time) => <a className="font-weight-blue">{time}</a>,
+      render: (time) => <p className="font-weight-blue">{time}</p>,
     },
     { title: "Đặt cọc", dataIndex: "deposit", ...FilterColumn("deposit") },
     {
@@ -64,6 +65,7 @@ export default function StudentAppointment() {
       TitlePage="Danh sách học viên hẹn đăng kí"
       expandable={{ expandedRowRender }}
       dataSource={data4}
+      TitleCard={<StudyTimeForm showAdd={true} />}
       columns={columns}
       Extra={
         <div className="extra-table">

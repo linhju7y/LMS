@@ -10,6 +10,7 @@ import ExpandBox from "~/components/Elements/ExpandBox";
 import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 
 export default function StudentCourseChange() {
   const expandedRowRender = () => {
@@ -22,14 +23,14 @@ export default function StudentCourseChange() {
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
       render: (nameStudent) => (
-        <a className="font-weight-blue">{nameStudent}</a>
+        <p className="font-weight-blue">{nameStudent}</p>
       ),
     },
     {
       title: "Khóa học",
       dataIndex: "course",
       ...FilterColumn("course"),
-      render: (course) => <a className="font-weight-black">{course}</a>,
+      render: (course) => <p className="font-weight-black">{course}</p>,
     },
     { title: "Giá tiền", dataIndex: "money", ...FilterColumn("money") },
     { title: "Đã đóng", dataIndex: "payed", ...FilterColumn("payed") },
@@ -60,6 +61,7 @@ export default function StudentCourseChange() {
       TitlePage="Học viên chuyển khóa"
       expandable={{ expandedRowRender }}
       dataSource={data3}
+      TitleCard={<StudyTimeForm showAdd={true} />}
       columns={columns}
       Extra={
         <div className="extra-table">

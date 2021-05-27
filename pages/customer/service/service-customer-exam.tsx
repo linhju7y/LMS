@@ -9,6 +9,7 @@ import Link from "next/link";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 
 export default function CustomerServiceExam() {
   const columns = [
@@ -16,13 +17,13 @@ export default function CustomerServiceExam() {
       title: "Học viên",
       dataIndex: "nameStudent",
       ...FilterColumn("nameStudent"),
-      render: (a) => <a className="font-weight-blue">{a}</a>,
+      render: (a) => <p className="font-weight-blue">{a}</p>,
     },
     {
       title: "Đợt thi",
       dataIndex: "testTime",
       ...FilterColumn("testTime"),
-      render: (a) => <a className="font-weight-black">{a}</a>,
+      render: (a) => <p className="font-weight-black">{a}</p>,
     },
     {
       title: "Loại",
@@ -55,13 +56,13 @@ export default function CustomerServiceExam() {
       title: "Giá tiền",
       dataIndex: "testCost",
       ...FilterColumn("testCost"),
-      render: (a) => <a className="font-weight-black">{a}</a>,
+      render: (a) => <p className="font-weight-black">{a}</p>,
     },
     {
       title: "Ngày thi",
       dataIndex: "testDate",
       ...FilterDateColumn("testDate"),
-      render: (a) => <a className="font-weight-black">{a}</a>,
+      render: (a) => <p className="font-weight-black">{a}</p>,
     },
     {
       title: "Ngày đăng kí",
@@ -91,6 +92,7 @@ export default function CustomerServiceExam() {
     <PowerTable
       TitlePage="Danh sách đăng kí đi thi"
       dataSource={dataService}
+      TitleCard={<StudyTimeForm showAdd={true} />}
       columns={columns}
       Extra={
         <div className="extra-table">
