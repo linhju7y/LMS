@@ -45,6 +45,7 @@ import {
   Info,
 } from "react-feather";
 import Link from "next/link";
+import { is } from "date-fns/locale";
 
 const { SubMenu } = Menu;
 
@@ -124,43 +125,66 @@ const data = [
 ];
 
 const MenuDefault = ({
-  toggle,
-  toggleMenu,
+  isOpen,
+  isOpenMenu,
 }: {
-  toggle: boolean;
-  toggleMenu: Function;
+  isOpen: boolean;
+  isOpenMenu: Function;
 }) => {
   const [state, setState] = useState({
-    collapsed: toggle,
+    collapsed: isOpen,
+  });
+  const [isHover, setIsHover] = useState({
+    status: false,
+    position: null,
   });
 
+  console.log("Is hover: ", isHover);
   const [tab, tabSet] = useState<String>("tab-home");
-
-  // useEffect(() => {
-  //   if (toggle) {
-  //     setState({ collapsed: false });
-  //   } else {
-  //     setState({ collapsed: true });
-  //   }
-  // }, [toggle]);
 
   const changeTabs = (e) => {
     e.preventDefault();
-    if (!toggle) {
-      toggleMenu();
+
+    let heightScr = window.innerHeight;
+    console.log("Height SCR: ", heightScr);
+
+    let element = e.target;
+    let position = element.getBoundingClientRect();
+
+    if (!isOpen) {
+      setIsHover({
+        status: true,
+        position: position.top - 65,
+      });
+      let dataTab = e.target.getAttribute("data-tabs");
+      tabSet(dataTab);
     }
+  };
+
+  const changeTabsClick = (e) => {
+    e.preventDefault();
+
     let dataTab = e.target.getAttribute("data-tabs");
     tabSet(dataTab);
   };
 
   const closeTabs = (e) => {
     e.preventDefault();
-    if (toggle) {
-      toggleMenu();
+    if (isHover.status) {
+      setIsHover({
+        ...isHover,
+        status: false,
+      });
     }
-    // let dataTab = e.target.getAttribute("data-tabs");
-    // tabSet(dataTab);
   };
+
+  useEffect(() => {
+    !isOpen &&
+      setIsHover({
+        ...isHover,
+        status: false,
+      });
+  }, [isOpen]);
 
   // useEffect(() => {
   //   let itemLink = document.querySelectorAll(".ant-menu-item");
@@ -181,42 +205,82 @@ const MenuDefault = ({
         <div className="menu-parent-body">
           <ul className="list-menu">
             <li className={tab === "tab-home" ? "active" : ""}>
-              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-home">
+              <a
+                href="#"
+                onClick={changeTabsClick}
+                onMouseEnter={changeTabs}
+                data-tabs="tab-home"
+              >
                 <Home />
               </a>
             </li>
             <li className={tab === "tab-course" ? "active" : ""}>
-              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-course">
+              <a
+                href="#"
+                onClick={changeTabsClick}
+                onMouseEnter={changeTabs}
+                data-tabs="tab-course"
+              >
                 <Airplay />
               </a>
             </li>
             <li className={tab === "tab-student" ? "active" : ""}>
-              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-student">
+              <a
+                href="#"
+                onClick={changeTabsClick}
+                onMouseEnter={changeTabs}
+                data-tabs="tab-student"
+              >
                 <User />
               </a>
             </li>
             <li className={tab === "tab-staff" ? "active" : ""}>
-              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-staff">
+              <a
+                href="#"
+                onClick={changeTabsClick}
+                onMouseEnter={changeTabs}
+                data-tabs="tab-staff"
+              >
                 <UserCheck />
               </a>
             </li>
             <li className={tab === "tab-package" ? "active" : ""}>
-              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-package">
+              <a
+                href="#"
+                onClick={changeTabsClick}
+                onMouseEnter={changeTabs}
+                data-tabs="tab-package"
+              >
                 <Package />
               </a>
             </li>
             <li className={tab === "tab-layout" ? "active" : ""}>
-              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-layout">
+              <a
+                href="#"
+                onClick={changeTabsClick}
+                onMouseEnter={changeTabs}
+                data-tabs="tab-layout"
+              >
                 <Layers />
               </a>
             </li>
             <li className={tab === "tab-option" ? "active" : ""}>
-              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-option">
+              <a
+                href="#"
+                onClick={changeTabsClick}
+                onMouseEnter={changeTabs}
+                data-tabs="tab-option"
+              >
                 <Tool />
               </a>
             </li>
             <li className={tab === "tab-document" ? "active" : ""}>
-              <a href="#" onMouseEnter={changeTabs} data-tabs="tab-document">
+              <a
+                href="#"
+                onClick={changeTabsClick}
+                onMouseEnter={changeTabs}
+                data-tabs="tab-document"
+              >
                 <Book />
               </a>
             </li>
@@ -224,21 +288,27 @@ const MenuDefault = ({
         </div>
       </div>
       <div
-        className={`menu-child-bg ${!toggle ? "close" : "open"}`}
+        className={`menu-child-bg ${
+          !isOpen && `${isHover.status ? "open" : ""}`
+        }`}
         onMouseEnter={closeTabs}
       ></div>
-      <div className={`menu-child ${!toggle ? "close" : "open"}`}>
+      <div
+        className={`menu-child  ${
+          !isOpen && `close  ${isHover.status ? "hover-open" : ""} `
+        }`}
+      >
         {/* <div className="app-header-logo">
-          <p style={{ display: toggle ? "block" : "none" }}>Mona Media</p>
-          <p style={{ display: !toggle ? "block" : "none" }}>M</p>
+          <p style={{ display: isOpen ? "block" : "none" }}>Mona Media</p>
+          <p style={{ display: !isOpen ? "block" : "none" }}>M</p>
         </div> */}
-        <div className="menu-child-body">
+        <div
+          className="menu-child-body"
+          style={{ top: isHover.status && isHover.position }}
+        >
           <Menu
-            defaultSelectedKeys={["1"]}
-            defaultOpenKeys={["sub1"]}
-            mode="inline"
+            mode={isOpen ? "inline" : "vertical"}
             theme="light"
-            inlineCollapsed={false}
             style={{ display: tab === "tab-home" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="all" title="Dashboad">
@@ -257,11 +327,8 @@ const MenuDefault = ({
             </Menu.ItemGroup>
           </Menu>
           <Menu
-            defaultSelectedKeys={["1"]}
-            defaultOpenKeys={["sub1"]}
-            mode="inline"
+            mode={isOpen ? "inline" : "vertical"}
             theme="light"
-            inlineCollapsed={false}
             style={{ display: tab === "tab-course" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="course" title="Khóa học">
@@ -295,41 +362,7 @@ const MenuDefault = ({
                   </Link>
                 </Menu.Item>
               </SubMenu>
-              {/* <SubMenu
-                key="sub2"
-                icon={
-                  <span className="anticon">
-                    <CheckSquare />
-                  </span>
-                }
-                title="Kiểm tra"
-              >
-                <Menu.Item key="kt1">
-                  <Link href="/course/calendar-empty-teacher">
-                    <a>Lịch trống giáo viên</a>
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="kt2">
-                  <Link href="/course/calendar-many-teacher">
-                    <a>Kiểm tra lịch nhiều giáo viên</a>
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="kt3">
-                  <Link href="/course/check-many-study-time">
-                    <a>Kiểm tra nhiều ca</a>
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="kt4">
-                  <Link href="/course/check-one-study-time">
-                    <a>Kiểm tra một ca</a>
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="kt5">
-                  <Link href="/course/check-room">
-                    <a>Kiểm tra phòng</a>
-                  </Link>
-                </Menu.Item>
-              </SubMenu> */}
+
               <Menu.Item
                 key="calendar-study"
                 icon={
@@ -359,16 +392,13 @@ const MenuDefault = ({
           </Menu>
 
           <Menu
-            defaultSelectedKeys={["1"]}
-            defaultOpenKeys={["sub1"]}
-            mode="inline"
+            mode={isOpen ? "inline" : "vertical"}
             theme="light"
-            inlineCollapsed={false}
             style={{ display: tab === "tab-layout" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="course" title="Component Layout">
               <SubMenu
-                key="sub1"
+                key="sublayout"
                 icon={
                   <span className="anticon">
                     <Layers />
@@ -393,11 +423,8 @@ const MenuDefault = ({
           </Menu>
 
           <Menu
-            defaultSelectedKeys={["1"]}
-            defaultOpenKeys={["sub1"]}
-            mode="inline"
+            mode={isOpen ? "inline" : "vertical"}
             theme="light"
-            inlineCollapsed={false}
             style={{ display: tab === "tab-student" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="course" title="Khách hàng">
@@ -577,11 +604,8 @@ const MenuDefault = ({
           {/*  */}
           {/* linhmhl menu  */}
           <Menu
-            defaultSelectedKeys={["1"]}
-            defaultOpenKeys={["sub1"]}
-            mode="inline"
+            mode={isOpen ? "inline" : "vertical"}
             theme="light"
-            inlineCollapsed={false}
             style={{ display: tab === "tab-option" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="course" title="Option">
@@ -669,11 +693,8 @@ const MenuDefault = ({
           {/*  */}
           {/* linhmenu document-list */}
           <Menu
-            defaultSelectedKeys={["100"]}
-            defaultOpenKeys={["sub1"]}
-            mode="inline"
+            mode={isOpen ? "inline" : "vertical"}
             theme="light"
-            inlineCollapsed={false}
             style={{ display: tab === "tab-document" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="document" title="Document List">
@@ -683,46 +704,9 @@ const MenuDefault = ({
             </Menu.ItemGroup>
           </Menu>
 
-          {/* <Menu
-            defaultSelectedKeys={["1"]}
-            defaultOpenKeys={["sub1"]}
-            mode="inline"
-            theme="light"
-            inlineCollapsed={false}
-            style={{ display: tab === "tab-layout" ? "block" : "none" }}
-          >
-            <Menu.ItemGroup key="course" title="Component Layout">
-              <SubMenu
-                key="sub1"
-                icon={
-                  <span className="anticon">
-                    <Layers />
-                  </span>
-                }
-                title="Layout"
-              >
-                <Menu.Item key="9">
-                  <Link href="/layoutBase/layoutTables">Tables</Link>
-                </Menu.Item>
-                <Menu.Item key="10">
-                  <Link href="/layoutBase/layoutButtons">Button</Link>
-                </Menu.Item>
-                <Menu.Item key="11">
-                  <Link href="/layoutBase/layoutForms">Form</Link>
-                </Menu.Item>
-                <Menu.Item key="12">
-                  <Link href="/layoutBase/layoutCharts">Charts</Link>
-                </Menu.Item>
-              </SubMenu>
-            </Menu.ItemGroup>
-          </Menu> */}
-
           <Menu
-            defaultSelectedKeys={["10"]}
-            defaultOpenKeys={["sub10"]}
-            mode="inline"
+            mode={isOpen ? "inline" : "vertical"}
             theme="light"
-            inlineCollapsed={false}
             style={{ display: tab === "tab-staff" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="staff" title="Quản lí nhân viên">
@@ -843,11 +827,8 @@ const MenuDefault = ({
           </Menu>
 
           <Menu
-            defaultSelectedKeys={["20"]}
-            defaultOpenKeys={["sub20"]}
-            mode="inline"
+            mode={isOpen ? "inline" : "vertical"}
             theme="light"
-            inlineCollapsed={false}
             style={{ display: tab === "tab-package" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="staff" title="Gói bài tập">

@@ -71,6 +71,7 @@
     top: 0;
     left: 0;
     z-index: 8;
+    display: none;
 
     &.close {
       display: none;
@@ -86,40 +87,56 @@
     transition: 0.3s width;
     background: white;
     position: fixed;
-    left: -100%;
+    left: 80px;
     top: 65px;
     height: calc(100vh - 65px);
     box-shadow: 10px 9px 15px #0000000d;
     z-index: 9;
 
     &.close {
-      // display: none;
+      width: 0;
+      box-shadow: none;
 
-      animation: HideMenuChild 0.5s forwards;
-
-      @keyframes HideMenuChild {
-        0% {
-          left: 80px;
+      &.hover-open {
+        .menu-child-body {
+          width: 250px;
         }
+      }
 
-        100% {
-          left: -100%;
+      .menu-child-body {
+        position: fixed;
+        width: 0;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        box-shadow: 10px 0px 15px #0000000d;
+        height: auto !important;
+        background: white;
+
+        ul {
+          border-bottom-right-radius: 1rem;
         }
       }
     }
 
     &.open {
-      animation: ShowMenuChild 0.5s forwards;
+      width: 250px;
 
-      @keyframes ShowMenuChild {
-        0% {
-          left: -100%;
-        }
+      // animation: ShowMenuChild 0.5s forwards;
 
-        100% {
-          left: 80px;
-        }
-      }
+      // @keyframes ShowMenuChild {
+      //   0% {
+      //     left: -100%;
+      //   }
+
+      //   100% {
+      //     left: 80px;
+      //   }
+      // }
+    }
+
+    &.isHover {
+      width: 0;
+      box-shadow: none;
     }
 
     .menu-child-info {
@@ -230,9 +247,9 @@
     }
   }
 
-  .ant-menu-root {
-    border-bottom: 1px solid #ebeef6;
-  }
+  // .ant-menu-root {
+  //   border-bottom: 1px solid #ebeef6;
+  // }
 
   .ant-menu {
     color: black;
@@ -348,5 +365,11 @@
         vertical-align: middle;
       }
     }
+  }
+}
+
+.ant-menu-submenu-popup > .ant-menu {
+  @include min-media(800px) {
+    border-radius: 1rem;
   }
 }

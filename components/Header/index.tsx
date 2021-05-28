@@ -19,12 +19,13 @@ const { Search } = Input;
 
 const { Option } = Select;
 
+let countOpen = 0;
 export default function Header({
-  toggleMenu,
-  toggle,
+  isOpenMenu,
+  isOpen,
 }: {
-  toggle: boolean;
-  toggleMenu: Function;
+  isOpen: boolean;
+  isOpenMenu: Function;
 }) {
   const content_search = (
     <div className="input-search">
@@ -90,21 +91,29 @@ export default function Header({
     userFuncSet(true);
   };
 
+  if (!isOpen) {
+    countOpen++;
+  }
+
   return (
     <header className={`app-header `}>
-      <div className="app-header-logo">
-        <p>Mona Media</p>
-        {/* <p style={{ display: !toggle ? "block" : "none" }}>M</p> */}
+      <div
+        className={`app-header-logo ${
+          !isOpen ? "close" : countOpen > 0 ? "open" : "open-no-ani"
+        }`}
+      >
+        <p style={{ display: !isOpen ? "none" : "block" }}>Mona Media</p>
+        <p style={{ display: !isOpen ? "block" : "none" }}>M</p>
       </div>
-      <div className="app-header-inner">
+      <div className={`app-header-inner ${!isOpen && "close"}`}>
         <div className="right">
-          {/* <div className="col-button" onClick={() => toggleMenu()}>
+          <div className="col-button" onClick={() => isOpenMenu()}>
             <div className="box-menu">
               <div className="icon-action">
-                {!toggle ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                {!isOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
               </div>
             </div>
-          </div> */}
+          </div>
           {/* <div className="col-search">
             <div className="box-input">
               <SearchOutlined className="icon-search" />

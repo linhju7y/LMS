@@ -17,13 +17,15 @@ export default function Layout({
   children: React.ReactNode;
   home?: boolean;
 }) {
-  const [toggle, setToggle] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
-  const toggleMenu = () => {
-    if (toggle) {
-      setToggle(false);
+  console.log("isOpen: ", isOpen);
+
+  const isOpenMenu = () => {
+    if (isOpen) {
+      setIsOpen(false);
     } else {
-      setToggle(true);
+      setIsOpen(true);
     }
   };
 
@@ -35,10 +37,10 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Header toggleMenu={toggleMenu} toggle={toggle} />
-      <Menu toggleMenu={toggleMenu} toggle={toggle} />
+      <Header isOpenMenu={isOpenMenu} isOpen={isOpen} />
+      <Menu isOpenMenu={isOpenMenu} isOpen={isOpen} />
       <main className="app-main">
-        <div className={`app-content ${!toggle ? "open" : ""}`}>
+        <div className={`app-content ${!isOpen && "close"}`}>
           <div className="container-fluid">{children}</div>
         </div>
       </main>

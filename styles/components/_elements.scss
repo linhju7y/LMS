@@ -565,7 +565,7 @@ textarea.form-control {
   justify-content: flex-end;
 }
 .app-content {
-  width: calc(100% - 80px);
+  width: calc(100% - 330px);
   margin-top: 65px;
   padding: 20px 10px;
   transition: 0.3s width;
@@ -588,9 +588,13 @@ textarea.form-control {
     background-color: #b1b1b1;
   }
 
-  &.open {
+  &.close {
     width: calc(100% - 80px);
   }
+
+  // &.open {
+  //   width: calc(100% - 80px);
+  // }
 
   .app-content-box {
     background: white;
