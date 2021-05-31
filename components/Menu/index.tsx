@@ -404,6 +404,7 @@ const MenuDefault = ({
             <>
               <Menu
                 defaultSelectedKeys={[routerActive]}
+                defaultOpenKeys={[routerActive + "-sub"]}
                 mode="inline"
                 theme="light"
                 style={{ display: tab === menu.MenuName ? "block" : "none" }}
