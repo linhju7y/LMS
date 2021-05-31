@@ -16,6 +16,8 @@ import {
 } from "@ant-design/icons";
 import { type } from "os";
 
+import ReactHtmlParser from "react-html-parser";
+
 import {
   Bookmark,
   Server,
@@ -46,6 +48,9 @@ import {
 } from "react-feather";
 import Link from "next/link";
 import { is } from "date-fns/locale";
+import { icons } from "antd/lib/image/PreviewGroup";
+
+type dataMenu = [];
 
 const { SubMenu } = Menu;
 
@@ -124,6 +129,10 @@ const data = [
   },
 ];
 
+type propState = {
+  collapsed: boolean;
+};
+
 const MenuDefault = ({
   isOpen,
   isOpenMenu,
@@ -131,16 +140,81 @@ const MenuDefault = ({
   isOpen: boolean;
   isOpenMenu: Function;
 }) => {
-  const [state, setState] = useState({
+  const router = useRouter();
+  const routerActive = router.pathname;
+
+  const dataMenu = [
+    {
+      MenuName: "tab-course",
+      MenuTitle: "Khóa học",
+      MenuKey: "course",
+      MenuItem: [
+        {
+          ItemType: "sub-menu",
+          Key: routerActive + "-sub",
+          Icon: '<span class="anticon"><img src="/images/icons/study-course.svg" ></span>',
+          TitleSub: "Quản lí khóa học",
+          SubMenuList: [
+            {
+              ItemType: "single",
+              Key: "/course/create-course",
+              Route: "/course/create-course",
+              Text: "Tạo khóa học",
+              Icon: "",
+            },
+            {
+              ItemType: "single",
+              Key: "/course/create-course-self",
+              Route: "/course/create-course-self",
+              Text: "Tạo khóa tự học",
+              Icon: "",
+            },
+            {
+              ItemType: "single",
+              Key: "/course/course-list",
+              Route: "/course/course-list",
+              Text: "Danh sách khóa học",
+              Icon: "",
+            },
+            {
+              ItemType: "single",
+              Key: "/course/course-list-self",
+              Route: "/course/course-list-self",
+              Text: "Danh sách khóa tự học",
+              Icon: "",
+            },
+          ],
+        },
+        {
+          TypeItem: "single",
+          Key: "/course/schedule-study",
+          Icon: '<span class="anticon"><img src="/images/icons/calendar.svg"></span>',
+          Route: "/course/schedule-study",
+          Text: "Kiểm tra lịch học",
+        },
+        {
+          TypeItem: "single",
+          Key: "/course/course-list-report",
+          Icon: '<span class="anticon"><img src="/images/icons/list.svg"></span>',
+          Route: "/course/course-list-report",
+          Text: "Danh sách khóa học - báo cáo",
+        },
+      ],
+    },
+  ];
+
+  console.log("Router: ", router.pathname);
+
+  const [state, setState] = useState<propState>({
     collapsed: isOpen,
-  });
+  } as propState);
   const [isHover, setIsHover] = useState({
     status: false,
     position: null,
   });
 
   console.log("Is hover: ", isHover);
-  const [tab, tabSet] = useState<String>("tab-home");
+  const [tab, tabSet] = useState<String>("tab-course");
 
   const changeTabs = (e) => {
     e.preventDefault();
@@ -178,6 +252,26 @@ const MenuDefault = ({
     }
   };
 
+  const [subMenuActive, setSubMenuActive] = useState("");
+
+  console.log("Sumenu active: ", subMenuActive);
+
+  // const FindSubMenuActive = () => {
+  //   let SubMenuActive = "";
+  //   dataMenu.forEach((menu, index) => {
+  //     menu.MenuItem.forEach((item, ind) => {
+  //       if (item.ItemType === "sub-menu") {
+  //         item.SubMenuList.forEach((itemSub, key) => {
+  //           if (itemSub.Route === routerActive) {
+  //             setSubMenuActive(item.Key);
+  //             return false;
+  //           }
+  //         });
+  //       }
+  //     });
+  //   });
+  // };
+
   useEffect(() => {
     !isOpen &&
       setIsHover({
@@ -204,7 +298,7 @@ const MenuDefault = ({
         </div>
         <div className="menu-parent-body">
           <ul className="list-menu">
-            <li className={tab === "tab-home" ? "active" : ""}>
+            {/* <li className={tab === "tab-home" ? "active" : ""}>
               <a
                 href="#"
                 onClick={changeTabsClick}
@@ -213,7 +307,7 @@ const MenuDefault = ({
               >
                 <Home />
               </a>
-            </li>
+            </li> */}
             <li className={tab === "tab-course" ? "active" : ""}>
               <a
                 href="#"
@@ -306,8 +400,51 @@ const MenuDefault = ({
           className="menu-child-body"
           style={{ top: isHover.status && isHover.position }}
         >
-          <Menu
-            mode={isOpen ? "inline" : "vertical"}
+          {dataMenu?.map((menu, indexMenu) => (
+            <>
+              <Menu
+                defaultSelectedKeys={[routerActive]}
+                defaultOpenKeys={[routerActive + "-sub"]}
+                mode="inline"
+                theme="light"
+                style={{ display: tab === menu.MenuName ? "block" : "none" }}
+              >
+                <Menu.ItemGroup key={menu.MenuKey} title={menu.MenuTitle}>
+                  {menu.MenuItem?.map((item, indexItem) =>
+                    item.ItemType !== "sub-menu" ? (
+                      <Menu.Item
+                        key={item.Key}
+                        icon={ReactHtmlParser(item.Icon)}
+                      >
+                        <Link href={item.Route}>
+                          <a>{item.Text}</a>
+                        </Link>
+                      </Menu.Item>
+                    ) : (
+                      <SubMenu
+                        key={item.Key}
+                        icon={ReactHtmlParser(item.Icon)}
+                        title={item.TitleSub}
+                      >
+                        {item?.SubMenuList.map((subitem, indexSubitem) => (
+                          <Menu.Item
+                            key={subitem.Key}
+                            icon={ReactHtmlParser(subitem.Icon)}
+                          >
+                            <Link href={subitem.Route}>
+                              <a>{subitem.Text}</a>
+                            </Link>
+                          </Menu.Item>
+                        ))}
+                      </SubMenu>
+                    )
+                  )}
+                </Menu.ItemGroup>
+              </Menu>
+            </>
+          ))}
+          {/* <Menu
+            mode="inline"
             theme="light"
             style={{ display: tab === "tab-home" ? "block" : "none" }}
           >
@@ -325,9 +462,9 @@ const MenuDefault = ({
                 </Link>
               </Menu.Item>
             </Menu.ItemGroup>
-          </Menu>
-          <Menu
-            mode={isOpen ? "inline" : "vertical"}
+          </Menu> */}
+          {/* <Menu
+            mode="inline"
             theme="light"
             style={{ display: tab === "tab-course" ? "block" : "none" }}
           >
@@ -392,7 +529,7 @@ const MenuDefault = ({
           </Menu>
 
           <Menu
-            mode={isOpen ? "inline" : "vertical"}
+            mode="inline"
             theme="light"
             style={{ display: tab === "tab-layout" ? "block" : "none" }}
           >
@@ -423,7 +560,7 @@ const MenuDefault = ({
           </Menu>
 
           <Menu
-            mode={isOpen ? "inline" : "vertical"}
+            mode="inline"
             theme="light"
             style={{ display: tab === "tab-student" ? "block" : "none" }}
           >
@@ -598,13 +735,13 @@ const MenuDefault = ({
                 </Menu.Item>
               </SubMenu>
             </Menu.ItemGroup>
-          </Menu>
+          </Menu> */}
           {/*  */}
           {/*  */}
           {/*  */}
           {/* linhmhl menu  */}
-          <Menu
-            mode={isOpen ? "inline" : "vertical"}
+          {/* <Menu
+            mode="inline"
             theme="light"
             style={{ display: tab === "tab-option" ? "block" : "none" }}
           >
@@ -693,7 +830,7 @@ const MenuDefault = ({
           {/*  */}
           {/* linhmenu document-list */}
           <Menu
-            mode={isOpen ? "inline" : "vertical"}
+            mode="inline"
             theme="light"
             style={{ display: tab === "tab-document" ? "block" : "none" }}
           >
@@ -705,7 +842,7 @@ const MenuDefault = ({
           </Menu>
 
           <Menu
-            mode={isOpen ? "inline" : "vertical"}
+            mode="inline"
             theme="light"
             style={{ display: tab === "tab-staff" ? "block" : "none" }}
           >
@@ -827,7 +964,7 @@ const MenuDefault = ({
           </Menu>
 
           <Menu
-            mode={isOpen ? "inline" : "vertical"}
+            mode="inline"
             theme="light"
             style={{ display: tab === "tab-package" ? "block" : "none" }}
           >
@@ -888,7 +1025,7 @@ const MenuDefault = ({
                   type="monotone"
                   dataKey="pv"
                   stroke="#08c"
-                  strokeWidth={2}
+                  stroke-width={2}
                 />
               </LineChart>
             </div>

@@ -118,6 +118,7 @@ const CourseListSelf = () => {
   return (
     <>
       <PowerTable
+        TitlePage="Danh sách khóa tự học"
         Size="table-medium"
         dataSource={data}
         columns={columns}

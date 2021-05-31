@@ -93,6 +93,13 @@
     box-shadow: 10px 9px 15px #0000000d;
     z-index: 9;
 
+    .anticon {
+      img {
+        opacity: 0.6;
+        width: 16px;
+      }
+    }
+
     &.close {
       width: 0;
       box-shadow: none;

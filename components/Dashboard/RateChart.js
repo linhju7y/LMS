@@ -24,33 +24,37 @@ const RateChart = ({ dataPie }) => {
           <div className="col-12 col-md-12 col-lg-4">
             <div className="detail-pieChart" style={{ paddingTop: 80 }}>
               <div>
-                <i class="fas fa-circle" style={{ color: "#0088FE" }} />
+                <i className="fas fa-circle" style={{ color: "#0088FE" }} />
                 <span style={{ paddingLeft: 15, color: "#585858" }}>
-                  5 <i class="fas fa-star" style={{ color: "#D7DF01" }} /> 80%
+                  5 <i className="fas fa-star" style={{ color: "#D7DF01" }} />{" "}
+                  80%
                 </span>
               </div>
               <div className="pt-2">
-                <i class="fas fa-circle" style={{ color: "#00C49F" }} />
+                <i className="fas fa-circle" style={{ color: "#00C49F" }} />
                 <span style={{ paddingLeft: 15, color: "#585858" }}>
-                  4 <i class="fas fa-star" style={{ color: "#D7DF01" }} /> 20%
+                  4 <i className="fas fa-star" style={{ color: "#D7DF01" }} />{" "}
+                  20%
                 </span>
               </div>
               <div className="pt-2">
-                <i class="fas fa-circle" style={{ color: "#FFBB28" }} />
+                <i className="fas fa-circle" style={{ color: "#FFBB28" }} />
                 <span style={{ paddingLeft: 15, color: "#585858" }}>
-                  3 <i class="fas fa-star" style={{ color: "#D7DF01" }} /> 10%
+                  3 <i className="fas fa-star" style={{ color: "#D7DF01" }} />{" "}
+                  10%
                 </span>
               </div>
               <div className="pt-2">
-                <i class="fas fa-circle" style={{ color: "#FF8042" }} />
+                <i className="fas fa-circle" style={{ color: "#FF8042" }} />
                 <span style={{ paddingLeft: 15, color: "#585858" }}>
-                  2 <i class="fas fa-star" style={{ color: "#D7DF01" }} /> 5%
+                  2 <i className="fas fa-star" style={{ color: "#D7DF01" }} />{" "}
+                  5%
                 </span>
               </div>
               <div className="pt-2">
-                <i class="fas fa-circle" style={{ color: "#FF00FF" }} />
+                <i className="fas fa-circle" style={{ color: "#FF00FF" }} />
                 <span style={{ paddingLeft: 15, color: "#585858" }}>
-                  1 <i class="fas fa-star" style={{ color: "#D7DF01" }} />
+                  1 <i className="fas fa-star" style={{ color: "#D7DF01" }} />
                   5%
                 </span>
               </div>

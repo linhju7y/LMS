@@ -130,8 +130,10 @@ const Dashboard = () => {
       </div>
 
       <div className="row pt-5">
-        <col className="12" />
-        <RevenueChart />
+        <div className="col-12">
+          {" "}
+          <RevenueChart />
+        </div>
       </div>
       <div className="row pt-5 pb-5">
         <div className="col-8">
