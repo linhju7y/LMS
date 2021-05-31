@@ -5,24 +5,26 @@ import React, {
   useEffect,
   useCallback,
 } from "react";
+import { useRouter } from "next/router";
 
 export type IProps = {
-  getTitlePage: any;
-  titlePage: any;
+  getTitlePage: Function;
+  titlePage: String;
+  getRouter: any;
 };
 
 const AuthContext = createContext<IProps>({
   titlePage: "",
   getTitlePage: () => {},
+  getRouter: "",
 });
 
 export const AuthProvider = ({ children }) => {
-  console.log("Run auth");
-
-  const [titlePage, setTitlePage] = useState("This is title");
+  const [titlePage, setTitlePage] = useState("");
+  const router = useRouter();
+  const getRouter = router.pathname;
 
   const getTitlePage = (title) => {
-    console.log("run this: ", title);
     setTitlePage(title);
   };
 
@@ -32,6 +34,7 @@ export const AuthProvider = ({ children }) => {
         value={{
           titlePage: titlePage,
           getTitlePage,
+          getRouter,
         }}
       >
         {children}

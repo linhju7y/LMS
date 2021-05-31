@@ -1,6 +1,7 @@
 import { Menu, Button } from "antd";
 import React, { useEffect, useState, useReducer, PureComponent } from "react";
 import { useRouter } from "next/router";
+import { useAuth } from "~/context/auth";
 
 import { BarChart, Bar, LineChart, Line } from "recharts";
 
@@ -140,8 +141,10 @@ const MenuDefault = ({
   isOpen: boolean;
   isOpenMenu: Function;
 }) => {
-  const router = useRouter();
-  const routerActive = router.pathname;
+  // const router = useRouter();
+  // const getRouter = router.pathname;
+
+  const { getRouter } = useAuth();
 
   const dataMenu = [
     {
@@ -151,7 +154,7 @@ const MenuDefault = ({
       MenuItem: [
         {
           ItemType: "sub-menu",
-          Key: routerActive !== "/" ? routerActive + "-sub" : "",
+          Key: getRouter !== "/" ? getRouter + "-sub" : "",
           Icon: '<span class="anticon"><img src="/images/icons/study-course.svg" ></span>',
           TitleSub: "Quản lí khóa học",
           SubMenuList: [
@@ -203,8 +206,6 @@ const MenuDefault = ({
     },
   ];
 
-  console.log("Router: ", router.pathname);
-
   const [state, setState] = useState<propState>({
     collapsed: isOpen,
   } as propState);
@@ -254,7 +255,7 @@ const MenuDefault = ({
 
   const [subMenuActive, setSubMenuActive] = useState("");
 
-  console.log("Sumenu active: ", subMenuActive);
+  console.log("get router: ", getRouter);
 
   // const FindSubMenuActive = () => {
   //   let SubMenuActive = "";
@@ -262,7 +263,7 @@ const MenuDefault = ({
   //     menu.MenuItem.forEach((item, ind) => {
   //       if (item.ItemType === "sub-menu") {
   //         item.SubMenuList.forEach((itemSub, key) => {
-  //           if (itemSub.Route === routerActive) {
+  //           if (itemSub.Route === getRouter) {
   //             setSubMenuActive(item.Key);
   //             return false;
   //           }
@@ -403,8 +404,8 @@ const MenuDefault = ({
           {dataMenu?.map((menu, indexMenu) => (
             <>
               <Menu
-                defaultSelectedKeys={[routerActive]}
-                defaultOpenKeys={[routerActive + "-sub"]}
+                defaultSelectedKeys={[getRouter]}
+                defaultOpenKeys={[getRouter + "-sub"]}
                 mode="inline"
                 theme="light"
                 style={{ display: tab === menu.MenuName ? "block" : "none" }}
