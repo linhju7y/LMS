@@ -151,7 +151,7 @@ const MenuDefault = ({
       MenuItem: [
         {
           ItemType: "sub-menu",
-          Key: routerActive + "-sub",
+          Key: routerActive !== "/" ? routerActive + "-sub" : "",
           Icon: '<span class="anticon"><img src="/images/icons/study-course.svg" ></span>',
           TitleSub: "Quản lí khóa học",
           SubMenuList: [
@@ -404,7 +404,6 @@ const MenuDefault = ({
             <>
               <Menu
                 defaultSelectedKeys={[routerActive]}
-                defaultOpenKeys={[routerActive + "-sub"]}
                 mode="inline"
                 theme="light"
                 style={{ display: tab === menu.MenuName ? "block" : "none" }}
@@ -829,7 +828,7 @@ const MenuDefault = ({
           </Menu>
           {/*  */}
           {/* linhmenu document-list */}
-          <Menu
+          {/* <Menu
             mode="inline"
             theme="light"
             style={{ display: tab === "tab-document" ? "block" : "none" }}
@@ -995,7 +994,7 @@ const MenuDefault = ({
                 </Link>
               </Menu.Item>
             </Menu.ItemGroup>
-          </Menu>
+          </Menu> */}
 
           {/* <div className="menu-child-info white">
             <div className="box-title">
