@@ -8,8 +8,8 @@ import React, {
 import { useRouter } from "next/router";
 
 export type IProps = {
-  getTitlePage: Function;
-  titlePage: String;
+  getTitlePage: any;
+  titlePage: string;
   getRouter: any;
 };
 
