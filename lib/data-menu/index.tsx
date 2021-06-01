@@ -1,5 +1,19 @@
 export const dataMenu = [
   {
+    MenuName: "tab-home",
+    MenuTitle: "Dashboard",
+    MenuKey: "tabhome",
+    MenuItem: [
+      {
+        TypeItem: "single",
+        Key: "/dashboard",
+        Route: "/dashboard",
+        Icon: "",
+        Text: "Trang chủ",
+      },
+    ],
+  },
+  {
     MenuName: "tab-course",
     MenuTitle: "Khóa học",
     MenuKey: "course",

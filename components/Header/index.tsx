@@ -4,6 +4,8 @@ import { Popover, Button, Input, Select } from "antd";
 import { Grid } from "react-feather";
 import { useAuth } from "~/context/auth";
 
+import Link from "next/link";
+
 import {
   SettingOutlined,
   MenuFoldOutlined,
@@ -102,7 +104,10 @@ export default function Header({
           !isOpen ? "close" : countOpen > 0 ? "open" : "open-no-ani"
         }`}
       >
-        <p style={{ display: !isOpen ? "none" : "block" }}>Mona Media</p>
+        <Link href="/dashboard">
+          <a style={{ display: !isOpen ? "none" : "block" }}>Mona Media</a>
+        </Link>
+
         <p style={{ display: !isOpen ? "block" : "none" }}>M</p>
       </div>
       <div className={`app-header-inner ${!isOpen && "close"}`}>

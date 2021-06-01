@@ -25,6 +25,7 @@ import { type } from "os";
 import ReactHtmlParser from "react-html-parser";
 
 import { dataMenu } from "~/lib/data-menu";
+import { useAuth } from "~/context/auth";
 
 import {
   Bookmark,
@@ -151,8 +152,9 @@ const MenuDefault = ({
   // const router = useRouter();
   // const getRouter = router.pathname;
 
-  const router = useRouter();
-  const getRouter = router.pathname;
+  const { getRouter } = useAuth();
+
+  console.log("Get Router: ", getRouter);
 
   const [state, setState] = useState<propState>({
     collapsed: isOpen,
@@ -163,16 +165,12 @@ const MenuDefault = ({
     position: null,
   });
 
-  const [tab, tabSet] = useState<String>("tab-course");
+  const [tab, tabSet] = useState<String>("tab-home");
   const [subMenuActive, setSubMenuActive] = useState("");
   const menuChild = useRef(null);
   const [posMenu, setPosMenu] = useState(null);
   const [openKeys, setOpenKeys] = useState(null);
   const [statusOpen, setStatusOpen] = useState<boolean>(false);
-
-  console.log("Open keys: ", openKeys);
-
-  console.log("TAB is: ", tab);
 
   const changeTabs = (e) => {
     e.preventDefault();
@@ -222,6 +220,7 @@ const MenuDefault = ({
   };
 
   const FindTabActive = () => {
+    console.log("run it");
     dataMenu.forEach((menu, index) => {
       menu.MenuItem.forEach((item, ind) => {
         if (item.ItemType === "sub-menu") {
@@ -286,9 +285,6 @@ const MenuDefault = ({
       // Get height menu when hover
       let heightMenu = menuChild.current.clientHeight;
 
-      console.log("height SCR: ", heightScr);
-      console.log("Height Menu: ", heightMenu);
-
       if (!isOpen) {
         if (openKeys.length > 0) {
           if (heightMenu > heightScr) {
@@ -307,12 +303,12 @@ const MenuDefault = ({
     }, 200);
   }, [openKeys]);
 
-  console.log("is hover: ", isHover);
-
   useEffect(() => {
     FindSubMenuActive();
     FindTabActive();
+  }, [getRouter]);
 
+  useEffect(() => {
     !isOpen &&
       (setIsHover({
         ...isHover,
@@ -323,15 +319,11 @@ const MenuDefault = ({
   }, [isOpen]);
 
   useEffect(() => {
-    console.log("chạy vô đây");
     // Get height menu when hover
     let heightMenu = menuChild.current.clientHeight;
 
     // Get height Screen window
     let heightScr = window.innerHeight;
-
-    console.log("Height SCR: ", heightScr);
-    console.log("height Menu: ", heightMenu);
 
     if (posMenu !== null) {
       // Get position menu when hover
@@ -379,11 +371,16 @@ const MenuDefault = ({
     <aside className={`navbar-right `}>
       <div className="menu-parent">
         <div className="menu-parent-logo">
-          <img className="logo-img" src="/images/logo.png"></img>
+          <Link href="/dashboard">
+            <a>
+              {" "}
+              <img className="logo-img" src="/images/logo.png"></img>
+            </a>
+          </Link>
         </div>
         <div className="menu-parent-body">
           <ul className="list-menu">
-            {/* <li className={tab === "tab-home" ? "active" : ""}>
+            <li className={tab === "tab-home" ? "active" : ""}>
               <a
                 href="#"
                 onClick={changeTabsClick}
@@ -392,7 +389,7 @@ const MenuDefault = ({
               >
                 <Home />
               </a>
-            </li> */}
+            </li>
 
             <li className={tab === "tab-course" ? "active" : ""}>
               <a
