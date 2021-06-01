@@ -154,8 +154,6 @@ const MenuDefault = ({
 
   const { getRouter } = useAuth();
 
-  console.log("Get Router: ", getRouter);
-
   const [state, setState] = useState<propState>({
     collapsed: isOpen,
   } as propState);
@@ -220,7 +218,6 @@ const MenuDefault = ({
   };
 
   const FindTabActive = () => {
-    console.log("run it");
     dataMenu.forEach((menu, index) => {
       menu.MenuItem.forEach((item, ind) => {
         if (item.ItemType === "sub-menu") {
@@ -492,7 +489,7 @@ const MenuDefault = ({
             <>
               <Menu
                 onOpenChange={onOpenChange}
-                selectedKeys={[getRouter]}
+                selectedKeys={[getRouter == "/" ? "/dashboard" : getRouter]}
                 openKeys={[subMenuActive]}
                 mode="inline"
                 theme="light"
