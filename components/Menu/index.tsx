@@ -1,5 +1,11 @@
 import { Menu, Button } from "antd";
-import React, { useEffect, useState, useReducer, PureComponent } from "react";
+import React, {
+  useEffect,
+  useState,
+  useReducer,
+  PureComponent,
+  useRef,
+} from "react";
 import { useRouter } from "next/router";
 
 import { BarChart, Bar, LineChart, Line } from "recharts";
@@ -17,6 +23,8 @@ import {
 import { type } from "os";
 
 import ReactHtmlParser from "react-html-parser";
+
+import { dataMenu } from "~/lib/data-menu";
 
 import {
   Bookmark,
@@ -129,686 +137,6 @@ const data = [
   },
 ];
 
-const dataMenu = [
-  {
-    MenuName: "tab-course",
-    MenuTitle: "Khóa học",
-    MenuKey: "course",
-    MenuItem: [
-      {
-        ItemType: "sub-menu",
-        Key: "sub-course",
-        Icon: '<span class="anticon"><img src="/images/icons/study-course.svg" ></span>',
-        TitleSub: "Quản lí khóa học",
-        SubMenuList: [
-          {
-            ItemType: "single",
-            Key: "/course/create-course",
-            Route: "/course/create-course",
-            Text: "Tạo khóa học",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/course/create-course-self",
-            Route: "/course/create-course-self",
-            Text: "Tạo khóa tự học",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/course/course-list",
-            Route: "/course/course-list",
-            Text: "Danh sách khóa học",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/course/course-list-self",
-            Route: "/course/course-list-self",
-            Text: "Danh sách khóa tự học",
-            Icon: "",
-          },
-        ],
-      },
-      {
-        TypeItem: "single",
-        Key: "/course/schedule-study",
-        Icon: '<span class="anticon"><img src="/images/icons/calendar.svg"></span>',
-        Route: "/course/schedule-study",
-        Text: "Kiểm tra lịch học",
-      },
-      {
-        TypeItem: "single",
-        Key: "/course/course-list-report",
-        Icon: '<span class="anticon"><img src="/images/icons/list.svg"></span>',
-        Route: "/course/course-list-report",
-        Text: "Danh sách khóa học - báo cáo",
-      },
-    ],
-  },
-  {
-    MenuName: "tab-layout",
-    MenuTitle: "Giao diện",
-    MenuKey: "tablayout",
-    MenuItem: [
-      {
-        ItemType: "sub-menu",
-        Key: "sublayout",
-        Icon: "",
-        TitleSub: "Layout",
-        SubMenuList: [
-          {
-            ItemType: "single",
-            Key: "/layoutBase/layoutTables",
-            Route: "/layoutBase/layoutTables",
-            Text: "Tables",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/layoutBase/layoutButtons",
-            Route: "/layoutBase/layoutButtons",
-            Text: "Buttons",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/layoutBase/layoutForms",
-            Route: "/layoutBase/layoutForms",
-            Text: "Forms",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/layoutBase/layoutCharts",
-            Route: "/layoutBase/layoutCharts",
-            Text: "Charts",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/layoutBase/layoutTags",
-            Route: "/layoutBase/layoutTags",
-            Text: "Tags",
-            Icon: "",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    MenuName: "tab-student",
-    MenuTitle: "Khách hàng",
-    MenuKey: "course",
-    MenuItem: [
-      {
-        ItemType: "sub-menu",
-        Key: "sub-list-course-child",
-        Icon: "",
-        TitleSub: "Học viên",
-        SubMenuList: [
-          {
-            ItemType: "single",
-            Key: "/customer/student/student-list",
-            Route: "/customer/student/student-list",
-            Text: "Dữ liệu học viên",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/student/exchange-student",
-            Route: "/customer/student/exchange-student",
-            Text: "Học viên chuyển giao",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/student/student-course",
-            Route: "/customer/student/student-course",
-            Text: "HV trong khóa",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/student/student-change-course",
-            Route: "/customer/student/student-change-course",
-            Text: "HV chuyển khóa",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/student/student-appointment",
-            Route: "/customer/student/student-appointment",
-            Text: "HV hẹn đăng ký",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/student/student-reserve",
-            Route: "/customer/student/student-reserve",
-            Text: "HV bảo lưu",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/student/student-advisory",
-            Route: "/customer/student/student-advisory",
-            Text: "HV cần tư vấn",
-            Icon: "",
-          },
-        ],
-      },
-      {
-        ItemType: "sub-menu",
-        Key: "sub-list-course-child-2",
-        Icon: "",
-        TitleSub: "Thi, hẹn test và dịch vụ",
-        SubMenuList: [
-          {
-            ItemType: "single",
-            Key: "/customer/service/service-customer",
-            Route: "/customer/service/service-customer",
-            Text: "Khách mua dịch vụ",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/service/service-customer-exam",
-            Route: "/customer/service/service-customer-exam",
-            Text: "Danh sách đăng kí thi",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/service/service-info-student",
-            Route: "/customer/service/service-info-student",
-            Text: "Thêm lịch hẹn test",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/service/service-appointment-test",
-            Route: "/customer/service/service-appointment-test",
-            Text: "Danh sách khách hẹn test",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/service/service-package-customer",
-            Route: "/customer/service/service-package-customer",
-            Text: "Danh sách khách mua gói",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/service/service-package-result",
-            Route: "/customer/service/service-package-result",
-            Text: "Danh sách kết quả test",
-            Icon: "",
-          },
-        ],
-      },
-      {
-        ItemType: "sub-menu",
-        Key: "sub-list-course-child-3",
-        Icon: "",
-        TitleSub: "Báo cáo học viên",
-        SubMenuList: [
-          {
-            ItemType: "single",
-            Key: "/customer/report/report-customer-warning",
-            Route: "/customer/report/report-customer-warning",
-            Text: "Cảnh báo học viên",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/report/report-customer-test",
-            Route: "/customer/report/report-customer-test",
-            Text: "Học viên sắp thi",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/report/report-customer-result",
-            Route: "/customer/report/report-customer-result",
-            Text: "Kết quả thi thực tế",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/report/report-customer-result",
-            Route: "/customer/report/report-customer-result",
-            Text: "Kết quả thi thực tế",
-            Icon: "",
-          },
-        ],
-      },
-      {
-        ItemType: "sub-menu",
-        Key: "sub-list-course-child-4",
-        Icon: "",
-        TitleSub: "Tài chính",
-        SubMenuList: [
-          {
-            ItemType: "single",
-            Key: "/customer/finance/finance-customer-debts",
-            Route: "/customer/finance/finance-customer-debts",
-            Text: "Nợ học phí",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/finance/finance-cashier-refund",
-            Route: "/customer/finance/finance-cashier-refund",
-            Text: "Yêu cầu hoàn tiền",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/finance/finance-cashier-payment",
-            Route: "/customer/finance/finance-cashier-payment",
-            Text: "Phiếu chi",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/finance/finance-customer-reward",
-            Route: "/customer/finance/finance-customer-reward",
-            Text: "Thưởng/Tài trợ",
-            Icon: "",
-          },
-        ],
-      },
-      {
-        ItemType: "sub-menu",
-        Key: "sub-list-course-child-5",
-        Icon: "",
-        TitleSub: "Hợp đồng",
-        SubMenuList: [
-          {
-            ItemType: "single",
-            Key: "/customer/contract/contract-customer-list",
-            Route: "/customer/contract/contract-customer-list",
-            Text: "Học viên có hợp đồng",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/customer/contract/contract-customer-censorship",
-            Route: "/customer/contract/contract-customer-censorship",
-            Text: "Duyệt hợp đồng",
-            Icon: "",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    MenuName: "tab-option",
-    MenuTitle: "Option",
-    MenuKey: "taboption",
-    MenuItem: [
-      {
-        ItemType: "sub-menu",
-        Key: "sub-option",
-        Icon: "",
-        TitleSub: "Cấu hình",
-        SubMenuList: [
-          {
-            ItemType: "single",
-            Key: "/option/center",
-            Route: "/option/center",
-            Text: "Trung tâm",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/grade",
-            Route: "/option/grade",
-            Text: "Khối học",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/study-time",
-            Route: "/option/study-time",
-            Text: "Ca học",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/program",
-            Route: "/option/program",
-            Text: "Chương trình",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/provincial",
-            Route: "/option/provincial",
-            Text: "Tỉnh/Tp",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/district",
-            Route: "/option/district",
-            Text: "Quận huyện",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/discount",
-            Route: "/option/discount",
-            Text: "Mã khuyến mãi",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/customer-supplier",
-            Route: "/option/customer-supplier",
-            Text: "Nguồn khách hàng",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/day-off",
-            Route: "/option/day-off",
-            Text: "Ngày nghỉ",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/jobs",
-            Route: "/option/jobs",
-            Text: "Nghề nghiệp",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/services",
-            Route: "/option/services",
-            Text: "Dịch vụ",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/feedback",
-            Route: "/option/feedback",
-            Text: "Loại phản hồi",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/supplier",
-            Route: "/option/supplier",
-            Text: "Nhà cung cấp",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/purpose",
-            Route: "/option/purpose",
-            Text: "Mục đích học",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/staff-salary",
-            Route: "/option/staff-salary",
-            Text: "Lương office",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/teacher-salary",
-            Route: "/option/teacher-salary",
-            Text: "Lương giáo viên",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/exam",
-            Route: "/option/exam",
-            Text: "Đợt thi",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/post",
-            Route: "/option/post",
-            Text: "Kiểm duyệt bài viết",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/info-form",
-            Route: "/option/info-form",
-            Text: "Form thông tin",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/notification",
-            Route: "/option/notification",
-            Text: "Tạo thông báo",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/idiom",
-            Route: "/option/idiom",
-            Text: "Thành ngữ lịch",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/contract",
-            Route: "/option/contract",
-            Text: "Hợp đồng",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/option/term-of-service",
-            Route: "/option/term-of-service",
-            Text: "Điều khoản",
-            Icon: "",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    MenuName: "tab-document",
-    MenuTitle: "Document List",
-    MenuKey: "tabdocument",
-    MenuItem: [
-      {
-        ItemType: "single",
-        Key: "/document-list",
-        Route: "/document-list",
-        Text: "Danh sách tài liệu",
-        Icon: "",
-      },
-    ],
-  },
-  {
-    MenuName: "tab-staff",
-    MenuTitle: "Quản lí nhân viên",
-    MenuKey: "tab-staff",
-    MenuItem: [
-      {
-        ItemType: "sub-menu",
-        Key: "sub-list-staff-child-1",
-        Icon: "",
-        TitleSub: "Nhân viên",
-        SubMenuList: [
-          {
-            ItemType: "single",
-            Key: "/staff/staff-list",
-            Route: "/staff/staff-list",
-            Text: "Danh sách nhân viên",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/staff/saler-list",
-            Route: "/staff/saler-list",
-            Text: "Danh sách Salers",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/staff/feedback-list",
-            Route: "/staff/feedback-list",
-            Text: "Duyệt feedback",
-            Icon: "",
-          },
-        ],
-      },
-      {
-        ItemType: "sub-menu",
-        Key: "sub-list-staff-child-2",
-        Icon: "",
-        TitleSub: "Giáo viên",
-        SubMenuList: [
-          {
-            ItemType: "single",
-            Key: "/staff/teacher-list",
-            Route: "/staff/teacher-list",
-            Text: "Giáo viên",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/staff/exercise-done-list",
-            Route: "/staff/exercise-done-list",
-            Text: "Bài đã chấm",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/staff/exercise-check-list",
-            Route: "/staff/exercise-check-list",
-            Text: "Duyệt bài",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/staff/teach-hours-list",
-            Route: "/staff/teach-hours-list",
-            Text: "Giờ dạy giáo viên",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/staff/teach-hours-center",
-            Route: "/staff/teach-hours-center",
-            Text: "Giờ dạy GV theo trung tâm",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/staff/cost-list",
-            Route: "/staff/cost-list",
-            Text: "Giá vốn hàng bán",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/staff/teacher-salary-list",
-            Route: "/staff/teacher-salary-list",
-            Text: "Chi phí lương giáo viên",
-            Icon: "",
-          },
-        ],
-      },
-
-      {
-        ItemType: "sub-menu",
-        Key: "sub-list-staff-child-3",
-        Icon: "",
-        TitleSub: "Lương Office",
-        SubMenuList: [
-          {
-            ItemType: "single",
-            Key: "/staff/campaign-sales",
-            Route: "/staff/campaign-sales",
-            Text: "Chiến dịch sale",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/staff/salary-review",
-            Route: "/staff/salary-review",
-            Text: "Duyệt lương office",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/staff/salary-history",
-            Route: "/staff/salary-history",
-            Text: "Lịch sử duyệt",
-            Icon: "",
-          },
-          {
-            ItemType: "single",
-            Key: "/staff/campaign-revenue",
-            Route: "/staff/campaign-revenue",
-            Text: "Doanh thu chiến dịch sale",
-            Icon: "",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    MenuName: "tab-package",
-    MenuTitle: "Gói bài tập",
-    MenuKey: "tab-package",
-    MenuItem: [
-      {
-        ItemType: "single",
-        Key: "/package/package-list",
-        Route: "/package/package-list",
-        Text: "Quản lí gói bài",
-        Icon: "",
-      },
-      {
-        ItemType: "single",
-        Key: "/package/topic-list",
-        Route: "/package/topic-list",
-        Text: "Topic",
-        Icon: "",
-      },
-      {
-        ItemType: "single",
-        Key: "/package/examiner-list",
-        Route: "/package/examiner-list",
-        Text: "Danh sách chấm gói bài",
-        Icon: "",
-      },
-      {
-        ItemType: "single",
-        Key: "/package/package-set",
-        Route: "/package/package-set",
-        Text: "Bộ sưu tập",
-        Icon: "",
-      },
-      {
-        ItemType: "single",
-        Key: "/package/package-store",
-        Route: "/package/package-store",
-        Text: "Cửa hàng",
-        Icon: "",
-      },
-    ],
-  },
-];
-
 type propState = {
   collapsed: boolean;
 };
@@ -830,28 +158,39 @@ const MenuDefault = ({
     collapsed: isOpen,
   } as propState);
   const [isHover, setIsHover] = useState({
+    changeHeight: null,
     status: false,
     position: null,
   });
 
   const [tab, tabSet] = useState<String>("tab-course");
+  const [subMenuActive, setSubMenuActive] = useState("");
+  const menuChild = useRef(null);
+  const [posMenu, setPosMenu] = useState(null);
+  const [openKeys, setOpenKeys] = useState(null);
+  const [statusOpen, setStatusOpen] = useState<boolean>(false);
+
+  console.log("Open keys: ", openKeys);
+
+  console.log("TAB is: ", tab);
 
   const changeTabs = (e) => {
     e.preventDefault();
 
-    let heightScr = window.innerHeight;
-    console.log("Height SCR: ", heightScr);
-
     let element = e.target;
     let position = element.getBoundingClientRect();
+    setPosMenu(position);
 
     if (!isOpen) {
-      setIsHover({
-        status: true,
-        position: position.top - 65,
-      });
       let dataTab = e.target.getAttribute("data-tabs");
       tabSet(dataTab);
+      setStatusOpen(true);
+
+      setIsHover({
+        ...isHover,
+        status: true,
+        changeHeight: false,
+      });
     }
   };
 
@@ -864,17 +203,23 @@ const MenuDefault = ({
 
   const closeTabs = (e) => {
     e.preventDefault();
+
+    // Xóa tab trước khi tìm active tab
+    tabSet("");
+
+    // Func tìm active tap
+    FindTabActive();
+
+    // Reset is Hover
     if (isHover.status) {
+      setStatusOpen(false);
       setIsHover({
-        ...isHover,
+        changeHeight: false,
         status: false,
+        position: null,
       });
     }
   };
-
-  const [subMenuActive, setSubMenuActive] = useState("");
-
-  console.log("Tab Active: ", subMenuActive);
 
   const FindTabActive = () => {
     dataMenu.forEach((menu, index) => {
@@ -912,30 +257,8 @@ const MenuDefault = ({
     });
   };
 
-  useEffect(() => {
-    FindSubMenuActive();
-    FindTabActive();
-
-    !isOpen &&
-      setIsHover({
-        ...isHover,
-        status: false,
-      });
-  }, [isOpen]);
-
-  // useEffect(() => {
-  //   let itemLink = document.querySelectorAll(".ant-menu-item");
-  //   console.log(itemLink);
-  //   for (let i = 0; i < itemLink.length; i++) {
-  //     itemLink[i].addEventListener("click", function () {
-  //       alert("hi");
-  //     });
-  //   }
-  // }, [tab]);
-
-  const testFunc = (openKeys) => {
-    console.log("openKeys: ", openKeys);
-
+  const onOpenChange = (openKeys) => {
+    setOpenKeys(openKeys);
     if (openKeys.length > 0) {
       for (const value of openKeys) {
         dataMenu.forEach((menu, index) => {
@@ -953,6 +276,104 @@ const MenuDefault = ({
       setSubMenuActive("");
     }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      // Get height Screen window
+      let heightScr = window.innerHeight;
+      heightScr = heightScr / 2;
+
+      // Get height menu when hover
+      let heightMenu = menuChild.current.clientHeight;
+
+      console.log("height SCR: ", heightScr);
+      console.log("Height Menu: ", heightMenu);
+
+      if (!isOpen) {
+        if (openKeys.length > 0) {
+          if (heightMenu > heightScr) {
+            setIsHover({
+              ...isHover,
+              changeHeight: true,
+            });
+          }
+        } else {
+          setIsHover({
+            ...isHover,
+            changeHeight: false,
+          });
+        }
+      }
+    }, 200);
+  }, [openKeys]);
+
+  console.log("is hover: ", isHover);
+
+  useEffect(() => {
+    FindSubMenuActive();
+    FindTabActive();
+
+    !isOpen &&
+      (setIsHover({
+        ...isHover,
+        status: false,
+      }),
+      tabSet(""),
+      FindTabActive());
+  }, [isOpen]);
+
+  useEffect(() => {
+    console.log("chạy vô đây");
+    // Get height menu when hover
+    let heightMenu = menuChild.current.clientHeight;
+
+    // Get height Screen window
+    let heightScr = window.innerHeight;
+
+    console.log("Height SCR: ", heightScr);
+    console.log("height Menu: ", heightMenu);
+
+    if (posMenu !== null) {
+      // Get position menu when hover
+      const position = posMenu;
+
+      setIsHover({
+        changeHeight: !isOpen && heightMenu > heightScr / 2 ? true : false,
+        status: !statusOpen ? false : true,
+        position: !statusOpen
+          ? null
+          : heightMenu > heightScr / 2
+          ? position.top > heightScr / 3
+            ? position.top - heightScr / 3
+            : position.top - 65
+          : position.top - 52,
+      });
+    }
+  }, [tab]);
+
+  const menuParent = [
+    {
+      TabName: "tab-course",
+    },
+    {
+      TabName: "tab-student",
+    },
+    {
+      TabName: "tab-staff",
+    },
+    {
+      TabName: "tab-package",
+    },
+    {
+      TabName: "tab-layout",
+    },
+    {
+      TabName: "tab-option",
+    },
+    {
+      TabName: "tab-document",
+    },
+  ];
 
   return (
     <aside className={`navbar-right `}>
@@ -972,6 +393,7 @@ const MenuDefault = ({
                 <Home />
               </a>
             </li> */}
+
             <li className={tab === "tab-course" ? "active" : ""}>
               <a
                 href="#"
@@ -1061,13 +483,18 @@ const MenuDefault = ({
           <p style={{ display: !isOpen ? "block" : "none" }}>M</p>
         </div> */}
         <div
-          className="menu-child-body"
-          style={{ top: isHover.status && isHover.position }}
+          className={`menu-child-body ${
+            isHover.changeHeight ? "change-height" : ""
+          }`}
+          ref={menuChild}
+          style={{
+            top: isHover.status ? isHover.position : "unset",
+          }}
         >
           {dataMenu?.map((menu, indexMenu) => (
             <>
               <Menu
-                onOpenChange={testFunc}
+                onOpenChange={onOpenChange}
                 selectedKeys={[getRouter]}
                 openKeys={[subMenuActive]}
                 mode="inline"
