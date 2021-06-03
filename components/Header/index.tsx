@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Popover, Button, Input, Select } from "antd";
 
 import { Grid } from "react-feather";
-import { useAuth } from "~/context/auth";
+import { useWrap } from "~/wrapper/wrap";
 
 import Link from "next/link";
 
@@ -73,7 +73,7 @@ export default function Header({
     !isSearch ? setIsSearch(true) : setIsSearch(false);
   };
 
-  const { titlePage } = useAuth();
+  const { titlePage } = useWrap();
 
   let visibleUser: {
     visible: Boolean;

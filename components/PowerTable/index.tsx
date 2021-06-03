@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Table, Card } from "antd";
 import TitlePage from "~/components/TitlePage";
-import { useAuth } from "~/context/auth";
+import { useWrap } from "~/wrapper/wrap";
 
 const PowerTable = (props) => {
-  const { getTitlePage } = useAuth();
+  const { getTitlePage } = useWrap();
 
   console.log("Title page: ", props.TitlePage);
 

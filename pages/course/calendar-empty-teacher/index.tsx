@@ -1,9 +1,9 @@
 import WrapFilter from "~/components/Global/CalendarEmptyTeacher/WrapFilter";
 import React, { useState } from "react";
 import { Card } from "antd";
-import { useAuth } from "~/context/auth";
+import { useWrap } from "~/wrapper/wrap";
 const CalendarEmptyTeacher = () => {
-  const { getTitlePage } = useAuth();
+  const { getTitlePage } = useWrap();
   getTitlePage("Xem lịch giáo viên");
 
   const [showFilter, showFilterSet] = useState(false);

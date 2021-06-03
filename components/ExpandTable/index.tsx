@@ -1,10 +1,10 @@
 import React from "react";
 import { Table, Card, Button, Input } from "antd";
 import TitlePage from "../Elements/TitlePage";
-import { useAuth } from "~/context/auth";
+import { useWrap } from "~/wrapper/wrap";
 
 const ExpandTable = (props) => {
-  const { getTitlePage } = useAuth();
+  const { getTitlePage } = useWrap();
 
   getTitlePage(props.TitlePage);
 

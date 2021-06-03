@@ -9,12 +9,12 @@ import CheckManyStudyTime from "~/components/Global/ScheduleStudy/CheckManyStudy
 import CheckRoom from "~/components/Global/ScheduleStudy/CheckRoom";
 import CalendarManyTeacher from "~/components/Global/ScheduleStudy/CalendarManyTeacher";
 import CheckEmptyTeacher from "~/components/Global/ScheduleStudy/CheckEmptyTeacher";
-import { useAuth } from "~/context/auth";
+import { useWrap } from "~/wrapper/wrap";
 
 const localizer = momentLocalizer(moment);
 
 const ScheduleStudy = () => {
-  const { getTitlePage } = useAuth();
+  const { getTitlePage } = useWrap();
 
   getTitlePage("Kiểm tra lịch học");
   return (

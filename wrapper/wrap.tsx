@@ -13,13 +13,13 @@ export type IProps = {
   getRouter: any;
 };
 
-const AuthContext = createContext<IProps>({
+const WrapContext = createContext<IProps>({
   titlePage: "",
   getTitlePage: () => {},
   getRouter: "",
 });
 
-export const AuthProvider = ({ children }) => {
+export const WrapProvider = ({ children }) => {
   const [titlePage, setTitlePage] = useState("");
   const router = useRouter();
   const getRouter = router.pathname;
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <>
-      <AuthContext.Provider
+      <WrapContext.Provider
         value={{
           titlePage: titlePage,
           getTitlePage,
@@ -38,9 +38,9 @@ export const AuthProvider = ({ children }) => {
         }}
       >
         {children}
-      </AuthContext.Provider>
+      </WrapContext.Provider>
     </>
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useWrap = () => useContext(WrapContext);

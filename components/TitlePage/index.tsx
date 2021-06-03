@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useAuth } from "~/context/auth";
+import { useWrap } from "~/wrapper/wrap";
 
 export default function TitlePage({ title }: { title: string }) {
-  const { getTitlePage } = useAuth();
+  const { getTitlePage } = useWrap();
   useEffect(() => {
     getTitlePage(title);
   }, []);

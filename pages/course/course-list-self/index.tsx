@@ -5,7 +5,7 @@ import SortBox from "~/components/Elements/SortBox";
 import { table } from "console";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useAuth } from "~/context/auth";
+import { useWrap } from "~/wrapper/wrap";
 import PowerTable from "~/components/PowerTable";
 import { Eye, Filter, Search } from "react-feather";
 
@@ -40,7 +40,7 @@ const dataOption = [
 ];
 
 const CourseListSelf = () => {
-  const { getTitlePage } = useAuth();
+  const { getTitlePage } = useWrap();
   getTitlePage("Danh sách khóa tự học");
 
   const columns = [

@@ -6,9 +6,13 @@ import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Header from "~/components/Header";
 import Menu from "~/components/Menu";
+import { signIn, signOut, useSession } from "next-auth/client";
+import SignIn from "~/pages/auth/signin";
 
 const name = "Mona";
 export const siteTitle = "Mona Media Admin";
+
+let countLogin = 0;
 
 export default function Layout({
   children,
@@ -18,7 +22,7 @@ export default function Layout({
   home?: boolean;
 }) {
   const [isOpen, setIsOpen] = useState(true);
-
+  const [session, loading] = useSession();
   console.log("isOpen: ", isOpen);
 
   const isOpenMenu = () => {
@@ -28,6 +32,8 @@ export default function Layout({
       setIsOpen(true);
     }
   };
+  const handleSignIn = (event: React.SyntheticEvent<any>) => signIn();
+  useEffect(() => {}, []);
 
   return (
     <div className="app">
@@ -37,6 +43,7 @@ export default function Layout({
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+
       <Header isOpenMenu={isOpenMenu} isOpen={isOpen} />
       <Menu isOpenMenu={isOpenMenu} isOpen={isOpen} />
       <main className="app-main">
