@@ -1,3 +1,6 @@
+import { Briefcase } from "react-feather";
+import React, { Fragment } from "react";
+
 export const dataMenu = [
   {
     MenuName: "tab-home",
@@ -128,7 +131,7 @@ export const dataMenu = [
       {
         ItemType: "sub-menu",
         Key: "sub-list-course-child",
-        Icon: "",
+        Icon: '<span class="anticon"><img src="/images/icons/users.svg"></span>',
         TitleSub: "Học viên",
         SubMenuList: [
           {
@@ -185,7 +188,7 @@ export const dataMenu = [
       {
         ItemType: "sub-menu",
         Key: "sub-list-course-child-2",
-        Icon: "",
+        Icon: '<span class="anticon"><img src="/images/icons/info.svg"></span>',
         TitleSub: "Thi, hẹn test và dịch vụ",
         SubMenuList: [
           {
@@ -235,7 +238,7 @@ export const dataMenu = [
       {
         ItemType: "sub-menu",
         Key: "sub-list-course-child-3",
-        Icon: "",
+        Icon: '<span class="anticon"><img src="/images/icons/user.svg"></span>',
         TitleSub: "Báo cáo học viên",
         SubMenuList: [
           {
@@ -264,7 +267,7 @@ export const dataMenu = [
       {
         ItemType: "sub-menu",
         Key: "sub-list-course-child-4",
-        Icon: "",
+        Icon: '<span class="anticon"><img src="/images/icons/dollar-sign.svg"></span>',
         TitleSub: "Tài chính",
         SubMenuList: [
           {
@@ -300,7 +303,7 @@ export const dataMenu = [
       {
         ItemType: "sub-menu",
         Key: "sub-list-course-child-5",
-        Icon: "",
+        Icon: '<span class="anticon"><img src="/images/icons/clipboard.svg"></span>',
         TitleSub: "Hợp đồng",
         SubMenuList: [
           {
@@ -331,7 +334,6 @@ export const dataMenu = [
         Key: "/option/center",
         Route: "/option/center",
         Text: "Trung tâm",
-        Icon: "",
       },
       {
         ItemType: "single",
@@ -511,7 +513,7 @@ export const dataMenu = [
       {
         ItemType: "sub-menu",
         Key: "sub-list-staff-child-1",
-        Icon: "",
+        Icon: '<span class="anticon"><img src="/images/icons/user.svg"></span>',
         TitleSub: "Nhân viên",
         SubMenuList: [
           {
@@ -540,7 +542,7 @@ export const dataMenu = [
       {
         ItemType: "sub-menu",
         Key: "sub-list-staff-child-2",
-        Icon: "",
+        Icon: '<span class="anticon"><img src="/images/icons/users.svg"></span>',
         TitleSub: "Giáo viên",
         SubMenuList: [
           {
@@ -599,7 +601,7 @@ export const dataMenu = [
       {
         ItemType: "sub-menu",
         Key: "sub-list-staff-child-3",
-        Icon: "",
+        Icon: '<span class="anticon"><img src="/images/icons/dollar-sign.svg"></span>',
         TitleSub: "Lương Office",
         SubMenuList: [
           {
