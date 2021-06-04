@@ -172,8 +172,6 @@ const MenuDefault = ({
   const [statusOpen, setStatusOpen] = useState<boolean>(false);
   const [sameTab, setSameTab] = useState(false);
 
-  console.log("Is hover: ", isHover);
-
   const changeTabs = (e) => {
     e.preventDefault();
 
@@ -321,7 +319,6 @@ const MenuDefault = ({
   }, [isOpen]);
 
   const changeTabsWithPostion = () => {
-    console.log("runn");
     // Get height menu when hover
     let heightMenu = menuChild.current.clientHeight;
 
