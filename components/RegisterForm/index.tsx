@@ -96,7 +96,10 @@ function index(props) {
       <Toaster position="top-center" />
       <div className={styles.container}>
         <div className={styles.wrapBox}>
-          <div className={styles.imgLogin}>
+          <div
+            className={styles.imgLogin}
+            style={{ backgroundImage: "url('/images/bg-login.png')" }}
+          >
             <img src="/img/symbol-login.png" alt="" />
           </div>
           <div className={styles.wrapForm}>

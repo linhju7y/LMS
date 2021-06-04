@@ -33,7 +33,7 @@
 }
 
 .imgLogin {
-  background: url('./../../../public/img/bg-login.png');
+  // background: url('./../../../public/img/bg-login.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 80%;
@@ -144,8 +144,8 @@
     font-weight: 700;
   }
 
-  button[type='submit'],
-  input[type='submit'] {
+  button[type="submit"],
+  input[type="submit"] {
     cursor: pointer;
     background: #0086da;
     color: white;
@@ -160,17 +160,17 @@
     transition: 0.3s;
   }
 
-  button[type='submit']:hover,
-  input[type='submit']:hover {
+  button[type="submit"]:hover,
+  input[type="submit"]:hover {
     background: #0073bb;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
       rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     transition: 0.3s;
   }
 
-  button[type='submit']:active,
-  input[type='button']:active,
-  input[type='submit']:active {
+  button[type="submit"]:active,
+  input[type="button"]:active,
+  input[type="submit"]:active {
     transition: 0.3s all;
     transform: translateY(3px);
     border: 1px solid transparent;
@@ -181,17 +181,17 @@
     opacity: 0.4;
   }
 
-  input[type='button']:hover {
+  input[type="button"]:hover {
     transition: 0.3s all;
   }
 
-  button[type='submit'],
-  input[type='button'],
-  input[type='submit'] {
+  button[type="submit"],
+  input[type="button"],
+  input[type="submit"] {
     -webkit-appearance: none;
   }
 
-  button[type='button'] {
+  button[type="button"] {
     display: block;
     appearance: none;
     background: #333;
@@ -290,7 +290,7 @@
       // Now we'll create the "tick" using pseudo elements - those will be basically two lines that will be rotated to form the "tick"
 
       &:before {
-        content: '';
+        content: "";
         width: 0px;
         height: 2px;
         border-radius: 2px; // so that the tick has nice rounded look
@@ -304,7 +304,7 @@
       }
 
       &:after {
-        content: '';
+        content: "";
         width: 0;
         height: 2px;
         border-radius: 2px; // so that the tick has nice rounded look
@@ -334,7 +334,7 @@
     }
   }
 
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     display: none; // hide the system checkbox
 
     // Let's add some effects after the checkbox is checked
@@ -462,7 +462,7 @@
   z-index: 10;
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 1px;
