@@ -54,6 +54,7 @@ import {
   DollarSign,
   Briefcase,
   Info,
+  FileText,
 } from "react-feather";
 import Link from "next/link";
 import { is } from "date-fns/locale";
@@ -169,6 +170,9 @@ const MenuDefault = ({
   const [posMenu, setPosMenu] = useState(null);
   const [openKeys, setOpenKeys] = useState(null);
   const [statusOpen, setStatusOpen] = useState<boolean>(false);
+  const [sameTab, setSameTab] = useState(false);
+
+  console.log("Is hover: ", isHover);
 
   const changeTabs = (e) => {
     e.preventDefault();
@@ -179,7 +183,9 @@ const MenuDefault = ({
 
     if (!isOpen) {
       let dataTab = e.target.getAttribute("data-tabs");
-      tabSet(dataTab);
+
+      dataTab === tab ? setSameTab(true) : tabSet(dataTab);
+
       setStatusOpen(true);
 
       setIsHover({
@@ -311,11 +317,11 @@ const MenuDefault = ({
         ...isHover,
         status: false,
       }),
-      tabSet(""),
       FindTabActive());
   }, [isOpen]);
 
-  useEffect(() => {
+  const changeTabsWithPostion = () => {
+    console.log("runn");
     // Get height menu when hover
     let heightMenu = menuChild.current.clientHeight;
 
@@ -338,7 +344,20 @@ const MenuDefault = ({
           : position.top - 52,
       });
     }
+  };
+
+  useEffect(() => {
+    changeTabsWithPostion();
   }, [tab]);
+
+  useEffect(() => {
+    if (sameTab) {
+      changeTabsWithPostion();
+      setTimeout(() => {
+        setSameTab(false);
+      }, 100);
+    }
+  }, [sameTab]);
 
   const menuParent = [
     {
@@ -428,14 +447,25 @@ const MenuDefault = ({
                 <Package />
               </a>
             </li>
-            <li className={tab === "tab-layout" ? "active" : ""}>
+
+            <li className={tab === "tab-document" ? "active" : ""}>
               <a
                 href="#"
                 onClick={changeTabsClick}
                 onMouseEnter={changeTabs}
-                data-tabs="tab-layout"
+                data-tabs="tab-document"
               >
-                <Layers />
+                <Book />
+              </a>
+            </li>
+            <li className={tab === "tab-question-bank" ? "active" : ""}>
+              <a
+                href="#"
+                onClick={changeTabsClick}
+                onMouseEnter={changeTabs}
+                data-tabs="tab-question-bank"
+              >
+                <FileText />
               </a>
             </li>
             <li className={tab === "tab-option" ? "active" : ""}>
@@ -448,14 +478,14 @@ const MenuDefault = ({
                 <Tool />
               </a>
             </li>
-            <li className={tab === "tab-document" ? "active" : ""}>
+            <li className={tab === "tab-layout" ? "active" : ""}>
               <a
                 href="#"
                 onClick={changeTabsClick}
                 onMouseEnter={changeTabs}
-                data-tabs="tab-document"
+                data-tabs="tab-layout"
               >
-                <Book />
+                <Layers />
               </a>
             </li>
           </ul>
