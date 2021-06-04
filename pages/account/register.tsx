@@ -1,15 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { RegisterForm } from '~src/components';
-Register.propTypes = {
-  
-};
+import React from "react";
+import PropTypes from "prop-types";
+import RegisterForm from "~/components/RegisterForm";
+Register.propTypes = {};
 
-function Register({ }) {
-
+function Register({}) {
   return (
     <div>
-       <RegisterForm />
+      <RegisterForm />
     </div>
   );
 }
