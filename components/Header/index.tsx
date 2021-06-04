@@ -3,6 +3,7 @@ import { Popover, Button, Input, Select } from "antd";
 
 import { Grid } from "react-feather";
 import { useWrap } from "~/wrapper/wrap";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 import Link from "next/link";
 
@@ -14,6 +15,8 @@ import {
   MailOutlined,
   LogoutOutlined,
   SearchOutlined,
+  LoginOutlined,
+  FormOutlined,
 } from "@ant-design/icons";
 import TitlePage from "../Elements/TitlePage";
 import TitlePageHeader from "../Elements/TitlePageHeader";
@@ -39,30 +42,52 @@ export default function Header({
     console.log(`selected ${value}`);
   }
 
+  const moveToLogin = () => {
+    signIn();
+  };
+
   const content = (
+    // <ul className="user-function">
+    //   <li>
+    //     <a href="#">
+    //       <span className="icon">
+    //         <UserOutlined />
+    //       </span>
+    //       <span className="function-name">Profile</span>
+    //     </a>
+    //   </li>
+    //   <li>
+    //     <a href="#">
+    //       <span className="icon inbox">
+    //         <MailOutlined />
+    //       </span>
+    //       <span className="function-name">Inbox</span>
+    //     </a>
+    //   </li>
+    //   <li>
+    //     <a href="#">
+    //       <span className="icon logout">
+    //         <LogoutOutlined />
+    //       </span>
+    //       <span className="function-name">Log out</span>
+    //     </a>
+    //   </li>
+    // </ul>
     <ul className="user-function">
       <li>
-        <a href="#">
+        <a href="#" onClick={moveToLogin}>
           <span className="icon">
-            <UserOutlined />
+            <LoginOutlined />
           </span>
-          <span className="function-name">Profile</span>
+          <span className="function-name">Đăng nhập</span>
         </a>
       </li>
       <li>
         <a href="#">
           <span className="icon inbox">
-            <MailOutlined />
+            <FormOutlined />
           </span>
-          <span className="function-name">Inbox</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span className="icon logout">
-            <LogoutOutlined />
-          </span>
-          <span className="function-name">Log out</span>
+          <span className="function-name">Đăng kí</span>
         </a>
       </li>
     </ul>
@@ -170,13 +195,22 @@ export default function Header({
                 trigger="click"
                 title=""
               >
-                <div className="user-wrap">
+                {/* <div className="user-wrap">
                   <div className="user-img">
                     <img src="/images/user.jpg" alt="" />
                   </div>
                   <div className="user-info">
                     <p className="user-name">An Nguyen</p>
                     <p className="user-position">Teacher</p>
+                  </div>
+                </div> */}
+                <div className="user-wrap">
+                  {/* <div className="user-img">
+                    <img src="/images/user.jpg" alt="" />
+                  </div> */}
+                  <div className="user-info">
+                    <p className="user-name">Tài khoản</p>
+                    {/* <p className="user-position">Teacher</p> */}
                   </div>
                 </div>
               </Popover>
