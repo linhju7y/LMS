@@ -30,6 +30,7 @@ const InfoOtherCard = () => {
   return (
     <>
       <PowerTable
+        noScroll
         dataSource={dataService}
         columns={columns}
         Extra={<h5>Chuyển khóa</h5>}
@@ -37,6 +38,7 @@ const InfoOtherCard = () => {
       <Divider />
 
       <PowerTable
+        noScroll
         dataSource={dataService}
         columns={columns2}
         Extra={<h5>Khóa hẹn đăng kí</h5>}
@@ -45,6 +47,7 @@ const InfoOtherCard = () => {
       <Divider />
 
       <PowerTable
+        noScroll
         dataSource={dataService}
         columns={columns3}
         Extra={<h5>Bảo lưu</h5>}

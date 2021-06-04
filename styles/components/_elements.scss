@@ -1190,3 +1190,13 @@ hr {
   font-style: italic;
   color: #d05151;
 }
+
+.page-no-scroll {
+  overflow: hidden;
+  // visible scrollbar in tabs
+  .profile-tabs {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 80vh;
+  }
+}

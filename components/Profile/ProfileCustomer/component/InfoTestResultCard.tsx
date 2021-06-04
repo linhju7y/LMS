@@ -3,7 +3,7 @@ import { Card, Form, Select, Input, Table, Button } from "antd";
 import TinyBox from "~/components/TinyMCE";
 import { Comment, Tooltip, Avatar, Rate, Tag } from "antd";
 import { dataService } from "../../../../lib/customer/dataCustomer";
-import { Upload, Save } from "react-feather";
+import { Upload, Save, Info } from "react-feather";
 import PowerTable from "~/components/PowerTable";
 
 const InfoTestResultCard = () => {
@@ -43,10 +43,14 @@ const InfoTestResultCard = () => {
         return <span className="tag blue">{overall}</span>;
       },
     },
-    { title: "Noted", dataIndex: "service" },
     {
       render: () => (
         <>
+          <button className="btn btn-icon edit">
+            <Tooltip title="Đăng ký thi IELTS tại BC hoặc IDP ">
+              <Info />
+            </Tooltip>
+          </button>
           <button className="btn btn-icon">
             <Upload />
           </button>
@@ -65,8 +69,11 @@ const InfoTestResultCard = () => {
         <div className="col-8">
           <div className="row">
             <div className="col-12">
-              <Card title="Kết quả bài thi">
+              {/* <Card title="Kết quả bài thi">
                 <div className="row">
+              </Card> */}
+              <PowerTable
+                Extra={
                   <Form layout="vertical">
                     <div className="row">
                       <div className="col-6">
@@ -88,17 +95,13 @@ const InfoTestResultCard = () => {
                         </Form.Item>
                       </div>
                     </div>
-                    <div className="row">
-                      <PowerTable
-                        scroll={{ x: 300 }}
-                        pagination={false}
-                        columns={columns}
-                        dataSource={dataService}
-                      />
-                    </div>
                   </Form>
-                </div>
-              </Card>
+                }
+                noScroll
+                pagination={false}
+                columns={columns}
+                dataSource={dataService}
+              />
             </div>
           </div>
           <div className="row mt-5">

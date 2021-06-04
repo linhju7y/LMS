@@ -21,7 +21,7 @@ const ExpandTable = (props) => {
         >
           {props.children}
           <Table
-            scroll={{ x: 1000 }}
+            scroll={props.noScroll ? { x: "max-content" } : { x: 800 }}
             columns={props.columns}
             dataSource={props.dataSource}
             expandable={props.expandable}

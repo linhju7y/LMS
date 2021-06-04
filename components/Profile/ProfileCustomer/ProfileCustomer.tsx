@@ -17,29 +17,9 @@ import InfoTestResultCard from "./component/InfoTestResultCard";
 
 const ProfileCustomer = () => {
   const { TabPane } = Tabs;
-  const { Option } = Select;
 
-  const [fileList, setFileList] = useState([]);
-  const onChange = ({ fileList: newFileList }) => {
-    setFileList(newFileList);
-  };
-
-  const onPreview = async (file) => {
-    let src = file.url;
-    if (!src) {
-      src = await new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file.originFileObj);
-        reader.onload = () => resolve(reader.result);
-      });
-    }
-    const image = new Image();
-    image.src = src;
-    const imgWindow = window.open(src);
-    imgWindow.document.write(image.outerHTML);
-  };
   return (
-    <div className="container-fluid">
+    <div className="container-fluid page-no-scroll">
       <div className="row">
         <div className="col-3">
           <Affix offsetTop={85}>
@@ -85,25 +65,22 @@ const ProfileCustomer = () => {
         <div className="col-9">
           <Card>
             <Tabs type="card">
-              <TabPane tab="Thông tin cá nhân" key="1">
-                <InfoCusCard />
-              </TabPane>
-              <TabPane tab="Test Info" key="2">
+              <TabPane tab="Test Info" key="2" className="profile-tabs">
                 <InfoTestCard />
               </TabPane>
-              <TabPane tab="Course Joined" key="3">
+              <TabPane tab="Course Joined" key="3" className="profile-tabs">
                 <InfoCourseCard />
               </TabPane>
-              <TabPane tab="Payment History" key="4">
+              <TabPane tab="Payment History" key="4" className="profile-tabs">
                 <InfoPaymentCard />
               </TabPane>
-              <TabPane tab="Change History" key="5">
+              <TabPane tab="Change History" key="5" className="profile-tabs">
                 <InfoChangeCard />
               </TabPane>
-              <TabPane tab="Test result" key="6">
+              <TabPane tab="Test result" key="6" className="profile-tabs">
                 <InfoTestResultCard />
               </TabPane>
-              <TabPane tab="Other" key="7">
+              <TabPane tab="Other" key="7" className="profile-tabs">
                 <InfoOtherCard />
               </TabPane>
             </Tabs>

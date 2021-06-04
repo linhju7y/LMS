@@ -128,6 +128,7 @@ const InfoCourseCard = () => {
           key="1"
         >
           <PowerTable
+            noScroll
             dataSource={dataService}
             columns={columns}
             Extra={<h5>Điểm danh</h5>}
@@ -135,6 +136,7 @@ const InfoCourseCard = () => {
           <Divider />
 
           <ExpandTable
+            noScroll
             Extra={<h5>Bài tập</h5>}
             expandable={{ expandedRowRender }}
             dataSource={dataService}
@@ -144,6 +146,7 @@ const InfoCourseCard = () => {
           <Divider />
 
           <PowerTable
+            noScroll
             dataSource={dataService}
             columns={columns3}
             Extra={<h5>Điểm thi</h5>}

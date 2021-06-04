@@ -25,14 +25,14 @@ const InfoPaymentCard = () => {
         <h5>Học phí còn nợ: 00</h5>
       </div>
       <PowerTable
+        noScroll
         dataSource={dataService}
         columns={columns}
         Extra={<h5>Lịch sử thanh toán</h5>}
       />
 
       <PowerTable
-        dataSource={""}
-        columns={columns}
+        noScroll
         Extra={<h5>Lịch sử hoàn tiền</h5>}
       />
     </div>
