@@ -1,36 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
-import { registerAPI as registerAPI } from '~src/services/auth'
-import styles from './RegisterForm.module.scss';
-import { useRouter } from 'next/router';
-import toast, { Toaster } from 'react-hot-toast';
-import Loading from '~src/components/Loading';
-
-
+import { registerAPI as registerAPI } from "~/services/auth";
+import styles from "./RegisterForm.module.scss";
+import { useRouter } from "next/router";
+import toast, { Toaster } from "react-hot-toast";
+import Loading from "~/components/Loading";
 
 enum roles {
   user = "user",
   admin = "admin",
-  moderator = "moderator"
+  moderator = "moderator",
 }
 type Inputs = {
-  text: string,
-  textRequired: string,
+  text: string;
+  textRequired: string;
 };
 interface RegisterInputs {
-  username: Inputs,
-  password: Inputs,
-  repassword: Inputs,
-  email: Inputs,
-  roles: roles[]
-};
-
-
+  username: Inputs;
+  password: Inputs;
+  repassword: Inputs;
+  email: Inputs;
+  roles: roles[];
+}
 
 function index(props) {
-  const router = useRouter()
-  const { register, handleSubmit, watch, errors, reset } = useForm<RegisterInputs>();
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+    reset,
+  } = useForm<RegisterInputs>();
 
   const [checkRePass, setCheckRePass] = useState(false);
 
@@ -38,8 +40,14 @@ function index(props) {
 
   // const [state, setState] = useState();
 
-  const _Submit = async (data: { repassword: '', password: '', username: '', roles: [], email: '' }) => {
-    console.log('_Submit data', data);
+  const _Submit = async (data: {
+    repassword: "";
+    password: "";
+    username: "";
+    roles: [];
+    email: "";
+  }) => {
+    console.log("_Submit data", data);
 
     setLoading(true);
 
@@ -52,7 +60,7 @@ function index(props) {
 
         console.log("RES: ", res.status);
         if (res.status === 200) {
-          toast.success('Đăng kí thành công', {
+          toast.success("Đăng kí thành công", {
             duration: 4000,
           });
           setLoading(false);
@@ -61,79 +69,101 @@ function index(props) {
           }, 500);
         } else {
           setLoading(false);
-          toast.error('Đăng kí không thành công', {
+          toast.error("Đăng kí không thành công", {
             duration: 4000,
           });
         }
-
       } catch (error) {
         console.log("Error: ", error);
       }
     }
   };
 
-
   const moveToSignIn = (e) => {
-    e.preventDefault()
-    router.push('/account');
+    e.preventDefault();
+    router.push("/account");
   };
 
   useEffect(() => {
-    return () => { }
-  }, [])
+    return () => {};
+  }, []);
 
   // console.log(watch("username"));
   // console.log(watch("password"));
   /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
   return (
     <>
-      <Toaster
-        position="top-center"
-      />
+      <Toaster position="top-center" />
       <div className={styles.container}>
-
         <div className={styles.wrapBox}>
-          <div className={styles.imgLogin}><img src="/img/symbol-login.png" alt="" /></div>
+          <div className={styles.imgLogin}>
+            <img src="/img/symbol-login.png" alt="" />
+          </div>
           <div className={styles.wrapForm}>
-
-            <form onSubmit={handleSubmit(_Submit)} className={`${styles.loginForm}`}>
-              <div className={styles.loginFormImg}><img src="/img/icon-mona.png" alt="" /></div>
+            <form
+              onSubmit={handleSubmit(_Submit)}
+              className={`${styles.loginForm}`}
+            >
+              <div className={styles.loginFormImg}>
+                <img src="/img/icon-mona.png" alt="" />
+              </div>
               <h6 className={styles.title}>Đăng ký</h6>
 
               {/* <input name="csrfToken" type="hidden" defaultValue={props?.csrfToken} /> */}
 
               <label className={styles.fcontrol}>Tên đăng nhập</label>
 
-              <input name="username" placeholder="Nhập tên đăng nhập" defaultValue="" ref={register({ required: true })} />
-              {errors.username && <span className={styles.errorText}>Hãy điền tên đăng nhập</span>}
+              <input
+                name="username"
+                placeholder="Nhập tên đăng nhập"
+                defaultValue=""
+                {...register("username", { required: true })}
+              />
+              {errors.username && (
+                <span className={styles.errorText}>Hãy điền tên đăng nhập</span>
+              )}
 
               <label className={styles.fcontrol}>Email</label>
 
-              <input name="email" placeholder="Nhập Email" defaultValue="" ref={register({ required: true })} />
-              {errors.email && <span className={styles.errorText}>Hãy nhập email</span>}
+              <input
+                name="email"
+                placeholder="Nhập Email"
+                defaultValue=""
+                {...register("email", { required: true })}
+              />
+              {errors.email && (
+                <span className={styles.errorText}>Hãy nhập email</span>
+              )}
 
               <label className={styles.fcontrol}>Mật khẩu</label>
               <input
                 type="password"
                 name="password"
                 defaultValue=""
-                ref={register({ required: true })}
+                {...register("password", { required: true })}
                 placeholder="Nhập password"
               />
-              {errors.password && <span className={styles.errorText}>Hãy điền mật khẩu</span>}
+              {errors.password && (
+                <span className={styles.errorText}>Hãy điền mật khẩu</span>
+              )}
 
               <label className={styles.fcontrol}>Nhập lại mật khẩu</label>
               <input
                 type="password"
                 name="repassword"
                 defaultValue=""
-                ref={register({ required: true })}
+                {...register("repassword", { required: true })}
                 placeholder="Nhập password"
               />
-              {errors.repassword
-                ? <span className={styles.errorText}>Hãy điền mật khẩu</span>
-                : checkRePass && <span className={styles.errorText}>Mật khẩu nhập lại chưa đúng</span>
-              }
+              {errors.repassword ? (
+                <span className={styles.errorText}>Hãy điền mật khẩu</span>
+              ) : (
+                checkRePass && (
+                  <span className={styles.errorText}>
+                    Mật khẩu nhập lại chưa đúng
+                  </span>
+                )
+              )}
 
               {/* <label className={styles.fcontrol}>Chọn quyền</label>
               <select className={styles.loginSelect} name="roles" ref={register({ required: true })} >
@@ -144,22 +174,21 @@ function index(props) {
               {errors.roles && <span>Phải chọn ít nhất một quyền</span>} */}
 
               <div className={styles.boxSubmit}>
-                <input type="submit" value={'Đăng ký'} />
+                <input type="submit" value={"Đăng ký"} />
               </div>
               <div className={styles.boxSignup}>
-                Bạn đã có tài khoản? <a href="" onClick={moveToSignIn}>Đăng nhập</a>
+                Bạn đã có tài khoản?{" "}
+                <a href="" onClick={moveToSignIn}>
+                  Đăng nhập
+                </a>
               </div>
 
-              {
-                loading && <div className={styles.loading}></div>
-              }
+              {loading && <div className={styles.loading}></div>}
             </form>
           </div>
         </div>
       </div>
     </>
-
-
   );
 }
 
