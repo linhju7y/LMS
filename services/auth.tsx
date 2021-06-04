@@ -6,7 +6,7 @@
 // import axios from "axios";
 import { instance } from "./instance";
 
-export const login = async (params: { username: string; password: string }) => {
+export const login = async (params) => {
   try {
     var FormData = require("form-data");
     const formData = new FormData();
