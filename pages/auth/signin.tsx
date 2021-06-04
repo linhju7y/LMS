@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { providers, signIn, csrfToken } from "next-auth/client";
+import { providers, signIn, csrfToken, getProviders } from "next-auth/client";
 import { useRouter } from "next/router";
 import LoginForm from "~/components/LoginForm";
 
@@ -47,9 +47,16 @@ export default function SignIn() {
   );
 }
 
-SignIn.getInitialProps = async (context) => {
+export async function getServerSideProps(context) {
+  const providers = await getProviders();
   return {
-    providers: await providers(context),
-    csrfToken: await csrfToken(context),
+    props: { providers },
   };
-};
+}
+
+// SignIn.getInitialProps = async (context) => {
+//   return {
+//     providers: await providers(context),
+//     csrfToken: await csrfToken(context),
+//   };
+// };
