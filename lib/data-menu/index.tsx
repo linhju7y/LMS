@@ -75,7 +75,7 @@ export const dataMenu = [
   },
 
   {
-    MenuName: "tab-student",
+    MenuName: "tab-customer",
     MenuTitle: "Khách hàng",
     MenuKey: "course",
     MenuItem: [
@@ -132,6 +132,21 @@ export const dataMenu = [
             Key: "/customer/student/student-advisory",
             Route: "/customer/student/student-advisory",
             Text: "HV cần tư vấn",
+            Icon: "",
+          },
+        ],
+      },
+      {
+        ItemType: "sub-menu",
+        Key: "sub-list-parants",
+        Icon: '<span class="anticon"><img src="/images/icons/users.svg"></span>',
+        TitleSub: "Phụ Huynh",
+        SubMenuList: [
+          {
+            ItemType: "single",
+            Key: "/customer/parents/parents-list",
+            Route: "/customer/parents/parents-list",
+            Text: "Danh sách phụ huynh",
             Icon: "",
           },
         ],

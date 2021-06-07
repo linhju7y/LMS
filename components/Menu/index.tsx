@@ -224,17 +224,21 @@ const MenuDefault = ({
   const FindTabActive = () => {
     dataMenu.forEach((menu, index) => {
       menu.MenuItem.forEach((item, ind) => {
-        if (item.ItemType === "sub-menu") {
-          item.SubMenuList.forEach((itemSub, key) => {
-            if (itemSub.Route === getRouter) {
+        if (getRouter === "/") {
+          tabSet("tab-home");
+        } else {
+          if (item.ItemType === "sub-menu") {
+            item.SubMenuList.forEach((itemSub, key) => {
+              if (itemSub.Route === getRouter) {
+                tabSet(menu.MenuName);
+                return false;
+              }
+            });
+          } else {
+            if (item.Route === getRouter) {
               tabSet(menu.MenuName);
               return false;
             }
-          });
-        } else {
-          if (item.Route === getRouter) {
-            tabSet(menu.MenuName);
-            return false;
           }
         }
       });
@@ -361,7 +365,7 @@ const MenuDefault = ({
       TabName: "tab-course",
     },
     {
-      TabName: "tab-student",
+      TabName: "tab-customer",
     },
     {
       TabName: "tab-staff",
@@ -414,12 +418,12 @@ const MenuDefault = ({
                 <Airplay />
               </a>
             </li>
-            <li className={tab === "tab-student" ? "active" : ""}>
+            <li className={tab === "tab-customer" ? "active" : ""}>
               <a
                 href="#"
                 onClick={changeTabsClick}
                 onMouseEnter={changeTabs}
-                data-tabs="tab-student"
+                data-tabs="tab-customer"
               >
                 <User />
               </a>
@@ -675,7 +679,7 @@ const MenuDefault = ({
           <Menu
             mode="inline"
             theme="light"
-            style={{ display: tab === "tab-student" ? "block" : "none" }}
+            style={{ display: tab === "tab-customer" ? "block" : "none" }}
           >
             <Menu.ItemGroup key="course" title="Khách hàng">
               <SubMenu

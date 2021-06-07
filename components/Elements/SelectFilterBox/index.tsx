@@ -25,7 +25,7 @@ const SelectFilterBox = (props) => {
     <Select
       className="style-input"
       showSearch
-      placeholder="Select a person"
+      placeholder="Select..."
       optionFilterProp="children"
       onChange={onChange}
       onFocus={onFocus}

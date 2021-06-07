@@ -25,42 +25,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="vi">
-        <Head>
-          <title>MONA LMS V2</title>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-
-          <meta name="robots" content="noindex" />
-          <link
-            rel="stylesheet"
-            href="https://www.amcharts.com/lib/3/plugins/export/export.css"
-            type="text/css"
-            media="all"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdn3.devexpress.com/jslib/20.2.7/css/dx.common.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdn3.devexpress.com/jslib/20.2.7/css/dx.light.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdn3.devexpress.com/jslib/20.2.7/css/dx-gantt.min.css"
-          />
-
-          {/* <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script> */}
-          <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-          <script src="https://www.amcharts.com/lib/3/serial.js"></script>
-          <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-          {/* <script src="path/to/chartjs/dist/chart.js"></script> */}
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

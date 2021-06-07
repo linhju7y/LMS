@@ -34,17 +34,17 @@ const ModalAdd = () => {
     },
   ];
 
-  const dataDistrict = [
+  const dataPosition = [
     {
-      Value: "q1",
+      Value: "tt1",
       Text: "Trung tâm 1",
     },
     {
-      Value: "q2",
+      Value: "tt2",
       Text: "Trung tâm 2",
     },
     {
-      Value: "q3",
+      Value: "tt3",
       Text: "Trung tâm 3",
     },
   ];
@@ -55,7 +55,7 @@ const ModalAdd = () => {
         Thêm mới
       </button>
       <Modal
-        title="Create Saler"
+        title="Tạo mới phụ huynh"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -73,13 +73,13 @@ const ModalAdd = () => {
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
 
-                <Form.Item label="Tên tài khoản">
+                <Form.Item label="Là phụ huynh của học viên">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
               <div className="col-md-6 col-12">
                 <Form.Item label="Trung tâm">
-                  <SelectFilterBox data={dataDistrict} />
+                  <SelectFilterBox data={dataPosition} />
                 </Form.Item>
 
                 <Form.Item label="Họ và tên">

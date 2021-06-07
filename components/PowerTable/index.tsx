@@ -28,7 +28,7 @@ const PowerTable = (props) => {
               {props.children}
               <Table
                 bordered={props.haveBorder ? props.haveBorder : false}
-                scroll={props.noScroll ? { x: "max-content" } : { x: 800 }}
+                scroll={props.noScroll ? { x: "max-content" } : { x: 600 }}
                 columns={props.columns}
                 dataSource={props.dataSource}
                 size="middle"

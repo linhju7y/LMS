@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Form, Input, Button, Radio } from "antd";
-import SelectFilterBox from "~/components/SelectFilterBox";
+import SelectFilterBox from "~/components/Elements/SelectFilterBox";
 
 type LayoutType = Parameters<typeof Form>[0]["layout"];
 
