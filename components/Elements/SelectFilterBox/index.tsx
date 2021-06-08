@@ -23,6 +23,7 @@ const SelectFilterBox = (props) => {
 
   return (
     <Select
+      style={{ width: "100%" }}
       className="style-input"
       showSearch
       placeholder="Select..."

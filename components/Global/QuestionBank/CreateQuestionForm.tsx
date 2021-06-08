@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Drawer, Form, Select, Input, Radio } from "antd";
 import TinyBox from "~/components/Elements/TinyBox";
+import { Edit } from "react-feather";
 
-const CreateQuestionForm = () => {
+const CreateQuestionForm = (props) => {
   const [visible, setVisible] = useState(false);
   const [value, setValue] = React.useState(1);
   const [openAns, setOpenAns] = useState(false);
@@ -32,17 +33,23 @@ const CreateQuestionForm = () => {
 
   return (
     <>
-      <button className="btn btn-success" onClick={showDrawer}>
-        Tạo câu hỏi
-      </button>
+      {props.isEdit ? (
+        <button className="btn btn-icon" onClick={showDrawer}>
+          <Edit />
+        </button>
+      ) : (
+        <button className="btn btn-success" onClick={showDrawer}>
+          Tạo câu hỏi
+        </button>
+      )}
 
       <Drawer
-        title="Form tạo câu hỏi"
+        title={props.isEdit ? "Form sửa câu hỏi" : "Form tạo câu hỏi"}
         placement="right"
         closable={false}
         onClose={onClose}
         visible={visible}
-        width={700}
+        width={900}
       >
         <Form layout="vertical">
           <div className="row">
@@ -155,7 +162,7 @@ const CreateQuestionForm = () => {
                   className="btn btn-primary"
                   style={{ marginRight: "10px" }}
                 >
-                  Tạo ngay
+                  {props.isEdit ? "Sửa ngay" : "Tạo ngay"}
                 </button>
                 <button className="btn btn-success">Up file</button>
               </Form.Item>
