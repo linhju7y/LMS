@@ -8,11 +8,11 @@ import Header from "~/components/Header";
 import Menu from "~/components/Menu";
 import { signIn, signOut, useSession } from "next-auth/client";
 import SignIn from "~/pages/auth/signin";
-
-const name = "Mona";
+import { useWrap } from "~/wrapper/wrap";
+import TitlePageHeader from "./Elements/TitlePageHeader";
 export const siteTitle = "Mona Media Admin";
 
-let countLogin = 0;
+const name = "Mona";
 
 export default function Layout({
   children,
@@ -23,7 +23,15 @@ export default function Layout({
 }) {
   const [isOpen, setIsOpen] = useState(true);
   const [session, loading] = useSession();
-  console.log("isOpen: ", isOpen);
+  const [openMenuMobile, setOpenMenuMobile] = useState(false);
+  const { titlePage } = useWrap();
+  const funcMenuMobile = () => {
+    !openMenuMobile ? setOpenMenuMobile(true) : setOpenMenuMobile(false);
+  };
+
+  const resetMenuMobile = () => {
+    setOpenMenuMobile(false);
+  };
 
   const isOpenMenu = () => {
     if (isOpen) {
@@ -32,6 +40,7 @@ export default function Layout({
       setIsOpen(true);
     }
   };
+
   const handleSignIn = (event: React.SyntheticEvent<any>) => signIn();
   useEffect(() => {}, []);
 
@@ -44,10 +53,24 @@ export default function Layout({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <Header isOpenMenu={isOpenMenu} isOpen={isOpen} />
-      <Menu isOpenMenu={isOpenMenu} isOpen={isOpen} />
+      <Header
+        isOpenMenu={isOpenMenu}
+        isOpen={isOpen}
+        funcMenuMobile={funcMenuMobile}
+        openMenuMobile={openMenuMobile}
+      />
+      <Menu
+        resetMenuMobile={resetMenuMobile}
+        isOpenMenu={isOpenMenu}
+        isOpen={isOpen}
+        openMenuMobile={openMenuMobile}
+        funcMenuMobile={funcMenuMobile}
+      />
       <main className="app-main">
         <div className={`app-content ${!isOpen && "close"}`}>
+          <div className="app-content-title">
+            <TitlePageHeader title={titlePage} />
+          </div>
           <div className="container-fluid">{children}</div>
         </div>
       </main>

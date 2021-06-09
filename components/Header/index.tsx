@@ -18,6 +18,7 @@ import {
   LoginOutlined,
   FormOutlined,
 } from "@ant-design/icons";
+import { User } from "react-feather";
 import TitlePage from "../Elements/TitlePage";
 import TitlePageHeader from "../Elements/TitlePageHeader";
 const { Search } = Input;
@@ -28,9 +29,13 @@ let countOpen = 0;
 export default function Header({
   isOpenMenu,
   isOpen,
+  funcMenuMobile,
+  openMenuMobile,
 }: {
   isOpen: boolean;
   isOpenMenu: Function;
+  funcMenuMobile: Function;
+  openMenuMobile: boolean;
 }) {
   const content_search = (
     <div className="input-search">
@@ -123,7 +128,7 @@ export default function Header({
   }
 
   return (
-    <header className={`app-header `}>
+    <header className={`app-header ${openMenuMobile ? "mobile" : ""}`}>
       <div
         className={`app-header-logo ${
           !isOpen ? "close" : countOpen > 0 ? "open" : "open-no-ani"
@@ -141,6 +146,18 @@ export default function Header({
             <div className="box-menu">
               <div className="icon-action">
                 {!isOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              </div>
+            </div>
+          </div>
+
+          <div className="col-button mobile" onClick={() => funcMenuMobile()}>
+            <div className="box-menu">
+              <div className="icon-action">
+                {!openMenuMobile ? (
+                  <MenuUnfoldOutlined />
+                ) : (
+                  <MenuFoldOutlined />
+                )}
               </div>
             </div>
           </div>
@@ -210,12 +227,15 @@ export default function Header({
                   </div> */}
                   <div className="user-info">
                     <p className="user-name">Tài khoản</p>
+                    <div className="user-name-mobile">
+                      <User />
+                    </div>
                     {/* <p className="user-position">Teacher</p> */}
                   </div>
                 </div>
               </Popover>
             </li>
-            <li>
+            <li className="custom-wrap">
               <div className="custom">
                 {/* <SettingOutlined /> */}
                 <Grid />

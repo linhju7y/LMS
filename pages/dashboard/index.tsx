@@ -13,10 +13,10 @@ import LineCard from "components/Dashboard/ChartCard/LineCard";
 const Dashboard = () => {
   console.log(dataPie);
   return (
-    <div className="container-fluid">
+    <div>
       <TitlePage title="Dashboard" />
       <div className="row">
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           <ChartCard
             prize="0"
             percent="100"
@@ -25,7 +25,7 @@ const Dashboard = () => {
             children={<LineCard dataCard={increamentData} />}
           />
         </div>
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           <ChartCard
             title="Học viên đang học"
             prize="20"
@@ -34,7 +34,7 @@ const Dashboard = () => {
             styleName="up"
           />
         </div>
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           <ChartCard
             prize="3"
             percent="8"
@@ -43,7 +43,7 @@ const Dashboard = () => {
             title="Học viên mới đăng kí"
           />
         </div>
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           <ChartCard
             prize="3"
             percent="10"
@@ -52,7 +52,7 @@ const Dashboard = () => {
             title="Học viên hẹn đăng kí"
           />
         </div>
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           {" "}
           <ChartCard
             prize="12"
@@ -62,7 +62,7 @@ const Dashboard = () => {
             children={<ModelCard dataCard={increamentData} />}
           />
         </div>
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           <ChartCard
             title="Học viên đến test"
             prize="19"
@@ -73,7 +73,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="row pt-5">
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           <ChartCard
             prize="3"
             percent="8"
@@ -82,7 +82,7 @@ const Dashboard = () => {
             title="Học viên đăng kí"
           />
         </div>
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           <ChartCard
             prize="40"
             percent="85"
@@ -91,7 +91,7 @@ const Dashboard = () => {
             title="Học viên bảo lưu"
           />
         </div>
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           <ChartCard
             prize="12"
             percent="23"
@@ -100,7 +100,7 @@ const Dashboard = () => {
             children={<ModelCard dataCard={increamentData} />}
           />
         </div>
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           <ChartCard
             title="Bài đã chấm"
             prize="4"
@@ -109,7 +109,7 @@ const Dashboard = () => {
             styleName="down"
           />
         </div>
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           <ChartCard
             prize="100"
             percent="100"
@@ -118,7 +118,7 @@ const Dashboard = () => {
             title="Bài không đạt"
           />
         </div>
-        <div className="col-2">
+        <div className="col-md-2 col-sm-4 col-6">
           <ChartCard
             prize="12"
             percent="47"
@@ -136,11 +136,13 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="row pt-5 pb-5">
-        <div className="col-8">
+        <div className="col-md-8 col-12">
           <AcademicChart />
         </div>
-        <div className="col-4">
-          <RateChart dataPie={dataPie} />
+        <div className="col-md-4 col-12">
+          <div className="chart-comment">
+            <RateChart dataPie={dataPie} />
+          </div>
         </div>
       </div>
     </div>

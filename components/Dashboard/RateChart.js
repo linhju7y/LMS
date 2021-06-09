@@ -21,7 +21,7 @@ const RateChart = ({ dataPie }) => {
         }}
       >
         <div className="row">
-          <div className="col-12 col-md-12 col-lg-4">
+          <div className="col-4 col-md-4 col-lg-4">
             <div className="detail-pieChart" style={{ paddingTop: 80 }}>
               <div>
                 <i className="fas fa-circle" style={{ color: "#0088FE" }} />
@@ -60,8 +60,8 @@ const RateChart = ({ dataPie }) => {
               </div>
             </div>
           </div>
-          <div className="col-12 col-md-12 col-lg-8 pl-2">
-            <ResponsiveContainer width="100%" height={300}>
+          <div className="col-8 col-md-8 col-lg-8 pl-2">
+            <ResponsiveContainer width="117%" height={300}>
               <PieChart>
                 <Pie
                   dataKey="value"

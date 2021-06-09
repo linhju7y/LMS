@@ -144,8 +144,8 @@ export const dataMenu = [
         SubMenuList: [
           {
             ItemType: "single",
-            Key: "/customer/parents/parents-list",
-            Route: "/customer/parents/parents-list",
+            Key: "/customer/parents",
+            Route: "/customer/parents",
             Text: "Danh sách phụ huynh",
             Icon: "",
           },

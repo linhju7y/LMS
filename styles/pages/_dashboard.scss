@@ -113,3 +113,8 @@
 .gx-card-widget .ant-card-body {
   padding: 24px;
 }
+.chart-comment {
+  @include max-media(1000px) {
+    margin-top: 40px;
+  }
+}

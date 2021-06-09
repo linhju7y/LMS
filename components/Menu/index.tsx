@@ -64,81 +64,6 @@ type dataMenu = [];
 
 const { SubMenu } = Menu;
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 2800,
-    pv: 2800,
-    amt: 2100,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 1900,
-  },
-  {
-    name: "Page G",
-    uv: 3800,
-    pv: 3800,
-    amt: 2100,
-  },
-  {
-    name: "Page G",
-    uv: 2200,
-    pv: 2200,
-    amt: 1650,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 3780,
-    amt: 1780,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 3400,
-    amt: 1500,
-  },
-];
-
 type propState = {
   collapsed: boolean;
 };
@@ -146,7 +71,13 @@ type propState = {
 const MenuDefault = ({
   isOpen,
   isOpenMenu,
+  openMenuMobile,
+  funcMenuMobile,
+  resetMenuMobile,
 }: {
+  resetMenuMobile: Function;
+  funcMenuMobile: Function;
+  openMenuMobile: boolean;
   isOpen: boolean;
   isOpenMenu: Function;
 }) => {
@@ -309,8 +240,8 @@ const MenuDefault = ({
   }, [openKeys]);
 
   useEffect(() => {
-    FindSubMenuActive();
-    FindTabActive();
+    let widthScr = window.innerWidth;
+    widthScr < 1000 ? resetMenuMobile() : FindSubMenuActive(), FindTabActive();
   }, [getRouter]);
 
   useEffect(() => {
@@ -321,6 +252,11 @@ const MenuDefault = ({
       }),
       FindTabActive());
   }, [isOpen]);
+
+  // useEffect(() => {
+  //   let widthScr = window.innerWidth;
+  //   if(widthScr < )
+  // },[]);
 
   const changeTabsWithPostion = () => {
     // Get height menu when hover
@@ -348,6 +284,9 @@ const MenuDefault = ({
   };
 
   useEffect(() => {
+    // let widthScr = window.innerWidth;
+    // widthScr < 1000 ? funcMenuMobile() : changeTabsWithPostion();
+
     changeTabsWithPostion();
   }, [tab]);
 
@@ -384,8 +323,16 @@ const MenuDefault = ({
     },
   ];
 
+  const closeMenuMobile = (e) => {
+    e.preventDefault();
+    funcMenuMobile();
+  };
+
   return (
-    <aside className={`navbar-right `}>
+    <aside className={`navbar-right ${openMenuMobile ? "mobile" : ""}`}>
+      <div className={`navbar-right-bg ${openMenuMobile ? "active" : ""}`}>
+        <a href="#" onClick={closeMenuMobile}></a>
+      </div>
       <div className="menu-parent">
         <div className="menu-parent-logo">
           <Link href="/dashboard">
@@ -503,10 +450,9 @@ const MenuDefault = ({
           !isOpen && `close  ${isHover.status ? "hover-open" : ""} `
         }`}
       >
-        {/* <div className="app-header-logo">
-          <p style={{ display: isOpen ? "block" : "none" }}>Mona Media</p>
-          <p style={{ display: !isOpen ? "block" : "none" }}>M</p>
-        </div> */}
+        <div className="app-header-logo">
+          <p>Mona Media</p>
+        </div>
         <div
           className={`menu-child-body ${
             isHover.changeHeight ? "change-height" : ""

@@ -26,8 +26,8 @@ const ScheduleStudy = () => {
               <CheckOneStudyTime />
               <CheckManyStudyTime />
               <CheckRoom />
-              <CalendarManyTeacher />
               <CheckEmptyTeacher />
+              <CalendarManyTeacher />
             </div>
           }
         >

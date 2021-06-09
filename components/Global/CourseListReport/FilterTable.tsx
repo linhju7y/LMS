@@ -106,7 +106,7 @@ const FilterTable = () => {
           </div>
 
           <div className="col-md-12">
-            <Form.Item label="Thao tác">
+            <Form.Item className="mb-0" label="Thao tác">
               <button
                 className="btn btn-primary"
                 style={{ marginRight: "10px" }}
@@ -123,7 +123,12 @@ const FilterTable = () => {
 
   return (
     <>
-      <Popover placement="bottomRight" content={content} trigger="click">
+      <Popover
+        placement="bottomRight"
+        content={content}
+        trigger="click"
+        overlayClassName="filter-popover"
+      >
         <button className="btn btn-secondary light btn-filter">
           <Filter />
         </button>

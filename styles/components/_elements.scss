@@ -509,6 +509,10 @@ textarea.form-control {
     left: inherit;
     top: 115%;
 
+    @include max-media(600px) {
+      width: 100%;
+    }
+
     &.left {
       right: inherit;
       left: 0;
@@ -571,6 +575,12 @@ textarea.form-control {
   transition: 0.3s width;
   height: calc(100vh - 65px);
   overflow: auto;
+
+  @include max-media(1000px) {
+    width: 100%;
+    padding: 20px 0;
+    overflow-x: hidden;
+  }
 
   &::-webkit-scrollbar-track {
     border-radius: 10px;
@@ -734,10 +744,16 @@ textarea.form-control {
 
   .table-medium {
     width: 75%;
+    @include max-media(800px) {
+      width: 100%;
+    }
   }
 
   .table-small {
     width: 72%;
+    @include max-media(800px) {
+      width: 100%;
+    }
   }
 }
 
@@ -1198,5 +1214,66 @@ hr {
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 80vh;
+  }
+}
+
+.app-content-title {
+  display: none;
+  @include max-media(1000px) {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0 15px;
+  }
+}
+
+.style-card {
+  @include max-media(600px) {
+    margin-bottom: 20px;
+  }
+}
+
+.space-top-card {
+  @include max-media(600px) {
+    margin-top: 20px;
+  }
+}
+.ant-card-head-wrapper {
+  @include max-media(800px) {
+    flex-wrap: wrap;
+    .ant-card-head-title,
+    .ant-card-extra {
+      width: 100%;
+    }
+    .ant-card-extra {
+      padding-top: 0;
+      .wrap-filter-parent {
+        margin-bottom: 5px;
+        .btn {
+          padding: 0.575rem 1rem;
+        }
+      }
+    }
+  }
+}
+
+.filter-popover {
+  @include max-media(600px) {
+    width: 95%;
+    left: 2.5% !important;
+    // left: 50% !important;
+    // transform-origin: unset !important;
+    // transform: translateX(-50%);
+  }
+}
+
+.ant-card-head {
+  @include max-media(600px) {
+    padding: 0 10px;
+  }
+}
+
+.ant-card-body {
+  @include max-media(600px) {
+    padding: 20px 10px;
   }
 }

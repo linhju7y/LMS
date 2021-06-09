@@ -8,6 +8,36 @@
   transition: 0.5s width;
   display: flex;
   z-index: 101;
+  transition: 0.3s width;
+
+  .navbar-right-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.137);
+    display: none;
+    z-index: 0;
+
+    a {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+
+  @include max-media(1000px) {
+    width: 0;
+
+    &.mobile {
+      width: 330px;
+    }
+  }
 
   .menu-parent {
     position: relative;
@@ -15,6 +45,10 @@
     width: 80px;
     height: 100%;
     background: $primary-color;
+
+    // @include max-media(1000px) {
+    //   display: none;
+    // }
 
     .menu-parent-logo {
       width: 100%;
@@ -93,6 +127,13 @@
     box-shadow: 10px 9px 15px #0000000d;
     z-index: 9;
 
+    @include max-media(1000px) {
+      position: relative;
+      left: initial;
+      top: initial;
+      height: 100vh;
+    }
+
     .anticon {
       img {
         opacity: 0.6;
@@ -120,6 +161,10 @@
         height: auto !important;
         background: white;
         display: none;
+
+        @include max-media(1000px) {
+          padding-top: 65px;
+        }
 
         ul {
           border-bottom-right-radius: 1rem;
@@ -216,11 +261,17 @@
       transition: 0.2s width;
       display: flex;
       align-items: center;
+      display: none;
+
+      @include max-media(1000px) {
+        display: flex;
+      }
+
       p {
         margin: 0;
         text-transform: uppercase;
         font-weight: bold;
-        font-size: 22px;
+        font-size: 20px;
         color: #0088cc;
         white-space: pre;
       }

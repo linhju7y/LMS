@@ -14,6 +14,14 @@
   align-items: center;
   z-index: 100;
 
+  @include max-media(1000px) {
+    width: 100%;
+
+    &.mobile {
+      width: calc(100% - 330px);
+    }
+  }
+
   &.close {
     width: calc(100% - 80px);
 
@@ -29,6 +37,12 @@
     }
   }
 
+  .col-title-page {
+    @include max-media(1000px) {
+      display: none;
+    }
+  }
+
   .app-header-logo {
     width: 250px;
     height: 100%;
@@ -39,6 +53,10 @@
     justify-content: space-between;
     transition: 0.3s width;
     box-shadow: 2px 1px 15px #0000000d;
+
+    @include max-media(1000px) {
+      display: none;
+    }
 
     // &.open-no-ani {
     //   p {
@@ -100,6 +118,11 @@
     justify-content: space-between;
     padding: 0 25px;
     transition: 0.3s width;
+
+    @include max-media(1000px) {
+      width: 100%;
+      padding: 0 15px;
+    }
 
     &.close {
       width: calc(100% - 80px);
@@ -177,6 +200,18 @@
       align-items: center;
       justify-content: center;
       margin-right: 20px;
+      @include max-media(1000px) {
+        display: none;
+      }
+
+      &.mobile {
+        display: none;
+        @include max-media(1000px) {
+          display: block;
+          margin-left: -15px;
+          margin-right: 0;
+        }
+      }
 
       .box-menu {
         width: 100%;
@@ -229,6 +264,7 @@
         margin-bottom: 0;
         margin-top: 0;
         height: 100%;
+        padding-left: 0;
 
         li {
           display: flex;
@@ -237,6 +273,10 @@
           padding: 0 15px;
           cursor: pointer;
           height: 100%;
+
+          @include max-media(1000px) {
+            padding: 0 5px;
+          }
 
           &:last-child {
             margin-right: 0;
@@ -315,6 +355,12 @@
           }
         }
 
+        .custom-wrap {
+          @include max-media(1000px) {
+            display: none;
+          }
+        }
+
         .user {
           cursor: pointer;
           padding-right: 0;
@@ -323,6 +369,9 @@
             display: flex;
             align-items: center;
             padding: 12px 0;
+            @include max-media(1000px) {
+              padding: 0;
+            }
           }
 
           .user-img {
@@ -346,6 +395,27 @@
               color: #464646;
               font-size: 13px;
               font-weight: 600;
+              @include max-media(1000px) {
+                display: none;
+              }
+            }
+            .user-name-mobile {
+              display: none;
+              @include max-media(1000px) {
+                display: block;
+                width: 36px;
+                height: 36px;
+                background: #edf1f8;
+                border-radius: 0.375rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                svg {
+                  width: 21px;
+                  color: #989898;
+                }
+              }
             }
             .user-position {
               font-size: 12px;

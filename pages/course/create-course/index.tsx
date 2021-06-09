@@ -74,7 +74,7 @@ const CreateCourse = (props: { props: any }) => {
         </div>
         <div className="col-md-4 col-12">
           <div className="wrap-card-info-course">
-            <Card title="Thông tin khóa học">
+            <Card title="Thông tin khóa học" className="space-top-card">
               <div className="info-course">
                 <Collapse onChange={callback}>
                   <Panel
