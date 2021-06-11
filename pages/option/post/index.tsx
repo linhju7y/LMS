@@ -100,6 +100,7 @@ const Post = () => {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Post List"
       expandable={{ expandedRowRender }}
       TitleCard={<PostForm showAdd={true} />}

@@ -250,6 +250,10 @@
     height: calc(100vh - 206px);
     padding-right: 10px;
 
+    @include max-media(800px) {
+      height: auto;
+    }
+
     .question-list {
       &.active {
         height: 100%;

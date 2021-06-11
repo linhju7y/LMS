@@ -62,6 +62,7 @@ export default function FinancePayment() {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Danh sách phiếu chi"
       TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}

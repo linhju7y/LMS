@@ -114,6 +114,7 @@ const StudentData = () => {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="DANH SÁCH HỌC VIÊN"
       TitleCard={<StudyTimeForm showAdd={true} />}
       expandable={{ expandedRowRender }}

@@ -90,6 +90,7 @@ export default function CustomerServiceExam() {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Danh sách đăng kí đi thi"
       dataSource={dataService}
       TitleCard={<StudyTimeForm showAdd={true} />}

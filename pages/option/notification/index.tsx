@@ -41,6 +41,7 @@ const Notification = () => {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Notification List"
       expandable={{ expandedRowRender }}
       TitleCard={<NotificationForm showAdd={true} />}

@@ -7,9 +7,18 @@
       align-items: center;
       margin-bottom: 25px;
 
-      label {
+      @include max-media(600px) {
+        flex-wrap: wrap;
+      }
+
+      & > label {
         width: 100px;
         font-weight: 600;
+
+        @include max-media(600px) {
+          width: 100%;
+          margin-bottom: 10px;
+        }
       }
     }
   }
@@ -20,9 +29,14 @@
     background-color: white;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 12vw;
+    height: 19vh;
     border-radius: 0.575rem;
     cursor: pointer;
+
+    @include max-media(800px) {
+      margin-bottom: 20px;
+      height: 22vh;
+    }
 
     &.choose {
       .box-detail {
@@ -46,7 +60,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 3vw;
+      height: 25%;
       color: white;
       transition: 0.3s;
 
@@ -66,4 +80,7 @@
 
 .package-create-card {
   width: 75%;
+  @include max-media(800px) {
+    width: 100%;
+  }
 }

@@ -27,6 +27,7 @@ const Purpose = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="PURPOSES list"
       TitleCard={<PurposeForm showAdd={true} />}
       dataSource={data}

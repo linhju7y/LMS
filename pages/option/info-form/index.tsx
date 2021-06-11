@@ -25,6 +25,7 @@ const InfoFormList = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Info form"
       TitleCard={<InfoForm showAdd={true} />}
       dataSource={data}

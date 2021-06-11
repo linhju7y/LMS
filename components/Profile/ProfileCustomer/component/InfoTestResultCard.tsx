@@ -65,8 +65,8 @@ const InfoTestResultCard = () => {
 
   return (
     <>
-      <div className="container-fluid row">
-        <div className="col-8">
+      <div className="row">
+        <div className="col-md-8 col-12">
           <div className="row">
             <div className="col-12">
               {/* <Card title="Kết quả bài thi">
@@ -104,7 +104,7 @@ const InfoTestResultCard = () => {
               />
             </div>
           </div>
-          <div className="row mt-5">
+          <div className="row mt-2">
             <div className="col-12">
               <Card title="Nhận xét giáo viên">
                 <TinyBox />
@@ -112,8 +112,8 @@ const InfoTestResultCard = () => {
             </div>
           </div>
         </div>
-        <div className="col-4">
-          <Card className="box-comment" title="Nhận xét">
+        <div className="col-md-4 col-12">
+          <Card className="box-comment space-top-card" title="Nhận xét">
             <Comment
               author={<a>Kim Jisoo</a>}
               avatar={<Avatar src="/images/user2.jpg" alt="Han Solo" />}

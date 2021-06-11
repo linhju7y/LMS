@@ -48,6 +48,7 @@ const Program = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Programs list"
       TitleCard={<ProgramForm showAdd={true} />}
       dataSource={data}

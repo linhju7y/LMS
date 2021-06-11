@@ -66,6 +66,7 @@ export default function ReportWarning() {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Danh sách học viên bị cảnh báo"
       TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}

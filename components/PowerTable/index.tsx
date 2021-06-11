@@ -21,7 +21,9 @@ const PowerTable = (props) => {
           {/* <TitlePage title={props.TitlePage} /> */}
           <div className="wrap-table">
             <Card
-              className={`cardRadius ${props.Size ? props.Size : ""}`}
+              className={`cardRadius ${props.addClass && props.addClass} ${
+                props.Size ? props.Size : ""
+              }`}
               title={props.Extra}
               extra={props.TitleCard}
             >

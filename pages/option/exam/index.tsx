@@ -28,6 +28,7 @@ const Exam = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Exams list"
       TitleCard={<ExamForm showAdd={true} />}
       dataSource={data}

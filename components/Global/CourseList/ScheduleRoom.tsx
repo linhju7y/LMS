@@ -79,7 +79,12 @@ const ScheduleRoom = () => {
   return (
     <>
       <div className="wrap-filter-parent">
-        <Popover placement="bottomLeft" content={content} trigger="click">
+        <Popover
+          placement="bottomLeft"
+          content={content}
+          trigger="click"
+          overlayClassName="filter-popover"
+        >
           <button
             className="btn btn-secondary light"
             style={{ marginRight: "10px" }}

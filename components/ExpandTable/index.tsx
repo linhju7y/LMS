@@ -15,13 +15,13 @@ const ExpandTable = (props) => {
       {/* <TitlePage title={props.TitlePage} /> */}
       <div className="wrap-table">
         <Card
-          className="cardRadius"
+          className={`cardRadius ${props.addClass && props.addClass}`}
           title={props.Extra}
           extra={props.TitleCard}
         >
           {props.children}
           <Table
-            scroll={props.noScroll ? { x: "max-content" } : { x: 800 }}
+            scroll={props.noScroll ? { x: "max-content" } : { x: 768 }}
             columns={props.columns}
             dataSource={props.dataSource}
             expandable={props.expandable}

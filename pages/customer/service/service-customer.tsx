@@ -65,6 +65,7 @@ export default function CustomerService() {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Khách mua dịch vụ"
       expandable={{ expandedRowRender }}
       dataSource={dataService}

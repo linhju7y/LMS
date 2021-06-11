@@ -62,9 +62,12 @@ a {
 
 @import "./pages/question-bank";
 
+@import "./pages/quiz";
+
 // -------------------------- ELEMENTS ------------------------------//
 @import "./components/elements";
 @import "./components/expandbox";
+@import "./components/color-base";
 // -------------------------- CALENDAR ------------------------------//
 @import "./components/calendar";
 

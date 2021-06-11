@@ -66,6 +66,7 @@ export default function FinanceRefund() {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Danh sách yêu cầu hoàn tiền"
       dataSource={dataService}
       TitleCard={<StudyTimeForm showAdd={true} />}

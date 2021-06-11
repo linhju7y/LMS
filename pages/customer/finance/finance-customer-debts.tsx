@@ -60,6 +60,7 @@ export default function FinanceDebts() {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Danh sách học viên nợ học phí"
       TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}

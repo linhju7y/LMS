@@ -44,6 +44,7 @@ const Center = () => {
   return (
     <>
       <PowerTable
+        addClass="basic-header"
         TitlePage="Danh sách phòng"
         TitleCard={
           <button

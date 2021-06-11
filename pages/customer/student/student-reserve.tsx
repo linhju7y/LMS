@@ -49,6 +49,7 @@ export default function StudentReserve() {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Học viên bảo lưu"
       expandable={{ expandedRowRender }}
       dataSource={data5}

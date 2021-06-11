@@ -110,6 +110,7 @@ export default function AppointmentServiceTest() {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Danh sách khách hẹn test"
       TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}

@@ -27,6 +27,7 @@ const SupplierList = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Supplier List"
       TitleCard={<SupplierForm showAdd={true} />}
       dataSource={data}

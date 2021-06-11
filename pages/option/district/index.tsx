@@ -38,6 +38,7 @@ const District = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="District List"
       TitleCard={<DistrictForm showAdd={true} />}
       dataSource={data}

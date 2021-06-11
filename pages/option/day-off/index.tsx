@@ -28,6 +28,7 @@ const DayOff = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="DAY OFF list"
       TitleCard={<DayOffForm showAdd={true} />}
       dataSource={data}

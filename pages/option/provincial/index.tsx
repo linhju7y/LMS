@@ -37,6 +37,7 @@ const Provincial = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Provincial List"
       TitleCard={<ProvincialForm showAdd={true} />}
       dataSource={data}

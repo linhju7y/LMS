@@ -36,7 +36,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>MONA LMS V2</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="viewport"
+          content="initial-scale=1.0, width=device-width, maximum-scale=1"
+        />
 
         <meta name="robots" content="noindex" />
         <link

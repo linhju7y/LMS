@@ -115,7 +115,7 @@ const FeedbackListDetail = (props) => {
           </Card>
         </div>
         <div className="col-md-9 col-12">
-          <Card title="Comment">
+          <Card title="Comment" className="space-top-card">
             <div className="box-comment">
               <TinyBox />
               <button className="btn btn-primary mt-3">Reply</button>

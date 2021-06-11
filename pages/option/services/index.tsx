@@ -28,6 +28,7 @@ const ServiceList = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Services List"
       TitleCard={<ServiceForm showAdd={true} />}
       dataSource={data}

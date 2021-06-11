@@ -44,7 +44,7 @@ const ListeningTest = () => {
         </div>
         <div className="test-footer">
           <div className="footer-preview">
-            <Checkbox onChange={onChange_preview}>Checkbox</Checkbox>
+            <Checkbox onChange={onChange_preview}>Preview</Checkbox>
           </div>
           <div className="footer-pagination">
             <Pagination defaultCurrent={1} total={50} />

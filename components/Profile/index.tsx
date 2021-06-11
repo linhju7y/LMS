@@ -151,9 +151,9 @@ const ProfileBase = (props) => {
   useEffect(() => {}, []);
 
   return (
-    <div className="container-fluid">
+    <>
       <div className="row">
-        <div className="col-3">
+        <div className="col-md-3 col-12">
           <Card className="info-profile-left">
             <div className="row">
               <div className="col-12 d-flex align-items-center justify-content-center flex-wrap">
@@ -209,8 +209,8 @@ const ProfileBase = (props) => {
             </Card>
           } */}
         </div>
-        <div className="col-9">
-          <Card>
+        <div className="col-md-9 col-12">
+          <Card className="space-top-card">
             <Form layout="vertical">
               <div className="row d-flex justify-content-center align-items-center">
                 <h5>Tài khoản nhân viên</h5>
@@ -218,12 +218,12 @@ const ProfileBase = (props) => {
                 <Divider></Divider>
               </div>
               <div className="row">
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <Form.Item label="Họ và tên">
                     <Input className="style-input" size="large" />
                   </Form.Item>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <Form.Item label="Giới tính">
                     <Select
                       className="style-input"
@@ -236,7 +236,7 @@ const ProfileBase = (props) => {
                     </Select>
                   </Form.Item>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <Form.Item label="Ngày sinh">
                     <DatePicker size="large" className="w-100 style-input" />
                   </Form.Item>
@@ -244,12 +244,12 @@ const ProfileBase = (props) => {
               </div>
 
               <div className="row">
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Địa chỉ email">
                     <Input className="style-input" size="large" />
                   </Form.Item>
                 </div>
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Số điện thoại">
                     <Input className="style-input" size="large" />
                   </Form.Item>
@@ -263,12 +263,12 @@ const ProfileBase = (props) => {
                 </div>
               </div>
               <div className="row">
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Tên tài khoản">
                     <Input className="style-input" size="large" />
                   </Form.Item>
                 </div>
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Mật khẩu mới">
                     <Input
                       className="style-input"
@@ -352,7 +352,7 @@ const ProfileBase = (props) => {
       </div>
 
       <div></div>
-    </div>
+    </>
   );
 };
 

@@ -103,7 +103,12 @@ const ModalAdd = (props) => {
           >
             <SearchBox />
           </div>
-          <Table dataSource={dataSource} columns={columns} />
+          {/* <Table dataSource={dataSource} columns={columns} /> */}
+          <PowerTable
+            dataSource={dataSource}
+            columns={columns}
+            addClass="body-p-0"
+          />
         </div>
       </Modal>
     </>

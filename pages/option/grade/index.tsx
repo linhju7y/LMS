@@ -48,6 +48,7 @@ const Grade = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Danh sách khối học"
       TitleCard={<GradeForm showAdd={true} />}
       dataSource={data}

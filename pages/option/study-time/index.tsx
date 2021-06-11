@@ -33,6 +33,7 @@ const StudyTime = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Study time list"
       TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={data}

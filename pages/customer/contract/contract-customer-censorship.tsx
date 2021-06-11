@@ -34,20 +34,13 @@ export default function ContractCensorship() {
         }
         return (
           <>
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-6">
-                  {censorShipStatus == "Accepted" ? (
-                    <span className="tag green">{censorShipStatus}</span>
-                  ) : (
-                    <span className="tag red">{censorShipStatus}</span>
-                  )}
-                </div>
-                <div className="col-6">
-                  <Switch onChange={onChange} />
-                </div>
-              </div>
-            </div>
+            {censorShipStatus == "Accepted" ? (
+              <span className="tag green">{censorShipStatus}</span>
+            ) : (
+              <span className="tag red">{censorShipStatus}</span>
+            )}
+
+            <Switch onChange={onChange} />
           </>
         );
       },
@@ -83,6 +76,7 @@ export default function ContractCensorship() {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Duyệt hợp đồng học viên"
       TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}

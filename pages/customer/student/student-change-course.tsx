@@ -58,6 +58,7 @@ export default function StudentCourseChange() {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Học viên chuyển khóa"
       expandable={{ expandedRowRender }}
       dataSource={data3}

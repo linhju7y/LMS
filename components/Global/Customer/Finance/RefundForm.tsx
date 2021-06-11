@@ -49,12 +49,12 @@ const RefundForm = () => {
           <Form layout="vertical">
             {/*  */}
             <div className="row">
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="Học viên">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="Số điện thoại">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
@@ -71,12 +71,12 @@ const RefundForm = () => {
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="CMND">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="Ngày cấp">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
@@ -84,12 +84,12 @@ const RefundForm = () => {
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="Nơi cấp">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="Số tiền">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
@@ -97,14 +97,14 @@ const RefundForm = () => {
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="Phương thức thanh toán">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
                   </Select>
                 </Form.Item>
               </div>
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="Trung tâm">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>

@@ -129,7 +129,7 @@ const DoingTest = () => {
     <>
       <div className="doing-test-step">
         <Card title="Nguyễn An">
-          <Steps current={current}>
+          <Steps className="step-doing" current={current}>
             {steps.map((item) => (
               <Step key={item.title} title={item.title} />
             ))}

@@ -121,6 +121,7 @@ export default function CourseStudent() {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Học viên trong khóa"
       expandable={{ expandedRowRender }}
       dataSource={data2}

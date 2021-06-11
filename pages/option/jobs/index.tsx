@@ -27,6 +27,7 @@ const JobsList = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Jobs list"
       TitleCard={<JobForm showAdd={true} />}
       dataSource={data}

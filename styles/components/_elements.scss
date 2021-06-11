@@ -439,7 +439,24 @@ textarea.form-control {
 }
 .ant-modal-header {
   border-radius: 0.575rem 0.575rem 0 0;
+  @include max-media(600px) {
+    padding: 16px 10px;
+  }
 }
+.ant-modal-body {
+  @include max-media(600px) {
+    padding: 24px 10px;
+  }
+}
+
+.ant-modal-close-x {
+  @include max-media(600px) {
+    .anticon {
+      vertical-align: 0;
+    }
+  }
+}
+
 .ant-modal-footer {
   border-radius: 0 0 0.575rem 0.575rem;
 }
@@ -880,6 +897,7 @@ hr {
       border-radius: 0.575rem;
       padding: 10px 15px;
       margin-bottom: 20px;
+      box-shadow: 1px 2px 15px #0000000d;
 
       &:last-child {
         margin-bottom: 0;
@@ -1225,6 +1243,10 @@ hr {
     padding: 0 15px;
   }
 }
+.wrap-breadcrumb {
+  margin-bottom: 20px;
+  padding: 0 15px;
+}
 
 .style-card {
   @include max-media(600px) {
@@ -1232,11 +1254,14 @@ hr {
   }
 }
 
+// Have the space then  show on mobile
 .space-top-card {
   @include max-media(600px) {
     margin-top: 20px;
   }
 }
+// ------------------------------------
+
 .ant-card-head-wrapper {
   @include max-media(800px) {
     flex-wrap: wrap;
@@ -1245,7 +1270,6 @@ hr {
       width: 100%;
     }
     .ant-card-extra {
-      padding-top: 0;
       .wrap-filter-parent {
         margin-bottom: 5px;
         .btn {
@@ -1258,7 +1282,7 @@ hr {
 
 .filter-popover {
   @include max-media(600px) {
-    width: 95%;
+    width: 94%;
     left: 2.5% !important;
     // left: 50% !important;
     // transform-origin: unset !important;
@@ -1275,5 +1299,31 @@ hr {
 .ant-card-body {
   @include max-media(600px) {
     padding: 20px 10px;
+  }
+}
+
+.basic-header {
+  .ant-card-head-title {
+    width: 50%;
+  }
+  .ant-card-extra {
+    width: 50%;
+    text-align: right;
+  }
+}
+
+.body-p-0 {
+  .ant-card-body {
+    padding: 0;
+  }
+}
+.text-left-mobile {
+  @include max-media(600px) {
+    text-align: left !important;
+  }
+}
+.w-100-mobile {
+  @include max-media(800px) {
+    width: 100% !important;
   }
 }

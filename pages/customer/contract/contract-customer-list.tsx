@@ -60,6 +60,7 @@ export default function ContractList() {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Danh sách học viên có hợp đồng"
       TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}

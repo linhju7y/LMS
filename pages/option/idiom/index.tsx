@@ -31,6 +31,7 @@ const Idioms = () => {
     // <div className="row">
     //   <div className="col-12 d-flex justify-content-center">
     <PowerTable
+      addClass="basic-header"
       Size="table-medium"
       TitleCard={<IdiomForm showAdd={true} />}
       dataSource={data}

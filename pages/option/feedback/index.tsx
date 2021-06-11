@@ -29,6 +29,7 @@ const FeedBackList = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Feedback category"
       TitleCard={<FeedBackForm showAdd={true} />}
       dataSource={data}

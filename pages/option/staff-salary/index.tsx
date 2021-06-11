@@ -35,6 +35,7 @@ const StaffSalary = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Staff salary"
       TitleCard={<StaffSalaryForm showAdd={true} />}
       dataSource={data}

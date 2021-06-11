@@ -123,6 +123,7 @@ const TeacherList = () => {
   return (
     <>
       <PowerTable
+        addClass={"basic-header"}
         columns={columns}
         dataSource={dataSource}
         TitlePage="Danh sách giáo viên"

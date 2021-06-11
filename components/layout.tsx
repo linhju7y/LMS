@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "./layout.module.css";
@@ -10,7 +11,9 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import SignIn from "~/pages/auth/signin";
 import { useWrap } from "~/wrapper/wrap";
 import TitlePageHeader from "./Elements/TitlePageHeader";
+import { Breadcrumb } from "antd";
 export const siteTitle = "Mona Media Admin";
+import { dataMenu } from "~/lib/data-menu";
 
 const name = "Mona";
 
@@ -21,6 +24,16 @@ export default function Layout({
   children: React.ReactNode;
   home?: boolean;
 }) {
+  // Get path and slug
+  const router = useRouter();
+  const slug = router.query.slug;
+  let path: string = router.pathname;
+  let pathString: string[] = path.split("/");
+  pathString = pathString.filter((item) => item !== "");
+  // console.log("pathstring: ", pathString);
+  // path = pathString[pathString.length - 2];
+  // --------------- //
+
   const [isOpen, setIsOpen] = useState(true);
   const [session, loading] = useSession();
   const [openMenuMobile, setOpenMenuMobile] = useState(false);
@@ -68,6 +81,15 @@ export default function Layout({
       />
       <main className="app-main">
         <div className={`app-content ${!isOpen && "close"}`}>
+          <div className="wrap-breadcrumb">
+            <Breadcrumb>
+              {pathString?.map((item, index) => (
+                <Breadcrumb.Item>
+                  <a href="">{item}</a>
+                </Breadcrumb.Item>
+              ))}
+            </Breadcrumb>
+          </div>
           <div className="app-content-title">
             <TitlePageHeader title={titlePage} />
           </div>

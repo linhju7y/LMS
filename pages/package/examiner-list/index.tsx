@@ -10,6 +10,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 import { Eye, Filter, Search } from "react-feather";
+import DecideModal from "~/components/Elements/DecideModal";
 
 const ExaminerList = () => {
   const dataSource = [];
@@ -58,9 +59,18 @@ const ExaminerList = () => {
       align: "center",
       width: "50px",
       render: () => (
-        <button className="btn btn-icon delete">
-          <DeleteOutlined />
-        </button>
+        // <button className="btn btn-icon delete">
+        //   <DeleteOutlined />
+        // </button>
+        <DecideModal
+          addBtn={
+            <button className="btn btn-icon delete">
+              <DeleteOutlined />
+            </button>
+          }
+          content="Bạn có chắc muốn xóa?"
+          addClass="color-red"
+        />
       ),
     },
   ];
@@ -70,6 +80,7 @@ const ExaminerList = () => {
       <div className="row">
         <div className="col-12">
           <PowerTable
+            addClass="basic-header"
             Size="table-small"
             dataSource={dataSource}
             columns={columns}

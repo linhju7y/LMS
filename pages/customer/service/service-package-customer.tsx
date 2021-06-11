@@ -68,6 +68,7 @@ export default function CustomerServicePackage() {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Danh sách khách mua gói"
       TitleCard={<StudyTimeForm showAdd={true} />}
       dataSource={dataService}

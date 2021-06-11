@@ -62,6 +62,7 @@ export default function StudentAppointment() {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Danh sách học viên hẹn đăng kí"
       expandable={{ expandedRowRender }}
       dataSource={data4}

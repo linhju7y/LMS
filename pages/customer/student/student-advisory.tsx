@@ -54,6 +54,7 @@ export default function StudentAdvisory() {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Học viên cần tư vấn"
       expandable={{ expandedRowRender }}
       dataSource={data6}

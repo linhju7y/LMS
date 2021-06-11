@@ -125,6 +125,7 @@ const SalerList = () => {
         TitlePage="Danh sách Salers"
         TitleCard={<ModalAdd />}
         Extra={<SortBox dataOption={dataOption} />}
+        addClass={"basic-header"}
       />
     </>
   );

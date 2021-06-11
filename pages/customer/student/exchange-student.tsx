@@ -90,6 +90,7 @@ export default function ExchangeStudent() {
 
   return (
     <ExpandTable
+      addClass="basic-header"
       TitlePage="Danh sách học viên chuyển giao"
       expandable={{ expandedRowRender }}
       dataSource={data}

@@ -99,4 +99,7 @@
 
 .package-set-wrap {
   width: 70%;
+  @include max-media(600px) {
+    width: 100%;
+  }
 }

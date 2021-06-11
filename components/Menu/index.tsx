@@ -328,6 +328,40 @@ const MenuDefault = ({
     funcMenuMobile();
   };
 
+  console.log("Get ROuter: ", getRouter);
+
+  // Functions fine active menu when at detail page
+  const convertRouter = (router: string) => {
+    let arrRouter = router.split("/");
+    return arrRouter;
+  };
+
+  const compareKey = (key: string) => {
+    let arrRouter = convertRouter(getRouter);
+    let arrKey = convertRouter(key);
+
+    let count = 0;
+
+    arrRouter.forEach((item, index) => {
+      arrKey.forEach((value, ind) => {
+        item == value && count++;
+      });
+    });
+
+    console.log("Test: ", count);
+    return count;
+  };
+
+  const returnSelectKey = () => {
+    dataMenu.forEach((menu, index) => {
+      menu.MenuItem.forEach((item, ind) => {
+        let count = compareKey(item.Key);
+      });
+    });
+  };
+
+  returnSelectKey();
+
   return (
     <aside className={`navbar-right ${openMenuMobile ? "mobile" : ""}`}>
       <div className={`navbar-right-bg ${openMenuMobile ? "active" : ""}`}>

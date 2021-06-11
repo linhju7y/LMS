@@ -30,7 +30,7 @@ const ScheduleTeacher = (props) => {
   }
 
   const content = (
-    <div className={`wrap-filter small ${showFilter ? "show" : "hide"}`}>
+    <div className={`wrap-filter small`}>
       <Form layout="vertical">
         <div className="row">
           <div className="col-md-12">
@@ -94,7 +94,12 @@ const ScheduleTeacher = (props) => {
   return (
     <>
       <div className="wrap-filter-parent">
-        <Popover placement="bottomLeft" content={content} trigger="click">
+        <Popover
+          placement="bottomLeft"
+          content={content}
+          trigger="click"
+          overlayClassName="filter-popover"
+        >
           <button className="btn btn-success light" onClick={funcShowFilter}>
             Kiểm tra lịch giáo viên
           </button>

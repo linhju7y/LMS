@@ -173,6 +173,7 @@ const PackageList = (props) => {
   return (
     <>
       <PowerTable
+        addClass="basic-header"
         Size="package-list-table"
         haveBorder={true}
         dataSource={data}
@@ -181,7 +182,6 @@ const PackageList = (props) => {
         Extra={
           <div className="extra-table">
             <SortBox dataOption={dataOption} />
-            <SortBox dataOption={dataOption} space={true} />
           </div>
         }
         TitleCard={

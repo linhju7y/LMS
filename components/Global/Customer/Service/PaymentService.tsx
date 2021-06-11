@@ -49,12 +49,12 @@ const PaymentService = () => {
           <Form layout="vertical">
             {/*  */}
             <div className="row">
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="Học viên">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="Tên set">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
@@ -62,12 +62,12 @@ const PaymentService = () => {
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="Giá">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-6">
+              <div className="col-md-6 col-12">
                 <Form.Item label="Trung tâm thu tiền">
                   <Select defaultValue="lucy" className="w-100 style-input">
                     <Option value="jack">Jack</Option>
@@ -77,17 +77,17 @@ const PaymentService = () => {
             </div>
             {/*  */}
             <div className="row">
-              <div className="col-4">
+              <div className="col-md-4 col-12">
                 <Form.Item label="Còn lại">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-4">
+              <div className="col-md-4 col-12">
                 <Form.Item label="Số tiền thu">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>
               </div>
-              <div className="col-4">
+              <div className="col-md-4 col-12">
                 <Form.Item label="Discount">
                   <Input className="style-input" placeholder="" />
                 </Form.Item>

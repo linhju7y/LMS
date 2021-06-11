@@ -40,6 +40,7 @@ const Discount = () => {
       </div>
       <div className="col-12">
         <PowerTable
+          addClass="basic-header"
           TitleCard={<DiscountForm showAdd={true} />}
           dataSource={data}
           columns={columns}

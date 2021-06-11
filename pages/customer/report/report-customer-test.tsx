@@ -56,6 +56,7 @@ export default function ReportTest() {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="Danh sách học viên sắp thi"
       dataSource={dataService}
       columns={columns}

@@ -11,25 +11,25 @@ const StudentAppointmentCreate = () => {
 
   const { Option } = Select;
   return (
-    <div className="container-fluid">
+    <div>
       <div className="row">
         <div className="col-12">
           <TitlePage title="Lịch hẹn" />
         </div>
       </div>
       <div className="col-12 d-flex justify-content-center">
-        <Card title="Phiếu thông tin cá nhân" className="w-50">
+        <Card title="Phiếu thông tin cá nhân" className="w-50 w-100-mobile">
           <div className="wrap-form">
             {/* <Form {...layout} labelAlign="left"> */}
             <Form layout="vertical">
               {/*  */}
               <div className="row">
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Họ và tên">
                     <Input className="style-input" placeholder="" />
                   </Form.Item>
                 </div>
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="SĐT">
                     <Input className="style-input" placeholder="" />
                   </Form.Item>
@@ -38,12 +38,12 @@ const StudentAppointmentCreate = () => {
               {/*  */}
               {/*  */}
               <div className="row">
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Email">
                     <Input className="style-input" placeholder="" />
                   </Form.Item>
                 </div>
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Ngày sinh">
                     <Input className="style-input" placeholder="" type="date" />
                   </Form.Item>
@@ -52,7 +52,7 @@ const StudentAppointmentCreate = () => {
               {/*  */}
               {/*  */}
               <div className="row">
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Quốc tịch">
                     <Select
                       defaultValue="Việt Nam"
@@ -62,7 +62,7 @@ const StudentAppointmentCreate = () => {
                     </Select>
                   </Form.Item>
                 </div>
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Quận/Huyện">
                     <Select
                       defaultValue="Tân Bình"
@@ -77,7 +77,7 @@ const StudentAppointmentCreate = () => {
               {/*  */}
               {/*  */}
               <div className="row">
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Phường/Xã">
                     <Select
                       defaultValue="Phường 8"
@@ -87,7 +87,7 @@ const StudentAppointmentCreate = () => {
                     </Select>
                   </Form.Item>
                 </div>
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Đường">
                     <Select
                       defaultValue="Lý Thường Kiệt"
@@ -99,12 +99,12 @@ const StudentAppointmentCreate = () => {
                 </div>
               </div>
               <div className="row">
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Số nhà">
                     <Input className="style-input" placeholder="" />
                   </Form.Item>
                 </div>
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Số CMND">
                     <Input className="style-input" placeholder="" />
                   </Form.Item>
@@ -114,14 +114,14 @@ const StudentAppointmentCreate = () => {
               {/*  */}
               {/*  */}
               <div className="row">
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Nơi cấp">
                     <Select defaultValue="TP.HCM" className="w-100 style-input">
                       <Option value="Yiminghe">yiminghe</Option>
                     </Select>
                   </Form.Item>
                 </div>
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Ngày cấp">
                     <Input className="style-input" placeholder="" type="date" />
                   </Form.Item>
@@ -131,7 +131,7 @@ const StudentAppointmentCreate = () => {
               {/*  */}
               {/*  */}
               <div className="row">
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Công việc">
                     <Select
                       defaultValue="Học sinh"
@@ -141,7 +141,7 @@ const StudentAppointmentCreate = () => {
                     </Select>
                   </Form.Item>
                 </div>
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Nơi làm việc">
                     <Input className="style-input" placeholder="" />
                   </Form.Item>
@@ -151,14 +151,14 @@ const StudentAppointmentCreate = () => {
               <hr />
               {/*  */}
               <div className="row">
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Tên trung tâm">
                     <Select defaultValue="lucy" className="w-100 style-input">
                       <Option value="Yiminghe">yiminghe</Option>
                     </Select>
                   </Form.Item>
                 </div>
-                <div className="col-6">
+                <div className="col-md-6 col-12">
                   <Form.Item label="Được tạo bởi">
                     <Select defaultValue="lucy" className="w-100 style-input">
                       <Option value="Yiminghe">yiminghe</Option>
@@ -168,19 +168,19 @@ const StudentAppointmentCreate = () => {
               </div>
 
               <div className="row">
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <Form.Item label="Giờ tạo">
                     <Select defaultValue="lucy" className="w-100 style-input">
                       <Option value="Yiminghe">yiminghe</Option>
                     </Select>
                   </Form.Item>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <Form.Item label="Ngày tạo">
                     <Input className="style-input" placeholder="" type="date" />
                   </Form.Item>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <Form.Item label="Nguồn khách">
                     <Select defaultValue="lucy" className="w-100 style-input">
                       <Option value="jack">Jack</Option>

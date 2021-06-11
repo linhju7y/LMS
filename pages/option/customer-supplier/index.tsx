@@ -49,6 +49,7 @@ const CustomerSupplier = () => {
 
   return (
     <PowerTable
+      addClass="basic-header"
       TitlePage="CUSTOMER SUPPLIER LIST"
       TitleCard={<CustomerSupplierForm showAdd={true} />}
       dataSource={data}
