@@ -14,6 +14,8 @@ import TitlePageHeader from "./Elements/TitlePageHeader";
 import { Breadcrumb } from "antd";
 export const siteTitle = "Mona Media Admin";
 import { dataMenu } from "~/lib/data-menu";
+import { Item } from "devextreme-react/file-manager";
+import { data } from "~/lib/option/dataOption";
 
 const name = "Mona";
 
@@ -29,7 +31,13 @@ export default function Layout({
   const slug = router.query.slug;
   let path: string = router.pathname;
   let pathString: string[] = path.split("/");
-  pathString = pathString.filter((item) => item !== "");
+
+  pathString = pathString.filter((item) => {
+    if (item == "" || item == "[slug]") {
+      return false;
+    }
+    return true;
+  });
   // console.log("pathstring: ", pathString);
   // path = pathString[pathString.length - 2];
   // --------------- //
@@ -57,6 +65,129 @@ export default function Layout({
   const handleSignIn = (event: React.SyntheticEvent<any>) => signIn();
   useEffect(() => {}, []);
 
+  const returnRouter = (index: number) => {
+    let router = "";
+
+    if (index > 0) {
+      pathString.forEach((item, ind) => {
+        if (ind <= index) {
+          router = router + "/" + item;
+        } else {
+          return false;
+        }
+      });
+    } else {
+      router = "/" + pathString[0];
+    }
+
+    let nameRouter = null;
+    dataMenu.forEach((item, value) => {
+      if (nameRouter == null) {
+        item.MenuItem.forEach((element: any) => {
+          if (nameRouter == null) {
+            if (element.ItemType == "sub-menu") {
+              element.SubMenuList.forEach((menu, ind) => {
+                if (router === menu.Key) {
+                  nameRouter = menu.Route;
+                  return false;
+                }
+              });
+            } else {
+              if (router === element.Key) {
+                nameRouter = element.Route;
+                return false;
+              }
+            }
+          } else {
+            return false;
+          }
+        });
+      } else {
+        return false;
+      }
+    });
+
+    console.log("Name rotuer là: ", nameRouter);
+
+    return nameRouter;
+  };
+
+  const returnGetRouter = (index: number) => {
+    let router = "";
+
+    if (index > 0) {
+      pathString.forEach((item, ind) => {
+        if (ind <= index) {
+          router = router + "/" + item;
+        } else {
+          return false;
+        }
+      });
+    } else {
+      router = "/" + pathString[0];
+    }
+
+    return router;
+  };
+
+  const findNameRouterOnly = (getRouter: string) => {
+    let nameRouter = "";
+    dataMenu.forEach((item, index) => {
+      if (item.MenuKey === getRouter) {
+        nameRouter = item.MenuTitle;
+        return false;
+      }
+    });
+
+    return nameRouter;
+  };
+
+  const findNameRouterMany = (getRouter: string) => {
+    let nameRouter = "";
+
+    dataMenu.forEach((item, value) => {
+      if (nameRouter == "") {
+        item.MenuItem.forEach((element: any) => {
+          if (nameRouter == "") {
+            if (element.ItemType == "sub-menu") {
+              element.SubMenuList.forEach((menu, ind) => {
+                if (getRouter === menu.Key) {
+                  nameRouter = menu.Text;
+                  return false;
+                }
+              });
+            } else {
+              if (getRouter === element.Key) {
+                nameRouter = element.Text;
+                return false;
+              }
+            }
+          } else {
+            return false;
+          }
+        });
+      } else {
+        return false;
+      }
+    });
+
+    return nameRouter;
+  };
+
+  const returnText = (index: number) => {
+    let nameRouter = "";
+
+    let getRouter = returnGetRouter(index);
+
+    if (index < 1) {
+      nameRouter = findNameRouterOnly(getRouter); // Tìm tên router trường hợp key chỉ có 1 từ
+    } else {
+      nameRouter = findNameRouterMany(getRouter); // Tìm tên router trường hợp key > 1 từ
+    }
+
+    return nameRouter;
+  };
+
   return (
     <div className="app">
       <Head>
@@ -83,11 +214,20 @@ export default function Layout({
         <div className={`app-content ${!isOpen && "close"}`}>
           <div className="wrap-breadcrumb">
             <Breadcrumb>
-              {pathString?.map((item, index) => (
-                <Breadcrumb.Item>
-                  <a href="">{item}</a>
-                </Breadcrumb.Item>
-              ))}
+              {pathString?.map(
+                (item, index) =>
+                  returnText(index) !== "" && (
+                    <Breadcrumb.Item>
+                      {returnRouter(index) !== null ? (
+                        <Link href={returnRouter(index)}>
+                          <a>{returnText(index)}</a>
+                        </Link>
+                      ) : (
+                        <span>{returnText(index)}</span>
+                      )}
+                    </Breadcrumb.Item>
+                  )
+              )}
             </Breadcrumb>
           </div>
           <div className="app-content-title">

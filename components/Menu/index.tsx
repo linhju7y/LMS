@@ -84,7 +84,7 @@ const MenuDefault = ({
   // const router = useRouter();
   // const getRouter = router.pathname;
 
-  const { getRouter } = useWrap();
+  let { getRouter } = useWrap();
 
   const [state, setState] = useState<propState>({
     collapsed: isOpen,
@@ -284,9 +284,6 @@ const MenuDefault = ({
   };
 
   useEffect(() => {
-    // let widthScr = window.innerWidth;
-    // widthScr < 1000 ? funcMenuMobile() : changeTabsWithPostion();
-
     changeTabsWithPostion();
   }, [tab]);
 
@@ -328,39 +325,27 @@ const MenuDefault = ({
     funcMenuMobile();
   };
 
-  console.log("Get ROuter: ", getRouter);
-
   // Functions fine active menu when at detail page
   const convertRouter = (router: string) => {
     let arrRouter = router.split("/");
-    return arrRouter;
-  };
 
-  const compareKey = (key: string) => {
-    let arrRouter = convertRouter(getRouter);
-    let arrKey = convertRouter(key);
-
-    let count = 0;
-
-    arrRouter.forEach((item, index) => {
-      arrKey.forEach((value, ind) => {
-        item == value && count++;
-      });
+    arrRouter = arrRouter.filter(function (item) {
+      if (item == "" || item == "[slug]" || item.search("detail") > 0) {
+        return false;
+      }
+      return true;
     });
 
-    console.log("Test: ", count);
-    return count;
-  };
+    let finalRouter = "";
 
-  const returnSelectKey = () => {
-    dataMenu.forEach((menu, index) => {
-      menu.MenuItem.forEach((item, ind) => {
-        let count = compareKey(item.Key);
-      });
+    arrRouter.forEach((item) => {
+      finalRouter = finalRouter + "/" + item;
     });
+
+    return finalRouter;
   };
 
-  returnSelectKey();
+  getRouter = convertRouter(getRouter);
 
   return (
     <aside className={`navbar-right ${openMenuMobile ? "mobile" : ""}`}>

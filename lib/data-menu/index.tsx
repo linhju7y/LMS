@@ -5,7 +5,7 @@ export const dataMenu = [
   {
     MenuName: "tab-home",
     MenuTitle: "Dashboard",
-    MenuKey: "tabhome",
+    MenuKey: "/dashboard",
     MenuItem: [
       {
         TypeItem: "single",
@@ -19,7 +19,7 @@ export const dataMenu = [
   {
     MenuName: "tab-course",
     MenuTitle: "Khóa học",
-    MenuKey: "course",
+    MenuKey: "/course",
     MenuItem: [
       {
         ItemType: "sub-menu",
@@ -77,7 +77,7 @@ export const dataMenu = [
   {
     MenuName: "tab-customer",
     MenuTitle: "Khách hàng",
-    MenuKey: "course",
+    MenuKey: "/customer",
     MenuItem: [
       {
         ItemType: "sub-menu",
@@ -294,7 +294,7 @@ export const dataMenu = [
   {
     MenuName: "tab-document",
     MenuTitle: "Document List",
-    MenuKey: "tabdocument",
+    MenuKey: "/document-list",
     MenuItem: [
       {
         ItemType: "single",
@@ -308,7 +308,7 @@ export const dataMenu = [
   {
     MenuName: "tab-staff",
     MenuTitle: "Quản lí nhân viên",
-    MenuKey: "tab-staff",
+    MenuKey: "/staff",
     MenuItem: [
       {
         ItemType: "sub-menu",
@@ -439,13 +439,20 @@ export const dataMenu = [
   {
     MenuName: "tab-package",
     MenuTitle: "Gói bài tập",
-    MenuKey: "tab-package",
+    MenuKey: "/package",
     MenuItem: [
       {
         ItemType: "single",
         Key: "/package/package-list",
         Route: "/package/package-list",
         Text: "Quản lí gói bài",
+        Icon: "",
+      },
+      {
+        ItemType: "single",
+        Key: "/package/package-create",
+        Route: "/package/package-create",
+        Text: "Tạo gói mới",
         Icon: "",
       },
       {
@@ -481,7 +488,7 @@ export const dataMenu = [
   {
     MenuName: "tab-question-bank",
     MenuTitle: "Ngân hàng đề thi",
-    MenuKey: "tab-question-bank",
+    MenuKey: "/question-bank",
     MenuItem: [
       {
         ItemType: "single",
@@ -502,7 +509,7 @@ export const dataMenu = [
   {
     MenuName: "tab-option",
     MenuTitle: "Cấu hình",
-    MenuKey: "taboption",
+    MenuKey: "/option",
     MenuItem: [
       {
         ItemType: "single",
@@ -669,7 +676,7 @@ export const dataMenu = [
   {
     MenuName: "tab-layout",
     MenuTitle: "Giao diện",
-    MenuKey: "tablayout",
+    MenuKey: "/layoutBase",
     MenuItem: [
       {
         ItemType: "sub-menu",
