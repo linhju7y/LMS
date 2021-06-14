@@ -107,8 +107,6 @@ export default function Layout({
       }
     });
 
-    console.log("Name rotuer là: ", nameRouter);
-
     return nameRouter;
   };
 
@@ -142,6 +140,8 @@ export default function Layout({
     return nameRouter;
   };
 
+  console.log("--------------------------------");
+
   const findNameRouterMany = (getRouter: string) => {
     let nameRouter = "";
 
@@ -171,6 +171,16 @@ export default function Layout({
       }
     });
 
+    console.log("Name rotuer là: ", nameRouter);
+
+    if (nameRouter === "") {
+      if (getRouter.search("detail") > 0) {
+        nameRouter = "Chi tiết";
+      } else {
+        nameRouter = "";
+      }
+    }
+
     return nameRouter;
   };
 
@@ -178,6 +188,8 @@ export default function Layout({
     let nameRouter = "";
 
     let getRouter = returnGetRouter(index);
+
+    console.log("Get router is: ", getRouter);
 
     if (index < 1) {
       nameRouter = findNameRouterOnly(getRouter); // Tìm tên router trường hợp key chỉ có 1 từ
