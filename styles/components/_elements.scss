@@ -1335,3 +1335,13 @@ hr {
     color: #636363;
   }
 }
+
+.loading-login {
+  position: absolute;
+  top: 18px;
+  right: 24%;
+
+  .ant-spin-dot-item {
+    background: white;
+  }
+}

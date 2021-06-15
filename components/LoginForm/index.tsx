@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./LoginForm.module.scss";
 import { route } from "next/dist/next-server/server/router";
 import { useRouter } from "next/router";
+import { Spin } from "antd";
 
 type Inputs = {
   text: string;
@@ -35,7 +36,7 @@ function index(props: any) {
   const _Submit = async (data: {}) => {
     console.log("LoginForm _Submit data", data);
 
-    // setLoading(true);
+    setLoading(true);
 
     props?.onSubmit(data);
   };
@@ -127,14 +128,17 @@ function index(props: any) {
                 </div>
               </div>
 
-              <input type="submit" value={"Đăng nhập"} />
+              <div className="position-relative">
+                <input type="submit" value={"Đăng nhập"} />
+                {loading && <Spin className="loading-login" />}
+              </div>
+
               <div className={styles.boxSignup}>
                 Bạn chưa có tài khoản?{" "}
                 <a href="" onClick={moveToSignUp}>
                   Đăng kí
                 </a>
               </div>
-              {loading && <div className={styles.loading}></div>}
             </form>
           </div>
         </div>
