@@ -6,7 +6,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
-
+import LayoutBase from "~/components/LayoutBase";
 const FeedBackList = () => {
   const columns = [
     { title: "Role", dataIndex: "role", ...FilterColumn("role") },
@@ -43,5 +43,5 @@ const FeedBackList = () => {
     />
   );
 };
-
+FeedBackList.sharedComponentFunction = LayoutBase;
 export default FeedBackList;

@@ -6,7 +6,7 @@ import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
-
+import LayoutBase from "~/components/LayoutBase";
 const Exam = () => {
   const columns = [
     { title: "Center", dataIndex: "center", ...FilterColumn("center") },
@@ -42,5 +42,5 @@ const Exam = () => {
     />
   );
 };
-
+Exam.sharedComponentFunction = LayoutBase;
 export default Exam;

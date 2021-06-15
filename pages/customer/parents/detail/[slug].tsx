@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import {
-  Row,
-  Col,
   Form,
   Card,
-  Divider,
   Input,
   Select,
   DatePicker,
-  Button,
   Avatar,
   Upload,
   Rate,
-  Table,
-  Checkbox,
 } from "antd";
 import ImgCrop from "antd-img-crop";
 import {
@@ -25,13 +19,12 @@ import {
   AimOutlined,
 } from "@ant-design/icons";
 import TitlePage from "~/components/Elements/TitlePage";
-import { Power } from "react-feather";
 import PowerTable from "~/components/PowerTable";
 import { Tooltip } from "antd";
-
-import { Eye, Filter, Search } from "react-feather";
+import { Eye } from "react-feather";
 import Link from "next/link";
 import ModalAddStudent from "~/components/Global/ParentsList/ModalAddStudent";
+import LayoutBase from "~/components/LayoutBase";
 
 const dataSource = [];
 
@@ -302,5 +295,6 @@ const ParentsDetail = (props) => {
     </div>
   );
 };
+ParentsDetail.sharedComponentFunction = LayoutBase;
 
 export default ParentsDetail;

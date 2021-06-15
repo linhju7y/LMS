@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React from "react";
 import { Card, Button } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
 import TitlePage from "~/components/TitlePage";
-
+import LayoutBase from "~/components/LayoutBase";
 const TermOfService = () => {
   const onChange = (e) => {
     console.log(e.target.getContent());
@@ -42,5 +41,5 @@ const TermOfService = () => {
     </div>
   );
 };
-
+TermOfService.sharedComponentFunction = LayoutBase;
 export default TermOfService;

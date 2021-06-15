@@ -6,7 +6,7 @@ import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import SupplierForm from "~/components/Global/Option/SupplierForm";
-
+import LayoutBase from "~/components/LayoutBase";
 const SupplierList = () => {
   const columns = [
     { title: "Supplier", dataIndex: "supplier", ...FilterColumn("supplier") },
@@ -41,5 +41,5 @@ const SupplierList = () => {
     />
   );
 };
-
+SupplierList.sharedComponentFunction = LayoutBase;
 export default SupplierList;

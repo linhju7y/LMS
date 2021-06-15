@@ -1,5 +1,4 @@
 import React from "react";
-import TitlePage from "~/components/Elements/TitlePage";
 import PowerTable from "~/components/PowerTable";
 import { Eye } from "react-feather";
 import { Tooltip } from "antd";
@@ -10,6 +9,8 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
+import LayoutBase from "~/components/LayoutBase";
+CustomerServiceExam.sharedComponentFunction = LayoutBase;
 
 export default function CustomerServiceExam() {
   const columns = [
@@ -74,7 +75,8 @@ export default function CustomerServiceExam() {
       render: () => (
         <Link
           href={{
-            pathname: "/customer/service/service-customer-exam/student-detail/[slug]",
+            pathname:
+              "/customer/service/service-customer-exam/student-detail/[slug]",
             query: { slug: 2 },
           }}
         >

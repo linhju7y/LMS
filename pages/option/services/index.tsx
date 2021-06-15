@@ -6,7 +6,7 @@ import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import { data } from "../../../lib/option/dataOption2";
 import ServiceForm from "~/components/Global/Option/ServiceForm";
-
+import LayoutBase from "~/components/LayoutBase";
 const ServiceList = () => {
   const columns = [
     { title: "Service", dataIndex: "services", ...FilterColumn("services") },
@@ -42,5 +42,5 @@ const ServiceList = () => {
     />
   );
 };
-
+ServiceList.sharedComponentFunction = LayoutBase;
 export default ServiceList;

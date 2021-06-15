@@ -1,5 +1,4 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
 import { Eye } from "react-feather";
 import { Tooltip } from "antd";
@@ -10,6 +9,9 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
+import LayoutBase from "~/components/LayoutBase";
+ReportTest.sharedComponentFunction = LayoutBase;
+
 export default function ReportTest() {
   const columns = [
     { title: "Tỉnh/TP", dataIndex: "city", ...FilterColumn("city") },
@@ -39,7 +41,8 @@ export default function ReportTest() {
         <>
           <Link
             href={{
-              pathname: "/customer/report/report-customer-test/student-detail/[slug]",
+              pathname:
+                "/customer/report/report-customer-test/student-detail/[slug]",
               query: { slug: 2 },
             }}
           >

@@ -8,6 +8,8 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
+import LayoutBase from "~/components/LayoutBase";
+ContractList.sharedComponentFunction = LayoutBase;
 export default function ContractList() {
   const columns = [
     {

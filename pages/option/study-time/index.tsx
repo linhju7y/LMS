@@ -6,6 +6,7 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import SortBox from "~/components/Elements/SortBox";
 import { Switch } from "antd";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
+import LayoutBase from "~/components/LayoutBase";
 const StudyTime = () => {
   const columns = [
     { title: "Study time", dataIndex: "studyTime" },
@@ -47,5 +48,5 @@ const StudyTime = () => {
     />
   );
 };
-
+StudyTime.sharedComponentFunction = LayoutBase;
 export default StudyTime;

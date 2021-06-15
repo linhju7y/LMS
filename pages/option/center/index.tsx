@@ -9,6 +9,7 @@ import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import Link from "next/link";
+import LayoutBase from "~/components/LayoutBase";
 const Center = () => {
   const [centerForm, setCenterForm] = useState(false);
   const columns = [
@@ -83,5 +84,5 @@ const Center = () => {
     </>
   );
 };
-
+Center.sharedComponentFunction = LayoutBase;
 export default Center;

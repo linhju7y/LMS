@@ -6,7 +6,7 @@ import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import PurposeForm from "~/components/Global/Option/PurposeForm";
-
+import LayoutBase from "~/components/LayoutBase";
 const Purpose = () => {
   const columns = [
     { title: "Purposes", dataIndex: "purpose", ...FilterColumn("purpose") },
@@ -41,5 +41,5 @@ const Purpose = () => {
     />
   );
 };
-
+Purpose.sharedComponentFunction = LayoutBase;
 export default Purpose;

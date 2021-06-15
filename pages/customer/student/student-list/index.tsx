@@ -9,7 +9,7 @@ import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
-
+import LayoutBase from "~/components/LayoutBase";
 const expandedRowRender = () => {
   return (
     <>
@@ -129,5 +129,6 @@ const StudentData = () => {
     />
   );
 };
+StudentData.sharedComponentFunction = LayoutBase;
 
 export default StudentData;

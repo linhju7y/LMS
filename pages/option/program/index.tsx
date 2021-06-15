@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import PowerTable from "~/components/PowerTable";
 import { data } from "../../../lib/option/dataOption";
-import { Tag } from "antd";
 import ProgramForm from "~/components/Global/Option/ProgramForm";
 import FilterColumn from "~/components/Tables/FilterColumn";
-
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import LayoutBase from "~/components/LayoutBase";
 const Program = () => {
   const columns = [
     { title: "Grade", dataIndex: "grade", ...FilterColumn("grade") },
@@ -62,5 +61,5 @@ const Program = () => {
     />
   );
 };
-
+Program.sharedComponentFunction = LayoutBase;
 export default Program;
