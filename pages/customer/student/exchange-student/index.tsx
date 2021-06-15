@@ -1,17 +1,16 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye, Filter } from "react-feather";
-import { Button, Tag, Tooltip, Card } from "antd";
+import { Eye } from "react-feather";
+import { Tooltip, Card } from "antd";
 import { data } from "~/lib/customer-student/data";
 import InfoCusCard from "~/components/Profile/ProfileCustomer/component/InfoCusCard";
-import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
 import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
-
+import LayoutBase from "~/components/LayoutBase";
+ExchangeStudent.sharedComponentFunction = LayoutBase;
 export default function ExchangeStudent() {
   const expandedRowRender = () => {
     return (

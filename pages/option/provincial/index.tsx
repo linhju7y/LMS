@@ -6,6 +6,7 @@ import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import ProvincialForm from "~/components/Global/Option/ProvincialForm";
+import LayoutBase from "~/components/LayoutBase";
 
 const Provincial = () => {
   const columns = [
@@ -51,5 +52,5 @@ const Provincial = () => {
     />
   );
 };
-
+Provincial.sharedComponentFunction = LayoutBase;
 export default Provincial;

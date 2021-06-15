@@ -5,7 +5,7 @@ import InfoForm from "~/components/Global/Option/InfoForm";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
-
+import LayoutBase from "~/components/LayoutBase";
 const InfoFormList = () => {
   const columns = [
     { title: "Title", dataIndex: "title", ...FilterColumn("title") },
@@ -39,5 +39,5 @@ const InfoFormList = () => {
     />
   );
 };
-
+InfoFormList.sharedComponentFunction = LayoutBase;
 export default InfoFormList;

@@ -1,5 +1,4 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { data5 } from "~/lib/customer-student/data";
 import SortBox from "~/components/Elements/SortBox";
@@ -10,7 +9,8 @@ import RegCancel from "~/components/Global/Customer/Student/RegCancel";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
-
+import LayoutBase from "~/components/LayoutBase";
+StudentReserve.sharedComponentFunction = LayoutBase;
 export default function StudentReserve() {
   const expandedRowRender = () => {
     return <ExpandBox />;

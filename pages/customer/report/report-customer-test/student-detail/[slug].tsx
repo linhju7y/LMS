@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Card, Avatar, Rate } from "antd";
@@ -12,6 +11,7 @@ import {
 } from "@ant-design/icons";
 import TinyBox from "~/components/Elements/TinyBox";
 import CommentBox from "~/components/Elements/CommentBox";
+import LayoutBase from "~/components/LayoutBase";
 
 const FeedbackListDetail = (props) => {
   // Get path and slug
@@ -133,6 +133,7 @@ const FeedbackListDetail = (props) => {
     </>
   );
 };
+FeedbackListDetail.sharedComponentFunction = LayoutBase;
 
 FeedbackListDetail.propTypes = {};
 

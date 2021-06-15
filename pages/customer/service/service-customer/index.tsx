@@ -11,6 +11,8 @@ import RegRefund from "~/components/Global/Customer/Student/RegRefund";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
+import LayoutBase from "~/components/LayoutBase";
+CustomerService.sharedComponentFunction = LayoutBase;
 export default function CustomerService() {
   const expandedRowRender = () => {
     return <ExpandBoxService />;
@@ -46,7 +48,8 @@ export default function CustomerService() {
         <>
           <Link
             href={{
-              pathname: "/customer/service/service-customer/student-detail/[slug]",
+              pathname:
+                "/customer/service/service-customer/student-detail/[slug]",
               query: { slug: 2 },
             }}
           >

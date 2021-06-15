@@ -10,6 +10,8 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
+import LayoutBase from "~/components/LayoutBase";
+FinanceDebts.sharedComponentFunction = LayoutBase;
 export default function FinanceDebts() {
   const columns = [
     {
@@ -42,7 +44,8 @@ export default function FinanceDebts() {
         <>
           <Link
             href={{
-              pathname: "/customer/finance/finance-customer-debts/student-detail/[slug]",
+              pathname:
+                "/customer/finance/finance-customer-debts/student-detail/[slug]",
               query: { slug: 2 },
             }}
           >

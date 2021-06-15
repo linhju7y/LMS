@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PowerTable from "~/components/PowerTable";
 import { data } from "../../../../lib/option/dataOption";
-
+import LayoutBase from "~/components/LayoutBase";
 import { Tooltip } from "antd";
 import RoomForm from "~/components/Global/Option/RoomForm";
 import { RotateCcw } from "react-feather";
@@ -67,5 +67,6 @@ const Center = () => {
     </>
   );
 };
+Center.sharedComponentFunction = LayoutBase;
 
 export default Center;

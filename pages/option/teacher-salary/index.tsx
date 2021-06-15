@@ -6,7 +6,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
-
+import LayoutBase from "~/components/LayoutBase";
 const TeacherSalary = () => {
   const columns = [
     { title: "Full name", dataIndex: "teacher", ...FilterColumn("teacher") },
@@ -49,5 +49,5 @@ const TeacherSalary = () => {
     />
   );
 };
-
+TeacherSalary.sharedComponentFunction = LayoutBase;
 export default TeacherSalary;

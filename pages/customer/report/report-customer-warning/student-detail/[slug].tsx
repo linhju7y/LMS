@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Card, Avatar, Rate } from "antd";
-
+import LayoutBase from "~/components/LayoutBase";
 import {
   UserOutlined,
   DeploymentUnitOutlined,
@@ -135,5 +135,7 @@ const FeedbackListDetail = (props) => {
 };
 
 FeedbackListDetail.propTypes = {};
+
+FeedbackListDetail.sharedComponentFunction = LayoutBase;
 
 export default FeedbackListDetail;

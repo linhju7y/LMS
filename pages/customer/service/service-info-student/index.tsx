@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Form, Select, Input, Divider, Button } from "antd";
 import TitlePage from "~/components/TitlePage";
-
+import LayoutBase from "~/components/LayoutBase";
 const StudentAppointmentCreate = () => {
   // const layout = {
   //   labelCol: { span: 4 },
@@ -213,5 +213,5 @@ const StudentAppointmentCreate = () => {
     </div>
   );
 };
-
+StudentAppointmentCreate.sharedComponentFunction = LayoutBase;
 export default StudentAppointmentCreate;

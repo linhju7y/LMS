@@ -7,7 +7,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
-
+import LayoutBase from "~/components/LayoutBase";
 const Grade = () => {
   const columns = [
     { title: "Grade", dataIndex: "grade", ...FilterColumn("grade") },
@@ -62,5 +62,5 @@ const Grade = () => {
     />
   );
 };
-
+Grade.sharedComponentFunction = LayoutBase;
 export default Grade;

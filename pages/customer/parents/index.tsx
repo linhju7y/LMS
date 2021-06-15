@@ -1,10 +1,10 @@
 import React from "react";
 import PowerTable from "~/components/PowerTable";
 import Link from "next/link";
-import { Table, Card, Tag, Tooltip } from "antd";
-import { FormOutlined, EyeOutlined } from "@ant-design/icons";
-import { Eye, Filter, Search } from "react-feather";
+import { Tooltip } from "antd";
+import { Eye } from "react-feather";
 import ModalAdd from "~/components/Global/ParentsList/ModalAdd";
+import LayoutBase from "~/components/LayoutBase";
 
 const ParentList = () => {
   const dataSource = [];
@@ -82,5 +82,5 @@ const ParentList = () => {
     </div>
   );
 };
-
+ParentList.sharedComponentFunction = LayoutBase;
 export default ParentList;

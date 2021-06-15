@@ -6,8 +6,8 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import { data } from "../../../lib/option/dataOption2";
 import PostForm from "~/components/Global/Option/PostForm";
 import ExpandTable from "~/components/ExpandTable";
-import { Switch, Tag, Card } from "antd";
-
+import { Switch, Card } from "antd";
+import LayoutBase from "~/components/LayoutBase";
 const Post = () => {
   const expandedRowRender = () => {
     return (
@@ -115,5 +115,5 @@ const Post = () => {
     />
   );
 };
-
+Post.sharedComponentFunction = LayoutBase;
 export default Post;

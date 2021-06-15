@@ -1,5 +1,4 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye, CheckCircle, XCircle } from "react-feather";
 import { Tooltip } from "antd";
@@ -12,6 +11,8 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
+import LayoutBase from "~/components/LayoutBase";
+AppointmentServiceTest.sharedComponentFunction = LayoutBase;
 export default function AppointmentServiceTest() {
   const expandedRowRender = () => {
     return <ExpandBoxService />;
@@ -91,7 +92,8 @@ export default function AppointmentServiceTest() {
         <>
           <Link
             href={{
-              pathname: "/customer/service/service-appointment-test/student-detail/[slug]",
+              pathname:
+                "/customer/service/service-appointment-test/student-detail/[slug]",
               query: { slug: 2 },
             }}
           >

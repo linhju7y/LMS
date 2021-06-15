@@ -9,7 +9,8 @@ import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
-
+import LayoutBase from "~/components/LayoutBase";
+StudentAppointment.sharedComponentFunction = LayoutBase;
 export default function StudentAppointment() {
   const expandedRowRender = () => {
     return <ExpandBox />;

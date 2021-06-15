@@ -6,7 +6,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
-
+import LayoutBase from "~/components/LayoutBase";
 const JobsList = () => {
   const columns = [
     { title: "Job", dataIndex: "job", ...FilterColumn("job") },
@@ -41,5 +41,5 @@ const JobsList = () => {
     />
   );
 };
-
+JobsList.sharedComponentFunction = LayoutBase;
 export default JobsList;

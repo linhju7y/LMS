@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import PowerTable from "~/components/PowerTable";
 import TitlePage from "~/components/TitlePage";
 import { data } from "../../../lib/option/dataOption2";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
-import { Tag, Tooltip } from "antd";
 import DiscountForm from "~/components/Global/Option/DiscountForm";
 import SortBox from "~/components/Elements/SortBox";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
-
+import LayoutBase from "~/components/LayoutBase";
 const Discount = () => {
   const columns = [
     {
@@ -55,5 +54,5 @@ const Discount = () => {
     </div>
   );
 };
-
+Discount.sharedComponentFunction = LayoutBase;
 export default Discount;

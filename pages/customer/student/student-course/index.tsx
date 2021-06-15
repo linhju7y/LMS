@@ -1,5 +1,4 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
 import { Eye } from "react-feather";
 import { Tooltip } from "antd";
@@ -13,7 +12,8 @@ import ExpandBox from "~/components/Elements/ExpandBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
-
+import LayoutBase from "~/components/LayoutBase";
+CourseStudent.sharedComponentFunction = LayoutBase;
 export default function CourseStudent() {
   const expandedRowRender = () => {
     return <ExpandBox />;
@@ -98,7 +98,8 @@ export default function CourseStudent() {
         <>
           <Link
             href={{
-              pathname: "/customer/student/student-course/student-detail/[slug]",
+              pathname:
+                "/customer/student/student-course/student-detail/[slug]",
               query: { slug: 2 },
             }}
           >

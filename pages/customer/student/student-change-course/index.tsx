@@ -1,8 +1,6 @@
 import React from "react";
-import TitlePage from "~/components/TitlePage";
 import ExpandTable from "~/components/ExpandTable";
-import { Eye, Filter } from "react-feather";
-import SearchBox from "~/components/Elements/SearchBox";
+import { Eye } from "react-feather";
 import { Tooltip } from "antd";
 import Link from "next/link";
 import { data3 } from "~/lib/customer-student/data";
@@ -11,7 +9,8 @@ import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
-
+import LayoutBase from "~/components/LayoutBase";
+StudentCourseChange.sharedComponentFunction = LayoutBase;
 export default function StudentCourseChange() {
   const expandedRowRender = () => {
     return <ExpandBox />;
@@ -42,7 +41,8 @@ export default function StudentCourseChange() {
       render: () => (
         <Link
           href={{
-            pathname: "/customer/student/student-change-course/student-detail/[slug]",
+            pathname:
+              "/customer/student/student-change-course/student-detail/[slug]",
             query: { slug: 2 },
           }}
         >

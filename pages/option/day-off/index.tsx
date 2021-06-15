@@ -6,7 +6,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
-
+import LayoutBase from "~/components/LayoutBase";
 const DayOff = () => {
   const columns = [
     { title: "Day", dataIndex: "dayOff", ...FilterDateColumn("dayOff") },
@@ -43,4 +43,5 @@ const DayOff = () => {
   );
 };
 
+DayOff.sharedComponentFunction = LayoutBase;
 export default DayOff;

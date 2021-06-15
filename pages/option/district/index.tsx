@@ -1,13 +1,12 @@
 import React from "react";
 import PowerTable from "~/components/PowerTable";
-
 import { data } from "../../../lib/option/dataOption";
 import DistrictForm from "~/components/Global/Option/DistrictForm";
 import FilterColumn from "~/components/Tables/FilterColumn";
-
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
+import LayoutBase from "~/components/LayoutBase";
 const District = () => {
   const columns = [
     {
@@ -52,5 +51,5 @@ const District = () => {
     />
   );
 };
-
+District.sharedComponentFunction = LayoutBase;
 export default District;

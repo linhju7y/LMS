@@ -1,8 +1,7 @@
-import { Table, Card, Button, Input } from "antd";
+import { Table, Card, Input } from "antd";
 import React from "react";
-import PowerTable from "~/components/PowerTable/";
 import TitlePage from "~/components/TitlePage";
-
+import LayoutBase from "~/components/LayoutBase";
 const StudentContactBook = () => {
   const { Search } = Input;
 
@@ -137,5 +136,5 @@ const StudentContactBook = () => {
     </>
   );
 };
-
+StudentContactBook.sharedComponentFunction = LayoutBase;
 export default StudentContactBook;
