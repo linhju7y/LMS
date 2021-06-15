@@ -14,7 +14,7 @@ import { Eye, Filter, Search } from "react-feather";
 
 import ModalAdd from "~/components/Global/TeacherList/ModalAdd";
 // import SearchInTable from "~/components/Tables/SearchInTable";
-
+import LayoutBase from "~/components/LayoutBase";
 const dataOption = [
   {
     text: "Option 1",
@@ -137,5 +137,7 @@ const TeacherList = () => {
     </>
   );
 };
+
+TeacherList.sharedComponentFunction = LayoutBase;
 
 export default TeacherList;

@@ -2,6 +2,8 @@ import { Table, Tag, Space, Card, Button, Select, Input } from "antd";
 import TitlePage from "~/components/Elements/TitlePage";
 import SearchBox from "~/components/Elements/SearchBox";
 import { PlusOutlined } from "@ant-design/icons";
+import LayoutBase from "~/components/LayoutBase";
+
 export default function Tables() {
   // Search //
 
@@ -120,3 +122,5 @@ export default function Tables() {
     </>
   );
 }
+
+Tables.sharedComponentFunction = LayoutBase;

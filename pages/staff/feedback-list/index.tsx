@@ -14,6 +14,7 @@ import FilterTable from "~/components/Global/FeedbackList/FitlerTable";
 
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import LayoutBase from "~/components/LayoutBase";
 
 const FeedbackList = () => {
   const showModal = () => {
@@ -189,4 +190,5 @@ const FeedbackList = () => {
   );
 };
 
+FeedbackList.sharedComponentFunction = LayoutBase;
 export default FeedbackList;

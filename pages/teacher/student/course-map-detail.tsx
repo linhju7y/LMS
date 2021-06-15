@@ -2,7 +2,7 @@ import React from "react";
 import { Steps, Button, message, Card } from "antd";
 const { Step } = Steps;
 import TitlePage from "~/components/TitlePage";
-
+import LayoutBase from "~/components/LayoutBase";
 const CourseMapDetail = () => {
   return (
     <div className="container-fluid course-map-detail">
@@ -125,4 +125,5 @@ const CourseMapDetail = () => {
   );
 };
 
+CourseMapDetail.sharedComponentFunction = LayoutBase;
 export default CourseMapDetail;

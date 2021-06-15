@@ -1,6 +1,7 @@
 import WrapFilter from "~/components/Global/CheckOneStudyTime/WrapFilter";
 import React, { useState } from "react";
 import { Card } from "antd";
+import LayoutBase from "~/components/LayoutBase";
 
 const CheckOneStudyTime = () => {
   const [showFilter, showFilterSet] = useState(false);
@@ -19,4 +20,5 @@ const CheckOneStudyTime = () => {
   );
 };
 
+CheckOneStudyTime.sharedComponentFunction = LayoutBase;
 export default CheckOneStudyTime;

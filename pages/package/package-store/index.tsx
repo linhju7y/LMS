@@ -5,6 +5,7 @@ import SearchBox from "~/components/Elements/SearchBox";
 import SortBox from "~/components/Elements/SortBox";
 import { table } from "console";
 import Link from "next/link";
+import LayoutBase from "~/components/LayoutBase";
 
 const PackageStore = () => {
   return (
@@ -130,5 +131,5 @@ const PackageStore = () => {
     </>
   );
 };
-
+PackageStore.sharedComponentFunction = LayoutBase;
 export default PackageStore;

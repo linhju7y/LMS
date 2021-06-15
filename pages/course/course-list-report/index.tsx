@@ -16,6 +16,8 @@ import { table } from "console";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
+import LayoutBase from "~/components/LayoutBase";
+
 const CourseListReport = () => {
   const columns = [
     {
@@ -200,4 +202,5 @@ const CourseListReport = () => {
   );
 };
 
+CourseListReport.sharedComponentFunction = LayoutBase;
 export default CourseListReport;

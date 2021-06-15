@@ -8,6 +8,7 @@ import { type } from "os";
 import { dataBoxType } from "~/lib/question-bank/dataBoxType";
 import { data } from "~/lib/option/dataOption2";
 import SelectFilterBox from "~/components/Elements/SelectFilterBox";
+import LayoutBase from "~/components/LayoutBase";
 const { Option, OptGroup } = Select;
 const content = (
   <div className="question-bank-info">
@@ -437,4 +438,5 @@ const QuestionCreate = () => {
   );
 };
 
+QuestionCreate.sharedComponentFunction = LayoutBase;
 export default QuestionCreate;

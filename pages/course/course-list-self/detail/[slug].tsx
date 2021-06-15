@@ -8,7 +8,7 @@ import Link from "next/link";
 
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
-
+import LayoutBase from "~/components/LayoutBase";
 import { Eye, Filter, Search } from "react-feather";
 
 const CourseListSelfDetail = () => {
@@ -80,5 +80,5 @@ const CourseListSelfDetail = () => {
     </>
   );
 };
-
+CourseListSelfDetail.sharedComponentFunction = LayoutBase;
 export default CourseListSelfDetail;

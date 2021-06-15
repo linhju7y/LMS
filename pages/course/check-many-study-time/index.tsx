@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card } from "antd";
 import WrapFilter from "~/components/Global/CheckManyStudyTime/WrapFilter";
+import LayoutBase from "~/components/LayoutBase";
 
 const CheckManyStudyTime = () => {
   const [showFilter, showFilterSet] = useState(false);
@@ -18,5 +19,7 @@ const CheckManyStudyTime = () => {
     </div>
   );
 };
+
+CheckManyStudyTime.sharedComponentFunction = LayoutBase;
 
 export default CheckManyStudyTime;

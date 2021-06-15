@@ -15,6 +15,7 @@ import { Info, Bookmark } from "react-feather";
 
 import CreateExamForm from "~/components/Global/QuestionBank/CreateExamForm";
 import { dataExam } from "~/lib/question-bank/dataExam";
+import LayoutBase from "~/components/LayoutBase";
 
 const content = (
   <div className="question-bank-info">
@@ -47,7 +48,7 @@ const content = (
   </div>
 );
 
-const ExamCreate: React.FC = () => {
+const ExamCreate = () => {
   const [tabActive, setTabActive] = useState(0);
 
   const getTabActive = (e) => {
@@ -164,5 +165,5 @@ const ExamCreate: React.FC = () => {
     </div>
   );
 };
-
+ExamCreate.sharedComponentFunction = LayoutBase;
 export default ExamCreate;

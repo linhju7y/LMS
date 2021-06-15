@@ -9,6 +9,7 @@ import { Filter, Eye, CreditCard } from "react-feather";
 import FilterTable from "~/components/Global/CostList/FilterTable";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import LayoutBase from "~/components/LayoutBase";
 
 const { TextArea } = Input;
 
@@ -144,4 +145,5 @@ const SalaryReview = () => {
   );
 };
 
+SalaryReview.sharedComponentFunction = LayoutBase;
 export default SalaryReview;

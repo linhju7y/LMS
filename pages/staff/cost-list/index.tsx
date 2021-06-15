@@ -10,6 +10,7 @@ import FilterTable from "~/components/Global/CostList/FilterTable";
 
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import LayoutBase from "~/components/LayoutBase";
 
 const dataOption = [
   {
@@ -102,4 +103,5 @@ const CostList = () => {
   );
 };
 
+CostList.sharedComponentFunction = LayoutBase;
 export default CostList;

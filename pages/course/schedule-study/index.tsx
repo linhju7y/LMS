@@ -10,7 +10,7 @@ import CheckRoom from "~/components/Global/ScheduleStudy/CheckRoom";
 import CalendarManyTeacher from "~/components/Global/ScheduleStudy/CalendarManyTeacher";
 import CheckEmptyTeacher from "~/components/Global/ScheduleStudy/CheckEmptyTeacher";
 import { useWrap } from "~/wrapper/wrap";
-
+import LayoutBase from "~/components/LayoutBase";
 const localizer = momentLocalizer(moment);
 
 const ScheduleStudy = () => {
@@ -45,5 +45,5 @@ const ScheduleStudy = () => {
     </div>
   );
 };
-
+ScheduleStudy.sharedComponentFunction = LayoutBase;
 export default ScheduleStudy;

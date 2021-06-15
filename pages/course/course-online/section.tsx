@@ -4,7 +4,7 @@ import { FormOutlined, EyeOutlined } from "@ant-design/icons";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
 import AddSection from "~/components/Global/CourseOnline/AddSection";
-
+import LayoutBase from "~/components/LayoutBase";
 const SectionListing = () => {
   const { Search } = Input;
   const [addSection, setAddSection] = useState(false);
@@ -130,4 +130,5 @@ const SectionListing = () => {
   );
 };
 
+SectionListing.sharedComponentFunction = LayoutBase;
 export default SectionListing;

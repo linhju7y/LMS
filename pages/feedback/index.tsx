@@ -8,7 +8,7 @@ import { Filter, Eye, CheckCircle } from "react-feather";
 import { Tooltip } from "antd";
 import FilterTable from "~/components/Global/FeedbackList/FitlerTable";
 import { data } from "~/lib/option/dataOption2";
-
+import LayoutBase from "~/components/LayoutBase";
 const FeedbackList = () => {
   const showModal = () => {
     setIsModalVisible(true);
@@ -147,5 +147,5 @@ const FeedbackList = () => {
     </>
   );
 };
-
+FeedbackList.sharedComponentFunction = LayoutBase;
 export default FeedbackList;

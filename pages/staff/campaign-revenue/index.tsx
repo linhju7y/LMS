@@ -15,6 +15,7 @@ import RevenueChart from "~/components/Dashboard/RevenueChart";
 
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import LayoutBase from "~/components/LayoutBase";
 
 const expandedRowRender = () => {
   const { Option } = Select;
@@ -158,4 +159,5 @@ const CampRevenue = () => {
   );
 };
 
+CampRevenue.sharedComponentFunction = LayoutBase;
 export default CampRevenue;

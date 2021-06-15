@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card } from "antd";
 import WrapFilter from "~/components/Global/ScheduleRoom/WrapFilter";
-
+import LayoutBase from "~/components/LayoutBase";
 const ScheduleRoom = () => {
   const [showFilter, showFilterSet] = useState(false);
 
@@ -19,4 +19,5 @@ const ScheduleRoom = () => {
   );
 };
 
+ScheduleRoom.sharedComponentFunction = LayoutBase;
 export default ScheduleRoom;

@@ -12,6 +12,8 @@ import { Eye, Filter, Search } from "react-feather";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
+import LayoutBase from "~/components/LayoutBase";
+
 const dataOption = [
   {
     text: "Trung tâm A - Z",
@@ -132,4 +134,5 @@ const CourseListSelf = () => {
   );
 };
 
+CourseListSelf.sharedComponentFunction = LayoutBase;
 export default CourseListSelf;

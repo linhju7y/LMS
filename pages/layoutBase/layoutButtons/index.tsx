@@ -5,6 +5,8 @@ import { SearchOutlined } from "@ant-design/icons";
 
 import TitlePage from "~/components/Elements/TitlePage";
 
+import LayoutBase from "~/components/LayoutBase";
+
 export default function Tables() {
   return (
     <div className="btn-page">
@@ -32,9 +34,7 @@ export default function Tables() {
 
         <div className="col-12">
           <Card title="Button light style" className="cardRadius list-button">
-            <Button variant="primary" >
-              Primary
-            </Button>{" "}
+            <Button variant="primary">Primary</Button>{" "}
             <Button variant="secondary" className="light">
               Secondary
             </Button>{" "}
@@ -65,3 +65,5 @@ export default function Tables() {
     </div>
   );
 }
+
+Tables.sharedComponentFunction = LayoutBase;

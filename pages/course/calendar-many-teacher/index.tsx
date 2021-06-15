@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card } from "antd";
 import WrapFilter from "~/components/Global/CalendarManyTeacher/WrapFilter";
+import LayoutBase from "~/components/LayoutBase";
 
 const CalendarEmptyTeacher = () => {
   const [showFilter, showFilterSet] = useState(false);
@@ -18,5 +19,7 @@ const CalendarEmptyTeacher = () => {
     </div>
   );
 };
+
+CalendarEmptyTeacher.sharedComponentFunction = LayoutBase;
 
 export default CalendarEmptyTeacher;

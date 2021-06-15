@@ -11,7 +11,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-
+import LayoutBase from "~/components/LayoutBase";
 import { Eye, Filter, Search } from "react-feather";
 import PowerTable from "~/components/PowerTable";
 
@@ -196,4 +196,5 @@ const PackageList = (props) => {
 
 PackageList.propTypes = {};
 
+PackageList.sharedComponentFunction = LayoutBase;
 export default PackageList;

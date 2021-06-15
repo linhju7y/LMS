@@ -21,7 +21,7 @@ import {
   AimOutlined,
 } from "@ant-design/icons";
 import ProfileBase from "~/components/Profile";
-
+import LayoutBase from "~/components/LayoutBase";
 const ProFileStaff = () => {
   const [fileList, setFileList] = useState([]);
 
@@ -46,4 +46,5 @@ const ProFileStaff = () => {
   return <ProfileBase />;
 };
 
+ProFileStaff.sharedComponentFunction = LayoutBase;
 export default ProFileStaff;

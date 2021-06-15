@@ -13,6 +13,7 @@ import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import { Eye, Filter, Search } from "react-feather";
 
 import FilterTable from "~/components/Global/ExerciseDoneList/FilterTable";
+import LayoutBase from "~/components/LayoutBase";
 
 const ExerciseDoneList = () => {
   const [showFilter, showFilterSet] = useState(false);
@@ -134,4 +135,5 @@ const ExerciseDoneList = () => {
   );
 };
 
+ExerciseDoneList.sharedComponentFunction = LayoutBase;
 export default ExerciseDoneList;

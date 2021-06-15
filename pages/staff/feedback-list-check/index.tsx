@@ -5,7 +5,7 @@ import SearchBox from "~/components/Elements/SearchBox";
 import Link from "next/link";
 import PowerTable from "~/components/PowerTable";
 import SortBox from "~/components/Elements/SortBox";
-
+import LayoutBase from "~/components/LayoutBase";
 const dataSource = [
   {
     key: "1",
@@ -89,4 +89,5 @@ const FeedbackListCheck = () => {
   );
 };
 
+FeedbackListCheck.sharedComponentFunction = LayoutBase;
 export default FeedbackListCheck;

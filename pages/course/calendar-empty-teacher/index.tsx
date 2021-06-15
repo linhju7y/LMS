@@ -2,6 +2,8 @@ import WrapFilter from "~/components/Global/CalendarEmptyTeacher/WrapFilter";
 import React, { useState } from "react";
 import { Card } from "antd";
 import { useWrap } from "~/wrapper/wrap";
+import LayoutBase from "~/components/LayoutBase";
+
 const CalendarEmptyTeacher = () => {
   const { getTitlePage } = useWrap();
   getTitlePage("Xem lịch giáo viên");
@@ -21,5 +23,6 @@ const CalendarEmptyTeacher = () => {
     </div>
   );
 };
+CalendarEmptyTeacher.sharedComponentFunction = LayoutBase;
 
 export default CalendarEmptyTeacher;

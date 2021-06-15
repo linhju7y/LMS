@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import PowerTable from "~/components/PowerTable";
 import SortBox from "~/components/Elements/SortBox";
-
+import LayoutBase from "~/components/LayoutBase";
 const CampaignSalesDetail = (props) => {
   const dataSource = [];
 
@@ -86,4 +86,5 @@ const CampaignSalesDetail = (props) => {
   );
 };
 
+CampaignSalesDetail.sharedComponentFunction = LayoutBase;
 export default CampaignSalesDetail;

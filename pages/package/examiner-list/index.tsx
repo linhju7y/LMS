@@ -11,6 +11,7 @@ import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 import { Eye, Filter, Search } from "react-feather";
 import DecideModal from "~/components/Elements/DecideModal";
+import LayoutBase from "~/components/LayoutBase";
 
 const ExaminerList = () => {
   const dataSource = [];
@@ -93,5 +94,5 @@ const ExaminerList = () => {
     </>
   );
 };
-
+ExaminerList.sharedComponentFunction = LayoutBase;
 export default ExaminerList;

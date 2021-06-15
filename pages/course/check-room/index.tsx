@@ -1,6 +1,7 @@
 import WrapFilter from "~/components/Global/CheckRoom/WrapFilter";
 import React, { useState } from "react";
 import { Card } from "antd";
+import LayoutBase from "~/components/LayoutBase";
 
 const CheckRoom = () => {
   const [showFilter, showFilterSet] = useState(false);
@@ -19,4 +20,5 @@ const CheckRoom = () => {
   );
 };
 
+CheckRoom.sharedComponentFunction = LayoutBase;
 export default CheckRoom;

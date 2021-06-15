@@ -10,6 +10,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 import { Eye, Filter, Search } from "react-feather";
+import LayoutBase from "~/components/LayoutBase";
 
 const dataOption = [
   {
@@ -133,4 +134,5 @@ const ExerciseCheckList = () => {
   );
 };
 
+ExerciseCheckList.sharedComponentFunction = LayoutBase;
 export default ExerciseCheckList;

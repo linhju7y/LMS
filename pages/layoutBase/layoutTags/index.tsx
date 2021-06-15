@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "antd";
-
+import LayoutBase from "~/components/LayoutBase";
 const layoutTags = () => {
   return (
     <div className="layout-tags">
@@ -23,4 +23,5 @@ const layoutTags = () => {
   );
 };
 
+layoutTags.sharedComponentFunction = LayoutBase;
 export default layoutTags;

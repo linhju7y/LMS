@@ -15,6 +15,7 @@ import { Headphones } from "react-feather";
 
 import ImgCrop from "antd-img-crop";
 import TinyBox from "~/components/Elements/TinyBox";
+import LayoutBase from "~/components/LayoutBase";
 
 const PackageCreate = () => {
   const [fileList, setFileList] = useState([]);
@@ -171,4 +172,5 @@ const PackageCreate = () => {
   );
 };
 
+PackageCreate.sharedComponentFunction = LayoutBase;
 export default PackageCreate;

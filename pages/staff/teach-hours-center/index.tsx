@@ -14,6 +14,7 @@ import FilterTable from "~/components/Global/TeachHoursList/FilterTable";
 
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
+import LayoutBase from "~/components/LayoutBase";
 
 const TeachHoursCenter = () => {
   const [showFilter, showFilterSet] = useState(false);
@@ -183,4 +184,5 @@ const TeachHoursCenter = () => {
   );
 };
 
+TeachHoursCenter.sharedComponentFunction = LayoutBase;
 export default TeachHoursCenter;

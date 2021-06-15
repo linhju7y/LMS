@@ -2,14 +2,13 @@ import { Card } from "antd";
 import React, { useState } from "react";
 import { Form, Input, Button, Radio } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
-
+import LayoutBase from "~/components/LayoutBase";
 type RequiredMark = boolean | "optional";
 
 export default function Forms() {
   const [form] = Form.useForm();
-  const [requiredMark, setRequiredMarkType] = useState<RequiredMark>(
-    "optional"
-  );
+  const [requiredMark, setRequiredMarkType] =
+    useState<RequiredMark>("optional");
 
   const onRequiredTypeChange = ({
     requiredMarkValue,
@@ -101,3 +100,5 @@ export default function Forms() {
     </>
   );
 }
+
+Forms.sharedComponentFunction = LayoutBase;

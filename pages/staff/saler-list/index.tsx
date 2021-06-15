@@ -11,6 +11,7 @@ import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 
 import { Eye, Filter, Search } from "react-feather";
 import SortBox from "~/components/Elements/SortBox";
+import LayoutBase from "~/components/LayoutBase";
 
 const dataOption = [
   {
@@ -130,5 +131,7 @@ const SalerList = () => {
     </>
   );
 };
+
+SalerList.sharedComponentFunction = LayoutBase;
 
 export default SalerList;

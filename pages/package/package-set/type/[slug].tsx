@@ -12,7 +12,7 @@ import {
   LoadingOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
-
+import LayoutBase from "~/components/LayoutBase";
 const PackageSetType = () => {
   const [isType, setIsType] = useState();
   const router = useRouter();
@@ -110,4 +110,5 @@ const PackageSetType = () => {
   );
 };
 
+PackageSetType.sharedComponentFunction = LayoutBase;
 export default PackageSetType;

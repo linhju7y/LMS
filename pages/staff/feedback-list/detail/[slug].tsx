@@ -12,7 +12,7 @@ import {
 } from "@ant-design/icons";
 import TinyBox from "~/components/Elements/TinyBox";
 import CommentBox from "~/components/Elements/CommentBox";
-
+import LayoutBase from "~/components/LayoutBase";
 // interface info {
 //   key: string,
 //     ClassName: string,
@@ -149,5 +149,5 @@ const FeedbackListDetail = (props) => {
 };
 
 FeedbackListDetail.propTypes = {};
-
+FeedbackListDetail.sharedComponentFunction = LayoutBase;
 export default FeedbackListDetail;

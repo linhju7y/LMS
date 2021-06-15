@@ -1,7 +1,7 @@
 import React from "react";
 import WrapFilter from "~/components/Global/ScheduleTeacher";
 import { Card } from "antd";
-
+import LayoutBase from "~/components/LayoutBase";
 const ScheduleTeacher = () => {
   return (
     <div className="row">
@@ -13,5 +13,5 @@ const ScheduleTeacher = () => {
     </div>
   );
 };
-
+ScheduleTeacher.sharedComponentFunction = LayoutBase;
 export default ScheduleTeacher;

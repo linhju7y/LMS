@@ -8,7 +8,7 @@ import {
   CustomerServiceOutlined,
 } from "@ant-design/icons";
 const { Step } = Steps;
-
+import LayoutBase from "~/components/LayoutBase";
 const InformationUser = () => {
   return (
     <div className="info-box doing-test-box">
@@ -162,4 +162,5 @@ const DoingTest = () => {
   );
 };
 
+DoingTest.sharedComponentFunction = LayoutBase;
 export default DoingTest;

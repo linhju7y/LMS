@@ -17,6 +17,7 @@ import {
   Collapse,
   Checkbox,
 } from "antd";
+import LayoutBase from "~/components/LayoutBase";
 type LayoutType = Parameters<typeof Form>[0]["layout"];
 const localizer = momentLocalizer(moment);
 
@@ -506,4 +507,6 @@ const CreateCourse = (props: { props: any }) => {
     </div>
   );
 };
+
+CreateCourse.sharedComponentFunction = LayoutBase;
 export default CreateCourse;

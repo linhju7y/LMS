@@ -4,6 +4,7 @@ import { FormOutlined, EyeOutlined } from "@ant-design/icons";
 import TitlePage from "~/components/TitlePage";
 import PowerTable from "~/components/PowerTable";
 // import AddLesson from "~/components/Global/CourseOnline/AddLesson";
+import LayoutBase from "~/components/LayoutBase";
 
 const LessonListing = () => {
   const { Search } = Input;
@@ -212,4 +213,5 @@ const LessonListing = () => {
   );
 };
 
+LessonListing.sharedComponentFunction = LayoutBase;
 export default LessonListing;

@@ -7,6 +7,7 @@
 // import GroupedBar from "~/components/Chart/GroupBarChart";
 // import CrazyChart from "~/components/Chart/CrazyChart";
 // import MultiAxisLine from "~/components/Chart/MultiAxisLine";
+import LayoutBase from "~/components/LayoutBase";
 
 const testDashboard = () => {
   return (
@@ -40,4 +41,5 @@ const testDashboard = () => {
   );
 };
 
+testDashboard.sharedComponentFunction = LayoutBase;
 export default testDashboard;
