@@ -29,7 +29,7 @@ export const authHeader_Bearer = async () => {
 export const instance = axios.create({
   baseURL: configApi.API_URL,
   headers: {
-    // Accept: "application/json",
+    Accept: "application/json",
   },
 });
 
@@ -37,13 +37,13 @@ instance.interceptors.request.use(
   async (config: AxiosRequestConfig) => {
     const url = getUrl(config);
     console.log("url AxiosRequestConfig - ", url);
-    if (!url.toString().includes("/auth/")) {
-      const authHeader = await authHeader_X();
-      config.headers = {
-        ...config.headers,
-        ...authHeader,
-      };
-    }
+    // if (!url.toString().includes("/auth/")) {
+    //   const authHeader = await authHeader_X();
+    //   config.headers = {
+    //     ...config.headers,
+    //     ...authHeader,
+    //   };
+    // }
     console.log(
       `%c ${config.method.toUpperCase()} - ${url}:`,
       "color: #0086b3; font-weight: bold",

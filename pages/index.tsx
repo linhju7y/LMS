@@ -6,18 +6,26 @@ import Date from "../components/date";
 import Dashboard from "~/pages/dashboard";
 import { signIn, signOut, useSession } from "next-auth/client";
 import SignIn from "./auth/signin";
+import id from "date-fns/esm/locale/id/index.js";
 
-export default function Home() {
-  const [session, loading] = useSession();
-  // if (!session?.user) {
+import LayoutBase from "~/components/LayoutBase";
+
+function Home() {
+  // const [session, loading] = useSession();
+  // console.log("Session in index: ", session);
+
+  // if (loading) return ".....loading";
+
+  // if (!session) {
   //   signIn();
   // }
   return (
     <>
-      {/* <Head>
-        <title>{siteTitle}</title>
-      </Head> */}
       <Dashboard />
     </>
   );
 }
+
+Home.sharedComponentFunction = LayoutBase;
+
+export default Home;

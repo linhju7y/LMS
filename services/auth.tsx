@@ -5,16 +5,19 @@
 
 // import axios from "axios";
 import { instance } from "./instance";
-
+const FormData = require("form-data");
 export const login = async (params) => {
   try {
-    var FormData = require("form-data");
     const formData = new FormData();
 
     formData.append("username", params.username);
     formData.append("password", params.password);
 
-    const res = await instance.post("/api/Account/Login", formData, {});
+    const res = await instance.post("/api/Account/Login", formData, {
+      headers: formData.getHeaders(),
+    });
+
+    console.log("RESssssssss: ", res);
     return res;
   } catch (error) {
     console.log("login error", error);

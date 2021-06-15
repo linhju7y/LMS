@@ -10,6 +10,8 @@ import ModelCard from "../../components/Dashboard/ChartCard/ModelCard";
 import RippleCard from "../../components/Dashboard/ChartCard/RippleCard";
 import LineCard from "components/Dashboard/ChartCard/LineCard";
 
+import LayoutBase from "~/components/LayoutBase";
+
 const Dashboard = () => {
   console.log(dataPie);
   return (
@@ -148,5 +150,7 @@ const Dashboard = () => {
     </div>
   );
 };
+
+Dashboard.sharedComponentFunction = LayoutBase;
 
 export default Dashboard;

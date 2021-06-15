@@ -47,10 +47,6 @@ function index(props: any) {
 
   return (
     <>
-      <div className="text-center mb-2">
-        Chỗ này e để tạm layout như này vì api login chưa xài dc. Theo đúng flow
-        thì mới vào sẽ chỉ hiện cái form như bên dưới nếu chưa login
-      </div>
       <div className={styles.container}>
         <div className={styles.wrapBox}>
           <div className={styles.imgLogin}>

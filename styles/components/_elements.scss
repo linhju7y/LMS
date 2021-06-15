@@ -592,6 +592,7 @@ textarea.form-control {
   transition: 0.3s width;
   height: calc(100vh - 65px);
   overflow: auto;
+  overflow-x: hidden;
 
   @include max-media(1000px) {
     width: 100%;
@@ -660,7 +661,7 @@ textarea.form-control {
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 0.5px;
-    font-size: 15px;
+    font-size: 14px;
     margin-bottom: 0;
   }
 }
@@ -1237,6 +1238,7 @@ hr {
 
 .app-content-title {
   display: none;
+
   @include max-media(1000px) {
     display: block;
     margin-bottom: 20px;

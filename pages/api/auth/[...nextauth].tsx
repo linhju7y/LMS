@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 import { login } from "~/services/auth";
-
+var FormData = require("form-data");
 // .env.local.example variable
 //
 // NEXTAUTH_URL=http://localhost:3000
@@ -32,8 +32,9 @@ const options = {
       //   },
       //   password: { label: 'password', type: 'password' },
       // },
-      authorize: async (credentials) => {
+      authorize: async (credentials: any) => {
         console.log("DATA LOGIN: ", credentials);
+
         // sample code
         // const user = (credentials) => {
         //   // You need to provide your own logic here that takes the credentials
@@ -56,7 +57,7 @@ const options = {
 
         try {
           const rs = await login(credentials);
-          // console.log('authorize rs:', rs)
+          console.log("authorize rs:", rs);
           return Promise.resolve(rs.data);
         } catch (error) {
           return Promise.reject(new Error(JSON.stringify(error)));
