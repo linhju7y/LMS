@@ -84,7 +84,10 @@ const MenuDefault = ({
   // const router = useRouter();
   // const getRouter = router.pathname;
 
-  let { getRouter } = useWrap();
+  const router = useRouter();
+  let getRouter = router.pathname;
+
+  console.log("Get Router: ", getRouter);
 
   const [state, setState] = useState<propState>({
     collapsed: isOpen,

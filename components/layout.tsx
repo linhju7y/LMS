@@ -57,7 +57,28 @@ function Layout({
     !openMenuMobile ? setOpenMenuMobile(true) : setOpenMenuMobile(false);
   };
 
+  // const returnIsLoading = () => {
+  //   let boolean = null;
+  //   if (typeof session !== "undefined") {
+  //     if (session == null) {
+  //       // console.log("Test path: ", path.search("signin") < 0);
+  //       if (path.search("signin") < 0) {
+  //         boolean = true;
+  //       }
+  //     } else {
+  //       console.log("chui vô đây");
+  //       boolean = false;
+  //     }
+  //   } else {
+  //     boolean = true;
+  //   }
+
+  //   return boolean;
+  // };
+
   const [isLoading, setIsLoading] = useState(true);
+
+  console.log("is Loading: ", isLoading);
 
   useEffect(() => {
     console.log("Session: ", session);
