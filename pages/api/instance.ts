@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { getSession } from "next-auth/client";
-import configApi from "~/appConfig";
+import _ from "~/appConfig";
 
 function getUrl(config) {
   if (config.baseURL) {
@@ -27,7 +27,7 @@ export const authHeader_Bearer = async () => {
   }
 };
 export const instance = axios.create({
-  baseURL: configApi.API_URL,
+  baseURL: _.API_URL,
   headers: {
     Accept: "application/json",
   },
@@ -37,6 +37,7 @@ instance.interceptors.request.use(
   async (config: AxiosRequestConfig) => {
     const url = getUrl(config);
     console.log("url AxiosRequestConfig - ", url);
+
     console.log(
       `%c ${config.method.toUpperCase()} - ${url}:`,
       "color: #0086b3; font-weight: bold",
@@ -57,17 +58,13 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
+    console.log(
+      ` %c ${response.status} - ${getUrl(response.config)}:`,
+      "color: #008000; font-weight: bold",
+      response
+    );
     return response;
   },
-  // async (response) => {
-  //   console.log(
-  //     `%c ${response.status} - ${getUrl(response.config)}:`,
-  //     "color: #008000; font-weight: bold",
-  //     response
-  //   );
-
-  //   return response;
-  // },
   function (error) {
     if (error.response) {
       // server trả response về là lỗi code đã handle

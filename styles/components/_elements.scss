@@ -1345,3 +1345,10 @@ hr {
     background: white;
   }
 }
+
+.loading-form {
+  line-height: 0;
+  .ant-spin-dot-item {
+    background-color: white;
+  }
+}
