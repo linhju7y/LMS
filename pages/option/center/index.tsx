@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React, { FC, Fragment, useEffect, useState } from "react";
 import PowerTable from "~/components/PowerTable";
-import { data } from "../../../lib/option/dataOption";
 import randomColor from "randomcolor";
 import { Tag, Tooltip } from "antd";
-import CenterFrom from "~/components/Global/Option/CenterForm";
 import { Info, RotateCcw } from "react-feather";
 import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import Link from "next/link";
 import LayoutBase from "~/components/LayoutBase";
+import { branchApi } from "~/pages/api";
+import { CenterForm } from "~/components/Global";
+
 const Center = () => {
+  const [center, setCenter] = useState<IBranch[]>([]);
   const [centerForm, setCenterForm] = useState(false);
   const columns = [
     {
+      title: "Mã trung tâm",
+      dataIndex: "BranchCode",
+      ...FilterColumn("address"),
+    },
+
+    {
       title: "Tên trung tâm",
-      dataIndex: "center",
+      dataIndex: "BranchName",
       render: (center) => {
         let color = randomColor();
         return (
@@ -26,8 +34,12 @@ const Center = () => {
       },
       ...FilterColumn("center"),
     },
-    { title: "Địa chỉ", dataIndex: "address", ...FilterColumn("address") },
-    { title: "Quận", dataIndex: "district", ...FilterColumn("district") },
+    { title: "Địa chỉ", dataIndex: "Address", ...FilterColumn("address") },
+    {
+      title: "Số điện thoại",
+      dataIndex: "Phone",
+      ...FilterColumn("district"),
+    },
     {
       render: () => (
         <>
@@ -56,9 +68,20 @@ const Center = () => {
       ),
     },
   ];
+  //get data Center
+  useEffect(() => {
+    branchApi
+      .getAll()
+      .then((res) => {
+        let _data = res.data.createAcc;
+        setCenter(_data);
+        console.log(_data);
+      })
+      .finally(() => {});
+  }, []);
 
   return (
-    <>
+    <Fragment>
       <PowerTable
         addClass="basic-header"
         TitlePage="Danh sách trung tâm"
@@ -70,7 +93,7 @@ const Center = () => {
             Thêm mới
           </button>
         }
-        dataSource={data}
+        dataSource={center}
         columns={columns}
         Extra={
           <div className="extra-table">
@@ -80,8 +103,8 @@ const Center = () => {
         }
       />
 
-      <CenterFrom visible={centerForm} onCancel={() => setCenterForm(false)} />
-    </>
+      <CenterForm visible={centerForm} onCancel={() => setCenterForm(false)} />
+    </Fragment>
   );
 };
 Center.sharedComponentFunction = LayoutBase;
