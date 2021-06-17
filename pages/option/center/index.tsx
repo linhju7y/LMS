@@ -8,7 +8,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import Link from "next/link";
 import LayoutBase from "~/components/LayoutBase";
-import { branchApi } from "~/pages/api";
+import { branchApi } from "~/api";
 import { CenterForm } from "~/components/Global";
 
 const Center = () => {

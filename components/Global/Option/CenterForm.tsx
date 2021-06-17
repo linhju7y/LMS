@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { Modal, Form, Input, Button, message, Spin } from "antd";
 import { FormProvider, useForm } from "react-hook-form";
-import { branchApi } from "~/pages/api";
+import { branchApi } from "~/api";
 
 type CenterFormProps = IFormBaseProps & {
   Id?: number;
