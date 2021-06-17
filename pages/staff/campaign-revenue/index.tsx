@@ -159,5 +159,5 @@ const CampRevenue = () => {
   );
 };
 
-CampRevenue.sharedComponentFunction = LayoutBase;
+CampRevenue.layout = LayoutBase;
 export default CampRevenue;

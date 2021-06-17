@@ -94,4 +94,4 @@ export default function ContractCensorship() {
   );
 }
 
-ContractCensorship.sharedComponentFunction = LayoutBase;
+ContractCensorship.layout = LayoutBase;

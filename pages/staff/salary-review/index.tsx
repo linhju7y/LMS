@@ -145,5 +145,5 @@ const SalaryReview = () => {
   );
 };
 
-SalaryReview.sharedComponentFunction = LayoutBase;
+SalaryReview.layout = LayoutBase;
 export default SalaryReview;

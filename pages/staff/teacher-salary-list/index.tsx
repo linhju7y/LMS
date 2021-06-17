@@ -101,5 +101,5 @@ const TeacherSalaryList = () => {
     </>
   );
 };
-TeacherSalaryList.sharedComponentFunction = LayoutBase;
+TeacherSalaryList.layout = LayoutBase;
 export default TeacherSalaryList;

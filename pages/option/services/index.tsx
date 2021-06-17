@@ -42,5 +42,5 @@ const ServiceList = () => {
     />
   );
 };
-ServiceList.sharedComponentFunction = LayoutBase;
+ServiceList.layout = LayoutBase;
 export default ServiceList;

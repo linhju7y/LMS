@@ -26,6 +26,6 @@ function Home() {
   );
 }
 
-Home.sharedComponentFunction = LayoutBase;
+Home.layout = LayoutBase;
 
 export default Home;

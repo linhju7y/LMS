@@ -26,6 +26,51 @@ const StudentContactBook = () => {
       note: `hihi x ${i + 2}`,
     });
   }
+
+  const dataPoint = [
+    {
+      Sheet: "Lớp 5",
+      ListStudent: [
+        {
+          StudentName: "Nguyễn An",
+          ClassName: "Lớp 5",
+          Reading1: 9,
+          Reading2: 10,
+          Reading3: 11,
+        },
+      ],
+      ListCol: [
+        {
+          Title: "Họ và tên",
+          DataIndex: "StudentName",
+          Children: "",
+        },
+        {
+          Title: "Lớp",
+          DataIndex: "ClassName",
+          Children: "",
+        },
+        {
+          Title: "Bài tập",
+          Children: [
+            {
+              Title: "Ngày 1",
+              DataIndex: "Reading1",
+            },
+            {
+              Title: "Ngày 2",
+              DataIndex: "Reading3",
+            },
+            {
+              Title: "Ngày 2",
+              DataIndex: "Reading3",
+            },
+          ],
+        },
+      ],
+    },
+  ];
+
   const columns: any = [
     {
       title: "STT",
@@ -136,5 +181,5 @@ const StudentContactBook = () => {
     </>
   );
 };
-StudentContactBook.sharedComponentFunction = LayoutBase;
+StudentContactBook.layout = LayoutBase;
 export default StudentContactBook;

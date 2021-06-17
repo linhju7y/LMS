@@ -438,5 +438,5 @@ const QuestionCreate = () => {
   );
 };
 
-QuestionCreate.sharedComponentFunction = LayoutBase;
+QuestionCreate.layout = LayoutBase;
 export default QuestionCreate;

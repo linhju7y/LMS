@@ -5,5 +5,5 @@ import LayoutBase from "~/components/LayoutBase";
 const TeacherProfile = () => {
   return <ProfileBase />;
 };
-TeacherProfile.sharedComponentFunction = LayoutBase;
+TeacherProfile.layout = LayoutBase;
 export default TeacherProfile;

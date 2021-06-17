@@ -86,5 +86,5 @@ const CampaignSalesDetail = (props) => {
   );
 };
 
-CampaignSalesDetail.sharedComponentFunction = LayoutBase;
+CampaignSalesDetail.layout = LayoutBase;
 export default CampaignSalesDetail;

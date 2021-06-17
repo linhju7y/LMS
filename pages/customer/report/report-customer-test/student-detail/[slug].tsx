@@ -133,7 +133,7 @@ const FeedbackListDetail = (props) => {
     </>
   );
 };
-FeedbackListDetail.sharedComponentFunction = LayoutBase;
+FeedbackListDetail.layout = LayoutBase;
 
 FeedbackListDetail.propTypes = {};
 

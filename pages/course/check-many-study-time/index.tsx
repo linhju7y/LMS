@@ -20,6 +20,6 @@ const CheckManyStudyTime = () => {
   );
 };
 
-CheckManyStudyTime.sharedComponentFunction = LayoutBase;
+CheckManyStudyTime.layout = LayoutBase;
 
 export default CheckManyStudyTime;

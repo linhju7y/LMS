@@ -5,7 +5,7 @@ import SortBox from "~/components/Elements/SortBox";
 import { table } from "console";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useWrap } from "~/wrapper/wrap";
+import { useWrap } from "~/context/wrap";
 import PowerTable from "~/components/PowerTable";
 import { Eye, Filter, Search } from "react-feather";
 
@@ -134,5 +134,5 @@ const CourseListSelf = () => {
   );
 };
 
-CourseListSelf.sharedComponentFunction = LayoutBase;
+CourseListSelf.layout = LayoutBase;
 export default CourseListSelf;

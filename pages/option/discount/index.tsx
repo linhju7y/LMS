@@ -54,5 +54,5 @@ const Discount = () => {
     </div>
   );
 };
-Discount.sharedComponentFunction = LayoutBase;
+Discount.layout = LayoutBase;
 export default Discount;

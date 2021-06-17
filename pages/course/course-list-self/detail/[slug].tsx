@@ -80,5 +80,5 @@ const CourseListSelfDetail = () => {
     </>
   );
 };
-CourseListSelfDetail.sharedComponentFunction = LayoutBase;
+CourseListSelfDetail.layout = LayoutBase;
 export default CourseListSelfDetail;

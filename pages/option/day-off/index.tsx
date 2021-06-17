@@ -43,5 +43,5 @@ const DayOff = () => {
   );
 };
 
-DayOff.sharedComponentFunction = LayoutBase;
+DayOff.layout = LayoutBase;
 export default DayOff;

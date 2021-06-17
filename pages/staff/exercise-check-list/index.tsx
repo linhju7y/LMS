@@ -134,5 +134,5 @@ const ExerciseCheckList = () => {
   );
 };
 
-ExerciseCheckList.sharedComponentFunction = LayoutBase;
+ExerciseCheckList.layout = LayoutBase;
 export default ExerciseCheckList;

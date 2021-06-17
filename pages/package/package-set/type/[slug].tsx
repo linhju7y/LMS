@@ -110,5 +110,5 @@ const PackageSetType = () => {
   );
 };
 
-PackageSetType.sharedComponentFunction = LayoutBase;
+PackageSetType.layout = LayoutBase;
 export default PackageSetType;

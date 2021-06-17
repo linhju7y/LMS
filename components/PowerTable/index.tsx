@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Table, Card } from "antd";
 import TitlePage from "~/components/TitlePage";
-import { useWrap } from "~/wrapper/wrap";
+import { useWrap } from "~/context/wrap";
 
 const PowerTable = (props) => {
   const { getTitlePage } = useWrap();

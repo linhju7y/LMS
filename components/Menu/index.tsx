@@ -25,7 +25,7 @@ import { type } from "os";
 import ReactHtmlParser from "react-html-parser";
 
 import { dataMenu } from "~/lib/data-menu";
-import { useWrap } from "~/wrapper/wrap";
+import { useWrap } from "~/context/wrap";
 
 import {
   Bookmark,
@@ -86,8 +86,6 @@ const MenuDefault = ({
 
   const router = useRouter();
   let getRouter = router.pathname;
-
-  console.log("Get Router: ", getRouter);
 
   const [state, setState] = useState<propState>({
     collapsed: isOpen,

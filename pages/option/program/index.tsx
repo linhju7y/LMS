@@ -61,5 +61,5 @@ const Program = () => {
     />
   );
 };
-Program.sharedComponentFunction = LayoutBase;
+Program.layout = LayoutBase;
 export default Program;

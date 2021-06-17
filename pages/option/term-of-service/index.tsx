@@ -41,5 +41,5 @@ const TermOfService = () => {
     </div>
   );
 };
-TermOfService.sharedComponentFunction = LayoutBase;
+TermOfService.layout = LayoutBase;
 export default TermOfService;

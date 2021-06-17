@@ -12,7 +12,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import LayoutBase from "~/components/LayoutBase";
-CustomerService.sharedComponentFunction = LayoutBase;
+CustomerService.layout = LayoutBase;
 export default function CustomerService() {
   const expandedRowRender = () => {
     return <ExpandBoxService />;

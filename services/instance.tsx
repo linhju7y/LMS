@@ -66,6 +66,15 @@ instance.interceptors.response.use(
   (response: AxiosResponse) => {
     return response;
   },
+  // async (response) => {
+  //   console.log(
+  //     `%c ${response.status} - ${getUrl(response.config)}:`,
+  //     "color: #008000; font-weight: bold",
+  //     response
+  //   );
+
+  //   return response;
+  // },
   function (error) {
     if (error.response) {
       // server trả response về là lỗi code đã handle

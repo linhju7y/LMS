@@ -6,12 +6,10 @@ import Header from "~/components/Header";
 import Menu from "~/components/Menu";
 import { signIn, useSession } from "next-auth/client";
 import { useWrap } from "~/context/wrap";
-import TitlePageHeader from "./Elements/TitlePageHeader";
+import TitlePageHeader from "~/components/Elements/TitlePageHeader";
 import { Breadcrumb } from "antd";
 export const siteTitle = "Mona Media Admin";
 import { dataMenu } from "~/lib/data-menu";
-import Lottie from "react-lottie";
-import panda from "~/public/loading/panda.json";
 
 const name = "Mona";
 
@@ -37,14 +35,14 @@ function Layout({
 
   // --------------- //
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: panda,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+  //   const defaultOptions = {
+  //     loop: true,
+  //     autoplay: true,
+  //     animationData: panda,
+  //     rendererSettings: {
+  //       preserveAspectRatio: "xMidYMid slice",
+  //     },
+  //   };
 
   const [isOpen, setIsOpen] = useState(true);
 
@@ -53,23 +51,23 @@ function Layout({
   const funcMenuMobile = () => {
     !openMenuMobile ? setOpenMenuMobile(true) : setOpenMenuMobile(false);
   };
-  const [session, loading] = useSession();
-  const [isLoading, setIsLoading] = useState(true);
+  //   const [session, loading] = useSession();
+  //   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   console.log("Session: ", session);
+  //   useEffect(() => {
+  //     console.log("Session: ", session);
 
-  //   if (typeof session !== "undefined") {
-  //     if (session == null) {
-  //       // console.log("Test path: ", path.search("signin") < 0);
-  //       if (path.search("signin") < 0) {
-  //         signIn();
+  //     if (typeof session !== "undefined") {
+  //       if (session == null) {
+  //         // console.log("Test path: ", path.search("signin") < 0);
+  //         if (path.search("signin") < 0) {
+  //           signIn();
+  //         }
+  //       } else {
+  //         setIsLoading(false);
   //       }
-  //     } else {
-  //       setIsLoading(false);
   //     }
-  //   }
-  // }, [session]);
+  //   }, [session]);
 
   const resetMenuMobile = () => {
     setOpenMenuMobile(false);

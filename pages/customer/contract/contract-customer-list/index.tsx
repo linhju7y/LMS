@@ -9,7 +9,7 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import LayoutBase from "~/components/LayoutBase";
-ContractList.sharedComponentFunction = LayoutBase;
+ContractList.layout = LayoutBase;
 export default function ContractList() {
   const columns = [
     {

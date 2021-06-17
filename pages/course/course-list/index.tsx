@@ -62,5 +62,5 @@ const CourseList = () => {
   );
 };
 
-CourseList.sharedComponentFunction = LayoutBase;
+CourseList.layout = LayoutBase;
 export default CourseList;

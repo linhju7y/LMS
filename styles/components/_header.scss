@@ -368,7 +368,7 @@
           .user-wrap {
             display: flex;
             align-items: center;
-            padding: 12px 0;
+            padding: 0px 0;
             @include max-media(1000px) {
               padding: 0;
             }

@@ -57,10 +57,13 @@ const options = {
 
         try {
           const rs = await login(credentials);
-          console.log("authorize rs:", rs);
+
           return Promise.resolve(rs.data);
         } catch (error) {
-          return Promise.reject(new Error(JSON.stringify(error)));
+          // return Promise.reject(new Error(JSON.stringify(error)));
+          return Promise.reject(
+            new Error(encodeURIComponent(JSON.stringify(error)))
+          );
         }
       },
     }),
@@ -149,14 +152,12 @@ const options = {
     session: async (session, token) => {
       //session.customSessionProperty = 'bar'
       // console.log('session callback', session, token);
-      if (token?.accessToken) {
-        session.accessToken = token.accessToken;
-        session.user = {
-          ...session.user,
-          username: token.username,
-          roles: token.roles,
-        };
+      if (token.data) {
+        // session.accessToken = token.accessToken;
+        session.user = token.data;
       }
+
+      console.log("Session: ", session);
 
       return Promise.resolve(session);
     },
@@ -173,7 +174,7 @@ const options = {
     jwt: async (token, user, account, profile, isNewUser) => {
       console.log("jwt callbacks:");
       console.log("token", token);
-      console.log("user", user);
+      console.log("user", token?.data?.UserName);
       console.log("account", account);
       console.log("profile", profile);
       console.log("isNewUser", isNewUser);

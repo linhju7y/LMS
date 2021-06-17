@@ -40,5 +40,5 @@ const Idioms = () => {
     />
   );
 };
-Idioms.sharedComponentFunction = LayoutBase;
+Idioms.layout = LayoutBase;
 export default Idioms;

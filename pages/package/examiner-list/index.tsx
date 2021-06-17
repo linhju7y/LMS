@@ -94,5 +94,5 @@ const ExaminerList = () => {
     </>
   );
 };
-ExaminerList.sharedComponentFunction = LayoutBase;
+ExaminerList.layout = LayoutBase;
 export default ExaminerList;

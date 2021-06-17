@@ -131,5 +131,5 @@ const PackageStore = () => {
     </>
   );
 };
-PackageStore.sharedComponentFunction = LayoutBase;
+PackageStore.layout = LayoutBase;
 export default PackageStore;

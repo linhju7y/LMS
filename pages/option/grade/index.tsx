@@ -62,5 +62,5 @@ const Grade = () => {
     />
   );
 };
-Grade.sharedComponentFunction = LayoutBase;
+Grade.layout = LayoutBase;
 export default Grade;

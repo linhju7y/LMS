@@ -13,5 +13,5 @@ const ScheduleTeacher = () => {
     </div>
   );
 };
-ScheduleTeacher.sharedComponentFunction = LayoutBase;
+ScheduleTeacher.layout = LayoutBase;
 export default ScheduleTeacher;

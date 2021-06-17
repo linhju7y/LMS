@@ -19,5 +19,5 @@ const ScheduleRoom = () => {
   );
 };
 
-ScheduleRoom.sharedComponentFunction = LayoutBase;
+ScheduleRoom.layout = LayoutBase;
 export default ScheduleRoom;

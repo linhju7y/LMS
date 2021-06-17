@@ -7,5 +7,5 @@ const ExerciseDoneDetail = (props) => {
 };
 
 ExerciseDoneDetail.propTypes = {};
-ExerciseDoneDetail.sharedComponentFunction = LayoutBase;
+ExerciseDoneDetail.layout = LayoutBase;
 export default ExerciseDoneDetail;

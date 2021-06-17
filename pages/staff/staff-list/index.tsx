@@ -137,6 +137,6 @@ const StaffList = () => {
     </>
   );
 };
-StaffList.sharedComponentFunction = LayoutBase;
+StaffList.layout = LayoutBase;
 
 export default StaffList;

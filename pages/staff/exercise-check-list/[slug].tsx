@@ -8,5 +8,5 @@ function ExerciseCheckDetail(props) {
   return <ExerciseDetailView />;
 }
 
-ExerciseCheckDetail.sharedComponentFunction = LayoutBase;
+ExerciseCheckDetail.layout = LayoutBase;
 export default ExerciseCheckDetail;

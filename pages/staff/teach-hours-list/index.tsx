@@ -184,5 +184,5 @@ const TeachHoursList = () => {
   );
 };
 
-TeachHoursList.sharedComponentFunction = LayoutBase;
+TeachHoursList.layout = LayoutBase;
 export default TeachHoursList;

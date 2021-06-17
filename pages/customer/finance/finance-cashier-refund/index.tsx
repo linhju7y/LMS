@@ -9,7 +9,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import LayoutBase from "~/components/LayoutBase";
-FinanceRefund.sharedComponentFunction = LayoutBase;
+FinanceRefund.layout = LayoutBase;
 export default function FinanceRefund() {
   const expandedRowRender = () => <ExpandBoxService />;
 

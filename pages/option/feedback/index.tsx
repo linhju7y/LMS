@@ -43,5 +43,5 @@ const FeedBackList = () => {
     />
   );
 };
-FeedBackList.sharedComponentFunction = LayoutBase;
+FeedBackList.layout = LayoutBase;
 export default FeedBackList;

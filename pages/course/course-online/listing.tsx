@@ -127,5 +127,5 @@ const CourseListing = () => {
   );
 };
 
-CourseListing.sharedComponentFunction = LayoutBase;
+CourseListing.layout = LayoutBase;
 export default CourseListing;

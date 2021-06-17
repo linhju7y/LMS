@@ -11,7 +11,7 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import LayoutBase from "~/components/LayoutBase";
-ReportWarning.sharedComponentFunction = LayoutBase;
+ReportWarning.layout = LayoutBase;
 export default function ReportWarning() {
   const expandedRowRender = () => <ExpandBoxWarning />;
   const columns = [

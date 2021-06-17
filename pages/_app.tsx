@@ -9,7 +9,7 @@ import Layout, { siteTitle } from "../components/layout";
 import Dashboard from "~/pages/dashboard";
 import { Provider as AuthProvider } from "next-auth/client";
 import { useRouter } from "next/router";
-import { WrapProvider } from "~/wrapper/wrap";
+import { WrapProvider } from "~/context/wrap";
 
 import SignIn from "~/pages/auth/signin";
 
@@ -32,10 +32,9 @@ export default function App({ Component, pageProps }) {
     };
   }, []);
 
-  const sharedComponentFunction =
-    Component.sharedComponentFunction || ((page: any) => page);
+  const Layout = Component.layout || ((props) => <>{props.children}</>);
 
-  return sharedComponentFunction(
+  return (
     <>
       <Head>
         <title>MONA LMS V2</title>
@@ -73,11 +72,33 @@ export default function App({ Component, pageProps }) {
         <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
         {/* <script src="path/to/chartjs/dist/chart.js"></script> */}
       </Head>
-      <AuthProvider session={session}>
+      <AuthProvider session={pageProps.session}>
         <WrapProvider>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </WrapProvider>
       </AuthProvider>
     </>
   );
 }
+
+// function Auth({ children }) {
+//   const [session, loading] = useSession();
+//   const isUser = !!session?.user;
+
+//   console.log("SESSion test: ", session);
+
+//   React.useEffect(() => {
+//     if (loading) return; // Do nothing while loading
+//     if (!isUser) signIn(); // If not authenticated, force log in
+//   }, [isUser, loading]);
+
+//   if (isUser) {
+//     return children;
+//   }
+
+//   // Session is being fetched, or no user.
+//   // If no user, useEffect() will redirect.
+//   return <div>Loading...</div>;
+// }

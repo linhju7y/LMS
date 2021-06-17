@@ -20,5 +20,5 @@ const CheckOneStudyTime = () => {
   );
 };
 
-CheckOneStudyTime.sharedComponentFunction = LayoutBase;
+CheckOneStudyTime.layout = LayoutBase;
 export default CheckOneStudyTime;

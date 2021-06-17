@@ -41,5 +41,5 @@ const SupplierList = () => {
     />
   );
 };
-SupplierList.sharedComponentFunction = LayoutBase;
+SupplierList.layout = LayoutBase;
 export default SupplierList;

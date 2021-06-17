@@ -39,5 +39,5 @@ const InfoFormList = () => {
     />
   );
 };
-InfoFormList.sharedComponentFunction = LayoutBase;
+InfoFormList.layout = LayoutBase;
 export default InfoFormList;

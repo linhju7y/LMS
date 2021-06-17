@@ -165,5 +165,5 @@ const ExamCreate = () => {
     </div>
   );
 };
-ExamCreate.sharedComponentFunction = LayoutBase;
+ExamCreate.layout = LayoutBase;
 export default ExamCreate;

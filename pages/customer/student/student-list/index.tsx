@@ -129,6 +129,6 @@ const StudentData = () => {
     />
   );
 };
-StudentData.sharedComponentFunction = LayoutBase;
+StudentData.layout = LayoutBase;
 
 export default StudentData;

@@ -101,4 +101,4 @@ export default function Forms() {
   );
 }
 
-Forms.sharedComponentFunction = LayoutBase;
+Forms.layout = LayoutBase;

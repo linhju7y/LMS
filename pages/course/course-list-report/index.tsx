@@ -202,5 +202,5 @@ const CourseListReport = () => {
   );
 };
 
-CourseListReport.sharedComponentFunction = LayoutBase;
+CourseListReport.layout = LayoutBase;
 export default CourseListReport;

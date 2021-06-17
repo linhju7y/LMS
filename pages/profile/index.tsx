@@ -46,5 +46,5 @@ const ProFileStaff = () => {
   return <ProfileBase />;
 };
 
-ProFileStaff.sharedComponentFunction = LayoutBase;
+ProFileStaff.layout = LayoutBase;
 export default ProFileStaff;

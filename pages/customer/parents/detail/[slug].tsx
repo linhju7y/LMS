@@ -295,6 +295,6 @@ const ParentsDetail = (props) => {
     </div>
   );
 };
-ParentsDetail.sharedComponentFunction = LayoutBase;
+ParentsDetail.layout = LayoutBase;
 
 export default ParentsDetail;

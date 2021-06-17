@@ -196,5 +196,5 @@ const PackageList = (props) => {
 
 PackageList.propTypes = {};
 
-PackageList.sharedComponentFunction = LayoutBase;
+PackageList.layout = LayoutBase;
 export default PackageList;

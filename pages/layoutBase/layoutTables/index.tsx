@@ -123,4 +123,4 @@ export default function Tables() {
   );
 }
 
-Tables.sharedComponentFunction = LayoutBase;
+Tables.layout = LayoutBase;

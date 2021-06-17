@@ -49,5 +49,5 @@ const TeacherSalary = () => {
     />
   );
 };
-TeacherSalary.sharedComponentFunction = LayoutBase;
+TeacherSalary.layout = LayoutBase;
 export default TeacherSalary;

@@ -4,6 +4,6 @@ import LayoutBase from "~/components/LayoutBase";
 const CustomerDetail = () => {
   return <ProfileCustomer />;
 };
-CustomerDetail.sharedComponentFunction = LayoutBase;
+CustomerDetail.layout = LayoutBase;
 
 export default CustomerDetail;

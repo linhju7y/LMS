@@ -6,5 +6,5 @@ const CustomerDetail = () => {
   return <ProfileCustomer />;
 };
 
-CustomerDetail.sharedComponentFunction = LayoutBase;
+CustomerDetail.layout = LayoutBase;
 export default CustomerDetail;

@@ -23,5 +23,5 @@ const layoutTags = () => {
   );
 };
 
-layoutTags.sharedComponentFunction = LayoutBase;
+layoutTags.layout = LayoutBase;
 export default layoutTags;

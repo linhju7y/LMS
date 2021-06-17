@@ -207,5 +207,5 @@ const Contract = () => {
     </div>
   );
 };
-Contract.sharedComponentFunction = LayoutBase;
+Contract.layout = LayoutBase;
 export default Contract;

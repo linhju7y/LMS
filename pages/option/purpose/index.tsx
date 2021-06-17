@@ -41,5 +41,5 @@ const Purpose = () => {
     />
   );
 };
-Purpose.sharedComponentFunction = LayoutBase;
+Purpose.layout = LayoutBase;
 export default Purpose;

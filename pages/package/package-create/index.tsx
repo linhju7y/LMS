@@ -172,5 +172,5 @@ const PackageCreate = () => {
   );
 };
 
-PackageCreate.sharedComponentFunction = LayoutBase;
+PackageCreate.layout = LayoutBase;
 export default PackageCreate;

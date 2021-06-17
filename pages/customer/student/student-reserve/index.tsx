@@ -10,7 +10,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import LayoutBase from "~/components/LayoutBase";
-StudentReserve.sharedComponentFunction = LayoutBase;
+StudentReserve.layout = LayoutBase;
 export default function StudentReserve() {
   const expandedRowRender = () => {
     return <ExpandBox />;

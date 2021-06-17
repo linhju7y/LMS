@@ -41,5 +41,5 @@ const testDashboard = () => {
   );
 };
 
-testDashboard.sharedComponentFunction = LayoutBase;
+testDashboard.layout = LayoutBase;
 export default testDashboard;

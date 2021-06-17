@@ -51,5 +51,5 @@ const District = () => {
     />
   );
 };
-District.sharedComponentFunction = LayoutBase;
+District.layout = LayoutBase;
 export default District;

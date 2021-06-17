@@ -132,6 +132,6 @@ const SalerList = () => {
   );
 };
 
-SalerList.sharedComponentFunction = LayoutBase;
+SalerList.layout = LayoutBase;
 
 export default SalerList;

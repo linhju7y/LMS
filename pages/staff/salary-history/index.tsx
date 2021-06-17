@@ -104,5 +104,5 @@ const SalaryHistory = () => {
   );
 };
 
-SalaryHistory.sharedComponentFunction = LayoutBase;
+SalaryHistory.layout = LayoutBase;
 export default SalaryHistory;

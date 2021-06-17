@@ -12,7 +12,7 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import LayoutBase from "~/components/LayoutBase";
-AppointmentServiceTest.sharedComponentFunction = LayoutBase;
+AppointmentServiceTest.layout = LayoutBase;
 export default function AppointmentServiceTest() {
   const expandedRowRender = () => {
     return <ExpandBoxService />;

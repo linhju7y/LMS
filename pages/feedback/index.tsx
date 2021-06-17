@@ -147,5 +147,5 @@ const FeedbackList = () => {
     </>
   );
 };
-FeedbackList.sharedComponentFunction = LayoutBase;
+FeedbackList.layout = LayoutBase;
 export default FeedbackList;

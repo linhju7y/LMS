@@ -162,5 +162,5 @@ const DoingTest = () => {
   );
 };
 
-DoingTest.sharedComponentFunction = LayoutBase;
+DoingTest.layout = LayoutBase;
 export default DoingTest;

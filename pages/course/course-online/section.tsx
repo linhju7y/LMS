@@ -130,5 +130,5 @@ const SectionListing = () => {
   );
 };
 
-SectionListing.sharedComponentFunction = LayoutBase;
+SectionListing.layout = LayoutBase;
 export default SectionListing;

@@ -118,6 +118,7 @@ function index(props: any) {
               <div className="mt-2 d-block">
                 <div className={styles.checkbox}>
                   <input type="checkbox" id="check" name="check" value="" />
+
                   <label htmlFor="check">
                     <span> </span>Nhớ mật khẩu
                   </label>
@@ -131,6 +132,9 @@ function index(props: any) {
               <div className="position-relative">
                 <input type="submit" value={"Đăng nhập"} />
                 {loading && <Spin className="loading-login" />}
+                <div className="w-100 m-1 text-center color-red fw-bold">
+                  {props.error && props.error}
+                </div>
               </div>
 
               <div className={styles.boxSignup}>

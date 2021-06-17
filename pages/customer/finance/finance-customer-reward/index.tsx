@@ -6,7 +6,7 @@ import { dataService } from "lib/customer/dataCustomer";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import LayoutBase from "~/components/LayoutBase";
-FinanceReward.sharedComponentFunction = LayoutBase;
+FinanceReward.layout = LayoutBase;
 export default function FinanceReward() {
   const columns = [
     {

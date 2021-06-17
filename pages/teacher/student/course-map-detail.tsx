@@ -125,5 +125,5 @@ const CourseMapDetail = () => {
   );
 };
 
-CourseMapDetail.sharedComponentFunction = LayoutBase;
+CourseMapDetail.layout = LayoutBase;
 export default CourseMapDetail;

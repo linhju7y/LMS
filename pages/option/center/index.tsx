@@ -84,5 +84,5 @@ const Center = () => {
     </>
   );
 };
-Center.sharedComponentFunction = LayoutBase;
+Center.layout = LayoutBase;
 export default Center;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Card, Button, Input } from "antd";
 import TitlePage from "../Elements/TitlePage";
-import { useWrap } from "~/wrapper/wrap";
+import { useWrap } from "~/context/wrap";
 
 const ExpandTable = (props) => {
   const { getTitlePage } = useWrap();

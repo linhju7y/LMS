@@ -42,5 +42,5 @@ const Exam = () => {
     />
   );
 };
-Exam.sharedComponentFunction = LayoutBase;
+Exam.layout = LayoutBase;
 export default Exam;

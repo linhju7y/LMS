@@ -213,5 +213,5 @@ const StudentAppointmentCreate = () => {
     </div>
   );
 };
-StudentAppointmentCreate.sharedComponentFunction = LayoutBase;
+StudentAppointmentCreate.layout = LayoutBase;
 export default StudentAppointmentCreate;

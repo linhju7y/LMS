@@ -82,5 +82,5 @@ const ParentList = () => {
     </div>
   );
 };
-ParentList.sharedComponentFunction = LayoutBase;
+ParentList.layout = LayoutBase;
 export default ParentList;

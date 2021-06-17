@@ -52,5 +52,5 @@ const Provincial = () => {
     />
   );
 };
-Provincial.sharedComponentFunction = LayoutBase;
+Provincial.layout = LayoutBase;
 export default Provincial;

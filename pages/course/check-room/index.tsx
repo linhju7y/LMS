@@ -20,5 +20,5 @@ const CheckRoom = () => {
   );
 };
 
-CheckRoom.sharedComponentFunction = LayoutBase;
+CheckRoom.layout = LayoutBase;
 export default CheckRoom;

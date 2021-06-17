@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Popover, Button, Input, Select } from "antd";
-
 import { Grid } from "react-feather";
-import { useWrap } from "~/wrapper/wrap";
+import { useWrap } from "~/context/wrap";
 import { signIn, signOut, useSession } from "next-auth/client";
 
 import Link from "next/link";
@@ -21,6 +20,7 @@ import {
 import { User } from "react-feather";
 import TitlePage from "../Elements/TitlePage";
 import TitlePageHeader from "../Elements/TitlePageHeader";
+
 const { Search } = Input;
 
 const { Option } = Select;
@@ -37,6 +37,17 @@ export default function Header({
   funcMenuMobile: Function;
   openMenuMobile: boolean;
 }) {
+  const [session, loading] = useSession();
+
+  console.log("session in header: ", session);
+
+  let dataUser = null;
+  if (session !== undefined) {
+    dataUser = session?.user;
+  }
+
+  console.log("data user: ", dataUser);
+
   const content_search = (
     <div className="input-search">
       <Input className="style-input" placeholder="search" />
@@ -51,33 +62,36 @@ export default function Header({
     signIn();
   };
 
-  const content = (
-    // <ul className="user-function">
-    //   <li>
-    //     <a href="#">
-    //       <span className="icon">
-    //         <UserOutlined />
-    //       </span>
-    //       <span className="function-name">Profile</span>
-    //     </a>
-    //   </li>
-    //   <li>
-    //     <a href="#">
-    //       <span className="icon inbox">
-    //         <MailOutlined />
-    //       </span>
-    //       <span className="function-name">Inbox</span>
-    //     </a>
-    //   </li>
-    //   <li>
-    //     <a href="#">
-    //       <span className="icon logout">
-    //         <LogoutOutlined />
-    //       </span>
-    //       <span className="function-name">Log out</span>
-    //     </a>
-    //   </li>
-    // </ul>
+  const contentLogout = (
+    <ul className="user-function">
+      <li>
+        <a href="#">
+          <span className="icon">
+            <UserOutlined />
+          </span>
+          <span className="function-name">Profile</span>
+        </a>
+      </li>
+      {/* <li>
+        <a href="#">
+          <span className="icon inbox">
+            <MailOutlined />
+          </span>
+          <span className="function-name">Inbox</span>
+        </a>
+      </li> */}
+      <li>
+        <a href="#" onClick={() => signOut()}>
+          <span className="icon logout">
+            <LogoutOutlined />
+          </span>
+          <span className="function-name">Log out</span>
+        </a>
+      </li>
+    </ul>
+  );
+
+  const contentLogin = (
     <ul className="user-function">
       <li>
         <a href="#" onClick={moveToLogin}>
@@ -206,27 +220,38 @@ export default function Header({
             </li>
             <li className="user">
               <Popover
-                content={content}
+                content={!session ? contentLogin : contentLogout}
                 // visible={userFunc}
                 // onVisibleChange={openUserFunc}
                 trigger="click"
                 title=""
               >
-                {/* <div className="user-wrap">
-                  <div className="user-img">
-                    <img src="/images/user.jpg" alt="" />
-                  </div>
-                  <div className="user-info">
-                    <p className="user-name">An Nguyen</p>
-                    <p className="user-position">Teacher</p>
-                  </div>
-                </div> */}
                 <div className="user-wrap">
                   {/* <div className="user-img">
                     <img src="/images/user.jpg" alt="" />
                   </div> */}
                   <div className="user-info">
-                    <p className="user-name">Tài khoản</p>
+                    {session?.user ? (
+                      <div className="user-wrap">
+                        <div className="user-img">
+                          <img
+                            src={
+                              dataUser?.Avatar !== null
+                                ? dataUser.Avatar
+                                : "/images/user.jpg"
+                            }
+                            alt=""
+                          />
+                        </div>
+                        <div className="user-info">
+                          <p className="user-name">{dataUser?.UserName}</p>
+                          <p className="user-position">{dataUser?.RoleName}</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <p>Tài khoản</p>
+                    )}
+
                     <div className="user-name-mobile">
                       <User />
                     </div>

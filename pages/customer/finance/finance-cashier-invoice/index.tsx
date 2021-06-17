@@ -11,7 +11,7 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import LayoutBase from "~/components/LayoutBase";
-FinanceInvoice.sharedComponentFunction = LayoutBase;
+FinanceInvoice.layout = LayoutBase;
 export default function FinanceInvoice() {
   const columns = [
     { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },

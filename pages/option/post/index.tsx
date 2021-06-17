@@ -115,5 +115,5 @@ const Post = () => {
     />
   );
 };
-Post.sharedComponentFunction = LayoutBase;
+Post.layout = LayoutBase;
 export default Post;

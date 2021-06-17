@@ -89,5 +89,5 @@ const FeedbackListCheck = () => {
   );
 };
 
-FeedbackListCheck.sharedComponentFunction = LayoutBase;
+FeedbackListCheck.layout = LayoutBase;
 export default FeedbackListCheck;

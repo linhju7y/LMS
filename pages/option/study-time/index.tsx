@@ -48,5 +48,5 @@ const StudyTime = () => {
     />
   );
 };
-StudyTime.sharedComponentFunction = LayoutBase;
+StudyTime.layout = LayoutBase;
 export default StudyTime;

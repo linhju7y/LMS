@@ -41,5 +41,5 @@ const JobsList = () => {
     />
   );
 };
-JobsList.sharedComponentFunction = LayoutBase;
+JobsList.layout = LayoutBase;
 export default JobsList;

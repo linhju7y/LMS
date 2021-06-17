@@ -10,7 +10,7 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import LayoutBase from "~/components/LayoutBase";
-CustomerServiceExam.sharedComponentFunction = LayoutBase;
+CustomerServiceExam.layout = LayoutBase;
 
 export default function CustomerServiceExam() {
   const columns = [

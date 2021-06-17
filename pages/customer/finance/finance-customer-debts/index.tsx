@@ -11,7 +11,7 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import LayoutBase from "~/components/LayoutBase";
-FinanceDebts.sharedComponentFunction = LayoutBase;
+FinanceDebts.layout = LayoutBase;
 export default function FinanceDebts() {
   const columns = [
     {

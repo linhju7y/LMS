@@ -20,6 +20,6 @@ const CalendarEmptyTeacher = () => {
   );
 };
 
-CalendarEmptyTeacher.sharedComponentFunction = LayoutBase;
+CalendarEmptyTeacher.layout = LayoutBase;
 
 export default CalendarEmptyTeacher;

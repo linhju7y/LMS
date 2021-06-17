@@ -7,5 +7,5 @@ const StaffDetail = () => {
   return <ProfileBase />;
 };
 
-StaffDetail.sharedComponentFunction = LayoutBase;
+StaffDetail.layout = LayoutBase;
 export default StaffDetail;

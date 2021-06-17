@@ -9,7 +9,7 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import LayoutBase from "~/components/LayoutBase";
-CustomerServicePackage.sharedComponentFunction = LayoutBase;
+CustomerServicePackage.layout = LayoutBase;
 export default function CustomerServicePackage() {
   const columns = [
     {

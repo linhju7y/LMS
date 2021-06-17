@@ -138,6 +138,6 @@ const TeacherList = () => {
   );
 };
 
-TeacherList.sharedComponentFunction = LayoutBase;
+TeacherList.layout = LayoutBase;
 
 export default TeacherList;

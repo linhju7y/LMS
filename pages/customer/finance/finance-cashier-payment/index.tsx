@@ -11,7 +11,7 @@ import { ShoppingCart } from "react-feather";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import Link from "next/link";
 import LayoutBase from "~/components/LayoutBase";
-FinancePayment.sharedComponentFunction = LayoutBase;
+FinancePayment.layout = LayoutBase;
 export default function FinancePayment() {
   const columns = [
     { title: "Trung tâm", dataIndex: "center", ...FilterColumn("center") },

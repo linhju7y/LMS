@@ -150,5 +150,5 @@ const TopicList = () => {
   );
 };
 
-TopicList.sharedComponentFunction = LayoutBase;
+TopicList.layout = LayoutBase;
 export default TopicList;

@@ -135,5 +135,5 @@ const ExerciseDoneList = () => {
   );
 };
 
-ExerciseDoneList.sharedComponentFunction = LayoutBase;
+ExerciseDoneList.layout = LayoutBase;
 export default ExerciseDoneList;

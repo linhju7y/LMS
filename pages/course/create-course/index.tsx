@@ -508,5 +508,5 @@ const CreateCourse = (props: { props: any }) => {
   );
 };
 
-CreateCourse.sharedComponentFunction = LayoutBase;
+CreateCourse.layout = LayoutBase;
 export default CreateCourse;

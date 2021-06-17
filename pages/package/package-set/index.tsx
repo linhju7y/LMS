@@ -128,5 +128,5 @@ const PackageSet = () => {
   );
 };
 
-PackageSet.sharedComponentFunction = LayoutBase;
+PackageSet.layout = LayoutBase;
 export default PackageSet;

@@ -103,5 +103,5 @@ const CostList = () => {
   );
 };
 
-CostList.sharedComponentFunction = LayoutBase;
+CostList.layout = LayoutBase;
 export default CostList;

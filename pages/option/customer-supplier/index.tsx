@@ -63,5 +63,5 @@ const CustomerSupplier = () => {
     />
   );
 };
-CustomerSupplier.sharedComponentFunction = LayoutBase;
+CustomerSupplier.layout = LayoutBase;
 export default CustomerSupplier;

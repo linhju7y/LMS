@@ -149,5 +149,5 @@ const FeedbackListDetail = (props) => {
 };
 
 FeedbackListDetail.propTypes = {};
-FeedbackListDetail.sharedComponentFunction = LayoutBase;
+FeedbackListDetail.layout = LayoutBase;
 export default FeedbackListDetail;

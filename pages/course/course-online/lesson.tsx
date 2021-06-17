@@ -213,5 +213,5 @@ const LessonListing = () => {
   );
 };
 
-LessonListing.sharedComponentFunction = LayoutBase;
+LessonListing.layout = LayoutBase;
 export default LessonListing;

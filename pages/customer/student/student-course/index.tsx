@@ -13,7 +13,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import StudyTimeForm from "~/components/Global/Option/StudyTimeForm";
 import LayoutBase from "~/components/LayoutBase";
-CourseStudent.sharedComponentFunction = LayoutBase;
+CourseStudent.layout = LayoutBase;
 export default function CourseStudent() {
   const expandedRowRender = () => {
     return <ExpandBox />;

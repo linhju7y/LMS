@@ -49,5 +49,5 @@ const StaffSalary = () => {
     />
   );
 };
-StaffSalary.sharedComponentFunction = LayoutBase;
+StaffSalary.layout = LayoutBase;
 export default StaffSalary;

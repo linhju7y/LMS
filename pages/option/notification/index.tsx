@@ -57,5 +57,5 @@ const Notification = () => {
     />
   );
 };
-Notification.sharedComponentFunction = LayoutBase;
+Notification.layout = LayoutBase;
 export default Notification;

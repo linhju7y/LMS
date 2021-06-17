@@ -14,6 +14,7 @@ import LayoutBase from "~/components/LayoutBase";
 
 const Dashboard = () => {
   console.log(dataPie);
+
   return (
     <div>
       <TitlePage title="Dashboard" />
@@ -151,6 +152,6 @@ const Dashboard = () => {
   );
 };
 
-Dashboard.sharedComponentFunction = LayoutBase;
+Dashboard.layout = LayoutBase;
 
 export default Dashboard;
