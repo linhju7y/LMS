@@ -39,14 +39,10 @@ export default function Header({
 }) {
   const [session, loading] = useSession();
 
-  console.log("session in header: ", session);
-
   let dataUser = null;
   if (session !== undefined) {
     dataUser = session?.user;
   }
-
-  console.log("data user: ", dataUser);
 
   const content_search = (
     <div className="input-search">

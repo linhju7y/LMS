@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PowerTable from "~/components/PowerTable";
 import { data } from "../../../lib/option/dataOption";
 import { Tooltip, Switch } from "antd";
@@ -8,31 +8,42 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
 import LayoutBase from "~/components/LayoutBase";
+import { courseApi } from "~/api";
+import { useWrap } from "~/context/wrap";
+
 const Grade = () => {
+  const [dataCourse, setDataCourse] = useState<ICourse[]>([]);
+  const { showNoti } = useWrap();
+  const [isLoading, setIsLoading] = useState(false);
+
   const columns = [
-    { title: "Grade", dataIndex: "grade", ...FilterColumn("grade") },
+    { title: "Grade", dataIndex: "ListCourseName", ...FilterColumn("grade") },
     {
       title: "Description",
-      dataIndex: "district",
+      dataIndex: "Description",
     },
+    // {
+    //   title: "Modified By",
+    //   dataIndex: "rpCreator",
+    //   ...FilterColumn("rpCreator"),
+    // },
     {
-      title: "Modified By",
-      dataIndex: "rpCreator",
-      ...FilterColumn("rpCreator"),
-    },
-    {
-      title: "Modified Date",
-      dataIndex: "regDate",
+      title: "Create on",
+      dataIndex: "CreateOn",
       ...FilterDateColumn("regDate"),
     },
     {
       title: "Hidden",
-      render: () => (
-        <Switch
-          checkedChildren="Hidden"
-          unCheckedChildren="Hidden"
-          size="default"
-        />
+      dataIndex: "Enable",
+      render: (Enable) => (
+        <>
+          <Switch
+            checkedChildren="Hidden"
+            unCheckedChildren="Hidden"
+            checked={Enable}
+            size="default"
+          />
+        </>
       ),
     },
     {
@@ -46,12 +57,44 @@ const Grade = () => {
     },
   ];
 
+  console.log("Data course: ", dataCourse);
+
+  // GET DATA COURSE
+  const getDataCourse = () => {
+    setIsLoading(true);
+    (async () => {
+      try {
+        let res = await courseApi.getAll();
+        res.status == 200 && setDataCourse(res.data.acc);
+      } catch (error) {
+        showNoti("danger", error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  };
+
+  // CHECK ADD DATA SCUCCESS
+  const addDataSuccess = (isSuccess: boolean) => {
+    isSuccess && getDataCourse();
+  };
+
+  useEffect(() => {
+    getDataCourse();
+  }, []);
+
+  // useEffect(() => {
+  //   dataSuccess && getDataCourse();
+  // }, [dataSuccess]);
+
   return (
     <PowerTable
+      addDataSuccess={addDataSuccess}
+      loading={isLoading}
       addClass="basic-header"
       TitlePage="Danh sách khối học"
       TitleCard={<GradeForm showAdd={true} />}
-      dataSource={data}
+      dataSource={dataCourse}
       columns={columns}
       Extra={
         <div className="extra-table">

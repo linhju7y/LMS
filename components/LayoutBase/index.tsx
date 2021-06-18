@@ -26,21 +26,21 @@ const LayoutBase = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("Session: ", session);
-
     if (typeof session !== "undefined") {
       if (session == null) {
         // console.log("Test path: ", path.search("signin") < 0);
         if (path.search("signin") < 0) {
           signIn();
         }
+      } else {
+        setIsLoading(false);
       }
     }
   }, [session]);
 
   return (
     <>
-      {/* {loading && (
+      {isLoading ? (
         <div
           style={{
             display: "flex",
@@ -52,8 +52,10 @@ const LayoutBase = ({ children }) => {
         >
           <Lottie options={defaultOptions} height="auto" width="60vw" />
         </div>
-      )} */}
-      {session && <Layout>{children}</Layout>}
+      ) : (
+        <Layout>{children}</Layout>
+      )}
+      {/* {session && <Layout>{children}</Layout>} */}
     </>
   );
 };

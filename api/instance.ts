@@ -1,6 +1,8 @@
+import { message } from "antd";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { getSession } from "next-auth/client";
 import _ from "~/appConfig";
+import { signIn, useSession } from "next-auth/client";
 
 function getUrl(config) {
   if (config.baseURL) {
@@ -56,13 +58,30 @@ instance.interceptors.request.use(
   }
 );
 
+const checkResponse = (response) => {
+  switch (response.status) {
+    case 401:
+      signIn();
+      break;
+    case 403:
+      alert("Bạn không có quyền thức hiện");
+      break;
+    case 400:
+      alert(response.message);
+      break;
+    default:
+      console.log(
+        ` %c ${response.status} - ${getUrl(response.config)}:`,
+        "color: #008000; font-weight: bold",
+        response
+      );
+  }
+};
+
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
-    console.log(
-      ` %c ${response.status} - ${getUrl(response.config)}:`,
-      "color: #008000; font-weight: bold",
-      response
-    );
+    checkResponse(response);
+
     return response;
   },
   function (error) {

@@ -1,7 +1,7 @@
 import React, { FC, Fragment, useEffect, useState } from "react";
 import PowerTable from "~/components/PowerTable";
 import randomColor from "randomcolor";
-import { Tag, Tooltip } from "antd";
+import { Tag, Tooltip, message } from "antd";
 import { Info, RotateCcw } from "react-feather";
 import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
@@ -10,6 +10,8 @@ import Link from "next/link";
 import LayoutBase from "~/components/LayoutBase";
 import { branchApi } from "~/api";
 import { CenterForm } from "~/components/Global";
+import is from "date-fns/esm/locale/is/index.js";
+import { useWrap } from "~/context/wrap";
 
 const Center = () => {
   const [center, setCenter] = useState<IBranch[]>([]);
@@ -45,7 +47,7 @@ const Center = () => {
         <>
           <Link
             href={{
-              pathname: "/option/center/rooms/[slug]",
+              pathname: "/option/center/rooms-detail/[slug]",
               query: { slug: 2 },
             }}
           >
@@ -68,21 +70,32 @@ const Center = () => {
       ),
     },
   ];
+  const [isLoading, setIsLoading] = useState(false);
+  const { showNoti } = useWrap();
   //get data Center
+
+  const getAllBranch = () => {
+    setIsLoading(true);
+
+    (async () => {
+      try {
+        const res = await branchApi.getAll();
+        setIsLoading(false);
+        res.status == 200 && setCenter(res.data.createAcc);
+      } catch (error) {
+        showNoti("danger", error.message);
+      }
+    })();
+  };
+
   useEffect(() => {
-    branchApi
-      .getAll()
-      .then((res) => {
-        let _data = res.data.createAcc;
-        setCenter(_data);
-        console.log(_data);
-      })
-      .finally(() => {});
+    getAllBranch();
   }, []);
 
   return (
     <Fragment>
       <PowerTable
+        loading={isLoading}
         addClass="basic-header"
         TitlePage="Danh sách trung tâm"
         TitleCard={

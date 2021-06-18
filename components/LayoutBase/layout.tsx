@@ -246,7 +246,7 @@ function Layout({
               {pathString?.map(
                 (item, index) =>
                   returnText(index) !== "" && (
-                    <Breadcrumb.Item>
+                    <Breadcrumb.Item key={index}>
                       {returnRouter(index) !== null ? (
                         <Link href={returnRouter(index)}>
                           <a>{returnText(index)}</a>

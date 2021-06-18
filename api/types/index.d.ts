@@ -3,6 +3,11 @@ type IApiResult<T = any> = {
   message: string;
 };
 
+type IApiResultCourse<T = any> = {
+  acc: T;
+  message: string;
+};
+
 type IBaseApi<T> = {
   Enable: boolean;
   CreatedOn: string;
