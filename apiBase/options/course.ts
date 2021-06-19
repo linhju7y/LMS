@@ -1,4 +1,4 @@
-import { instance } from "~/api/instance";
+import { instance } from "~/apiBase/instance";
 
 class CourseApi {
   getAll = () =>

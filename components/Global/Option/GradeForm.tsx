@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Modal, Form, Input, Button, Radio, Tooltip } from "antd";
 import { RotateCcw } from "react-feather";
 import { useForm } from "react-hook-form";
-import { courseApi } from "~/api";
+import { courseApi } from "~/apiBase";
 import { useWrap } from "~/context/wrap";
 
 const GradeForm = (props) => {

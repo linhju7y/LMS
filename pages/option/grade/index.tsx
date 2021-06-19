@@ -8,7 +8,7 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
 import LayoutBase from "~/components/LayoutBase";
-import { courseApi } from "~/api";
+import { courseApi } from "~/apiBase";
 import { useWrap } from "~/context/wrap";
 
 const Grade = () => {

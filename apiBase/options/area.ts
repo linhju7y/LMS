@@ -1,4 +1,4 @@
-import { instance } from "~/api/instance";
+import { instance } from "~/apiBase/instance";
 
 class AreaApi {
   getAll = () => instance.get<IApiResult<IArea[]>>("/api/Area/GetAllArea");
