@@ -58,6 +58,8 @@ const options = {
         try {
           const rs = await login(credentials);
 
+          console.log("CAN I SEE RS: ", rs);
+
           return Promise.resolve(rs.data);
         } catch (error) {
           // return Promise.reject(new Error(JSON.stringify(error)));
@@ -151,7 +153,7 @@ const options = {
      */
     session: async (session, token) => {
       //session.customSessionProperty = 'bar'
-      // console.log('session callback', session, token);
+      // console.log("session callback", session, token);
       if (token.data) {
         // session.accessToken = token.accessToken;
         session.user = token.data;

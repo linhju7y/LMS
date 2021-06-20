@@ -50,6 +50,8 @@ export const CenterForm: FC<CenterFormProps> = ({ visible, onCancel, Id }) => {
     })();
   };
 
+  // console.log("Data District: ", dataDistrict);
+
   // SUBMI FORM
   const onSubmit = async (data: IBranch) => {
     console.log("DATA: ", data);
@@ -66,6 +68,7 @@ export const CenterForm: FC<CenterFormProps> = ({ visible, onCancel, Id }) => {
   // FUNCTION SELECT
   const onChangeSelect = (name) => (value) => {
     name == "AreaID" && getAllDistrict(value);
+    getAllDistrict(value);
     setValue(name, value);
   };
 
@@ -84,6 +87,10 @@ export const CenterForm: FC<CenterFormProps> = ({ visible, onCancel, Id }) => {
   useEffect(() => {
     visible && getAllArea();
   }, [visible]);
+
+  useEffect(() => {
+    setValue("DistrictID", 2);
+  }, []);
 
   return (
     <Modal
