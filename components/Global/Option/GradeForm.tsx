@@ -32,7 +32,7 @@ const GradeForm = (props) => {
     (async () => {
       try {
         let res = await courseApi.post(data);
-        res.status == 200 &&
+        res?.status == 200 &&
           (showNoti("succes", "Thêm thành công"), props.addDataSuccess(true));
       } catch (error) {
         console.log("Error: ", error);

@@ -58,7 +58,7 @@ const options = {
         try {
           const rs = await login(credentials);
 
-          console.log("CAN I SEE RS: ", rs);
+          // console.log("CAN I SEE RS: ", rs);
 
           return Promise.resolve(rs.data);
         } catch (error) {
@@ -155,11 +155,12 @@ const options = {
       //session.customSessionProperty = 'bar'
       // console.log("session callback", session, token);
       if (token.data) {
-        // session.accessToken = token.accessToken;
-        session.user = token.data;
+        session.accessToken = token.data.Token;
+        session.user = { ...token.data };
       }
 
-      console.log("Session: ", session);
+      console.log("Session user: ", session.user);
+      console.log("Session token: ", session.accessToken);
 
       return Promise.resolve(session);
     },
@@ -174,9 +175,12 @@ const options = {
      * @return {object}            JSON Web Token that will be saved
      */
     jwt: async (token, user, account, profile, isNewUser) => {
+      // user = token?.data;
+      // token = token?.data.Token;
+
       console.log("jwt callbacks:");
       console.log("token", token);
-      console.log("user", token?.data?.UserName);
+      console.log("user", user);
       console.log("account", account);
       console.log("profile", profile);
       console.log("isNewUser", isNewUser);

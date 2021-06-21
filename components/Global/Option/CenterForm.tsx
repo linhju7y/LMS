@@ -89,7 +89,7 @@ export const CenterForm: FC<CenterFormProps> = ({ visible, onCancel, Id }) => {
   }, [visible]);
 
   useEffect(() => {
-    setValue("DistrictID", 2);
+    setValue("Enable", true);
   }, []);
 
   return (
@@ -193,7 +193,7 @@ export const CenterForm: FC<CenterFormProps> = ({ visible, onCancel, Id }) => {
                         <Option value={item.ID}>{item.DistrictName}</Option>
                       ))
                     ) : (
-                      <Option value="5">Không có data</Option>
+                      <Option value={5}>Không có data</Option>
                     )}
                   </Select>
                 </Form.Item>

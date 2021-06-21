@@ -7,6 +7,8 @@ export default function SignIn({ providers, csrfToken }) {
   const router = useRouter();
   const [haveError, setHaveError] = useState("");
 
+  console.log("Csrf token: ", csrfToken);
+
   useEffect(() => {
     if (router.query?.error) {
       const { error } = router.query;
