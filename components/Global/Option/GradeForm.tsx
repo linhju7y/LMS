@@ -21,14 +21,25 @@ const GradeForm = (props: any) => {
     let res = props._onSubmit(data);
 
     res.then(function (rs: any) {
-      console.log("Res in form: ", rs);
-      res.status == 200 && setIsModalVisible(false);
+      rs.status == 200 && setIsModalVisible(false);
     });
   });
 
   useEffect(() => {
     if (props.rowData) {
+      console.log("run it");
+      // setValue("object", {
+      //   ListCourseID: props.rowData.ListCourseID,
+      //   ListCourseName: props.rowData.ListCourseName,
+      //   ListCourseCode: props.rowData.ListCourseCode,
+      //   Description: props.rowData.Description,
+      //   Enable: props.rowData.Enable,
+      // });
       setValue("ListCourseID", props.rowData.ListCourseID);
+      setValue("ListCourseName", props.rowData.ListCourseName);
+      setValue("ListCourseCode", props.rowData.ListCourseCode);
+      setValue("Description", props.rowData.Description);
+      setValue("Enable", props.rowData.Enable);
     }
   }, [props.rowData]);
 
@@ -81,7 +92,10 @@ const GradeForm = (props: any) => {
                       {...register("ListCourseCode")}
                       placeholder=""
                       className="style-input"
-                      value={props.rowData?.ListCourseCode}
+                      defaultValue={props.rowData?.ListCourseCode}
+                      onChange={(e) =>
+                        setValue("ListCourseCode", e.target.value)
+                      }
                     />
                   )}
                 </Form.Item>
@@ -102,7 +116,10 @@ const GradeForm = (props: any) => {
                       {...register("ListCourseName")}
                       placeholder=""
                       className="style-input"
-                      value={props.rowData?.ListCourseName}
+                      defaultValue={props.rowData?.ListCourseName}
+                      onChange={(e) =>
+                        setValue("ListCourseName", e.target.value)
+                      }
                     />
                   )}
                 </Form.Item>
@@ -123,7 +140,8 @@ const GradeForm = (props: any) => {
                       {...register("Description")}
                       placeholder=""
                       className="style-input"
-                      value={props.rowData?.Description}
+                      defaultValue={props.rowData?.Description}
+                      onChange={(e) => setValue("Description", e.target.value)}
                     />
                   )}
                 </Form.Item>

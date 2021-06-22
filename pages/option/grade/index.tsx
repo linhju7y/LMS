@@ -13,6 +13,8 @@ import { useWrap } from "~/context/wrap";
 import { Trash2 } from "react-feather";
 import DecideModal from "~/components/Elements/DecideModal";
 
+let indexPage = 1;
+
 const Grade = () => {
   const [dataCourse, setDataCourse] = useState<ICourse[]>([]);
   const { showNoti } = useWrap();
@@ -26,7 +28,7 @@ const Grade = () => {
     status: null,
   });
   const [dataHidden, setDataHidden] = useState({
-    ListCourseId: null,
+    ListCourseID: null,
     Enable: null,
   });
   const [rowData, setRowData] = useState<ICourse[]>();
@@ -73,20 +75,37 @@ const Grade = () => {
     })();
   };
 
+  // EDIT ROW DATA
+  const editRowData = (dataEdit: any, mes: string) => {
+    let space = indexPage * 10;
+    let limit = space < dataCourse.length ? space : dataCourse.length;
+    let dataClone = [...dataCourse];
+
+    for (let i = space - 10; i <= limit; i++) {
+      if (dataClone[i].ListCourseID == dataEdit.ListCourseID) {
+        dataClone[i].ListCourseCode = dataEdit.ListCourseCode;
+        dataClone[i].ListCourseName = dataEdit.ListCourseName;
+        dataClone[i].Description = dataEdit.Description;
+        break;
+      }
+    }
+    setDataCourse(dataClone);
+    showNoti("success", mes);
+  };
+
   // _ADD DATA
   const _onSubmit = async (data: any) => {
     setIsLoading({
       type: "ADD_DATA",
       status: true,
     });
-    console.log("Data Submit: ", data);
 
     let res = null;
 
     if (data.ListCourseID) {
       try {
         res = await courseApi.put(data);
-        res?.status == 200 && afterPost();
+        res?.status == 200 && editRowData(data, res.data.message);
       } catch (error) {
         showNoti("danger", error.message);
       } finally {
@@ -115,7 +134,7 @@ const Grade = () => {
   // DELETE COURSE
   const changeStatus = (checked: boolean, idCourse: number) => {
     setDataHidden({
-      ListCourseId: idCourse,
+      ListCourseID: idCourse,
       Enable: checked,
     });
 
@@ -124,6 +143,33 @@ const Grade = () => {
       : setIsOpen({ isOpen: true, status: "show" });
   };
 
+  // AFTER POST SUCCESS
+  const afterPost = () => {
+    showNoti("success", "Thêm thành công");
+    getDataCourse();
+    // addDataSuccess(), setIsModalVisible(false);
+  };
+
+  // UPDATE ROW
+  const updateAtRow = (mes: string) => {
+    let dataCourseClone = [...dataCourse];
+    dataCourseClone.forEach((item, index) => {
+      console.log("item: ", item);
+      if (item.ListCourseID == dataHidden.ListCourseID) {
+        console.log("run it");
+        item.Enable = dataHidden.Enable;
+        return false;
+      }
+      return true;
+    });
+
+    setDataCourse(dataCourseClone);
+    showNoti("success", mes);
+  };
+
+  // console.log("Data Course: ", dataCourse);
+  // console.log("Data hidden: ", dataHidden);
+
   const statusShow = async () => {
     setIsLoading({
       type: "GET_ALL",
@@ -131,11 +177,10 @@ const Grade = () => {
     });
     try {
       let res = await courseApi.patch(dataHidden);
-      res.status == 200 && getDataCourse(),
-        showNoti("success", res.data.message),
-        isOpen.status == "hide"
-          ? setIsOpen({ isOpen: false, status: "hide" })
-          : setIsOpen({ isOpen: false, status: "show" });
+      res.status == 200 && updateAtRow(res.data.message);
+      isOpen.status == "hide"
+        ? setIsOpen({ isOpen: false, status: "hide" })
+        : setIsOpen({ isOpen: false, status: "show" });
     } catch (error) {
       showNoti("danger", error.Message);
     } finally {
@@ -146,10 +191,11 @@ const Grade = () => {
     }
   };
 
-  const afterPost = () => {
-    showNoti("success", "Thêm thành công");
-    getDataCourse();
-    // addDataSuccess(), setIsModalVisible(false);
+  // GET PAGE_NUMBER
+  const getPagination = (pageNumber: number) => {
+    console.log("Page number: ", pageNumber);
+    indexPage = pageNumber;
+    console.log("Index page = ", indexPage);
   };
 
   const columns = [
@@ -224,6 +270,7 @@ const Grade = () => {
         isOk={() => statusShow()}
       />
       <PowerTable
+        getPagination={(pageNumber: number) => getPagination(pageNumber)}
         loading={isLoading}
         addClass="basic-header"
         TitlePage="Danh sách khối học"

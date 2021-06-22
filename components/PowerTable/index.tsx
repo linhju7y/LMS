@@ -28,13 +28,19 @@ const PowerTable = (props) => {
               {props.children}
               <Table
                 loading={
-                  props.loading.type == "GET_ALL" && props.loading.status
+                  props.loading?.type == "GET_ALL" && props.loading?.status
                 }
                 bordered={props.haveBorder ? props.haveBorder : false}
                 scroll={props.noScroll ? { x: "max-content" } : { x: 600 }}
                 columns={props.columns}
                 dataSource={props.dataSource}
                 size="middle"
+                pagination={{
+                  onChange: (pageNumber) =>
+                    props.getPagination(pageNumber)
+                      ? props.getPagination(pageNumber)
+                      : "",
+                }}
               />
             </Card>
           </div>
