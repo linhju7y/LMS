@@ -1431,3 +1431,21 @@ hr {
     }
   }
 }
+
+.loading-base {
+  line-height: 001;
+  margin-left: 15px;
+  .ant-spin-dot {
+    font-size: 18px;
+    .ant-spin-dot-item {
+      background: white;
+    }
+  }
+}
+
+.modal-decide {
+  &__text {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+}

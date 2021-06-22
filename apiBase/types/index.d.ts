@@ -3,7 +3,7 @@ type IApiResult<T = any> = {
   message: string;
 };
 
-type IApiResultCourse<T = any> = {
+type IApiResultAcc<T = any> = {
   acc: T;
   message: string;
 };

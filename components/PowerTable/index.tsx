@@ -27,7 +27,9 @@ const PowerTable = (props) => {
             >
               {props.children}
               <Table
-                loading={props.loading && props.loading}
+                loading={
+                  props.loading.type == "GET_ALL" && props.loading.status
+                }
                 bordered={props.haveBorder ? props.haveBorder : false}
                 scroll={props.noScroll ? { x: "max-content" } : { x: 600 }}
                 columns={props.columns}

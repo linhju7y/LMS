@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "antd";
 
-const DecideModal = (props) => {
+const DecideModal = (props: any) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = (e) => {
@@ -11,11 +11,17 @@ const DecideModal = (props) => {
 
   const handleOk = () => {
     setIsModalVisible(false);
+    props.isOk();
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
+    props.isCancel();
   };
+
+  useEffect(() => {
+    setIsModalVisible(props.isOpen);
+  }, [props.isOpen]);
 
   return (
     <>
@@ -28,9 +34,10 @@ const DecideModal = (props) => {
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
+        className="modal-decide"
       >
         <p
-          className={`${props.addClass && props.addClass}`}
+          className={`modal-decide__text ${props.addClass && props.addClass}`}
           style={{ fontWeight: 600 }}
         >
           {props.content ? props.content : ""}

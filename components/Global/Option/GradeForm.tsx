@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Form, Input, Button, Radio, Tooltip } from "antd";
+import { Modal, Form, Input, Spin, Tooltip, Skeleton } from "antd";
 import { RotateCcw } from "react-feather";
 import { useForm } from "react-hook-form";
 import { courseApi } from "~/apiBase";
 import { useWrap } from "~/context/wrap";
 
-const GradeForm = (props) => {
+const GradeForm = (props: any) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [status, setStatus] = React.useState(1);
+
   const {
     register,
     handleSubmit,
@@ -16,30 +17,20 @@ const GradeForm = (props) => {
   } = useForm<ICourse>();
   const { showNoti } = useWrap();
 
-  const onChange_Status = (name) => (e) => {
-    console.log("radio checked", e.target.value);
-
-    setValue(name, e.target.value);
-    // setStatus(e.target.value);
-  };
-
-  // useEffect(() => {
-  //   setValue("Enable", true);
-  // }, []);
-
   const onSubmit = handleSubmit((data: any) => {
-    console.log("DATA Submit: ", data);
-    (async () => {
-      try {
-        let res = await courseApi.post(data);
-        res?.status == 200 &&
-          (showNoti("succes", "Thêm thành công"), props.addDataSuccess(true));
-      } catch (error) {
-        console.log("Error: ", error);
-        showNoti("danger", error.message);
-      }
-    })();
+    let res = props._onSubmit(data);
+
+    res.then(function (rs: any) {
+      console.log("Res in form: ", rs);
+      res.status == 200 && setIsModalVisible(false);
+    });
   });
+
+  useEffect(() => {
+    if (props.rowData) {
+      setValue("ListCourseID", props.rowData.ListCourseID);
+    }
+  }, [props.rowData]);
 
   return (
     <>
@@ -47,7 +38,7 @@ const GradeForm = (props) => {
         <button
           className="btn btn-icon edit"
           onClick={() => {
-            setIsModalVisible(true);
+            setIsModalVisible(true), props.getDataCourseWithID(props.CourseID);
           }}
         >
           <Tooltip title="Cập nhật">
@@ -78,33 +69,63 @@ const GradeForm = (props) => {
             <div className="row">
               <div className="col-12">
                 <Form.Item label="Code khóa">
-                  <Input
-                    {...register("ListCourseCode")}
-                    placeholder=""
-                    className="style-input"
-                  />
+                  {props.isLoading.type == "GET_WITH_ID" &&
+                  props.isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Input
+                      {...register("ListCourseCode")}
+                      placeholder=""
+                      className="style-input"
+                      value={props.rowData?.ListCourseCode}
+                    />
+                  )}
                 </Form.Item>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
                 <Form.Item label="Tên khóa">
-                  <Input
-                    {...register("ListCourseName")}
-                    placeholder=""
-                    className="style-input"
-                  />
+                  {props.isLoading.type == "GET_WITH_ID" &&
+                  props.isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Input
+                      {...register("ListCourseName")}
+                      placeholder=""
+                      className="style-input"
+                      value={props.rowData?.ListCourseName}
+                    />
+                  )}
                 </Form.Item>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
                 <Form.Item label="Mô Tả">
-                  <Input
-                    {...register("Description")}
-                    placeholder=""
-                    className="style-input"
-                  />
+                  {props.isLoading.type == "GET_WITH_ID" &&
+                  props.isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Input
+                      {...register("Description")}
+                      placeholder=""
+                      className="style-input"
+                      value={props.rowData?.Description}
+                    />
+                  )}
                 </Form.Item>
               </div>
             </div>
@@ -123,11 +144,11 @@ const GradeForm = (props) => {
             </div> */}
             <div className="row ">
               <div className="col-12">
-                <input
-                  type="submit"
-                  className="btn btn-primary w-100"
-                  value="Lưu"
-                />
+                <button type="submit" className="btn btn-primary w-100">
+                  Lưu
+                  {props.isLoading.type == "ADD_DATA" &&
+                    props.isLoading.status && <Spin className="loading-base" />}
+                </button>
               </div>
             </div>
           </Form>

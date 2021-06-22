@@ -107,6 +107,7 @@ function index(props: any) {
               <label className={styles.fcontrol}>Mật khẩu</label>
               <input
                 name="password"
+                type="password"
                 defaultValue=""
                 {...register("password", { required: true })}
                 placeholder="Enter password"
@@ -115,14 +116,14 @@ function index(props: any) {
                 <span className="form-error">Hãy điền mật khẩu</span>
               )}
 
-              <div className="mt-2 d-block">
-                <div className={styles.checkbox}>
+              <div className="mt-2 d-flex justify-content-end">
+                {/* <div className={styles.checkbox}>
                   <input type="checkbox" id="check" name="check" value="" />
 
                   <label htmlFor="check">
                     <span> </span>Nhớ mật khẩu
                   </label>
-                </div>
+                </div> */}
 
                 <div className={styles.forgetPass}>
                   <a>Quên mật khẩu?</a>

@@ -14,7 +14,7 @@ function getUrl(config) {
 export const authHeader_X = async () => {
   const session = await getSession();
   if (session && session.accessToken) {
-    return { "x-access-token": session.accessToken };
+    return { Token: session.accessToken };
   } else {
     return {};
   }
@@ -39,7 +39,13 @@ instance.interceptors.request.use(
   async (config: AxiosRequestConfig) => {
     const url = getUrl(config);
     console.log("url AxiosRequestConfig - ", url);
-
+    if (!url.toString().includes("/auth/")) {
+      const authHeader = await authHeader_X();
+      config.headers = {
+        ...config.headers,
+        ...authHeader,
+      };
+    }
     console.log(
       `%c ${config.method.toUpperCase()} - ${url}:`,
       "color: #0086b3; font-weight: bold",
