@@ -4,16 +4,10 @@ import Layout from "./layout";
 import { signIn, useSession } from "next-auth/client";
 import Lottie from "react-lottie";
 import panda from "~/public/loading/panda.json";
-import { useCookies } from "react-cookie";
 
 const LayoutBase = ({ children }) => {
   const [session, loading] = useSession();
   const [isLoading, setIsLoading] = useState(true);
-  const [cookies, setCookie] = useCookies(["token"]);
-
-  if (session) {
-    console.log("Session token: ", session.accessToken);
-  }
 
   // Get path and slug
   const router = useRouter();
@@ -40,7 +34,6 @@ const LayoutBase = ({ children }) => {
         }
       } else {
         setIsLoading(false);
-        setCookie("token", session.accessToken);
       }
     }
   }, [session]);

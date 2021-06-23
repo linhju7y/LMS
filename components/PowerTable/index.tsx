@@ -1,16 +1,47 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Table, Card } from "antd";
 import TitlePage from "~/components/TitlePage";
 import { useWrap } from "~/context/wrap";
 
-const PowerTable = (props) => {
+const PowerTable = (props: any) => {
   const { getTitlePage } = useWrap();
+  const [state, setState] = useState({ selectedRowKeys: [] });
+  const [dataSource, setDataSource] = useState([]);
+
+  const selectRow = (record) => {
+    const selectedRowKeys = [];
+
+    if (selectedRowKeys.indexOf(record.key) >= 0) {
+      selectedRowKeys.splice(selectedRowKeys.indexOf(record.key), 1);
+    } else {
+      selectedRowKeys.push(record.key);
+    }
+    setState({ selectedRowKeys });
+  };
+
+  const onSelectedRowKeysChange = (selectedRowKeys) => {
+    setState({ selectedRowKeys });
+  };
+
+  const rowSelection = {
+    selectedRowKeys: state.selectedRowKeys,
+    onChange: onSelectedRowKeysChange,
+    hideSelectAll: true,
+  };
 
   useEffect(() => {
     if (props.TitlePage) {
       getTitlePage(props.TitlePage);
     }
-  }, []);
+    if (props.dataSource && props.dataSource.length > 0) {
+      let dataClone = [...props.dataSource];
+      dataClone.forEach((item, index) => {
+        item.key = index.toString();
+      });
+
+      setDataSource(dataClone);
+    }
+  }, [props.dataSource]);
 
   return (
     <>
@@ -33,7 +64,7 @@ const PowerTable = (props) => {
                 bordered={props.haveBorder ? props.haveBorder : false}
                 scroll={props.noScroll ? { x: "max-content" } : { x: 600 }}
                 columns={props.columns}
-                dataSource={props.dataSource}
+                dataSource={dataSource}
                 size="middle"
                 pagination={{
                   onChange: (pageNumber) =>
@@ -41,6 +72,12 @@ const PowerTable = (props) => {
                       ? props.getPagination(pageNumber)
                       : "",
                 }}
+                rowSelection={rowSelection}
+                onRow={(record) => ({
+                  onClick: () => {
+                    selectRow(record);
+                  },
+                })}
               />
             </Card>
           </div>

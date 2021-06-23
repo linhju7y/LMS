@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
@@ -82,7 +82,6 @@ function Layout({
   };
 
   const handleSignIn = (event: React.SyntheticEvent<any>) => signIn();
-  useEffect(() => {}, []);
 
   // Lấy rotuer đế gán vào route của Link
   const returnRouter = (index: number) => {

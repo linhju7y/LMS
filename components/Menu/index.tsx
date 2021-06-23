@@ -254,11 +254,6 @@ const MenuDefault = ({
       FindTabActive());
   }, [isOpen]);
 
-  // useEffect(() => {
-  //   let widthScr = window.innerWidth;
-  //   if(widthScr < )
-  // },[]);
-
   const changeTabsWithPostion = () => {
     // Get height menu when hover
     let heightMenu = menuChild.current.clientHeight;

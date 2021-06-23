@@ -21,7 +21,9 @@ const GradeForm = (props: any) => {
     let res = props._onSubmit(data);
 
     res.then(function (rs: any) {
-      rs.status == 200 && setIsModalVisible(false);
+      rs
+        ? rs.status == 200 && setIsModalVisible(false)
+        : showNoti("danger", "Server lỗi");
     });
   });
 
@@ -70,7 +72,7 @@ const GradeForm = (props: any) => {
 
       {/*  */}
       <Modal
-        title="Tạo khối học"
+        title={`${!props.showAdd ? "Sửa" : "Tạo"} khối học`}
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={null}

@@ -960,6 +960,9 @@ hr {
     box-shadow: 0px 5px 20px #00000017;
     border-radius: 0.575rem !important;
   }
+  .ant-table-selection-column {
+    display: none;
+  }
   .ant-table-thead {
     tr {
       th {
@@ -1010,9 +1013,14 @@ hr {
 
     .ant-table-row:nth-of-type(2n + 1) {
       // background-color: #0088cc08;
-      background-color: rgb(8 181 5 / 17%);
+      // background-color: rgb(8 181 5 / 17%);
+      background-color: #08b5051f;
     }
-
+    .ant-table-row-selected {
+      td {
+        background: #ffed95;
+      }
+    }
     .ant-table-row-success {
       background-color: #ffffff;
     }

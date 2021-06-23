@@ -152,9 +152,8 @@ const Grade = () => {
 
   // UPDATE ROW
   const updateAtRow = (mes: string) => {
-    let dataCourseClone = [...dataCourse];
-    dataCourseClone.forEach((item, index) => {
-      console.log("item: ", item);
+    let dataClone = [...dataCourse];
+    dataClone.forEach((item, index) => {
       if (item.ListCourseID == dataHidden.ListCourseID) {
         console.log("run it");
         item.Enable = dataHidden.Enable;
@@ -163,7 +162,7 @@ const Grade = () => {
       return true;
     });
 
-    setDataCourse(dataCourseClone);
+    setDataCourse(dataClone);
     showNoti("success", mes);
   };
 
@@ -207,7 +206,7 @@ const Grade = () => {
 
     {
       title: "Create on",
-      dataIndex: "CreateOn",
+      dataIndex: "CreatedOn",
       ...FilterDateColumn("regDate"),
     },
     {
@@ -216,8 +215,8 @@ const Grade = () => {
       render: (Enable, record) => (
         <>
           <Switch
-            checkedChildren="Show"
-            unCheckedChildren="Hide"
+            checkedChildren="Hiện"
+            unCheckedChildren="Ẩn"
             checked={Enable}
             size="default"
             onChange={(checked) => changeStatus(checked, record.ListCourseID)}
@@ -286,7 +285,7 @@ const Grade = () => {
         columns={columns}
         Extra={
           <div className="extra-table">
-            <FilterTable />
+            {/* <FilterTable /> */}
             <SortBox />
           </div>
         }
