@@ -71,6 +71,13 @@ export const dataMenu = [
         Route: "/course/course-list-report",
         Text: "Danh sách khóa học - báo cáo",
       },
+      {
+        TypeItem: "single",
+        Key: "/course/course-buy",
+        Icon: '<span class="anticon"><img src="/images/icons/list.svg"></span>',
+        Route: "/course/course-buy",
+        Text: "Danh sách khóa học - mua bán",
+      },
     ],
   },
 
