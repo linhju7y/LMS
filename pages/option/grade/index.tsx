@@ -198,7 +198,11 @@ const Grade = () => {
   };
 
   const columns = [
-    { title: "Grade", dataIndex: "ListCourseName", ...FilterColumn("grade") },
+    {
+      title: "Grade",
+      dataIndex: "ListCourseName",
+      ...FilterColumn("ListCourseName"),
+    },
     {
       title: "Description",
       dataIndex: "Description",
@@ -207,7 +211,7 @@ const Grade = () => {
     {
       title: "Create on",
       dataIndex: "CreatedOn",
-      ...FilterDateColumn("regDate"),
+      ...FilterDateColumn("CreatedOn"),
     },
     {
       title: "Hidden",
