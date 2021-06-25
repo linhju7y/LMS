@@ -526,6 +526,13 @@ export const dataMenu = [
       },
       {
         ItemType: "single",
+        Key: "/option/class",
+        Route: "/option/class",
+        Text: "Lớp học",
+        Icon: "",
+      },
+      {
+        ItemType: "single",
         Key: "/option/study-time",
         Route: "/option/study-time",
         Text: "Ca học",

@@ -978,7 +978,7 @@ hr {
     }
     tr:first-child {
       th {
-        &:first-child {
+        &:nth-child(2) {
           border-top-left-radius: 0.575rem !important;
         }
 
@@ -1001,6 +1001,18 @@ hr {
       td {
         background: #ffed95 !important;
         transition: 0.3s;
+      }
+    }
+
+    tr.ant-table-row:last-child {
+      td {
+        &:nth-child(2) {
+          border-bottom-left-radius: 0.575rem !important;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: 0.575rem !important;
+        }
       }
     }
 

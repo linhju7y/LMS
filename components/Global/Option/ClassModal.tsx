@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { courseApi } from "~/apiBase";
 import { useWrap } from "~/context/wrap";
 
-const GradeForm = React.memo((props: any) => {
+const ClassModal = React.memo((props: any) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { isLoading } = props;
 
@@ -27,22 +27,15 @@ const GradeForm = React.memo((props: any) => {
     });
   });
 
-  useEffect(() => {
-    if (props.rowData) {
-      // setValue("object", {
-      //   ListCourseID: props.rowData.ListCourseID,
-      //   ListCourseName: props.rowData.ListCourseName,
-      //   ListCourseCode: props.rowData.ListCourseCode,
-      //   Description: props.rowData.Description,
-      //   Enable: props.rowData.Enable,
-      // });
-      setValue("ListCourseID", props.rowData.ListCourseID);
-      setValue("ListCourseName", props.rowData.ListCourseName);
-      setValue("ListCourseCode", props.rowData.ListCourseCode);
-      setValue("Description", props.rowData.Description);
-      setValue("Enable", props.rowData.Enable);
-    }
-  }, [props.rowData]);
+  //   useEffect(() => {
+  //     if (props.rowData) {
+  //       setValue("ListCourseID", props.rowData.ListCourseID);
+  //       setValue("ListCourseName", props.rowData.ListCourseName);
+  //       setValue("ListCourseCode", props.rowData.ListCourseCode);
+  //       setValue("Description", props.rowData.Description);
+  //       setValue("Enable", props.rowData.Enable);
+  //     }
+  //   }, [props.rowData]);
 
   return (
     <>
@@ -92,7 +85,7 @@ const GradeForm = React.memo((props: any) => {
                       {...register("ListCourseCode")}
                       placeholder=""
                       className="style-input"
-                      defaultValue={props.rowData?.ListCourseCode}
+                      //   defaultValue={props.rowData?.ListCourseCode}
                       onChange={(e) =>
                         setValue("ListCourseCode", e.target.value)
                       }
@@ -115,7 +108,7 @@ const GradeForm = React.memo((props: any) => {
                       {...register("ListCourseName")}
                       placeholder=""
                       className="style-input"
-                      defaultValue={props.rowData?.ListCourseName}
+                      //   defaultValue={props.rowData?.ListCourseName}
                       onChange={(e) =>
                         setValue("ListCourseName", e.target.value)
                       }
@@ -138,26 +131,14 @@ const GradeForm = React.memo((props: any) => {
                       {...register("Description")}
                       placeholder=""
                       className="style-input"
-                      defaultValue={props.rowData?.Description}
+                      //   defaultValue={props.rowData?.Description}
                       onChange={(e) => setValue("Description", e.target.value)}
                     />
                   )}
                 </Form.Item>
               </div>
             </div>
-            {/* <div className="row">
-              <div className="col-12">
-                <Form.Item>
-                  <Radio.Group
-                    onChange={onChange_Status("Enable")}
-                    value={status}
-                  >
-                    <Radio value={1}>Hiện</Radio>
-                    <Radio value={2}>Ẩn</Radio>
-                  </Radio.Group>
-                </Form.Item>
-              </div>
-            </div> */}
+
             <div className="row ">
               <div className="col-12">
                 <button type="submit" className="btn btn-primary w-100">
@@ -175,4 +156,4 @@ const GradeForm = React.memo((props: any) => {
   );
 });
 
-export default GradeForm;
+export default ClassModal;

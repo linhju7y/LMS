@@ -247,7 +247,8 @@
   }
 
   .ant-card-body {
-    height: calc(100vh - 206px);
+    // height: calc(100vh - 206px);
+    height: calc(100vh - 228px);
     padding-right: 10px;
 
     @include max-media(800px) {
@@ -282,7 +283,8 @@
 
 .card-detail-exam {
   .ant-card-body {
-    height: calc(100vh - 206px);
+    // height: calc(100vh - 206px);
+    height: calc(100vh - 215px);
     padding-right: 10px;
 
     .question-list {

@@ -3,7 +3,7 @@ import { Table, Card } from "antd";
 import TitlePage from "~/components/TitlePage";
 import { useWrap } from "~/context/wrap";
 
-const PowerTable = (props: any) => {
+const PowerTable = React.memo((props: any) => {
   const { getTitlePage } = useWrap();
   const [state, setState] = useState({ selectedRowKeys: [] });
   const [dataSource, setDataSource] = useState([]);
@@ -21,6 +21,14 @@ const PowerTable = (props: any) => {
 
   const onSelectedRowKeysChange = (selectedRowKeys) => {
     setState({ selectedRowKeys });
+  };
+
+  const changePagination = (pageNumber) => {
+    if (typeof props.getPagination != "undefined") {
+      props.getPagination(pageNumber);
+    } else {
+      return pageNumber;
+    }
   };
 
   const rowSelection = {
@@ -67,10 +75,7 @@ const PowerTable = (props: any) => {
                 dataSource={dataSource}
                 size="middle"
                 pagination={{
-                  onChange: (pageNumber) =>
-                    props.getPagination(pageNumber)
-                      ? props.getPagination(pageNumber)
-                      : "",
+                  onChange: (pageNumber) => changePagination(pageNumber),
                 }}
                 rowSelection={rowSelection}
                 onRow={(record) => ({
@@ -85,6 +90,6 @@ const PowerTable = (props: any) => {
       </div>
     </>
   );
-};
+});
 
 export default PowerTable;

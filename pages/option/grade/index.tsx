@@ -22,7 +22,6 @@ const Grade = () => {
     type: "",
     status: false,
   });
-  const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [isOpen, setIsOpen] = useState({
     isOpen: false,
     status: null,
