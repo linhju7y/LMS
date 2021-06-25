@@ -2,17 +2,8 @@ import Link from "next/link";
 import LayoutBase from "~/components/LayoutBase";
 import TitlePage from "~/components/Elements/TitlePage";
 import { Collapse, Rate } from 'antd';
-import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
 
 const { Panel } = Collapse;
-
-const customIcons = {
-    1: <FrownOutlined />,
-    2: <FrownOutlined />,
-    3: <MehOutlined />,
-    4: <SmileOutlined />,
-    5: <SmileOutlined />,
-};
 
 const CoureBuyDetail = () => {
     return (
@@ -25,7 +16,7 @@ const CoureBuyDetail = () => {
                             <h1 className="title-page-detail">Ielts Course test 1</h1>
                             <div className="rating">
                                 <span className="lb-text">Đánh giá: </span>
-                                <Rate defaultValue={4} character={({ index }) => customIcons[index + 1]} />
+                                <Rate allowHalf defaultValue={4.5} />
                             </div>
                             <div className="auth">
                                 <span className="lb-text">Giảng viên: </span>
@@ -104,7 +95,7 @@ const CoureBuyDetail = () => {
                             <div className="name-course">Ielts Course test 1</div>
                             <div className="rating">
                                 <span className="lb-text">Đánh giá: </span>
-                                <Rate defaultValue={4} character={({ index }) => customIcons[index + 1]} />
+                                <Rate allowHalf defaultValue={4.5} />
                             </div>
                             <div className="auth">
                                 <span className="lb-text">Giảng viên: </span>

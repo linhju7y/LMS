@@ -6,11 +6,10 @@ import SortBox from "~/components/Elements/SortBox";
 import SearchBox from "~/components/Elements/SearchBox";
 import LayoutBase from "~/components/LayoutBase";
 import { dataCategory, dataCourse } from "~/lib/course-buy";
-import { Menu, Select } from 'antd';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-import { type } from "os";
+import { Menu, Rate } from 'antd';
 
 const { SubMenu } = Menu;
+
 
 type dataCategory = [];
 type dataCourse = [];
@@ -67,93 +66,106 @@ const CourseBuy = () => {
               </div>
             }
           >
-            {dataCourse?.map((item, index) => {
-                if(!cate) {
-                    return (
-                        <div className="wrap-buy" key={item.id}>
-                        <div className="wrap-buy-content">
-                            <div className="buy-image">
-                                <Link href={{
-                                        pathname: "/course/course-buy/detail/[slug]",
-                                        query: { slug: item.course_slug }
-                                    }}>
-                                    <a><img src={item.course_image} alt="image-course-buy" /></a>
-                                </Link>
-                            </div>
-                            <div className="buy-content">
-                                <h6 className="buy-title">
-                                    <Link href={{
-                                        pathname: "/course/course-buy/detail/[slug]",
-                                        query: { slug: item.course_slug }
-                                    }}>
-                                        <a>{item.course_title}</a>
+            <div className="ant-card-body-list">
+                {dataCourse?.map((item, index) => {
+                    if(!cate) {
+                        return (
+                            <div className="wrap-buy" key={item.id}>
+                                <div className="wrap-buy-content">
+                                    <div className="buy-image">
+                                        <Link href={{
+                                            pathname: "/course/course-buy/detail/[slug]",
+                                            query: { slug: item.course_slug }
+                                        }}>
+                                        <a><img src={item.course_image} alt="image-course-buy" /></a>
                                     </Link>
-                                </h6>
-                                <ul className="buy-list">
-                                <li className="price">
-                                    Price: <span>{item.course_price}</span>
-                                </li>
-                                <li className="auth">
-                                    Auth: <span>{item.course_auth}</span>
-                                </li>
-                                </ul>
-                                <p className="buy-des">{item.course_desc}</p>
-                                <div className="set-btn">
-                                    <Link
-                                    href={{
-                                    //   pathname: "/package/package-set/type/[slug]",
-                                    // query: { slug: 2 },
-                                    }}
-                                    >
-                                    <a className="btn btn-warning">Buy now</a>
-                                    </Link>
+                                    </div>
+                                <div className="buy-content">
+                                    <h6 className="buy-title">
+                                        <Link href={{
+                                            pathname: "/course/course-buy/detail/[slug]",
+                                            query: { slug: item.course_slug }
+                                        }}>
+                                            <a>{item.course_title}</a>
+                                        </Link>
+                                    </h6>
+                                    <ul className="buy-list">
+                                    <li className="price">
+                                        Price: <span>{item.course_price}</span>
+                                    </li>
+                                    <li className="auth">
+                                        Auth: <span>{item.course_auth}</span>
+                                    </li>
+                                    </ul>
+                                    <p className="buy-des">{item.course_desc}</p>
+                                    <div className="set-btn">
+                                        <Link
+                                        href={{
+                                        //   pathname: "/package/package-set/type/[slug]",
+                                        // query: { slug: 2 },
+                                        }}
+                                        >
+                                        <a className="btn btn-warning">Buy now</a>
+                                        </Link>
+                                    </div>
+                                </div>
+                                </div>
+                                <div className="tag-rate">
+                                    <Rate allowHalf defaultValue={4.5} />
                                 </div>
                             </div>
-                        </div>
-                        </div>
-                    )
-                }
-                if(item.course_cate_id == cate) {
-                    return (
-                        <div className="wrap-buy" key={item.id}>
-                        <div className="wrap-buy-content">
-                            <div className="buy-image">
-                                <img src={item.course_image} alt="image-course-buy" />
-                            </div>
-                            <div className="buy-content">
-                                <h6 className="buy-title">
-                                    <Link href={{
-                                        pathname: "/course/course-buy/detail/[slug]",
-                                        query: { slug: item.course_slug }
-                                    }}>
-                                        <a>{item.course_title}</a>
+                        )
+                    }
+                    if(item.course_cate_id == cate) {
+                        return (
+                            <div className="wrap-buy" key={item.id}>
+                                <div className="wrap-buy-content">
+                                    <div className="buy-image">
+                                        <Link href={{
+                                            pathname: "/course/course-buy/detail/[slug]",
+                                            query: { slug: item.course_slug }
+                                        }}>
+                                        <a><img src={item.course_image} alt="image-course-buy" /></a>
                                     </Link>
-                                </h6>
-                                <ul className="buy-list">
-                                <li className="price">
-                                    Price: <span>{item.course_price}</span>
-                                </li>
-                                <li className="auth">
-                                    Auth: <span>{item.course_auth}</span>
-                                </li>
-                                </ul>
-                                <p className="buy-des">{item.course_desc}</p>
-                                <div className="set-btn">
-                                    <Link
-                                    href={{
-                                    //   pathname: "/package/package-set/type/[slug]",
-                                    query: { slug: 2 },
-                                    }}
-                                >
-                                    <a className="btn btn-warning">Buy now</a>
-                                </Link>
+                                    </div>
+                                <div className="buy-content">
+                                    <h6 className="buy-title">
+                                        <Link href={{
+                                            pathname: "/course/course-buy/detail/[slug]",
+                                            query: { slug: item.course_slug }
+                                        }}>
+                                            <a>{item.course_title}</a>
+                                        </Link>
+                                    </h6>
+                                    <ul className="buy-list">
+                                    <li className="price">
+                                        Price: <span>{item.course_price}</span>
+                                    </li>
+                                    <li className="auth">
+                                        Auth: <span>{item.course_auth}</span>
+                                    </li>
+                                    </ul>
+                                    <p className="buy-des">{item.course_desc}</p>
+                                    <div className="set-btn">
+                                        <Link
+                                        href={{
+                                        //   pathname: "/package/package-set/type/[slug]",
+                                        // query: { slug: 2 },
+                                        }}
+                                        >
+                                        <a className="btn btn-warning">Buy now</a>
+                                        </Link>
+                                    </div>
+                                </div>
+                                </div>
+                                <div className="tag-rate">
+                                    <Rate allowHalf defaultValue={4.5} />
                                 </div>
                             </div>
-                        </div>
-                        </div>
-                    )
-                }
-            })}
+                        )
+                    }
+                })}
+            </div>
         </Card>
         <div className="course-buy-sidebar" >
             <div className="side-bar ant-card-bordered">
