@@ -6,7 +6,10 @@ import SortBox from "~/components/Elements/SortBox";
 import { table } from "console";
 import Link from "next/link";
 import LayoutBase from "~/components/LayoutBase";
+
+
 const PackageSet = () => {
+
   return (
     <>
       <div className="row package-set">
@@ -122,6 +125,7 @@ const PackageSet = () => {
               </div>
             </div>
           </Card>
+
         </div>
       </div>
     </>
