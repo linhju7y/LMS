@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Modal, Form, Input, Spin, Tooltip, Skeleton } from "antd";
+import { Modal, Form, Input, Spin, Tooltip, Skeleton, Select } from "antd";
 import { RotateCcw } from "react-feather";
 import { useForm } from "react-hook-form";
 import { courseApi } from "~/apiBase";
@@ -7,25 +7,45 @@ import { useWrap } from "~/context/wrap";
 
 const ClassModal = React.memo((props: any) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const { isLoading } = props;
+  const {
+    isLoading,
+    startShowModal,
+    dataBranch,
+    dataCourse,
+    dataRoom,
+    getRoom,
+  } = props;
+
+  console.log("data Room: ", dataRoom);
 
   const {
     register,
     handleSubmit,
     setValue,
     formState: { isSubmitting, errors, isSubmitted },
-  } = useForm<ICourse>();
+  } = useForm<IClass>();
   const { showNoti } = useWrap();
+  const { Option } = Select;
 
   const onSubmit = handleSubmit((data: any) => {
-    let res = props._onSubmit(data);
+    console.log("data submit: ", data);
+    // let res = props._onSubmit(data);
 
-    res.then(function (rs: any) {
-      rs
-        ? rs.status == 200 && setIsModalVisible(false)
-        : showNoti("danger", "Server lỗi");
-    });
+    // res.then(function (rs: any) {
+    //   rs
+    //     ? rs.status == 200 && setIsModalVisible(false)
+    //     : showNoti("danger", "Server lỗi");
+    // });
   });
+
+  const onSearch = (val: any) => {
+    console.log("search:", val);
+  };
+
+  const onChangeSelect = (name: any) => (value: any, option: any) => {
+    name == "BranchName" && getRoom(value);
+    setValue(name, option.children);
+  };
 
   //   useEffect(() => {
   //     if (props.rowData) {
@@ -55,7 +75,7 @@ const ClassModal = React.memo((props: any) => {
         <button
           className="btn btn-warning add-new"
           onClick={() => {
-            setIsModalVisible(true);
+            setIsModalVisible(true), startShowModal();
           }}
         >
           Thêm mới
@@ -64,16 +84,17 @@ const ClassModal = React.memo((props: any) => {
 
       {/*  */}
       <Modal
-        title={`${!props.showAdd ? "Sửa" : "Tạo"} khối học`}
+        title={`${!props.showAdd ? "Sửa" : "Tạo"} lớp học`}
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={null}
+        className="modal-medium"
       >
         <div className="container-fluid">
           <Form layout="vertical" onFinish={onSubmit}>
             <div className="row">
-              <div className="col-12">
-                <Form.Item label="Code khóa">
+              <div className="col-md-6 col-12">
+                <Form.Item label="Code lớp">
                   {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
                     <Skeleton
                       active
@@ -82,21 +103,20 @@ const ClassModal = React.memo((props: any) => {
                     />
                   ) : (
                     <Input
-                      {...register("ListCourseCode")}
+                      {...register("ListClassCode")}
                       placeholder=""
                       className="style-input"
                       //   defaultValue={props.rowData?.ListCourseCode}
                       onChange={(e) =>
-                        setValue("ListCourseCode", e.target.value)
+                        setValue("ListClassCode", e.target.value)
                       }
                     />
                   )}
                 </Form.Item>
               </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <Form.Item label="Tên khóa">
+
+              <div className="col-md-6 col-12">
+                <Form.Item label="Tên lớp">
                   {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
                     <Skeleton
                       active
@@ -105,21 +125,126 @@ const ClassModal = React.memo((props: any) => {
                     />
                   ) : (
                     <Input
-                      {...register("ListCourseName")}
+                      {...register("ListClassName")}
                       placeholder=""
                       className="style-input"
                       //   defaultValue={props.rowData?.ListCourseName}
                       onChange={(e) =>
-                        setValue("ListCourseName", e.target.value)
+                        setValue("ListClassName", e.target.value)
                       }
                     />
                   )}
                 </Form.Item>
               </div>
             </div>
+
             <div className="row">
-              <div className="col-12">
-                <Form.Item label="Mô Tả">
+              <div className="col-md-6 col-12">
+                <Form.Item label="Trung tâm">
+                  {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Select
+                      style={{ width: "100%" }}
+                      className="style-input"
+                      showSearch
+                      placeholder="Select..."
+                      optionFilterProp="children"
+                      onChange={onChangeSelect("BranchName")}
+                      onSearch={onSearch}
+                      //   filterOption={(input, option) =>
+                      //     option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                      //   }
+                    >
+                      {dataBranch?.length > 0 ? (
+                        dataBranch?.map((item) => (
+                          <Option value={item.ID}>{item.BranchName}</Option>
+                        ))
+                      ) : (
+                        <Option value={5}>Không có dữ liệu</Option>
+                      )}
+                    </Select>
+                  )}
+                </Form.Item>
+              </div>
+
+              <div className="col-md-6 col-12">
+                <Form.Item label="Phòng">
+                  {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Select
+                      style={{ width: "100%" }}
+                      className="style-input"
+                      showSearch
+                      placeholder="Select..."
+                      optionFilterProp="children"
+                      onChange={onChangeSelect("ListCourseName")}
+                      onSearch={onSearch}
+                      //   filterOption={(input, option) =>
+                      //     option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                      //   }
+                    >
+                      {dataRoom?.length > 0 ? (
+                        dataRoom?.map((item) => (
+                          <Option key={item.RoomID} value={item.RoomID}>
+                            {item.RoomName}
+                          </Option>
+                        ))
+                      ) : (
+                        <Option value={5}>Vui lòng chọn trung tâm</Option>
+                      )}
+                    </Select>
+                  )}
+                </Form.Item>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-6 col-12">
+                <Form.Item label="Khóa học">
+                  {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Select
+                      style={{ width: "100%" }}
+                      className="style-input"
+                      showSearch
+                      placeholder="Select..."
+                      optionFilterProp="children"
+                      onChange={onChangeSelect("ListCourseName")}
+                      onSearch={onSearch}
+                      //   filterOption={(input, option) =>
+                      //     option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                      //   }
+                    >
+                      {dataCourse?.length > 0 ? (
+                        dataCourse?.map((item) => (
+                          <Option value={item.ListCourseID}>
+                            {item.ListCourseName}
+                          </Option>
+                        ))
+                      ) : (
+                        <Option value={5}>Không có dữ liệu</Option>
+                      )}
+                    </Select>
+                  )}
+                </Form.Item>
+              </div>
+              <div className="col-md-6 col-12">
+                <Form.Item label="Khu vực">
                   {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
                     <Skeleton
                       active
@@ -128,11 +253,53 @@ const ClassModal = React.memo((props: any) => {
                     />
                   ) : (
                     <Input
-                      {...register("Description")}
+                      {...register("AreaName")}
                       placeholder=""
                       className="style-input"
                       //   defaultValue={props.rowData?.Description}
-                      onChange={(e) => setValue("Description", e.target.value)}
+                      onChange={(e) => setValue("AreaName", e.target.value)}
+                    />
+                  )}
+                </Form.Item>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-6 col-12">
+                <Form.Item label="Học phí">
+                  {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Input
+                      {...register("Price")}
+                      placeholder=""
+                      className="style-input"
+                      //   defaultValue={props.rowData?.Description}
+                      onChange={(e) => setValue("Price", e.target.value)}
+                    />
+                  )}
+                </Form.Item>
+              </div>
+
+              <div className="col-md-6 col-12">
+                <Form.Item label="Trạng thái">
+                  {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Input
+                      {...register("Type")}
+                      placeholder=""
+                      className="style-input"
+                      //   defaultValue={props.rowData?.Description}
+                      onChange={(e) => setValue("Type", e.target.value)}
                     />
                   )}
                 </Form.Item>
@@ -140,8 +307,8 @@ const ClassModal = React.memo((props: any) => {
             </div>
 
             <div className="row ">
-              <div className="col-12">
-                <button type="submit" className="btn btn-primary w-100">
+              <div className="col-12 text-center">
+                <button type="submit" className="btn btn-primary ">
                   Lưu
                   {isLoading.type == "ADD_DATA" && isLoading.status && (
                     <Spin className="loading-base" />

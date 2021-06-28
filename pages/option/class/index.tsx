@@ -8,7 +8,7 @@ import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import Link from "next/link";
 import LayoutBase from "~/components/LayoutBase";
-import { classApi } from "~/apiBase";
+import { classApi, branchApi, courseApi, roomApi } from "~/apiBase";
 
 import is from "date-fns/esm/locale/is/index.js";
 import { useWrap } from "~/context/wrap";
@@ -16,7 +16,10 @@ import ClassForm from "~/components/Global/Option/ClassModal";
 import ClassModal from "~/components/Global/Option/ClassModal";
 
 const ClassList = () => {
+  const [center, setCenter] = useState<IBranch[]>([]);
+  const [dataCourse, setDataCourse] = useState<ICourse[]>([]);
   const [dataSource, setDataSource] = useState<IClass[]>([]);
+  const [dataRoom, setDataRoom] = useState([]);
   const [ClassForm, setClassForm] = useState(false);
   const [isLoading, setIsLoading] = useState({
     type: "",
@@ -68,6 +71,14 @@ const ClassList = () => {
       dataIndex: "AreaName",
       ...FilterColumn("AreaName"),
     },
+
+    {
+      title: "Trạng thái",
+      dataIndex: "Type",
+      ...FilterColumn("Type"),
+      render: (Type) => <span className="tag green">{Type}</span>,
+    },
+
     {
       render: () => (
         <>
@@ -120,6 +131,49 @@ const ClassList = () => {
     })();
   };
 
+  // GET ALL BRANCH
+  const getAllBranch = () => {
+    (async () => {
+      try {
+        const res = await branchApi.getAll();
+
+        res.status == 200 && setCenter(res.data.createAcc);
+      } catch (error) {
+        showNoti("danger", error.message);
+      }
+    })();
+  };
+
+  // GET ROOM
+  const getRoom = (id: number) => {
+    (async () => {
+      try {
+        const res = await roomApi.getWithID(id);
+        res.status == 200 && setDataRoom(res.data.createAcc);
+      } catch (error) {
+        showNoti("danger", error.message);
+      }
+    })();
+  };
+
+  // GET DATA COURSE
+  const getAllCourse = () => {
+    (async () => {
+      try {
+        let res = await courseApi.getAll();
+        res.status == 200 && setDataCourse(res.data.acc);
+      } catch (error) {
+        showNoti("danger", error.message);
+      }
+    })();
+  };
+
+  // SHOW MODAL AND GET ALL BRANCH
+  const startShowModal = () => {
+    getAllBranch();
+    getAllCourse();
+  };
+
   useEffect(() => {
     getAllData();
   }, []);
@@ -129,8 +183,18 @@ const ClassList = () => {
       <PowerTable
         loading={isLoading}
         addClass="basic-header"
-        TitlePage="Danh sách trung tâm"
-        TitleCard={<ClassModal isLoading={isLoading} />}
+        TitlePage="Danh sách lớp học"
+        TitleCard={
+          <ClassModal
+            getRoom={(id: number) => getRoom(id)}
+            dataRoom={dataRoom}
+            dataCourse={dataCourse}
+            dataBranch={center}
+            showAdd={true}
+            isLoading={isLoading}
+            startShowModal={startShowModal}
+          />
+        }
         dataSource={dataSource}
         columns={columns}
         Extra={

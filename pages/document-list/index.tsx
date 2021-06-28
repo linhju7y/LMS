@@ -3,7 +3,7 @@ import { Card } from "antd";
 import TitlePage from "~/components/TitlePage";
 import { fileItems } from "~/lib/document-list/data";
 import FileManagerForm from "~/components/Global/FileManager";
-
+import LayoutBase from "~/components/LayoutBase";
 const DocumentList = () => {
   return (
     <>
@@ -17,4 +17,5 @@ const DocumentList = () => {
   );
 };
 
+DocumentList.layout = LayoutBase;
 export default DocumentList;

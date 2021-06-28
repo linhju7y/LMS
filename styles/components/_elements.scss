@@ -1469,3 +1469,11 @@ hr {
     margin-bottom: 0;
   }
 }
+
+.modal-medium {
+  width: 50% !important;
+
+  @include max-media(800px) {
+    width: 100% !important;
+  }
+}
