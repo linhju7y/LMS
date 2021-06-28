@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import PowerTable from "~/components/PowerTable";
 import { data } from "../../../lib/option/dataOption2";
 import StaffSalaryForm from "~/components/Global/Option/StaffSalaryForm";
@@ -8,6 +8,11 @@ import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import LayoutBase from "~/components/LayoutBase";
 const StaffSalary = () => {
+  const [isLoading, setIsLoading] = useState({
+    type: "",
+    status: false,
+  });
+
   const columns = [
     { title: "Full name", dataIndex: "staff", ...FilterColumn("staff") },
     {
@@ -35,9 +40,14 @@ const StaffSalary = () => {
 
   return (
     <PowerTable
+      loading={isLoading}
       addClass="basic-header"
       TitlePage="Staff salary"
-      TitleCard={<StaffSalaryForm showAdd={true} />}
+      TitleCard={
+        <StaffSalaryForm 
+          showAdd={true} 
+          
+        />}
       dataSource={data}
       columns={columns}
       Extra={

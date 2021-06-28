@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   Form,
@@ -9,10 +9,13 @@ import {
   Switch,
   Upload,
   message,
+  Skeleton
 } from "antd";
 import { RotateCcw, ArrowDownCircle } from "react-feather";
 import { InboxOutlined } from "@ant-design/icons";
 import TinyMCE from "~/components/TinyMCE";
+import { useWrap } from "~/context/wrap";
+import { useForm } from "react-hook-form";
 const ExamForm = (props) => {
   const { Dragger } = Upload;
   const draggerProps = {
@@ -31,8 +34,38 @@ const ExamForm = (props) => {
       }
     },
   };
+  const { showNoti } = useWrap();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { isSubmitting, errors, isSubmitted },
+  } = useForm<IPostContent>();
+
+  const onSubmit = handleSubmit((data: any) => {
+    let res = props._onSubmit(data);
+
+    res.then(function (rs: any) {
+      console.log("Res in form: ", rs);
+      rs
+        ? res.status == 200 && setIsModalVisible(false)
+        : showNoti("danger", "Server lỗi")
+    });
+  });
+
+  useEffect(() => {
+    if(props.rowData) {
+      setValue("ID", props.rowData.ID);
+      setValue("PostIMG", props.rowData.PostIMG);
+      setValue("TitlePost", props.rowData.TitlePost);
+      setValue("ContentPost", props.rowData.ContentPost);
+      setValue("Enable", props.rowData.Enable);
+    }
+  }, [props.rowData])
+
   return (
     <>
       {props.showIcon && (
@@ -41,7 +74,7 @@ const ExamForm = (props) => {
             <button
               className="btn btn-icon edit"
               onClick={() => {
-                setIsModalVisible(true);
+                setIsModalVisible(true), props.getDataServiceWithID(props.PostContentID);
               }}
             >
               <RotateCcw />
@@ -69,11 +102,26 @@ const ExamForm = (props) => {
         footer={null}
       >
         <div className="container-fluid">
-          <Form layout="vertical">
+          <Form layout="vertical" onFinish={onSubmit}>
             {/*  */}
             <div className="row">
               <Form.Item label="Title">
-                <Input placeholder="..." className="style-input" />
+                {props.isLoading.type == "GET_WITH_ID" &&
+                  props.isLoading.status ? (
+                    <Skeleton
+                    active
+                    paragraph={{ rows: 0 }}
+                    title={{ width: "100%" }}
+                  />
+                  ) : (
+                    <Input 
+                      placeholder="..." 
+                      className="style-input"
+                      defaultValue={props.rowData?.TitlePost}
+                      onChange={(e) => setValue("TitlePost", e.target.value)} 
+                      />
+                  )}
+                
               </Form.Item>
             </div>
             {/*  */}
@@ -99,11 +147,11 @@ const ExamForm = (props) => {
             <div className="row ">
               <div className="col-12">
                 {props.showAdd == true ? (
-                  <Button className="w-100" type="primary" size="large">
+                  <Button className="w-100" type="primary" size="large" onClick={onSubmit}>
                     Create
                   </Button>
                 ) : (
-                  <Button className="w-100" type="primary" size="large">
+                  <Button className="w-100" type="primary" size="large" onClick={onSubmit}>
                     Update
                   </Button>
                 )}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FilterColumn from "~/components/Tables/FilterColumn";
 import FilterDateColumn from "~/components/Tables/FilterDateColumn";
 import SortBox from "~/components/Elements/SortBox";
@@ -8,7 +8,17 @@ import PostForm from "~/components/Global/Option/PostForm";
 import ExpandTable from "~/components/ExpandTable";
 import { Switch, Card } from "antd";
 import LayoutBase from "~/components/LayoutBase";
+import { postContentApi } from "~/apiBase";
+import { useWrap } from "~/context/wrap";
 const Post = () => {
+  const { showNoti } = useWrap();
+  const [isLoading, setIsLoading] = useState({
+    type: "",
+    status: false,
+  });
+  const [dataPostContent, setDataPostContent] = useState<IPostContent[]>();
+  const [rowData, setRowData] = useState<IPostContent[]>();
+
   const expandedRowRender = () => {
     return (
       <div className="feedback-detail-text">
@@ -33,15 +43,92 @@ const Post = () => {
     );
   };
 
+  const getDataPostContent = () => {
+    setIsLoading({
+      type: "GET_ALL",
+      status: true,
+    });
+    (async () => {
+      try {
+        let res = await postContentApi.getAll();
+        res.status == 200 && setDataPostContent(res.data.createAcc);
+      } catch (error) {
+        showNoti("danger", error.message);
+      } finally {
+        setIsLoading({
+          type: "GET_ALL",
+          status: false,
+        });
+      }
+    })();
+  };
+
+  const getDataPostContentWithID = (ServiceID: number) => {
+    setIsLoading({
+      type: "GET_WITH_ID",
+      status: true,
+    });
+    (async () => {
+      try {
+        let res = await postContentApi.getWitdhID(ServiceID);
+        res.status == 200 && setRowData(res.data.createAcc); 
+      } catch (error) {
+        showNoti("danger", error.message);
+      } finally {
+        setIsLoading({
+          type: "GET_WITH_ID",
+          status: false,
+        });
+      }
+    })();
+  };
+
+  // ADD DATA
+  const _onSubmit = async (data: any) => {
+    let res = null;
+    setIsLoading({
+      type: "ADD_DATA",
+      status: true,
+    });
+
+    if(data.ID) {
+      console.log(data);
+      try {
+        res = await postContentApi.put(data);
+        res?.status == 200 && afterPost("Sửa");
+      } catch (error) {
+        showNoti("danger", error.message);
+      } finally {
+        setIsLoading({
+          type: "ADD_DATA",
+          status: false,
+        });
+      }
+    } else {
+      try {
+        res = await postContentApi.post(data);
+        res?.status == 200 && afterPost("Thêm");
+      } catch (error) {
+        showNoti("danger", error.message);
+      } finally {
+        setIsLoading({
+          type: "ADD_DATA",
+          status: false,
+        });
+      }
+    }
+
+  }
+
   const columns = [
     {
       title: "Image",
-      render: () => <img src="" alt="Image" />,
+      render: () => <img src="PostIMG" alt="Image" />,
     },
-    { title: "Title", dataIndex: "title", ...FilterColumn("title") },
+    { title: "Title", dataIndex: "TitlePost", ...FilterColumn("title") },
     {
       title: "Status",
-      dataIndex: "postStatus",
+      dataIndex: "Status",
       align: "center",
       render: (postStatus) => {
         let status = postStatus % 2 == 0 ? "Active" : "Inactive";
@@ -69,10 +156,10 @@ const Post = () => {
     },
     {
       title: "Create date",
-      dataIndex: "expires",
-      ...FilterDateColumn("expires"),
+      dataIndex: "CreatedOn",
+      ...FilterDateColumn("CreatedOn"),
     },
-    { title: "Create by", dataIndex: "modBy", ...FilterColumn("modBy") },
+    { title: "Create by", dataIndex: "ModifiedBy", ...FilterColumn("ModifiedBy") },
     {
       title: "Staff",
       render: () => (
@@ -90,21 +177,47 @@ const Post = () => {
       ),
     },
     {
-      render: () => (
+      render: (record) => (
         <>
-          <PostForm showIcon={true} />
+          <PostForm 
+            PostContentID={record.ID}
+            getDataServiceWithID={(PostContentID: number) => {
+              getDataPostContentWithID(PostContentID)
+            }}
+            rowData={rowData}
+            isLoading={isLoading}
+            showIcon={true} 
+            _onSubmit={(data: any) => _onSubmit(data)} 
+          />
         </>
       ),
     },
   ];
 
+  const afterPost = (value) => {
+    showNoti("success", `${value} thành công`);
+    getDataPostContent();
+    // addDataSuccess(), setIsModalVisible(false);
+  };
+
+  useEffect(() => {
+    getDataPostContent();
+  }, [])
+
   return (
     <ExpandTable
+      isLoading={isLoading}
       addClass="basic-header"
       TitlePage="Post List"
       expandable={{ expandedRowRender }}
-      TitleCard={<PostForm showAdd={true} />}
-      dataSource={data}
+      TitleCard={
+        <PostForm 
+          showAdd={true}
+          addDataSuccess={() => getDataPostContent()}
+          isLoading={isLoading}
+          _onSubmit={(data: any) => _onSubmit(data)} 
+        />}
+      dataSource={dataPostContent}
       columns={columns}
       Extra={
         <div className="extra-table">
