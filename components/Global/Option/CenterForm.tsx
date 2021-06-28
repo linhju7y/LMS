@@ -24,7 +24,6 @@ import { RotateCcw } from "react-feather";
 const CenterForm = React.memo((props: any) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { isLoading } = props;
-  const methods = useForm<IBranch>();
   const { showNoti } = useWrap();
   const [dataArea, setDataArea] = useState<IArea[]>();
   const {

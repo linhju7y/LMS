@@ -34,10 +34,10 @@ const Center = () => {
     {
       render: (data) => (
         <>
-          {/* <Link
+          <Link
             href={{
               pathname: "/option/center/rooms-detail/[slug]",
-              query: { slug: 2 },
+              query: { slug: `${data.ID}` },
             }}
           >
             <Tooltip title="Xem phòng">
@@ -45,7 +45,7 @@ const Center = () => {
                 <Info />
               </button>
             </Tooltip>
-          </Link> */}
+          </Link>
 
           <Tooltip title="Cập nhật trung tâm">
             <CenterForm
@@ -89,7 +89,7 @@ const Center = () => {
       }
     })();
   };
-  let indexPage = 1;
+  let indexPage = 2;
 
   useEffect(() => {
     getDataCenter(indexPage);
