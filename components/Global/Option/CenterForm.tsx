@@ -33,7 +33,7 @@ const CenterForm = React.memo((props: any) => {
     control,
     setValue,
     formState: { isSubmitting, errors, isSubmitted },
-  } = useForm<IBranch>();
+  } = useForm();
   const { Option } = Select;
 
   const [dataDistrict, setDataDistrict] = useState<IDistrict[]>([]);
@@ -75,12 +75,16 @@ const CenterForm = React.memo((props: any) => {
 
   useEffect(() => {
     if (props.rowData) {
-      setValue("BranchCode", props.rowData.BranchCode);
-      setValue("BranchName", props.rowData.BranchName);
-      setValue("Phone", props.rowData.Phone);
-      setValue("Address", props.rowData.Address);
-      setValue("AreaID", props.rowData.AreaID);
-      setValue("DistrictID", props.rowData.DistrictID);
+      Object.keys(props.rowData).forEach(function (key) {
+        setValue(key, props.rowData[key]);
+      });
+
+      // setValue("BranchCode", props.rowData.BranchCode);
+      // setValue("BranchName", props.rowData.BranchName);
+      // setValue("Phone", props.rowData.Phone);
+      // setValue("Address", props.rowData.Address);
+      // setValue("AreaID", props.rowData.AreaID);
+      // setValue("DistrictID", props.rowData.DistrictID);
     }
   }, [props.rowData]);
 

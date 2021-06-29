@@ -12,6 +12,8 @@ import { branchApi } from "~/apiBase";
 import CenterForm from "~/components/Global/Option/CenterForm";
 import { useWrap } from "~/context/wrap";
 
+let indexPage = 1;
+
 const Center = () => {
   const columns = [
     {
@@ -68,7 +70,7 @@ const Center = () => {
     status: false,
   });
   const { showNoti } = useWrap();
-  const [rowData, setRowData] = useState<IBranch[]>();
+  const [rowData, setRowData] = useState<IBranch>();
 
   const getDataCenter = (pageNumber) => {
     setIsLoading({
@@ -115,26 +117,26 @@ const Center = () => {
     })();
   };
 
-  const editRowData = (dataEdit: any, mes: string) => {
-    let space = indexPage * 10;
-    let limit = space < center.length ? space : center.length;
-    let dataClone = [...center];
+  // const editRowData = (dataEdit: any, mes: string) => {
+  //   let space = indexPage * 10;
+  //   let limit = space < center.length ? space : center.length;
+  //   let dataClone = [...center];
 
-    for (let i = space - 10; i <= limit; i++) {
-      if (dataClone[i].BranchCode == dataEdit.BranchCode) {
-        dataClone[i].BranchName = dataEdit.BranchName;
-        dataClone[i].Phone = dataEdit.Phone;
-        dataClone[i].AreaID = dataEdit.AreaID;
-        dataClone[i].Address = dataEdit.Address;
-        dataClone[i].DistrictID = dataEdit.DistrictID;
-        break;
-      }
-    }
-    setCenter(dataClone);
+  //   for (let i = space - 10; i <= limit; i++) {
+  //     if (dataClone[i].BranchCode == dataEdit.BranchCode) {
+  //       dataClone[i].BranchName = dataEdit.BranchName;
+  //       dataClone[i].Phone = dataEdit.Phone;
+  //       dataClone[i].AreaID = dataEdit.AreaID;
+  //       dataClone[i].Address = dataEdit.Address;
+  //       dataClone[i].DistrictID = dataEdit.DistrictID;
+  //       break;
+  //     }
+  //   }
+  //   setCenter(dataClone);
+  //   showNoti("success", mes);
+  // };
+  const afterPost = (mes) => {
     showNoti("success", mes);
-  };
-  const afterPost = () => {
-    showNoti("success", "Thêm thành công");
     getDataCenter(indexPage);
   };
 
@@ -149,8 +151,9 @@ const Center = () => {
     if (data.ID) {
       try {
         res = await branchApi.put(data);
-        res?.status == 200 && editRowData(data, res.data.createAcc);
+        res?.status == 200 && afterPost(res.data.message);
       } catch (error) {
+        console.log("error: ", error);
         showNoti("danger", error.message);
       } finally {
         setIsLoading({
@@ -161,7 +164,7 @@ const Center = () => {
     } else {
       try {
         res = await branchApi.post(data);
-        res?.status == 200 && afterPost();
+        res?.status == 200 && afterPost(res.data.message);
       } catch (error) {
         showNoti("danger", error.message);
       } finally {
@@ -175,10 +178,16 @@ const Center = () => {
     return res;
   };
 
+  // GET PAGE_NUMBER
+  const getPagination = (pageNumber: number) => {
+    indexPage = pageNumber;
+    getDataCenter(pageNumber);
+  };
+
   return (
     <Fragment>
       <PowerTable
-        getPagination={(pageNumber: number) => getDataCenter(pageNumber)}
+        getPagination={(pageNumber: number) => getPagination(pageNumber)}
         loading={isLoading}
         addClass="basic-header"
         TitlePage="Danh sách trung tâm"
