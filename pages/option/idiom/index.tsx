@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PowerTable from "~/components/PowerTable";
 import SortBox from "~/components/Elements/SortBox";
 import FilterTable from "~/components/Global/CourseList/FitlerTable";
@@ -7,6 +7,11 @@ import IdiomForm from "~/components/Global/Option/IdiomForm";
 import { Switch } from "antd";
 import LayoutBase from "~/components/LayoutBase";
 const Idioms = () => {
+  const [isLoading, setIsLoading] = useState({
+    type: "",
+    status: false,
+  });
+
   const columns = [
     { title: "Thành ngữ", dataIndex: "idiom" },
     {
@@ -26,6 +31,7 @@ const Idioms = () => {
 
   return (
     <PowerTable
+      loading={isLoading}
       addClass="basic-header"
       Size="table-medium"
       TitleCard={<IdiomForm showAdd={true} />}

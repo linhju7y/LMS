@@ -121,7 +121,6 @@ const ExamForm = (props) => {
                       onChange={(e) => setValue("TitlePost", e.target.value)} 
                       />
                   )}
-                
               </Form.Item>
             </div>
             {/*  */}
