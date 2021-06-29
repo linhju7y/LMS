@@ -111,24 +111,24 @@ const ClassList = () => {
   const { showNoti } = useWrap();
   //get data Class
 
-  const getAllData = () => {
+  const getAllData = async (page: number) => {
     setIsLoading({
       type: "GET_ALL",
       status: true,
     });
 
-    (async () => {
-      try {
-        const res = await classApi.getAll();
-        setIsLoading({
-          type: "GET_ALL",
-          status: false,
-        });
-        res.status == 200 && setDataSource(res.data.createAcc);
-      } catch (error) {
-        showNoti("danger", error.message);
-      }
-    })();
+    try {
+      const res = await classApi.getAll(page);
+
+      res.status == 200 && setDataSource(res.data.data);
+    } catch (error) {
+      showNoti("danger", error.message);
+    } finally {
+      setIsLoading({
+        type: "GET_ALL",
+        status: false,
+      });
+    }
   };
 
   // GET ALL BRANCH
@@ -175,7 +175,7 @@ const ClassList = () => {
   };
 
   useEffect(() => {
-    getAllData();
+    getAllData(1);
   }, []);
 
   return (

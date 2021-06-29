@@ -8,6 +8,11 @@ type IApiResultAcc<T = any> = {
   message: string;
 };
 
+type IApiResultData<T = any> = {
+  data: T;
+  message: string;
+};
+
 type IBaseApi<T> = {
   Enable: boolean;
   CreatedOn: string;

@@ -26,79 +26,10 @@ const Programs = () => {
     status: false,
   });
 
-  const columns = [
-    {
-      title: "Khóa học",
-      dataIndex: "ListCourseName",
-      ...FilterColumn("ListCourseName"),
-      render: (ListCourseName) => {
-        return <p className="font-weight-black">{ListCourseName}</p>;
-      },
-    },
-    {
-      title: "Tên lớp",
-      dataIndex: "ListClassName",
-      ...FilterColumn("ListClassName"),
-      render: (ListClassName) => {
-        return <p className="font-weight-blue">{ListClassName}</p>;
-      },
-    },
-    {
-      title: "Học phí",
-      dataIndex: "Price",
-      ...FilterColumn("Price"),
-    },
-    {
-      title: "Trạng thái",
-      dataIndex: "Type",
-      ...FilterColumn("Type"),
-      render: (Type) => <span className="tag green">{Type}</span>,
-    },
-
-    {
-      title: "ModifiedBy",
-      dataIndex: "ModifiedBy",
-      ...FilterColumn("ModifiedBy"),
-    },
-    {
-      title: "ModifiedOn",
-      dataIndex: "ModifiedOn",
-      ...FilterColumn("ModifiedOn"),
-    },
-
-    {
-      render: () => (
-        <>
-          <Link
-            href={{
-              pathname: "/option/program/program-detail/[slug]",
-              query: { slug: 2 },
-            }}
-          >
-            <Tooltip title="Chi tiết chương trình">
-              <button className="btn btn-icon">
-                <Info />
-              </button>
-            </Tooltip>
-          </Link>
-
-          <Tooltip title="Cập nhật lớp học">
-            <button
-              className="btn btn-icon edit"
-              onClick={() => setClassForm(true)}
-            >
-              <RotateCcw />
-            </button>
-          </Tooltip>
-        </>
-      ),
-    },
-  ];
-
   const { showNoti } = useWrap();
   //get data Class
 
-  const getAllData = () => {
+  const getAllData = (page: number) => {
     setIsLoading({
       type: "GET_ALL",
       status: true,
@@ -106,9 +37,9 @@ const Programs = () => {
 
     (async () => {
       try {
-        const res = await classApi.getAll();
+        const res = await classApi.getAll(page);
 
-        res.status == 200 && setDataSource(res.data.createAcc);
+        res.status == 200 && setDataSource(res.data.data);
       } catch (error) {
         showNoti("danger", error.message);
       } finally {
@@ -164,8 +95,80 @@ const Programs = () => {
   };
 
   useEffect(() => {
-    getAllData();
+    getAllData(1);
   }, []);
+
+  const columns = [
+    {
+      title: "Khóa học",
+      dataIndex: "ListCourseName",
+      ...FilterColumn("ListCourseName"),
+      render: (ListCourseName) => {
+        return <p className="font-weight-black">{ListCourseName}</p>;
+      },
+    },
+    {
+      title: "Tên lớp",
+      dataIndex: "ListClassName",
+      ...FilterColumn("ListClassName"),
+      render: (ListClassName) => {
+        return <p className="font-weight-blue">{ListClassName}</p>;
+      },
+    },
+    {
+      title: "Học phí",
+      dataIndex: "Price",
+      ...FilterColumn("Price"),
+      render: (Price) => {
+        return <p className="font-weight-black">{Price}</p>;
+      },
+    },
+    {
+      title: "Trạng thái",
+      dataIndex: "Type",
+      ...FilterColumn("Type"),
+      render: (Type) => <span className="tag green">{Type}</span>,
+    },
+
+    {
+      title: "ModifiedBy",
+      dataIndex: "ModifiedBy",
+      ...FilterColumn("ModifiedBy"),
+    },
+    {
+      title: "ModifiedOn",
+      dataIndex: "ModifiedOn",
+      ...FilterColumn("ModifiedOn"),
+    },
+
+    {
+      render: () => (
+        <>
+          <Link
+            href={{
+              pathname: "/option/program/program-detail/[slug]",
+              query: { slug: 2 },
+            }}
+          >
+            <Tooltip title="Chi tiết chương trình">
+              <button className="btn btn-icon">
+                <Info />
+              </button>
+            </Tooltip>
+          </Link>
+
+          <Tooltip title="Cập nhật lớp học">
+            <button
+              className="btn btn-icon edit"
+              onClick={() => setClassForm(true)}
+            >
+              <RotateCcw />
+            </button>
+          </Tooltip>
+        </>
+      ),
+    },
+  ];
 
   return (
     <Fragment>
