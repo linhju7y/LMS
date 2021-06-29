@@ -17,6 +17,7 @@ import TinyMCE from "~/components/TinyMCE";
 import { useWrap } from "~/context/wrap";
 import { useForm } from "react-hook-form";
 const ExamForm = (props) => {
+  let contentPost;
   const { Dragger } = Upload;
   const draggerProps = {
     name: "file",
@@ -43,7 +44,7 @@ const ExamForm = (props) => {
     handleSubmit,
     setValue,
     formState: { isSubmitting, errors, isSubmitted },
-  } = useForm<IPostContent>();
+  } = useForm();
 
   const onSubmit = handleSubmit((data: any) => {
     let res = props._onSubmit(data);
@@ -56,13 +57,21 @@ const ExamForm = (props) => {
     });
   });
 
+  const _getContentTinyMCE = (content) => {
+    setValue("ContentPost", content);
+    return content;
+  }
+
   useEffect(() => {
     if(props.rowData) {
-      setValue("ID", props.rowData.ID);
-      setValue("PostIMG", props.rowData.PostIMG);
-      setValue("TitlePost", props.rowData.TitlePost);
-      setValue("ContentPost", props.rowData.ContentPost);
-      setValue("Enable", props.rowData.Enable);
+      Object.keys(props.rowData).forEach(function (key) {
+        setValue(key, props.rowData[key]);
+      });
+      // setValue("ID", props.rowData.ID);
+      // setValue("PostIMG", props.rowData.PostIMG);
+      // setValue("TitlePost", props.rowData.TitlePost);
+      // setValue("ContentPost", props.rowData.ContentPost);
+      // setValue("Enable", props.rowData.Enable);
     }
   }, [props.rowData])
 
@@ -139,7 +148,20 @@ const ExamForm = (props) => {
             {/*  */}
             <div className="row">
               <Form.Item label="Content">
-                <TinyMCE />
+                {props.isLoading.type == "GET_WITH_ID" &&
+                  props.isLoading.status ? (
+                    <Skeleton
+                    active
+                    paragraph={{ rows: 0 }}
+                    title={{ width: "100%" }}
+                  />
+                  ) : (
+                    <TinyMCE
+                      content = {props.rowData?.ContentPost}
+                      // defaultValue = {props.rowData?.ContentPost}
+                      _getContentTinyMCE = {content => _getContentTinyMCE(content)} 
+                    />
+                  )}
               </Form.Item>
             </div>
             {/*  */}

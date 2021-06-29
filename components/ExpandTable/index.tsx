@@ -21,6 +21,9 @@ const ExpandTable = (props) => {
         >
           {props.children}
           <Table
+            loading={
+              props.isLoading.type == "GET_ALL" && props.isLoading.status
+            }
             scroll={props.noScroll ? { x: "max-content" } : { x: 768 }}
             columns={props.columns}
             dataSource={props.dataSource}

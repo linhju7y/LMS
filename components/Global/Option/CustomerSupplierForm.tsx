@@ -1,17 +1,47 @@
-import React, { useState } from "react";
-import { Modal, Form, Input, Button, Divider, Tooltip, Select } from "antd";
+import React, { useEffect, useState } from "react";
+import { Modal, Form, Input, Button, Divider, Tooltip, Select, Skeleton } from "antd";
 import { RotateCcw } from "react-feather";
+import { useForm } from "react-hook-form";
+import { useWrap } from "~/context/wrap";
 const CustomerSupplier = (props) => {
   const { Option } = Select;
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const { showNoti } = useWrap();
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { isSubmitting, errors, isSubmitted },
+  } = useForm();
+
+  const onSubmit = handleSubmit((data: any) => {
+    let res = props._onSubmit(data);
+
+    res.then(function (rs: any) {
+      console.log("Res in form: ", rs);
+      rs
+        ? res.status == 200 && setIsModalVisible(false)
+        : showNoti("danger", "Server lỗi")
+    });
+  });
+
+  useEffect(() => {
+    if(props.rowData) {
+      Object.keys(props.rowData).forEach(function (key) {
+        setValue(key, props.rowData[key]);
+      });
+    }
+  }, [props.rowData])
+
   return (
     <>
       {props.showIcon && (
         <button
           className="btn btn-icon edit"
           onClick={() => {
-            setIsModalVisible(true);
+            setIsModalVisible(true), props.getDataCutomerSupplierWithID(props.CustomerSupplierID);
           }}
         >
           <Tooltip title="Cập nhật">
@@ -44,22 +74,38 @@ const CustomerSupplier = (props) => {
         footer={null}
       >
         <div className="container-fluid">
-          <Form layout="vertical">
+          <Form layout="vertical" onFinish={onSubmit}>
             <div className="row">
               <div className="col-12">
                 <Form.Item label="Customer Supplier">
-                  <Input className="style-input" />
+                  {props.isLoading.type == "GET_WITH_ID" &&
+                  props.isLoading.status ? (
+                    <Skeleton
+                    active
+                    paragraph={{ rows: 0 }}
+                    title={{ width: "100%" }}
+                  />
+                  ) : (
+                    <Input 
+                    {...register("SourceInformationName")}
+                    placeholder=""
+                    className="style-input"
+                    defaultValue={props.rowData?.SourceInformationName}
+                    onChange={(e) => setValue("SourceInformationName", e.target.value)}
+                    />
+                  )}
+
                 </Form.Item>
               </div>
             </div>
             <div className="row ">
               <div className="col-12">
                 {props.showAdd == true ? (
-                  <Button className="w-100" type="primary" size="large">
+                  <Button className="w-100" type="primary" size="large" onClick={onSubmit}>
                     Create
                   </Button>
                 ) : (
-                  <Button className="w-100" type="primary" size="large">
+                  <Button className="w-100" type="primary" size="large" onClick={onSubmit}>
                     Update
                   </Button>
                 )}

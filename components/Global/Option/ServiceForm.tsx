@@ -16,7 +16,7 @@ const ServiceForm = (props) => {
     handleSubmit,
     setValue,
     formState: { isSubmitting, errors, isSubmitted },
-  } = useForm<IService>();
+  } = useForm();
   // const { showNoti } = useWrap();
 
   const onSubmit = handleSubmit((data: any) => {
@@ -32,10 +32,13 @@ const ServiceForm = (props) => {
 
   useEffect(() => {
     if(props.rowData) {
-      setValue("ID", props.rowData.ID);
-      setValue("ServiceName", props.rowData.ServiceName);
-      setValue("DescribeService", props.rowData.DescribeService);
-      setValue("Enable", props.rowData.Enable);
+      Object.keys(props.rowData).forEach(function (key) {
+        setValue(key, props.rowData[key]);
+      });
+      // setValue("ID", props.rowData.ID);
+      // setValue("ServiceName", props.rowData.ServiceName);
+      // setValue("DescribeService", props.rowData.DescribeService);
+      // setValue("Enable", props.rowData.Enable);
     }
   }, [props.rowData])
 
