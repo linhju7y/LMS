@@ -1,7 +1,7 @@
-import React, { FC, Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import PowerTable from "~/components/PowerTable";
 import randomColor from "randomcolor";
-import { Tag, Tooltip, message } from "antd";
+import { Tag, Tooltip } from "antd";
 import { Info, RotateCcw } from "react-feather";
 import SortBox from "~/components/Elements/SortBox";
 import FilterColumn from "~/components/Tables/FilterColumn";
@@ -9,13 +9,10 @@ import FilterTable from "~/components/Global/CourseList/FitlerTable";
 import Link from "next/link";
 import LayoutBase from "~/components/LayoutBase";
 import { branchApi } from "~/apiBase";
-import { CenterForm } from "~/components/Global";
-import is from "date-fns/esm/locale/is/index.js";
+import CenterForm from "~/components/Global/Option/CenterForm";
 import { useWrap } from "~/context/wrap";
 
 const Center = () => {
-  const [center, setCenter] = useState<IBranch[]>([]);
-  const [centerForm, setCenterForm] = useState(false);
   const columns = [
     {
       title: "Mã trung tâm",
@@ -26,14 +23,6 @@ const Center = () => {
     {
       title: "Tên trung tâm",
       dataIndex: "BranchName",
-      render: (center) => {
-        let color = randomColor();
-        return (
-          <Tag color={color} key={center} className="style-tag">
-            <b> {center.toUpperCase()}</b>
-          </Tag>
-        );
-      },
       ...FilterColumn("center"),
     },
     { title: "Địa chỉ", dataIndex: "Address", ...FilterColumn("address") },
@@ -43,12 +32,12 @@ const Center = () => {
       ...FilterColumn("district"),
     },
     {
-      render: () => (
+      render: (data) => (
         <>
           <Link
             href={{
               pathname: "/option/center/rooms-detail/[slug]",
-              query: { slug: 2 },
+              query: { slug: `${data.ID}` },
             }}
           >
             <Tooltip title="Xem phòng">
@@ -59,64 +48,156 @@ const Center = () => {
           </Link>
 
           <Tooltip title="Cập nhật trung tâm">
-            <button
-              className="btn btn-icon edit"
-              onClick={() => setCenterForm(true)}
-            >
-              <RotateCcw />
-            </button>
+            <CenterForm
+              showIcon={true}
+              branchId={data.ID}
+              getBranchDetail={(branchId: number) => getBranchDetail(branchId)}
+              rowData={rowData}
+              isLoading={isLoading}
+              _onSubmit={(data: any) => _onSubmit(data)}
+            />
           </Tooltip>
         </>
       ),
     },
   ];
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [center, setCenter] = useState<IBranch[]>([]);
+  const [isLoading, setIsLoading] = useState({
+    type: "",
+    status: false,
+  });
   const { showNoti } = useWrap();
-  //get data Center
+  const [rowData, setRowData] = useState<IBranch[]>();
 
-  const getAllBranch = () => {
-    setIsLoading(true);
-
+  const getDataCenter = (pageNumber) => {
+    setIsLoading({
+      type: "GET_ALL",
+      status: true,
+    });
     (async () => {
       try {
-        const res = await branchApi.getAll();
-        setIsLoading(false);
-        res.status == 200 && setCenter(res.data.createAcc);
+        let res = await branchApi.getPagination(pageNumber);
+        res.status == 200 && setCenter(res.data.data);
       } catch (error) {
         showNoti("danger", error.message);
+      } finally {
+        setIsLoading({
+          type: "GET_ALL",
+          status: false,
+        });
+      }
+    })();
+  };
+  let indexPage = 2;
+
+  useEffect(() => {
+    getDataCenter(indexPage);
+  }, []);
+
+  const getBranchDetail = (branchId: number) => {
+    setIsLoading({
+      type: "GET_WITH_ID",
+      status: true,
+    });
+    (async () => {
+      try {
+        let res = await branchApi.getDetail(branchId);
+        res.status == 200 && setRowData(res.data.createAcc);
+      } catch (error) {
+        showNoti("danger", error.message);
+      } finally {
+        setIsLoading({
+          type: "GET_WITH_ID",
+          status: false,
+        });
       }
     })();
   };
 
-  useEffect(() => {
-    getAllBranch();
-  }, []);
+  const editRowData = (dataEdit: any, mes: string) => {
+    let space = indexPage * 10;
+    let limit = space < center.length ? space : center.length;
+    let dataClone = [...center];
+
+    for (let i = space - 10; i <= limit; i++) {
+      if (dataClone[i].BranchCode == dataEdit.BranchCode) {
+        dataClone[i].BranchName = dataEdit.BranchName;
+        dataClone[i].Phone = dataEdit.Phone;
+        dataClone[i].AreaID = dataEdit.AreaID;
+        dataClone[i].Address = dataEdit.Address;
+        dataClone[i].DistrictID = dataEdit.DistrictID;
+        break;
+      }
+    }
+    setCenter(dataClone);
+    showNoti("success", mes);
+  };
+  const afterPost = () => {
+    showNoti("success", "Thêm thành công");
+    getDataCenter(indexPage);
+  };
+
+  const _onSubmit = async (data: any) => {
+    setIsLoading({
+      type: "ADD_DATA",
+      status: true,
+    });
+
+    let res = null;
+
+    if (data.ID) {
+      try {
+        res = await branchApi.put(data);
+        res?.status == 200 && editRowData(data, res.data.createAcc);
+      } catch (error) {
+        showNoti("danger", error.message);
+      } finally {
+        setIsLoading({
+          type: "ADD_DATA",
+          status: false,
+        });
+      }
+    } else {
+      try {
+        res = await branchApi.post(data);
+        res?.status == 200 && afterPost();
+      } catch (error) {
+        showNoti("danger", error.message);
+      } finally {
+        setIsLoading({
+          type: "ADD_DATA",
+          status: false,
+        });
+      }
+    }
+
+    return res;
+  };
 
   return (
     <Fragment>
       <PowerTable
+        getPagination={(pageNumber: number) => getDataCenter(pageNumber)}
         loading={isLoading}
         addClass="basic-header"
         TitlePage="Danh sách trung tâm"
         TitleCard={
-          <button
-            onClick={() => setCenterForm(true)}
-            className="btn btn-warning add-new"
-          >
-            Thêm mới
-          </button>
+          <CenterForm
+            showAdd={true}
+            addDataSuccess={(pageNumber: number) => getDataCenter(pageNumber)}
+            isLoading={isLoading}
+            _onSubmit={(data: any) => _onSubmit(data)}
+          />
         }
         dataSource={center}
         columns={columns}
         Extra={
           <div className="extra-table">
-            <FilterTable />
             <SortBox />
           </div>
         }
       />
-
-      <CenterForm visible={centerForm} onCancel={() => setCenterForm(false)} />
     </Fragment>
   );
 };

@@ -1,17 +1,29 @@
 import React, { FC, useEffect, useState } from "react";
-import { Modal, Form, Input, Button, message, Spin, Select } from "antd";
+import {
+  Modal,
+  Form,
+  Input,
+  Button,
+  message,
+  Spin,
+  Select,
+  Tooltip,
+  Skeleton,
+} from "antd";
 import { FormProvider, useForm } from "react-hook-form";
 import { branchApi, areaApi, districtApi } from "~/apiBase";
 
 import { useWrap } from "~/context/wrap";
 import SelectFilterBox from "~/components/Elements/SelectFilterBox";
+import { RotateCcw } from "react-feather";
 
-type CenterFormProps = IFormBaseProps & {
-  Id?: number;
-};
+// type CenterFormProps = IFormBaseProps & {
+//   Id?: number;
+// };
 
-export const CenterForm: FC<CenterFormProps> = ({ visible, onCancel, Id }) => {
-  const methods = useForm<IBranch>();
+const CenterForm = React.memo((props: any) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const { isLoading } = props;
   const { showNoti } = useWrap();
   const [dataArea, setDataArea] = useState<IArea[]>();
   const {
@@ -21,7 +33,7 @@ export const CenterForm: FC<CenterFormProps> = ({ visible, onCancel, Id }) => {
     control,
     setValue,
     formState: { isSubmitting, errors, isSubmitted },
-  } = methods;
+  } = useForm<IBranch>();
   const { Option } = Select;
 
   const [dataDistrict, setDataDistrict] = useState<IDistrict[]>([]);
@@ -50,20 +62,27 @@ export const CenterForm: FC<CenterFormProps> = ({ visible, onCancel, Id }) => {
     })();
   };
 
-  // console.log("Data District: ", dataDistrict);
-
   // SUBMI FORM
-  const onSubmit = async (data: IBranch) => {
-    console.log("DATA: ", data);
-    try {
-      let res = await branchApi.post(data);
-      res.status == 200 && showNoti("success", "Thêm trung tâm thành công!");
-      reset();
-    } catch (err) {
-      console.log(err);
-      showNoti("danger", "Thêm trung tâm thất bại!");
+  const onSubmit = handleSubmit((data: any) => {
+    let res = props._onSubmit(data);
+
+    res.then(function (rs: any) {
+      rs
+        ? rs.status == 200 && setIsModalVisible(false)
+        : showNoti("danger", "Server lỗi");
+    });
+  });
+
+  useEffect(() => {
+    if (props.rowData) {
+      setValue("BranchCode", props.rowData.BranchCode);
+      setValue("BranchName", props.rowData.BranchName);
+      setValue("Phone", props.rowData.Phone);
+      setValue("Address", props.rowData.Address);
+      setValue("AreaID", props.rowData.AreaID);
+      setValue("DistrictID", props.rowData.DistrictID);
     }
-  };
+  }, [props.rowData]);
 
   // FUNCTION SELECT
   const onChangeSelect = (name) => (value) => {
@@ -72,101 +91,155 @@ export const CenterForm: FC<CenterFormProps> = ({ visible, onCancel, Id }) => {
     setValue(name, value);
   };
 
-  function onBlur() {
-    console.log("blur");
-  }
-
-  function onFocus() {
-    console.log("focus");
-  }
-
-  function onSearch(val) {
-    console.log("search:", val);
-  }
-
   useEffect(() => {
-    visible && getAllArea();
-  }, [visible]);
+    isModalVisible && getAllArea();
+  }, [isModalVisible]);
 
   useEffect(() => {
     setValue("Enable", true);
   }, []);
 
   return (
-    <Modal
-      title="Tạo trung tâm"
-      visible={visible}
-      onCancel={onCancel}
-      footer={null}
-    >
-      <FormProvider {...methods}>
+    <>
+      {props.showIcon && (
+        <button
+          className="btn btn-icon edit"
+          onClick={() => {
+            setIsModalVisible(true), props.getBranchDetail(props.branchId);
+          }}
+        >
+          <Tooltip title="Cập nhật">
+            <RotateCcw />
+          </Tooltip>
+        </button>
+      )}
+      {props.showAdd && (
+        <button
+          className="btn btn-warning add-new"
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          Thêm mới
+        </button>
+      )}
+
+      <Modal
+        title="Tạo trung tâm"
+        visible={isModalVisible}
+        onCancel={() => setIsModalVisible(false)}
+        footer={null}
+      >
         <div className="container-fluid">
           <Form layout="vertical">
             <div className="row">
               <div className="col-12">
                 <Form.Item label="Mã trung tâm">
-                  <Input
-                    {...register("BranchCode")}
-                    placeholder=""
-                    className="style-input"
-                  />
+                  {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Input
+                      {...register("BranchCode")}
+                      placeholder=""
+                      className="style-input"
+                      defaultValue={props.rowData?.BranchCode}
+                      onChange={(e) => setValue("BranchCode", e.target.value)}
+                    />
+                  )}
                 </Form.Item>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
                 <Form.Item label="Tên trung tâm">
-                  <Input
-                    {...register("BranchName")}
-                    placeholder=""
-                    className="style-input"
-                  />
+                  {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Input
+                      {...register("BranchName")}
+                      placeholder=""
+                      className="style-input"
+                      defaultValue={props.rowData?.BranchName}
+                      onChange={(e) => setValue("BranchName", e.target.value)}
+                    />
+                  )}
                 </Form.Item>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
                 <Form.Item label="Số điện thoại">
-                  <Input
-                    {...register("Phone")}
-                    placeholder=""
-                    className="style-input"
-                  />
+                  {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Input
+                      {...register("Phone")}
+                      placeholder=""
+                      className="style-input"
+                      defaultValue={props.rowData?.Phone}
+                      onChange={(e) => setValue("Phone", e.target.value)}
+                    />
+                  )}
                 </Form.Item>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
                 <Form.Item label="Địa chỉ">
-                  <Input
-                    {...register("Address")}
-                    placeholder=""
-                    className="style-input"
-                  />
+                  {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Input
+                      {...register("Address")}
+                      placeholder=""
+                      className="style-input"
+                      defaultValue={props.rowData?.Address}
+                      onChange={(e) => setValue("Address", e.target.value)}
+                    />
+                  )}
                 </Form.Item>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
                 <Form.Item label="Vùng">
-                  <Select
-                    style={{ width: "100%" }}
-                    className="style-input"
-                    showSearch
-                    placeholder="Select..."
-                    optionFilterProp="children"
-                    onChange={onChangeSelect("AreaID")}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    onSearch={onSearch}
-                    //   filterOption={(input, option) =>
-                    //     option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                    //   }
-                  >
-                    {dataArea?.map((item) => (
-                      <Option value={item.AreaID}>{item.AreaName}</Option>
-                    ))}
-                  </Select>
+                  {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Select
+                      style={{ width: "100%" }}
+                      className="style-input"
+                      showSearch
+                      placeholder="Select..."
+                      optionFilterProp="children"
+                      onChange={onChangeSelect("AreaID")}
+                      defaultValue={props.rowData?.AreaID}
+                    >
+                      {dataArea?.map((item) => (
+                        <Option value={item.AreaID}>{item.AreaName}</Option>
+                      ))}
+                    </Select>
+                  )}
                 </Form.Item>
               </div>
             </div>
@@ -174,28 +247,30 @@ export const CenterForm: FC<CenterFormProps> = ({ visible, onCancel, Id }) => {
             <div className="row">
               <div className="col-12">
                 <Form.Item label="Quận">
-                  <Select
-                    style={{ width: "100%" }}
-                    className="style-input"
-                    showSearch
-                    placeholder="Select..."
-                    optionFilterProp="children"
-                    onChange={onChangeSelect("DistrictID")}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    onSearch={onSearch}
-                    //   filterOption={(input, option) =>
-                    //     option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                    //   }
-                  >
-                    {dataDistrict?.length > 0 ? (
-                      dataDistrict?.map((item) => (
-                        <Option value={item.ID}>{item.DistrictName}</Option>
-                      ))
-                    ) : (
-                      <Option value={5}>Không có data</Option>
-                    )}
-                  </Select>
+                  {isLoading.type == "GET_WITH_ID" && isLoading.status ? (
+                    <Skeleton
+                      active
+                      paragraph={{ rows: 0 }}
+                      title={{ width: "100%" }}
+                    />
+                  ) : (
+                    <Select
+                      style={{ width: "100%" }}
+                      className="style-input"
+                      showSearch
+                      placeholder="Select..."
+                      optionFilterProp="children"
+                      onChange={onChangeSelect("DistrictID")}
+                    >
+                      {dataDistrict?.length > 0 ? (
+                        dataDistrict?.map((item) => (
+                          <Option value={item.ID}>{item.DistrictName}</Option>
+                        ))
+                      ) : (
+                        <Option value={5}>Không có data</Option>
+                      )}
+                    </Select>
+                  )}
                 </Form.Item>
               </div>
             </div>
@@ -207,11 +282,16 @@ export const CenterForm: FC<CenterFormProps> = ({ visible, onCancel, Id }) => {
                 onClick={handleSubmit(onSubmit)}
               >
                 LƯU
+                {isLoading.type == "ADD_DATA" && isLoading.status && (
+                  <Spin className="loading-base" />
+                )}
               </Button>
             </div>
           </Form>
         </div>
-      </FormProvider>
-    </Modal>
+      </Modal>
+    </>
   );
-};
+});
+
+export default CenterForm;

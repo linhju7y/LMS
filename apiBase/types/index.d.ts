@@ -3,6 +3,11 @@ type IApiResult<T = any> = {
   message: string;
 };
 
+type IApiResultData<T = any> = {
+  data: T;
+  message: string;
+};
+
 type IApiResultAcc<T = any> = {
   acc: T;
   message: string;
